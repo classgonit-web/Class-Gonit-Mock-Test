@@ -1,82 +1,522 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#071326">
-<title>Class Gonit | Mathematics Mock Test</title>
+<title>ক্লাস গণিত 🎓 | Mathematics Practice</title>
 <style>
-:root{--bg:#071326;--panel:#101f36;--panel2:#142743;--blue:#1687ff;--cyan:#27c4ff;--text:#f4f8ff;--muted:#a9bad1;--line:#2a4161;--gold:#ffbd19}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 75% 8%,#102e57 0,transparent 28%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
-a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
-header{position:sticky;top:0;z-index:10;background:#071326ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:25px}.brand-mark{width:45px;height:45px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#00c4df);display:grid;place-items:center;font-size:25px}.brand span{color:var(--cyan)}nav{display:flex;gap:22px;align-items:center;color:#dbe8f8;font-weight:700;font-size:14px}nav a:hover{color:var(--cyan)}.navbtn,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 20px;background:var(--blue);color:white;font-weight:800;cursor:pointer}.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 12px;font-size:20px}
-.hero{padding:68px 0 34px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.02;margin:12px 0}.hero h1 span{color:var(--cyan)}.hero p{color:var(--muted);font-size:18px;max-width:570px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn.secondary{background:transparent;border:1px solid var(--cyan);color:var(--text)}.hero-art{min-height:300px;border:1px solid #285080;border-radius:28px;background:linear-gradient(145deg,#12335d,#0a1930 65%);display:grid;place-items:center;text-align:center;padding:25px;box-shadow:0 20px 60px #0005}.math-art{font-size:clamp(38px,6vw,68px);font-weight:900;color:#8edcff;text-shadow:0 0 25px #1687ff66}.hero-art strong{display:block;font-size:22px;margin-top:8px}.hero-art small{color:var(--muted)}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px auto 58px}.feature{background:#101f36;border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;font-weight:700}.feature b{display:block;font-size:25px;margin-bottom:5px}.section{padding:28px 0 48px}.section-head{text-align:center;margin-bottom:25px}.section-head h2{font-size:clamp(27px,4vw,38px);margin:0}.section-head p{color:var(--muted);margin:6px 0}.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.chapter{display:flex;gap:13px;align-items:center;text-align:left;background:linear-gradient(145deg,#142743,#0d1b30);border:1px solid var(--line);border-radius:17px;padding:17px;color:var(--text);cursor:pointer;transition:.2s}.chapter:hover,.chapter.active{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 8px 25px #008cff22}.num{flex:0 0 43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#1769c8;font-weight:900;font-size:17px}.chapter strong{display:block}.chapter small{color:var(--muted)}
-.question-area{margin-top:28px;background:#0e1d33;border:1px solid var(--line);border-radius:22px;padding:24px}.question-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.tag{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:1px}.question-area h3{margin:8px 0 16px;font-size:22px}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{background:#142743;border:1px solid #304a6c;color:var(--text);border-radius:12px;padding:13px;text-align:left;cursor:pointer;font-size:15px}.option:hover{border-color:var(--cyan)}.option.correct{border-color:#21c77a;background:#103d35}.option.wrong{border-color:#ff6878;background:#492432}.feedback{min-height:28px;color:var(--muted);font-weight:700;margin-top:12px}.next{margin-top:8px}.banner{margin:15px 0 55px;padding:26px;border-radius:20px;background:linear-gradient(100deg,#073b83,#0759ae 65%,#092c57);border:1px solid #1687ff;display:flex;justify-content:space-between;align-items:center;gap:20px}.banner h2{margin:0}.banner p{margin:4px 0 0;color:#d4e8ff}.gold{background:var(--gold);color:#101827}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:850px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:#09182c;padding:18px 4%;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}nav.open{display:flex}.menu{display:block}.navbtn{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:230px}.features{grid-template-columns:repeat(2,1fr)}.chapter-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.brand{font-size:20px}.hero p{font-size:16px}.chapter-grid{grid-template-columns:1fr}.options{grid-template-columns:1fr}.question-area{padding:17px}.banner{align-items:flex-start;flex-direction:column}.features{gap:8px}.feature{padding:13px 8px;font-size:13px}}
+:root{--bg:#071326;--panel:#10213a;--blue:#1687ff;--cyan:#42c5ff;--white:#f4f8ff;--muted:#a9bad1;--line:#294563}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif;line-height:1.6}
+.wrap{width:min(1150px,92%);margin:auto}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:10;background:#071326ed;border-bottom:1px solid var(--line)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-size:23px;font-weight:900;color:white}
+.brand span{color:var(--cyan)}
+nav{display:flex;gap:20px;font-size:14px;font-weight:bold}
+nav a:hover{color:var(--cyan)}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 12px;border-radius:9px;font-size:20px}
+.btn{display:inline-block;background:var(--blue);color:white;padding:12px 20px;border:0;border-radius:25px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#0870dc}
+.btn.outline{background:transparent;border:1px solid var(--cyan)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:65px 0 35px}
+.eyebrow{color:var(--cyan);font-size:12px;font-weight:bold;letter-spacing:2px}
+.hero h1{font-size:clamp(40px,6vw,70px);line-height:1.08;margin:12px 0}
+.hero h1 span{color:var(--cyan)}
+.hero p{color:var(--muted);font-size:17px;max-width:600px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero-art{background:linear-gradient(145deg,#153a68,#0b1930);border:1px solid #285080;border-radius:25px;padding:35px 15px;text-align:center}
+.math-art{font-size:clamp(34px,6vw,60px);font-weight:900;color:#8edcff}
+.hero-art strong{display:block;font-size:20px;margin-top:12px}
+.hero-art small{color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:15px auto 45px}
+.feature{background:var(--panel);border:1px solid var(--line);border-radius:14px;text-align:center;padding:16px;font-weight:bold}
+.feature b{display:block;font-size:25px}
+.section{padding:35px 0}
+.section-head{text-align:center;margin-bottom:25px}
+.section-head h2{font-size:clamp(27px,4vw,38px);margin:5px 0}
+.section-head p{color:var(--muted)}
+.main-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.main-card{background:linear-gradient(145deg,#142b49,#0d1b30);border:1px solid var(--line);border-radius:17px;padding:20px;cursor:pointer;color:white;text-align:left;transition:.2s}
+.main-card:hover,.main-card.active{border-color:var(--cyan);transform:translateY(-2px)}
+.main-card .emoji{font-size:30px}
+.main-card h3{margin:8px 0 3px;font-size:18px}
+.main-card p{color:var(--muted);font-size:13px;margin:0}
+.main-card small{color:var(--cyan);display:block;margin-top:10px;font-weight:bold}
+.topic-panel{margin-top:25px;background:#0d1d33;border:1px solid var(--line);border-radius:20px;padding:22px}
+.topic-panel h3{margin:0 0 15px}
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.topic-btn{background:#142743;border:1px solid #304a6c;border-radius:12px;color:white;text-align:left;padding:14px;cursor:pointer}
+.topic-btn:hover,.topic-btn.active{border-color:var(--cyan);background:#17375b}
+.topic-btn small{display:block;color:var(--muted);margin-top:3px}
+.question-area{margin-top:25px;background:#10213a;border:1px solid var(--line);border-radius:20px;padding:23px}
+.question-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--cyan);font-size:12px;font-weight:bold}
+.question-area h3{font-size:20px;margin:15px 0}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option{background:#172c48;border:1px solid #345071;color:white;border-radius:11px;padding:13px;text-align:left;cursor:pointer;font-size:15px}
+.option:hover{border-color:var(--cyan)}
+.option.correct{background:#104232;border-color:#25c77a}
+.option.wrong{background:#4a2632;border-color:#ff6878}
+.feedback{min-height:30px;color:var(--muted);font-weight:bold;margin:14px 0}
+.question-actions{display:flex;gap:10px;flex-wrap:wrap}
+.progress{height:7px;background:#233b59;border-radius:20px;overflow:hidden;margin-top:15px}
+.progress div{height:100%;background:var(--cyan);width:0%;transition:.2s}
+.banner{margin:35px auto 55px;padding:25px;border-radius:18px;background:linear-gradient(100deg,#073b83,#0759ae 65%,#092c57);border:1px solid var(--blue);display:flex;justify-content:space-between;align-items:center;gap:15px}
+.banner h2{margin:0}
+.banner p{color:#d4e8ff;margin-bottom:0}
+
+/* FOOTER */
+.footer{background:linear-gradient(145deg,#071426,#0d1e38);text-align:center;padding:45px 20px 20px;border-top:2px solid var(--blue)}
+.footer-quote{max-width:760px;margin:0 auto 35px;padding:24px;background:#168cff14;border:1px solid #23466d;border-radius:18px}
+.footer-quote span{font-size:28px}
+.footer-quote p{color:#dceaff;font-size:16px;line-height:2;margin:10px 0 0}
+.footer-brand h2{color:#42a5ff;font-size:29px;margin-bottom:5px}
+.footer-brand p{color:#b8c9df;letter-spacing:1px}
+.footer-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:32px auto;max-width:750px}
+.contact-card{display:flex;align-items:flex-start;text-align:left;gap:14px;background:#102746;border:1px solid #23466d;border-radius:14px;padding:20px;min-width:260px}
+.contact-icon{font-size:28px}
+.contact-card h3{color:#42a5ff;font-size:15px;margin:0 0 8px}
+.contact-card p,.contact-card a{color:#e2eaf5;font-size:14px;line-height:1.8;margin:0}
+.contact-card a{display:block;color:#8edcff;font-weight:bold;margin-top:7px}
+.contact-card .whatsapp{background:#087f62;color:white;padding:9px 13px;border-radius:20px;text-align:center}
+.footer-motto{color:#8edcff;font-weight:bold;letter-spacing:1px;margin:25px 0}
+.footer-bottom{border-top:1px solid #29415e;padding-top:18px;margin-top:25px;color:#91a6bf;font-size:13px}
+@media(max-width:800px){
+ nav{display:none;position:absolute;top:72px;left:0;right:0;background:#09182c;padding:18px 4%;flex-direction:column}
+ nav.open{display:flex}.menu{display:block}
+ .hero{grid-template-columns:1fr;padding-top:40px}
+ .main-grid{grid-template-columns:repeat(2,1fr)}
+ .topic-grid{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .main-grid,.topic-grid{grid-template-columns:1fr}
+ .options{grid-template-columns:1fr}
+ .question-area,.topic-panel{padding:16px}
+ .contact-card{min-width:100%}
+ .footer-quote p{font-size:14px}
+ .banner{display:block}
+ .banner .btn{margin-top:15px}
+}
 </style>
 </head>
 <body>
-<header><div class="wrap nav">
-  <a class="brand" href="#home"><div class="brand-mark">🎓</div><div>ক্লাস গণিত <span>🎓</span><small style="display:block;color:#a9bad1;font-size:10px;letter-spacing:1px">CLASS GONIT • PRACTICE • PREPARE • EXCEL</small></div></a>
-  <nav id="nav"><a href="#home">Home</a><a href="#chapters">Chapters</a><a href="#practice">Questions</a><a href="#about">About</a></nav>
-  <a class="navbtn" href="#chapters">Start Practising</a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Open menu">☰</button>
-</div></header>
+
+<header>
+<div class="wrap nav">
+<a class="brand" href="#home">ক্লাস গণিত <span>🎓</span></a>
+<nav id="nav">
+<a href="#home">Home</a>
+<a href="#chapters">Chapters</a>
+<a href="#practice">Practice</a>
+<a href="#about">About</a>
+</nav>
+<button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</div>
+</header>
+
 <main id="home">
 <section class="wrap hero">
-  <div><div class="eyebrow">Mathematics learning platform</div><h1>Welcome to<br>Class <span>Gonit</span></h1>
-  <p>Build confidence in mathematics with chapter-wise practice questions and mock tests for competitive exam preparation.</p>
-  <div class="actions"><a class="btn" href="#chapters">▶ &nbsp; Explore Chapters</a><a class="btn secondary" href="#practice">Try a Question</a></div>
-  </div>
-  <div class="hero-art"><div><div class="math-art">a² + b² = c²</div><div style="font-size:55px">📐 📚 ✏️</div><strong>Dream Big. Practise Smart.</strong><small>One question at a time.</small></div></div>
+<div>
+<div class="eyebrow">MATHEMATICS LEARNING PLATFORM</div>
+<h1>Welcome to<br><span>ক্লাস গণিত 🎓</span></h1>
+<p>Learn mathematics step by step. Practise chapter-wise questions, improve your concepts and prepare for competitive examinations.</p>
+<div class="actions">
+<a class="btn" href="#chapters">Explore Chapters →</a>
+<a class="btn outline" href="#practice">Start Practice</a>
+</div>
+</div>
+<div class="hero-art">
+<div class="math-art">a² + b² = c²</div>
+<div style="font-size:48px">📐 📚 ✏️</div>
+<strong>Learn • Practise • Achieve</strong>
+<small>Build your mathematics foundation.</small>
+</div>
 </section>
-<section class="wrap features" aria-label="Features">
-  <div class="feature"><b>⚡</b>Chapter-wise Practice</div><div class="feature"><b>🧠</b>Concept Building</div><div class="feature"><b>📊</b>Track Your Progress</div><div class="feature"><b>🏆</b>Exam Preparation</div>
+
+<section class="wrap features">
+<div class="feature"><b>📚</b>Chapter-wise Learning</div>
+<div class="feature"><b>🧠</b>Concept Practice</div>
+<div class="feature"><b>✅</b>Instant Answers</div>
+<div class="feature"><b>🏆</b>Exam Preparation</div>
 </section>
+
 <section class="wrap section" id="chapters">
-  <div class="section-head"><div class="eyebrow">Choose your topic</div><h2>Chapter-wise <span style="color:var(--cyan)">Practice</span></h2><p>Select a chapter to see its sample question.</p></div>
-  <div class="chapter-grid" id="chapterGrid"></div>
-  <div class="question-area" id="practice">
-    <div class="question-top"><span class="tag" id="qChapter">CHAPTER 01 • NUMBER SYSTEM</span><span class="tag">SAMPLE PRACTICE QUESTION</span></div>
-    <h3 id="question">Which of the following numbers is divisible by 3?</h3>
-    <div class="options" id="options"></div><div class="feedback" id="feedback" aria-live="polite">Choose an answer to check it.</div>
-    <button class="btn next" onclick="nextQuestion()">Next Question →</button>
-  </div>
+<div class="section-head">
+<div class="eyebrow">YOUR LEARNING JOURNEY</div>
+<h2>Mathematics <span style="color:var(--cyan)">Main Sections</span></h2>
+<p>Select a main section to explore its topics and example questions.</p>
+</div>
+
+<div class="main-grid" id="mainGrid"></div>
+
+<div class="topic-panel" id="topicPanel">
+<h3 id="topicHeading">Choose a main section</h3>
+<p style="color:var(--muted);margin-top:-8px">Select a topic below to start practising.</p>
+<div class="topic-grid" id="topicGrid"></div>
+</div>
+
+<div class="question-area" id="practice">
+<div class="question-top">
+<span id="questionCategory">CLASS GONIT PRACTICE</span>
+<span id="questionCount">QUESTION 1 OF 2</span>
+</div>
+<h3 id="questionText">Choose a topic to see its example questions.</h3>
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<div class="question-actions">
+<button class="btn" id="nextButton" onclick="nextQuestion()" disabled>Next Question →</button>
+<button class="btn outline" onclick="showTopics()">Back to Topics</button>
+</div>
+<div class="progress"><div id="progressBar"></div></div>
+</div>
 </section>
-<section class="wrap banner" id="about"><div><h2>Be ready for your next challenge!</h2><p>Practise regularly, strengthen your basics and keep improving.</p></div><a class="btn gold" href="#chapters">Explore Chapters →</a></section>
+
+<section class="wrap banner" id="about">
+<div>
+<h2>Keep Learning. Keep Growing.</h2>
+<p>Every question is a step towards a stronger foundation in mathematics.</p>
+</div>
+<a class="btn" href="#chapters">Start Learning →</a>
+</section>
 </main>
-<footer><div class="wrap foot"><strong style="color:white">ক্লাস গণিত 🎓</strong><span>Class Gonit • Mathematics for a Better Tomorrow</span><span>© <span id="year"></span> Class Gonit. All rights reserved.</span></div></footer>
+
+<footer class="footer">
+<div class="footer-quote">
+<span>✨</span>
+<p>"হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে।"</p>
+</div>
+<div class="footer-brand">
+<h2>ক্লাস গণিত 🎓</h2>
+<p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+</div>
+<div class="footer-contact">
+<div class="contact-card">
+<span class="contact-icon">📍</span>
+<div>
+<h3>OUR LOCATION</h3>
+<p>Durgabari More</p>
+<p>Maynaguri, Jalpaiguri</p>
+<p>West Bengal, India</p>
+</div>
+</div>
+<div class="contact-card">
+<span class="contact-icon">📞</span>
+<div>
+<h3>CONTACT US</h3>
+<p>Call / WhatsApp</p>
+<a href="tel:+918159061346">+91 8159061346</a>
+<a class="whatsapp" href="https://wa.me/918159061346" target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+</div>
+</div>
+</div>
+<div class="footer-motto">LEARN • PRACTISE • ACHIEVE</div>
+<div class="footer-bottom">© <span id="year"></span> ক্লাস গণিত | All Rights Reserved.</div>
+</footer>
+
 <script>
-const chapters=[
- {name:"Number System",sub:"Divisibility, HCF & LCM",qs:[
-  {q:"Which of the following numbers is divisible by 3?",o:["124","135","142","151"],a:1,why:"135 is divisible by 3 because 1 + 3 + 5 = 9, and 9 is divisible by 3."},
-  {q:"What is the HCF of 12 and 18?",o:["3","6","9","12"],a:1,why:"The highest common factor of 12 and 18 is 6."}]},
- {name:"Simplification",sub:"BODMAS & VBODMAS",qs:[
-  {q:"Find the value: 12 − 3 × 2 + 8 ÷ 2",o:["8","10","14","16"],a:1,why:"Do multiplication and division first: 12 − 6 + 4 = 10."}]},
- {name:"Percentage",sub:"Basic to Advanced",qs:[
-  {q:"What is 20% of 150?",o:["15","20","30","35"],a:2,why:"20% of 150 = 20/100 × 150 = 30."}]},
- {name:"Ratio & Proportion",sub:"Compare quantities",qs:[
-  {q:"Simplify the ratio 12 : 18.",o:["2 : 3","3 : 2","4 : 5","6 : 7"],a:0,why:"Divide both terms by 6 to get 2 : 3."}]},
- {name:"Average",sub:"Mean and applications",qs:[
-  {q:"Find the average of 4, 6 and 8.",o:["5","6","7","8"],a:1,why:"(4 + 6 + 8) ÷ 3 = 6."}]},
- {name:"Profit & Loss",sub:"Cost price and selling price",qs:[
-  {q:"An item is bought for ₹100 and sold for ₹120. What is the profit?",o:["₹10","₹15","₹20","₹25"],a:2,why:"Profit = Selling Price − Cost Price = ₹120 − ₹100 = ₹20."}]},
- {name:"Simple & Compound Interest",sub:"Interest calculations",qs:[
-  {q:"Find the simple interest on ₹1,000 at 10% per year for 1 year.",o:["₹10","₹50","₹100","₹200"],a:2,why:"SI = (P × R × T) ÷ 100 = ₹100."}]},
- {name:"Time & Work",sub:"Work and efficiency",qs:[
-  {q:"If a person completes a job in 5 days, what fraction of the job is done in 1 day at a constant rate?",o:["1/2","1/3","1/4","1/5"],a:3,why:"One day's work is 1 ÷ 5 = 1/5 of the job."}]}
+/*
+Each topic has exactly two example MCQs.
+Format: [question, option A, option B, option C, option D, correct option index, explanation]
+Correct option index: 0=A, 1=B, 2=C, 3=D
+*/
+const sections=[
+{title:"Number System & Simplification",icon:"🔢",topics:[
+["Number System",[
+["Which is the smallest prime number?","0","1","2","3",2,"2 is the smallest prime number."],
+["Which of these is an even number?","17","21","28","35",2,"28 is divisible by 2."]
+]],
+["Divisibility Rules",[
+["Which number is divisible by 3?","124","135","142","151",1,"1 + 3 + 5 = 9, which is divisible by 3."],
+["Which number is divisible by 5?","123","247","350","412",2,"A number ending in 0 or 5 is divisible by 5."]
+]],
+["HCF & LCM",[
+["Find the HCF of 12 and 18.","3","6","9","12",1,"The greatest common factor is 6."],
+["Find the LCM of 4 and 6.","8","10","12","24",2,"The smallest common multiple is 12."]
+]],
+["Remainder",[
+["What is the remainder when 17 is divided by 5?","1","2","3","4",1,"17 = 5 × 3 + 2."],
+["What is the remainder when 29 is divided by 6?","3","4","5","2",2,"29 = 6 × 4 + 5."]
+]],
+["BODMAS",[
+["Find: 8 + 4 × 2","24","16","20","12",1,"Multiplication first: 8 + 8 = 16."],
+["Find: 20 − 12 ÷ 3","16","4","8","12",0,"Division first: 20 − 4 = 16."]
+]],
+["VBODMAS",[
+["Find: 18 ÷ 3 × 2","3","6","12","18",2,"Division and multiplication from left to right: 6 × 2 = 12."],
+["Find: 5 + 3 × (8 − 6)","16","11","13","10",1,"Bracket first: 5 + 3 × 2 = 11."]
+]],
+["Square & Cube",[
+["What is the square of 12?","124","144","122","154",1,"12 × 12 = 144."],
+["What is the cube of 3?","9","18","27","36",2,"3 × 3 × 3 = 27."]
+]],
+["Approximation",[
+["Approximate 198 to the nearest hundred.","100","200","300","190",1,"198 is closer to 200."],
+["Approximate 49.7 to the nearest whole number.","48","49","50","51",2,"49.7 rounds to 50."]
+]]
+]},
+{title:"Arithmetic",icon:"📊",topics:[
+["Percentage",[
+["What is 20% of 150?","15","20","30","35",2,"150 × 20/100 = 30."],
+["25% of 200 is:","25","40","50","75",2,"200 × 25/100 = 50."]
+]],
+["Ratio & Proportion",[
+["Simplify 12 : 18.","2 : 3","3 : 2","4 : 5","6 : 7",0,"Divide both terms by 6."],
+["If 2 : 3 = 8 : x, find x.","10","12","14","16",1,"2/3 = 8/x, so x = 12."]
+]],
+["Average",[
+["Find the average of 4, 6 and 8.","5","6","7","8",1,"(4 + 6 + 8) ÷ 3 = 6."],
+["Average of 10 and 20 is:","10","12","15","20",2,"(10 + 20) ÷ 2 = 15."]
+]],
+["Profit & Loss",[
+["CP = ₹100 and SP = ₹120. Find profit.","₹10","₹15","₹20","₹25",2,"Profit = SP − CP = ₹20."],
+["CP = ₹200 and SP = ₹180. Find loss.","₹10","₹20","₹30","₹40",1,"Loss = CP − SP = ₹20."]
+]],
+["Discount",[
+["A 10% discount on ₹500 is:","₹25","₹40","₹50","₹100",2,"500 × 10/100 = ₹50."],
+["Marked price ₹800, discount ₹100. Selling price?","₹600","₹700","₹750","₹900",1,"800 − 100 = ₹700."]
+]],
+["Simple Interest",[
+["SI on ₹1,000 at 10% for 1 year?","₹10","₹50","₹100","₹200",2,"SI = PRT/100 = ₹100."],
+["SI on ₹2,000 at 5% for 2 years?","₹100","₹150","₹200","₹250",2,"2000 × 5 × 2 / 100 = ₹200."]
+]],
+["Compound Interest",[
+["CI on ₹1,000 at 10% for 1 year?","₹10","₹50","₹100","₹110",2,"For one year, CI = ₹100."],
+["Amount on ₹1,000 at 10% compounded yearly for 2 years?","₹1,100","₹1,200","₹1,210","₹1,220",2,"1000 × 1.1 × 1.1 = ₹1,210."]
+]],
+["Partnership",[
+["A invests ₹100 and B ₹200 for equal time. Profit ratio?","1 : 1","1 : 2","2 : 1","1 : 3",1,"Profit ratio follows investment: 100 : 200 = 1 : 2."],
+["A and B invest equally for equal time. Profit ratio?","1 : 2","2 : 1","1 : 1","3 : 1",2,"Equal investment for equal time gives equal profit."]
+]],
+["Mixture & Alligation",[
+["Mix 2 L water with 3 L juice. Total mixture?","3 L","4 L","5 L","6 L",2,"2 + 3 = 5 litres."],
+["A 10 L mixture has 2 L water. Juice quantity?","2 L","6 L","8 L","10 L",2,"10 − 2 = 8 litres."]
+]]
+]},
+{title:"Time, Work & Distance",icon:"⏱️",topics:[
+["Time & Work",[
+["A person finishes work in 5 days. One day's work?","1/2","1/3","1/4","1/5",3,"One day's work is 1/5."],
+["A completes work in 10 days. Work in 2 days?","1/10","1/5","1/2","1/4",1,"2 × 1/10 = 1/5."]
+]],
+["Pipes & Cisterns",[
+["A pipe fills a tank in 4 hours. One-hour work?","1/2","1/3","1/4","1/5",2,"One-hour work = 1/4."],
+["A pipe fills a tank in 2 hours. How much in 30 minutes?","1/4","1/2","1/3","1/8",0,"30 minutes is half an hour; half of 1/2 is 1/4."]
+]],
+["Work & Wages",[
+["₹600 is divided in ratio 1 : 2. Smaller share?","₹100","₹200","₹300","₹400",2,"Total parts = 3; one part = ₹200. Correction: smaller share is ₹200."],
+["₹900 divided equally among 3 workers. Each gets?","₹200","₹250","₹300","₹350",2,"900 ÷ 3 = ₹300."]
+]],
+["Speed, Time & Distance",[
+["Distance 100 km, time 2 hours. Speed?","25 km/h","40 km/h","50 km/h","60 km/h",2,"Speed = distance ÷ time = 50 km/h."],
+["Speed 60 km/h for 3 hours. Distance?","120 km","150 km","180 km","200 km",2,"Distance = speed × time = 180 km."]
+]],
+["Train Problems",[
+["A train travels 120 km in 2 hours. Speed?","40 km/h","50 km/h","60 km/h","80 km/h",2,"120 ÷ 2 = 60 km/h."],
+["A 100 m train passes a pole in 10 seconds. Speed?","5 m/s","10 m/s","15 m/s","20 m/s",1,"100 ÷ 10 = 10 m/s."]
+]],
+["Boat & Stream",[
+["Boat speed in still water 10 km/h, stream 2 km/h. Downstream speed?","8","10","12","14",2,"Downstream = 10 + 2 = 12 km/h."],
+["Boat speed 10 km/h, stream 2 km/h. Upstream speed?","6","8","10","12",1,"Upstream = 10 − 2 = 8 km/h."]
+]],
+["Races",[
+["A runs 100 m in 10 seconds. Speed?","5 m/s","10 m/s","15 m/s","20 m/s",1,"100 ÷ 10 = 10 m/s."],
+["In a 100 m race, A gives B a 10 m start. B runs how far?","80 m","90 m","100 m","110 m",1,"A 10 m start means B needs to cover 90 m."]
+]]
+]},
+{title:"Algebra & Geometry",icon:"📐",topics:[
+["Algebraic Identities",[
+["(a + b)² equals:","a²+b²","a²+2ab+b²","a²−2ab+b²","a²−b²",1,"(a+b)² = a² + 2ab + b²."],
+["(a − b)² equals:","a²−2ab+b²","a²+2ab+b²","a²−b²","a²+b²",0,"(a−b)² = a² − 2ab + b²."]
+]],
+["Linear Equations",[
+["Solve: x + 5 = 12.","5","6","7","8",2,"x = 12 − 5 = 7."],
+["Solve: 2x = 18.","6","8","9","10",2,"x = 18 ÷ 2 = 9."]
+]],
+["Quadratic Equations",[
+["Which is a quadratic equation?","x + 2 = 0","x² + 3x + 2 = 0","2x = 4","x³ = 8",1,"A quadratic equation has degree 2."],
+["Roots of x² − 5x + 6 = 0 are:","1, 6","2, 3","−2, −3","1, 5",1,"(x−2)(x−3)=0."]
+]],
+["Polynomials",[
+["Degree of 3x² + 2x + 1?","1","2","3","4",1,"The highest power is 2."],
+["Value of x² + 2x at x = 2?","4","6","8","10",2,"4 + 4 = 8."]
+]],
+["Lines & Angles",[
+["A straight angle measures:","45°","90°","180°","360°",2,"A straight angle is 180°."],
+["Complement of 30° is:","30°","45°","60°","90°",2,"90° − 30° = 60°."]
+]],
+["Triangles",[
+["Sum of angles of a triangle?","90°","180°","270°","360°",1,"The interior angles sum to 180°."],
+["An equilateral triangle has each angle:","30°","45°","60°","90°",2,"180° ÷ 3 = 60°."]
+]],
+["Quadrilaterals",[
+["Sum of interior angles of a quadrilateral?","180°","270°","360°","540°",2,"The sum is 360°."],
+["A rectangle has how many right angles?","1","2","3","4",3,"All four angles are 90°."]
+]],
+["Circles",[
+["Diameter is how many times the radius?","1","2","3","4",1,"Diameter = 2 × radius."],
+["Circumference of a circle is:","πr²","2πr","πd²","r²",1,"Circumference = 2πr."]
+]],
+["Polygons",[
+["A pentagon has how many sides?","4","5","6","7",1,"A pentagon has 5 sides."],
+["Sum of interior angles of a hexagon?","360°","540°","720°","900°",2,"(6−2) × 180° = 720°."]
+]]
+]},
+{title:"Mensuration & Trigonometry",icon:"📏",topics:[
+["2D Mensuration",[
+["Area of a rectangle, length 8 and width 5?","13","26","40","45",2,"Area = 8 × 5 = 40 square units."],
+["Perimeter of a square of side 6?","12","18","24","36",2,"Perimeter = 4 × 6 = 24."]
+]],
+["3D Mensuration",[
+["How many faces does a cube have?","4","5","6","8",2,"A cube has 6 faces."],
+["How many vertices does a cuboid have?","4","6","8","12",2,"A cuboid has 8 vertices."]
+]],
+["Area & Perimeter",[
+["Area of a square with side 7?","14","28","49","56",2,"7 × 7 = 49 square units."],
+["Perimeter of a rectangle 8 by 3?","11","22","24","30",1,"2 × (8 + 3) = 22."]
+]],
+["Surface Area & Volume",[
+["Volume of a cube with side 3?","9","18","27","36",2,"3³ = 27 cubic units."],
+["Volume of a cuboid 2 × 3 × 4?","9","12","18","24",3,"2 × 3 × 4 = 24 cubic units."]
+]],
+["Trigonometric Ratios",[
+["sin 30° equals:","0","1/2","√3/2","1",1,"sin 30° = 1/2."],
+["cos 0° equals:","0","1/2","1","√3/2",2,"cos 0° = 1."]
+]],
+["Trigonometric Identities",[
+["sin²θ + cos²θ equals:","0","1","2","tan θ",1,"Fundamental identity: sin²θ + cos²θ = 1."],
+["1 + tan²θ equals:","sec²θ","cosec²θ","sin²θ","cos²θ",0,"1 + tan²θ = sec²θ."]
+]],
+["Heights & Distances",[
+["If tan θ = 1, an acute θ equals:","30°","45°","60°","90°",1,"tan 45° = 1."],
+["Angle of elevation is measured from the:","Vertical","Horizontal","North","South",1,"It is measured upward from the horizontal."]
+]]
+]},
+{title:"Data Interpretation & Statistics",icon:"📈",topics:[
+["Table DI",[
+["A table shows 20 boys and 30 girls. Total students?","40","45","50","60",2,"20 + 30 = 50."],
+["Sales are 10, 20 and 30 units. Total?","50","55","60","65",2,"10 + 20 + 30 = 60."]
+]],
+["Bar Graph",[
+["A bar shows 25 units and another 15. Difference?","5","10","15","20",1,"25 − 15 = 10."],
+["Four bars show 5, 10, 15 and 20. Total?","40","45","50","55",2,"5 + 10 + 15 + 20 = 50."]
+]],
+["Pie Chart",[
+["A full pie chart represents:","90°","180°","270°","360°",3,"A full circle is 360°."],
+["25% of a pie chart equals:","45°","60°","90°","120°",2,"25% of 360° = 90°."]
+]],
+["Line Graph",[
+["A value rises from 20 to 35. Increase?","10","15","20","25",1,"35 − 20 = 15."],
+["A value falls from 50 to 30. Decrease?","10","15","20","25",2,"50 − 30 = 20."]
+]],
+["Caselet DI",[
+["A class has 40 students; 25 are boys. Girls?","10","15","20","25",1,"40 − 25 = 15."],
+["A shop sells 12 pens daily for 5 days. Total?","50","55","60","65",2,"12 × 5 = 60."]
+]],
+["Mean",[
+["Mean of 2, 4 and 6?","3","4","5","6",1,"(2 + 4 + 6) ÷ 3 = 4."],
+["Mean of 5 and 9?","6","7","8","9",1,"(5 + 9) ÷ 2 = 7."]
+]],
+["Median & Mode",[
+["Median of 2, 4, 6?","2","4","6","12",1,"The middle value is 4."],
+["Mode of 2, 3, 3, 4, 5?","2","3","4","5",1,"3 appears most often."]
+]],
+["Probability",[
+["Probability of getting a head on a fair coin?","0","1/4","1/2","1",2,"One favourable outcome out of two."],
+["Probability of rolling a 7 on a standard six-sided die?","0","1/6","1/2","1",0,"A standard die has no face showing 7."]
+]]
+]}
 ];
-let chapterIndex=0,questionIndex=0,answered=false;
-const grid=document.getElementById("chapterGrid");
-chapters.forEach((c,i)=>{const b=document.createElement("button");b.className="chapter"+(i===0?" active":"");b.innerHTML=`<span class="num">${String(i+1).padStart(2,"0")}</span><span><strong>${c.name}</strong><small>${c.sub}</small></span>`;b.onclick=()=>selectChapter(i);grid.appendChild(b)});
-function selectChapter(i){chapterIndex=i;questionIndex=0;document.querySelectorAll(".chapter").forEach((b,j)=>b.classList.toggle("active",j===i));showQuestion();document.getElementById("practice").scrollIntoView({behavior:"smooth",block:"center"})}
-function showQuestion(){answered=false;const c=chapters[chapterIndex],q=c.qs[questionIndex];document.getElementById("qChapter").textContent=`CHAPTER ${String(chapterIndex+1).padStart(2,"0")} • ${c.name.toUpperCase()}`;document.getElementById("question").textContent=q.q;document.getElementById("feedback").textContent="Choose an answer to check it.";const box=document.getElementById("options");box.innerHTML="";q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>checkAnswer(i,b);box.appendChild(b)})}
-function checkAnswer(i,button){if(answered)return;answered=true;const q=chapters[chapterIndex].qs[questionIndex];const buttons=[...document.querySelectorAll(".option")];buttons[q.a].classList.add("correct");if(i!==q.a)button.classList.add("wrong");document.getElementById("feedback").textContent=(i===q.a?"Correct! ":"Not quite. ")+q.why}
-function nextQuestion(){const list=chapters[chapterIndex].qs;questionIndex=(questionIndex+1)%list.length;showQuestion()}
-document.getElementById("year").textContent=new Date().getFullYear();showQuestion();
+
+let selectedSection=0,selectedTopic=0,questionIndex=0,answered=false;
+const mainGrid=document.getElementById("mainGrid");
+const topicGrid=document.getElementById("topicGrid");
+
+function renderSections(){
+ mainGrid.innerHTML="";
+ sections.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.className="main-card";
+  b.innerHTML=`<div class="emoji">${s.icon}</div><h3>${s.title}</h3><p>${s.topics.length} topics available</p><small>Explore Topics →</small>`;
+  b.onclick=()=>selectSection(i);
+  mainGrid.appendChild(b);
+ });
+}
+function selectSection(i){
+ selectedSection=i;
+ document.querySelectorAll(".main-card").forEach((b,j)=>b.classList.toggle("active",j===i));
+ document.getElementById("topicHeading").textContent=sections[i].title+" — Topics";
+ topicGrid.innerHTML="";
+ sections[i].topics.forEach((t,j)=>{
+  const b=document.createElement("button");
+  b.className="topic-btn";
+  b.innerHTML=`${t[0]}<small>2 example questions</small>`;
+  b.onclick=()=>selectTopic(j);
+  topicGrid.appendChild(b);
+ });
+ selectTopic(0);
+}
+function selectTopic(i){
+ selectedTopic=i;
+ questionIndex=0;
+ document.querySelectorAll(".topic-btn").forEach((b,j)=>b.classList.toggle("active",j===i));
+ showQuestion();
+ document.getElementById("practice").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function showQuestion(){
+ const topic=sections[selectedSection].topics[selectedTopic];
+ const q=topic[1][questionIndex];
+ answered=false;
+ document.getElementById("questionCategory").textContent=topic[0].toUpperCase();
+ document.getElementById("questionCount").textContent=`QUESTION ${questionIndex+1} OF 2`;
+ document.getElementById("questionText").textContent=q[0];
+ document.getElementById("feedback").textContent="Choose your answer.";
+ document.getElementById("nextButton").disabled=true;
+ document.getElementById("nextButton").textContent=questionIndex===0?"Next Question →":"Finish Topic ✓";
+ document.getElementById("progressBar").style.width=(questionIndex*50)+"%";
+ const box=document.getElementById("options");
+ box.innerHTML="";
+ for(let i=0;i<4;i++){
+  const b=document.createElement("button");
+  b.className="option";
+  b.textContent=String.fromCharCode(65+i)+". "+q[i+1];
+  b.onclick=()=>checkAnswer(i);
+  box.appendChild(b);
+ }
+}
+function checkAnswer(i){
+ if(answered)return;
+ answered=true;
+ const q=sections[selectedSection].topics[selectedTopic][1][questionIndex];
+ const buttons=[...document.querySelectorAll(".option")];
+ buttons[q[5]].classList.add("correct");
+ if(i!==q[5])buttons[i].classList.add("wrong");
+ document.getElementById("feedback").textContent=(i===q[5]?"Correct! ✓ ":"Incorrect. The correct answer is "+String.fromCharCode(65+q[5])+". ")+q[6];
+ document.getElementById("nextButton").disabled=false;
+}
+function nextQuestion(){
+ if(!answered)return;
+ if(questionIndex===0){
+  questionIndex=1;
+  showQuestion();
+ }else{
+  document.getElementById("questionText").textContent="Well done! You have completed both example questions for this topic.";
+  document.getElementById("options").innerHTML="";
+  document.getElementById("feedback").textContent="Choose another topic to continue practising.";
+  document.getElementById("questionCount").textContent="TOPIC COMPLETED";
+  document.getElementById("nextButton").disabled=true;
+  document.getElementById("progressBar").style.width="100%";
+ }
+}
+function showTopics(){
+ document.getElementById("topicPanel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.getElementById("year").textContent=new Date().getFullYear();
+renderSections();
+selectSection(0);
 </script>
 </body>
 </html>
