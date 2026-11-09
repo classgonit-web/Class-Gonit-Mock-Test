@@ -3,101 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071326">
 <title>Class Gonit | Mathematics Mock Test</title>
 <style>
-:root{--navy:#14245b;--blue:#2457d6;--sky:#eef4ff;--ink:#18233d;--muted:#68748d;--green:#16834a;--red:#c63737}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fc;color:var(--ink)}
-header{background:linear-gradient(135deg,#101b50,#2859c9);color:white;padding:18px 14px 28px;text-align:center}
-.logo{display:block;width:min(100%,520px);height:auto;max-height:250px;object-fit:contain;margin:0 auto 14px;background:white;border-radius:12px}
-.brand{font-size:clamp(25px,5vw,38px);font-weight:800;margin:8px 0}.tagline{margin:6px 0;color:#e5edff}
-.wrap{width:min(100% - 24px,980px);margin:22px auto}
-.hero,.panel,.card{background:white;border-radius:18px;padding:20px;box-shadow:0 8px 24px #14245b12}
-.hero{text-align:center}.hero h1{margin:0 0 8px;color:var(--navy)}.hero p{color:var(--muted);line-height:1.5}
-.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:15px 0}.pill{background:#eaf0ff;color:#214bb0;padding:8px 12px;border-radius:30px;font-size:13px;font-weight:700}
-button{border:0;border-radius:11px;padding:12px 18px;font-size:15px;font-weight:700;cursor:pointer}
-.primary{background:var(--blue);color:white}.secondary{background:#eaf0ff;color:#1c49b4}.danger{background:#fff0f0;color:#a22}
-button:disabled{opacity:.45;cursor:not-allowed}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}
-.card h3{margin:0 0 7px;color:var(--navy)}.card p{color:var(--muted);font-size:14px;line-height:1.45}
-.hidden{display:none!important}.topline{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px}
-.timer{font-weight:800;color:#b02a2a;background:#fff0f0;padding:10px 14px;border-radius:10px}
-.progress{height:8px;background:#e7ecf6;border-radius:20px;overflow:hidden;margin:10px 0 18px}.bar{height:100%;width:0;background:#2e67e5}
-.qmeta{color:var(--muted);font-size:14px}.question{font-size:19px;font-weight:700;line-height:1.5;margin:12px 0 18px;white-space:pre-wrap}
-.option{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #dce3f0;border-radius:12px;margin:9px 0;cursor:pointer}
-.option input{margin-top:3px;accent-color:var(--blue)}.option:has(input:checked){border-color:var(--blue);background:#f0f5ff}
-.nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:18px}
-.palette{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}.num{width:38px;height:38px;padding:0;background:#edf1f8;color:#334}.num.done{background:#d9f5e5;color:#146c3b}.num.current{outline:3px solid #8eafff}
-.note{background:#fff8e7;color:#72520a;border-radius:10px;padding:12px;font-size:13px;line-height:1.5}
-.result{text-align:center}.score{font-size:42px;font-weight:900;color:var(--blue)}.small{font-size:13px;color:var(--muted)}
-footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
-@media(max-width:560px){header{padding:12px 10px 22px}.logo{max-height:190px}.hero,.panel,.card{padding:16px}.question{font-size:17px}}
+:root{--bg:#071326;--panel:#101f36;--panel2:#142743;--blue:#1687ff;--cyan:#27c4ff;--text:#f4f8ff;--muted:#a9bad1;--line:#2a4161;--gold:#ffbd19}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 75% 8%,#102e57 0,transparent 28%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#071326ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:25px}.brand-mark{width:45px;height:45px;border-radius:14px;background:linear-gradient(135deg,var(--blue),#00c4df);display:grid;place-items:center;font-size:25px}.brand span{color:var(--cyan)}nav{display:flex;gap:22px;align-items:center;color:#dbe8f8;font-weight:700;font-size:14px}nav a:hover{color:var(--cyan)}.navbtn,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:12px 20px;background:var(--blue);color:white;font-weight:800;cursor:pointer}.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 12px;font-size:20px}
+.hero{padding:68px 0 34px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.02;margin:12px 0}.hero h1 span{color:var(--cyan)}.hero p{color:var(--muted);font-size:18px;max-width:570px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn.secondary{background:transparent;border:1px solid var(--cyan);color:var(--text)}.hero-art{min-height:300px;border:1px solid #285080;border-radius:28px;background:linear-gradient(145deg,#12335d,#0a1930 65%);display:grid;place-items:center;text-align:center;padding:25px;box-shadow:0 20px 60px #0005}.math-art{font-size:clamp(38px,6vw,68px);font-weight:900;color:#8edcff;text-shadow:0 0 25px #1687ff66}.hero-art strong{display:block;font-size:22px;margin-top:8px}.hero-art small{color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px auto 58px}.feature{background:#101f36;border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;font-weight:700}.feature b{display:block;font-size:25px;margin-bottom:5px}.section{padding:28px 0 48px}.section-head{text-align:center;margin-bottom:25px}.section-head h2{font-size:clamp(27px,4vw,38px);margin:0}.section-head p{color:var(--muted);margin:6px 0}.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.chapter{display:flex;gap:13px;align-items:center;text-align:left;background:linear-gradient(145deg,#142743,#0d1b30);border:1px solid var(--line);border-radius:17px;padding:17px;color:var(--text);cursor:pointer;transition:.2s}.chapter:hover,.chapter.active{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 8px 25px #008cff22}.num{flex:0 0 43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#1769c8;font-weight:900;font-size:17px}.chapter strong{display:block}.chapter small{color:var(--muted)}
+.question-area{margin-top:28px;background:#0e1d33;border:1px solid var(--line);border-radius:22px;padding:24px}.question-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.tag{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:1px}.question-area h3{margin:8px 0 16px;font-size:22px}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{background:#142743;border:1px solid #304a6c;color:var(--text);border-radius:12px;padding:13px;text-align:left;cursor:pointer;font-size:15px}.option:hover{border-color:var(--cyan)}.option.correct{border-color:#21c77a;background:#103d35}.option.wrong{border-color:#ff6878;background:#492432}.feedback{min-height:28px;color:var(--muted);font-weight:700;margin-top:12px}.next{margin-top:8px}.banner{margin:15px 0 55px;padding:26px;border-radius:20px;background:linear-gradient(100deg,#073b83,#0759ae 65%,#092c57);border:1px solid #1687ff;display:flex;justify-content:space-between;align-items:center;gap:20px}.banner h2{margin:0}.banner p{margin:4px 0 0;color:#d4e8ff}.gold{background:var(--gold);color:#101827}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:850px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:#09182c;padding:18px 4%;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}nav.open{display:flex}.menu{display:block}.navbtn{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:230px}.features{grid-template-columns:repeat(2,1fr)}.chapter-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.brand{font-size:20px}.hero p{font-size:16px}.chapter-grid{grid-template-columns:1fr}.options{grid-template-columns:1fr}.question-area{padding:17px}.banner{align-items:flex-start;flex-direction:column}.features{gap:8px}.feature{padding:13px 8px;font-size:13px}}
 </style>
 </head>
 <body>
-<header>
-  <img class="logo" src="logo.jpg" alt="Class Gonit full logo" onerror="this.style.display='none'">
-  <div class="brand">🎓 ক্লাস গণিত | CLASS GONIT</div>
-  <div class="tagline">MATHS FOR ALL COMPETITIVE EXAMS</div>
-  <div class="tagline">SSC • Banking • Railway • Defence • WBP • KP • SSC GD • FOOD SI • WBCS</div>
-</header>
-<main class="wrap">
-<section id="home" class="hero">
-  <h1>Welcome to Class Gonit</h1>
-  <p>Practice mathematics with timed mock tests. Select a topic, answer the questions and check your result instantly.</p>
-  <div class="pills"><span class="pill">24 VBODMAS questions</span><span class="pill">30 minutes</span><span class="pill">Instant result</span></div>
-  <button class="primary" onclick="startTest()">Start VBODMAS Mock Test</button>
+<header><div class="wrap nav">
+  <a class="brand" href="#home"><div class="brand-mark">🎓</div><div>ক্লাস গণিত <span>🎓</span><small style="display:block;color:#a9bad1;font-size:10px;letter-spacing:1px">CLASS GONIT • PRACTICE • PREPARE • EXCEL</small></div></a>
+  <nav id="nav"><a href="#home">Home</a><a href="#chapters">Chapters</a><a href="#practice">Questions</a><a href="#about">About</a></nav>
+  <a class="navbtn" href="#chapters">Start Practising</a><button class="menu" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Open menu">☰</button>
+</div></header>
+<main id="home">
+<section class="wrap hero">
+  <div><div class="eyebrow">Mathematics learning platform</div><h1>Welcome to<br>Class <span>Gonit</span></h1>
+  <p>Build confidence in mathematics with chapter-wise practice questions and mock tests for competitive exam preparation.</p>
+  <div class="actions"><a class="btn" href="#chapters">▶ &nbsp; Explore Chapters</a><a class="btn secondary" href="#practice">Try a Question</a></div>
+  </div>
+  <div class="hero-art"><div><div class="math-art">a² + b² = c²</div><div style="font-size:55px">📐 📚 ✏️</div><strong>Dream Big. Practise Smart.</strong><small>One question at a time.</small></div></div>
 </section>
-<section class="grid" id="categories">
- <article class="card"><h3>VBODMAS RULE</h3><p>Class Note – 01 · 24 questions from your supplied PDF.</p><button class="secondary" onclick="startTest()">Start practice</button></article>
- <article class="card"><h3>Exam practice</h3><p>Build topic-wise practice sets for SSC, Railway, Banking and state exams.</p><span class="small">More topics can be added later.</span></article>
- <article class="card"><h3>Your result</h3><p>See attempted, correct, incorrect and unscored questions after submission.</p><span class="small">Results are shown on this device only.</span></article>
+<section class="wrap features" aria-label="Features">
+  <div class="feature"><b>⚡</b>Chapter-wise Practice</div><div class="feature"><b>🧠</b>Concept Building</div><div class="feature"><b>📊</b>Track Your Progress</div><div class="feature"><b>🏆</b>Exam Preparation</div>
 </section>
-<section id="test" class="panel hidden">
- <div class="topline"><div><strong>VBODMAS RULE · Class Note 01</strong><div class="qmeta" id="counter"></div></div><div class="timer" id="timer">30:00</div></div>
- <div class="progress"><div class="bar" id="progress"></div></div>
- <div class="qmeta" id="exam"></div><div class="question" id="question"></div><div id="options"></div>
- <div id="warning" class="note hidden"></div>
- <div class="nav"><button class="secondary" id="prev" onclick="move(-1)">Previous</button><button class="secondary" id="next" onclick="move(1)">Next</button><button class="primary" onclick="submitTest()">Submit test</button></div>
- <div class="palette" id="palette"></div>
+<section class="wrap section" id="chapters">
+  <div class="section-head"><div class="eyebrow">Choose your topic</div><h2>Chapter-wise <span style="color:var(--cyan)">Practice</span></h2><p>Select a chapter to see its sample question.</p></div>
+  <div class="chapter-grid" id="chapterGrid"></div>
+  <div class="question-area" id="practice">
+    <div class="question-top"><span class="tag" id="qChapter">CHAPTER 01 • NUMBER SYSTEM</span><span class="tag">SAMPLE PRACTICE QUESTION</span></div>
+    <h3 id="question">Which of the following numbers is divisible by 3?</h3>
+    <div class="options" id="options"></div><div class="feedback" id="feedback" aria-live="polite">Choose an answer to check it.</div>
+    <button class="btn next" onclick="nextQuestion()">Next Question →</button>
+  </div>
 </section>
-<section id="result" class="panel result hidden"></section>
+<section class="wrap banner" id="about"><div><h2>Be ready for your next challenge!</h2><p>Practise regularly, strengthen your basics and keep improving.</p></div><a class="btn gold" href="#chapters">Explore Chapters →</a></section>
 </main>
-<footer>© Class Gonit · Mathematics practice</footer>
+<footer><div class="wrap foot"><strong style="color:white">ক্লাস গণিত 🎓</strong><span>Class Gonit • Mathematics for a Better Tomorrow</span><span>© <span id="year"></span> Class Gonit. All rights reserved.</span></div></footer>
 <script>
-const questions = [
-{q:"1. Simplify: 125 ÷ 5 ÷ 5 × 5",o:["1","925","25","5"],a:2,exam:"RRB NTPC CBT-I · 17 Feb 2021 Shift 2"},
-{q:"2. Evaluate: 16 + 12 ÷ 4 − 2 × 3",o:["15","16","12","13"],a:3,exam:"SSC GD Constable · 21 Feb 2025 Shift 1"},
-{q:"3. Evaluate: 16 + 8 ÷ 4 − 2 × 3",o:["15","12","11","14"],a:1,exam:"SSC GD Constable · 07 Feb 2025 Shift 1"},
-{q:"4. Evaluate: (3 × 25) ÷ 5 − 20 × 4 + 75",o:["20","30","6","10"],a:3,exam:"Agniveer Army GD · 30 June 2025 Shift 2"},
-{q:"5. Solve: 11 × 3 + (45 ÷ 9) + (72 ÷ 8) − 5 + 4",o:["46","45","48","44"],a:0,exam:"SSC MTS · 19 Jun 2023 Shift 2"},
-{q:"6. Simplify: 25 ÷ 5 × 7 of (5 + 7) − 13(6 × 4)",o:["108","138","126","112"],a:0,exam:"SSC CPO · 27 Jun 2024 Shift 1"},
-{q:"7. Find the value: 15 − 16 ÷ [4 + (5 + 7) ÷ 3]",o:["11","18","17","13"],a:3,exam:"SSC CPO · 29 Jun 2024 Shift 3"},
-{q:"8. Find the value: 11 − {(3 ÷ 4) of 8 − (4 − 8)}",o:["2","3","1","−1"],a:2,exam:"SSC CGL Tier-I · 24 Sept 2024 Shift 1"},
-{q:"9. Simplify: 16 ÷ 2 − 7 × 15 ÷ 3 + 5 × 5 + 4 × 3 − 10",o:["1","2","0","−1"],a:2,exam:"SSC CGL Tier-I · 13 Sept 2024 Shift 3"},
-{q:"10. Find the value: (27 × 50) ÷ 25 × 5 × (15 − 14) + 800 ÷ 25",o:["366","420","302","312"],a:2,exam:"SSC GD Constable · 21 Feb 2024 Shift 1"},
-{q:"11. Find the value: 7 ÷ 2 − [3 of 7 ÷ 4 ÷ {(2 ÷ 5) × (25 ÷ 8) ÷ (5 ÷ 2)}]",o:["1","−8","−7","−7/4"],a:2,exam:"SSC MTS · 2 August 2019 Shift 2"},
-{q:"12. Solve: 60 ÷ [(16 − 8 ÷ 2) ÷ 3]",o:["3","15","1","1/3"],a:1,exam:"RRB ALP · 10 Aug 2018 Shift 2"},
-{q:"13. Simplify: 12 − 3 × 2 + 8 ÷ 2",o:["14","10","8","12"],a:1,exam:"RRB Group D · 18 Aug 2026 Shift 3"},
-{q:"14. Simplify: 4 × 7 − 3{7 × 4 ÷ (6 × 2)}",o:["21","12","19","4"],a:0,exam:"SSC CHSL Tier-I · 08 Jul 2024 Shift 1"},
-{q:"15. Simplify: 7 × 4 ÷ 21 of 4 − 5 ÷ 4 × (9 − 13) + 2 − 2 ÷ 8",o:["5 1/16","7 1/12","5 1/3","12 1/2"],a:1,exam:"SSC CGL Tier-I · 23 Aug 2021 Shift 1"},
-{q:"16. Simplify: 19 ÷ 5 of (27 − 15 − 3 [fraction unclear in the PDF]) + 37",o:["6124/165","19/165","6142/165","37/165"],a:null,exam:"SSC CPO · 04 Oct 2023 Shift 2",note:"The fraction/exponent formatting in question 16 is unclear in the supplied PDF. This question is included but not scored until its expression and answer are confirmed."},
-{q:"17. What comes in place of ?: (255 − 55) ÷ 4 × 15 − 504 ÷ 3 = ?",o:["80","76","582","85","None of these"],a:2,exam:"IBPS RRB Office Assistant Prelims · 8 August 2021 Shift 1"},
-{q:"18. Evaluate: 40 − (7 × 3 + 24 ÷ 8 × 3 − 4 × 2) + 12",o:["30","10","40","20"],a:0,exam:"RRC Group D · 1 Nov 2018 Shift 1"},
-{q:"19. Find the value: 32 + 12 × 36 ÷ 4 + 4 − 22 ÷ 11 × 3",o:["142","138","150","130"],a:1,exam:"SSC CHSL Tier-I · 15 March 2023 Shift 3"},
-{q:"20. Find the value: 63 − (−3)(−2 − 8 − 4) ÷ [3{5 + (−2)(−1)}]",o:["65","60","−60","61"],a:3,exam:"RRC Group D · 23 Sep 2018 Shift 1"},
-{q:"21. Find the value: 28 × 25 ÷ 7 × 15 + 63 × 56 ÷ 72 × 5 + 24 × 7 + 8",o:["2101","1821","1921","1901"],a:2,exam:"SSC MTS · 02 May 2023 Shift 1"},
-{q:"22. Evaluate: 4 ÷ 1/2 of [3 ÷ 1/4 of {(4 − 2) × 6 ÷ 2}] − 2 × 6 ÷ 8 + 3",o:["7 1/6","2 1/3","3 1/3","4 1/6"],a:null,exam:"SSC CGL Tier 2 · 16 November 2020",note:"The stacked fractions and 'of' grouping in question 22 are ambiguous in the PDF text. This question is included but not scored until confirmed."},
-{q:"23. Simplify: 133 ÷ 19 × 3 − 48 × 2 ÷ 24 + 841 ÷ (45 − 16)",o:["46","21","12","42"],a:0,exam:"SSC CGL Tier-I · 24 Sept 2024 Shift 2"},
-{q:"24. Find the value: 16 − 4 × [4 − {98 ÷ 2 of 7 − (6 − 36 ÷ 6 × 2)}]",o:["38","40","52","42"],a:2,exam:"SSC MTS · 27 Oct 2021 Shift 2",note:"Answer follows the grouping convention suggested by the printed options; please verify the original fraction/grouping before using this as a formal exam key."}
+const chapters=[
+ {name:"Number System",sub:"Divisibility, HCF & LCM",qs:[
+  {q:"Which of the following numbers is divisible by 3?",o:["124","135","142","151"],a:1,why:"135 is divisible by 3 because 1 + 3 + 5 = 9, and 9 is divisible by 3."},
+  {q:"What is the HCF of 12 and 18?",o:["3","6","9","12"],a:1,why:"The highest common factor of 12 and 18 is 6."}]},
+ {name:"Simplification",sub:"BODMAS & VBODMAS",qs:[
+  {q:"Find the value: 12 − 3 × 2 + 8 ÷ 2",o:["8","10","14","16"],a:1,why:"Do multiplication and division first: 12 − 6 + 4 = 10."}]},
+ {name:"Percentage",sub:"Basic to Advanced",qs:[
+  {q:"What is 20% of 150?",o:["15","20","30","35"],a:2,why:"20% of 150 = 20/100 × 150 = 30."}]},
+ {name:"Ratio & Proportion",sub:"Compare quantities",qs:[
+  {q:"Simplify the ratio 12 : 18.",o:["2 : 3","3 : 2","4 : 5","6 : 7"],a:0,why:"Divide both terms by 6 to get 2 : 3."}]},
+ {name:"Average",sub:"Mean and applications",qs:[
+  {q:"Find the average of 4, 6 and 8.",o:["5","6","7","8"],a:1,why:"(4 + 6 + 8) ÷ 3 = 6."}]},
+ {name:"Profit & Loss",sub:"Cost price and selling price",qs:[
+  {q:"An item is bought for ₹100 and sold for ₹120. What is the profit?",o:["₹10","₹15","₹20","₹25"],a:2,why:"Profit = Selling Price − Cost Price = ₹120 − ₹100 = ₹20."}]},
+ {name:"Simple & Compound Interest",sub:"Interest calculations",qs:[
+  {q:"Find the simple interest on ₹1,000 at 10% per year for 1 year.",o:["₹10","₹50","₹100","₹200"],a:2,why:"SI = (P × R × T) ÷ 100 = ₹100."}]},
+ {name:"Time & Work",sub:"Work and efficiency",qs:[
+  {q:"If a person completes a job in 5 days, what fraction of the job is done in 1 day at a constant rate?",o:["1/2","1/3","1/4","1/5"],a:3,why:"One day's work is 1 ÷ 5 = 1/5 of the job."}]}
 ];
-let index=0,answers=Array(questions.length).fill(null),seconds=1800,clock=null,submitted=false;
-const $=id=>document.getElementById(id);
-function startTest(){ $("home").classList.add("hidden");$("categories").classList.add("hidden");$("result").classList.add("hidden");$("test").classList.remove("hidden");index=0;answers=Array(questions.length).fill(null);seconds=1800;submitted=false;clearInterval(clock);clock=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)submitTest()},1000);render()}
-function updateTimer(){$("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
-function render(){let q=questions[index];$("counter").textContent=`Question ${index+1} of ${questions.length}`;$("question").textContent=q.q;$("exam").textContent=q.exam||"";$("options").innerHTML=q.o.map((v,i)=>`<label class="option"><input type="radio" name="answer" ${answers[index]===i?"checked":""} onchange="answers[${index}]=${i};renderPalette()"> <span><b>${String.fromCharCode(65+i)}.</b> ${v}</span></label>`).join("");$("warning").textContent=q.note||"";$("warning").classList.toggle("hidden",!q.note);$("prev").disabled=index===0;$("next").disabled=index===questions.length-1;$("progress").style.width=((index+1)/questions.length*100)+"%";renderPalette();updateTimer()}
-function renderPalette(){$("palette").innerHTML=questions.map((q,i)=>`<button class="num ${answers[i]!==null?"done":""} ${i===index?"current":""}" onclick="index=${i};render()">${i+1}</button>`).join("")}
-function move(d){index=Math.max(0,Math.min(questions.length-1,index+d));render()}
-function submitTest(){if(submitted)return;submitted=true;clearInterval(clock);let scored=questions.filter(q=>q.a!==null),correct=scored.filter((q,i)=>answers[questions.indexOf(q)]===q.a).length,attempted=scored.filter(q=>answers[questions.indexOf(q)]!==null).length,wrong=attempted-correct,unscored=questions.length-scored.length,score=correct-wrong*.25;$("test").classList.add("hidden");$("result").classList.remove("hidden");$("result").innerHTML=`<h2>Mock Test Result</h2><div class="score">${score.toFixed(2)}</div><p>Score · +1 correct, −0.25 incorrect</p><div class="grid"><article class="card"><h3>${correct}</h3><p>Correct</p></article><article class="card"><h3>${wrong}</h3><p>Incorrect</p></article><article class="card"><h3>${attempted}</h3><p>Attempted (scored)</p></article><article class="card"><h3>${unscored}</h3><p>Awaiting answer verification</p></article></div><p class="small">Questions with unclear source formatting are excluded from scoring until verified.</p><button class="primary" onclick="location.reload()">Back to homepage</button>`}
+let chapterIndex=0,questionIndex=0,answered=false;
+const grid=document.getElementById("chapterGrid");
+chapters.forEach((c,i)=>{const b=document.createElement("button");b.className="chapter"+(i===0?" active":"");b.innerHTML=`<span class="num">${String(i+1).padStart(2,"0")}</span><span><strong>${c.name}</strong><small>${c.sub}</small></span>`;b.onclick=()=>selectChapter(i);grid.appendChild(b)});
+function selectChapter(i){chapterIndex=i;questionIndex=0;document.querySelectorAll(".chapter").forEach((b,j)=>b.classList.toggle("active",j===i));showQuestion();document.getElementById("practice").scrollIntoView({behavior:"smooth",block:"center"})}
+function showQuestion(){answered=false;const c=chapters[chapterIndex],q=c.qs[questionIndex];document.getElementById("qChapter").textContent=`CHAPTER ${String(chapterIndex+1).padStart(2,"0")} • ${c.name.toUpperCase()}`;document.getElementById("question").textContent=q.q;document.getElementById("feedback").textContent="Choose an answer to check it.";const box=document.getElementById("options");box.innerHTML="";q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>checkAnswer(i,b);box.appendChild(b)})}
+function checkAnswer(i,button){if(answered)return;answered=true;const q=chapters[chapterIndex].qs[questionIndex];const buttons=[...document.querySelectorAll(".option")];buttons[q.a].classList.add("correct");if(i!==q.a)button.classList.add("wrong");document.getElementById("feedback").textContent=(i===q.a?"Correct! ":"Not quite. ")+q.why}
+function nextQuestion(){const list=chapters[chapterIndex].qs;questionIndex=(questionIndex+1)%list.length;showQuestion()}
+document.getElementById("year").textContent=new Date().getFullYear();showQuestion();
 </script>
 </body>
 </html>
