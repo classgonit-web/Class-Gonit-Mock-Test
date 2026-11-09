@@ -3,113 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ক্লাস গণিত | Mock Test</title>
+<title>ক্লাস গণিত 🎓 | Learn Mathematics</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#080f20;color:#fff;
+ font-family:Arial,"Noto Sans Bengali",sans-serif;
+ background:#080f20;color:#fff;
 }
 header{
-  background:#111d35;padding:18px 15px;
-  text-align:center;border-bottom:1px solid #263b60;
+ display:flex;align-items:center;justify-content:space-between;
+ padding:14px 6%;background:#101c34;
+ border-bottom:1px solid #263b60;
 }
+.brand{display:flex;align-items:center;gap:12px}
 .logo{
-  width:90px;height:90px;object-fit:contain;
-  border-radius:18px;margin-bottom:10px;
+ width:55px;height:55px;object-fit:contain;
+ border-radius:12px;
 }
-header h1{color:#55c8ff;font-size:28px}
-header p{color:#a9bddb;margin-top:7px}
-.container{max-width:950px;margin:auto;padding:20px}
-.hero{
-  background:linear-gradient(135deg,#142d55,#102044);
-  padding:30px 20px;border-radius:18px;
-  text-align:center;margin-bottom:25px;
-  border:1px solid #284b7d;
+.brand h1{font-size:23px;color:#61caff}
+.brand p{font-size:11px;color:#b3c6df;margin-top:5px}
+.nav-btn{
+ background:#20395f;color:white;border:1px solid #41638e;
+ padding:10px 14px;border-radius:9px;cursor:pointer;
 }
-.hero h2{font-size:25px;color:#65d2ff;margin-bottom:12px}
-.hero p{color:#c4d5ec;line-height:1.8}
-.quote{margin-top:15px;color:#ffd77a;line-height:1.8}
-.section-title{
-  font-size:22px;color:#5dcaff;
-  margin:25px 0 16px;
-}
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:12px;margin:20px 0;
-}
-.stat{
-  background:#14233e;padding:17px 8px;
-  border-radius:12px;text-align:center;
-}
-.stat strong{display:block;color:#55c8ff;font-size:22px}
-.stat span{font-size:12px;color:#b5c7e1}
-.chapters{
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:13px;
-}
-.chapter{
-  background:#14233e;border:1px solid #263f67;
-  border-radius:13px;padding:19px 12px;
-  cursor:pointer;text-align:center;
-  transition:.2s;
-}
-.chapter:hover{background:#1d3861;transform:translateY(-3px)}
-.chapter .emoji{font-size:27px}
-.chapter h3{font-size:16px;margin-top:10px}
-.chapter p{font-size:12px;color:#a9bddb;margin-top:7px}
-button{
-  border:0;border-radius:9px;padding:13px 20px;
-  font-size:15px;font-weight:bold;cursor:pointer;
-}
-.primary{background:#159ce0;color:white}
-.secondary{background:#263b60;color:white}
-button:active{transform:scale(.97)}
+.container{max-width:1100px;margin:auto;padding:22px}
 .page{display:none}
 .page.active{display:block}
-.panel{
-  background:#14233e;border:1px solid #29466f;
-  padding:20px;border-radius:14px;margin-bottom:15px;
+.hero{
+ display:grid;grid-template-columns:1.2fr .8fr;
+ align-items:center;gap:20px;
+ background:linear-gradient(130deg,#12366a,#205a9c,#403b8e);
+ padding:35px;border-radius:23px;
+ border:1px solid #477eb5;
+ box-shadow:0 15px 40px #0005;
 }
+.hero h2{font-size:32px;line-height:1.5;margin-bottom:12px}
+.hero p{color:#e0edff;line-height:1.9}
+.hero-art{width:100%;max-width:300px;margin:auto}
+.btn{
+ background:linear-gradient(90deg,#08b9e9,#536bff);
+ color:white;border:0;padding:13px 20px;
+ border-radius:10px;font-size:15px;font-weight:bold;
+ cursor:pointer;margin-top:18px;
+}
+.btn:hover{filter:brightness(1.15)}
+.secondary{background:#263f64}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:13px;margin:22px 0;
+}
+.stat{
+ background:#14243f;padding:18px 8px;
+ border:1px solid #28466e;border-radius:14px;
+ text-align:center;
+}
+.stat strong{display:block;color:#59ceff;font-size:24px}
+.stat span{font-size:12px;color:#b8cbe5}
+.heading{
+ font-size:23px;color:#66ceff;
+ margin:35px 0 18px;
+}
+.chapters{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.chapter{
+ background:linear-gradient(145deg,#192d4d,#101d34);
+ border:1px solid #2b496f;border-radius:15px;
+ padding:20px 10px;text-align:center;cursor:pointer;
+ transition:.2s;
+}
+.chapter:hover{transform:translateY(-4px);background:#203b62}
+.chapter .emoji{font-size:35px}
+.chapter h3{font-size:15px;margin:12px 0 7px}
+.chapter p{font-size:11px;color:#a9c1e0}
+.features{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.feature{
+ padding:20px 12px;text-align:center;
+ background:#14243f;border:1px solid #29466c;
+ border-radius:15px;
+}
+.feature span{font-size:34px}
+.feature h3{font-size:15px;margin:12px 0}
+.feature p{font-size:12px;color:#afc3df;line-height:1.8}
+.banner{
+ margin-top:25px;padding:30px 15px;text-align:center;
+ border-radius:18px;
+ background:linear-gradient(110deg,#57369c,#174e8d);
+ line-height:2;
+}
+.quote{
+ margin-top:20px;padding:25px;text-align:center;
+ background:linear-gradient(110deg,#49331d,#3d315e);
+ border-radius:17px;color:#ffe0a0;line-height:2;
+}
+.panel{
+ background:#14243f;border:1px solid #2b496f;
+ padding:22px;border-radius:15px;margin-bottom:17px;
+}
+.panel h2{color:#65ccff;margin-bottom:15px}
 .back{margin-bottom:18px}
 .info{
-  display:flex;justify-content:space-between;
-  gap:10px;flex-wrap:wrap;margin-bottom:18px;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px;flex-wrap:wrap;
+ margin-bottom:20px;
 }
 .timer{
-  background:#263d64;padding:12px 17px;
-  border-radius:10px;color:#7de0ff;font-weight:bold;
+ background:#203b62;color:#7be0ff;
+ padding:12px 17px;border-radius:10px;font-weight:bold;
 }
 .question{
-  background:#14233e;border:1px solid #29466f;
-  padding:19px;border-radius:13px;margin-bottom:15px;
+ background:#14243f;border:1px solid #2b496f;
+ padding:19px;border-radius:13px;margin-bottom:14px;
 }
 .question h3{font-size:16px;line-height:1.8;margin-bottom:14px}
 .option{
-  display:block;padding:12px;margin:9px 0;
-  border:1px solid #354e72;border-radius:9px;
-  cursor:pointer;color:#e0ebfa;
+ display:block;padding:12px;margin:9px 0;
+ border:1px solid #3b5478;border-radius:9px;
+ cursor:pointer;color:#e0eafa;
 }
 .option input{margin-right:9px}
 .option:has(input:checked){
-  background:#173c62;border-color:#46baff;
+ background:#19446d;border-color:#4dc7ff;
 }
 .result{text-align:center;line-height:2}
-.result h2{color:#65d2ff;font-size:27px}
+.result h2{font-size:28px;color:#69d3ff}
 .explanation{
-  background:#0c1a30;padding:12px;
-  margin-top:12px;border-radius:8px;
-  color:#b8d5ec;font-size:14px;
+ background:#0b192d;padding:13px;
+ border-radius:9px;margin-top:12px;
+ color:#c3d8f0;line-height:1.8;
 }
 footer{
-  text-align:center;padding:25px 12px;
-  color:#8195b4;border-top:1px solid #263b60;
-  margin-top:35px;font-size:13px;line-height:2;
+ text-align:center;padding:30px 12px;
+ background:#101c34;color:#a6bad5;
+ margin-top:35px;line-height:2;font-size:13px;
 }
-@media(min-width:650px){
- .chapters{grid-template-columns:repeat(4,1fr)}
- .hero{padding:45px}
+@media(max-width:700px){
+ .hero{grid-template-columns:1fr;text-align:center;padding:25px 17px}
+ .hero h2{font-size:26px}
+ .hero-art{max-width:210px}
+ .chapters{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+ .container{padding:15px}
+}
+@media(max-width:370px){
+ .features{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -117,10 +157,15 @@ footer{
 <body>
 
 <header>
-  <img src="logo.png" alt="Class Gonit Logo" class="logo"
-       onerror="this.style.display='none'">
-  <h1>ক্লাস গণিত 🎓</h1>
-  <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+ <div class="brand">
+  <img src="logo.png" class="logo" alt="Class Gonit Logo"
+  onerror="this.style.display='none'">
+  <div>
+   <h1>ক্লাস গণিত 🎓</h1>
+   <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+  </div>
+ </div>
+ <button class="nav-btn" onclick="showPage('home')">⌂ Home</button>
 </header>
 
 <div class="container">
@@ -128,85 +173,143 @@ footer{
 <!-- HOME PAGE -->
 <section id="home" class="page active">
 
-  <div class="hero">
-    <h2>Welcome to ক্লাস গণিত</h2>
-    <p>গণিত শেখার সঠিক ঠিকানা। প্রতিদিন অনুশীলন করো এবং নিজের দক্ষতা বাড়াও।</p>
-    <div class="quote">
-      "হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে।" ✨
-    </div>
+ <div class="hero">
+  <div>
+   <h2>Welcome to ক্লাস গণিত 🎓</h2>
+   <p>
+    গণিত শেখার নতুন অভিজ্ঞতা শুরু হোক এখানে।
+    নিয়মিত অনুশীলন করো, নিজের দক্ষতা বাড়াও
+    এবং লক্ষ্যের দিকে এগিয়ে চলো।
+   </p>
+   <button class="btn" onclick="document.getElementById('chapterSection').scrollIntoView({behavior:'smooth'})">
+    Explore Chapters →
+   </button>
   </div>
 
-  <div class="stats">
-    <div class="stat"><strong>20</strong><span>Questions</span></div>
-    <div class="stat"><strong>20 Min</strong><span>Time Limit</span></div>
-    <div class="stat"><strong>100</strong><span>Total Marks</span></div>
+  <div class="hero-art">
+   <svg viewBox="0 0 300 250" width="100%">
+    <circle cx="150" cy="125" r="110" fill="#fff" opacity=".10"/>
+    <circle cx="150" cy="125" r="85" fill="#fff" opacity=".08"/>
+    <rect x="65" y="55" width="170" height="140" rx="17" fill="#fff"/>
+    <rect x="82" y="72" width="136" height="13" rx="5" fill="#c5e5ff"/>
+    <text x="150" y="135" text-anchor="middle" font-size="43" fill="#1766bd" font-weight="bold">∑ π</text>
+    <text x="150" y="166" text-anchor="middle" font-size="20" fill="#6338b5">x² + y²</text>
+    <circle cx="55" cy="50" r="23" fill="#ffbd42"/>
+    <text x="55" y="58" text-anchor="middle" font-size="25" fill="#fff">+</text>
+    <circle cx="250" cy="190" r="23" fill="#29d9bd"/>
+    <text x="250" y="198" text-anchor="middle" font-size="25" fill="#fff">÷</text>
+    <path d="M24 195 L50 150 L76 195 Z" fill="#ff6688"/>
+    <rect x="227" y="25" width="37" height="37" rx="8" fill="#a78bfa" transform="rotate(20 245 43)"/>
+   </svg>
   </div>
+ </div>
 
-  <h2 class="section-title">📚 Mathematics Chapters</h2>
+ <div class="stats">
+  <div class="stat"><strong>20</strong><span>Questions</span></div>
+  <div class="stat"><strong>20 Min</strong><span>Time Limit</span></div>
+  <div class="stat"><strong>100</strong><span>Total Marks</span></div>
+ </div>
 
-  <div class="chapters" id="chapterList"></div>
+ <h2 class="heading" id="chapterSection">📚 Mathematics Chapters</h2>
+ <div class="chapters" id="chapterList"></div>
+
+ <h2 class="heading">✨ Why Choose ক্লাস গণিত?</h2>
+ <div class="features">
+  <div class="feature">
+   <span>📖</span><h3>Easy Learning</h3>
+   <p>সহজভাবে গণিত শেখার সুযোগ।</p>
+  </div>
+  <div class="feature">
+   <span>⏱️</span><h3>Mock Tests</h3>
+   <p>সময় ধরে পরীক্ষার অনুশীলন।</p>
+  </div>
+  <div class="feature">
+   <span>🎯</span><h3>Exam Preparation</h3>
+   <p>Competitive Exam-এর প্রস্তুতি।</p>
+  </div>
+  <div class="feature">
+   <span>📊</span><h3>Instant Result</h3>
+   <p>পরীক্ষার পর ফলাফল দেখো।</p>
+  </div>
+  <div class="feature">
+   <span>💡</span><h3>Solutions</h3>
+   <p>উত্তর ও ব্যাখ্যা দেখো।</p>
+  </div>
+  <div class="feature">
+   <span>🏆</span><h3>Improve Yourself</h3>
+   <p>নিজের দক্ষতা যাচাই করো।</p>
+  </div>
+ </div>
+
+ <div class="banner">
+  <h2>🎓 Your Success Starts Here!</h2>
+  <p>Practice More • Learn More • Achieve More</p>
+  <p>আজই তোমার প্রস্তুতি শুরু করো।</p>
+ </div>
+
+ <div class="quote">
+  <h2>🌟 আজকের অনুশীলন, আগামীকালের সাফল্য</h2>
+  <p>
+   "হাল ছেড়ো না। নিজের উপর বিশ্বাস রাখো,
+   নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে।"
+  </p>
+ </div>
 
 </section>
 
 <!-- CHAPTER PAGE -->
 <section id="chapterPage" class="page">
-  <button class="secondary back" onclick="showPage('home')">← Home</button>
-  <div class="panel">
-    <h2 id="chapterTitle" style="color:#60caff;margin-bottom:12px"></h2>
-    <p style="color:#c0d2eb;line-height:1.8">
-      এই অধ্যায়ের Mock Test-এ অংশগ্রহণ করো। প্রতিটি প্রশ্নের মান ৫।
-      মোট প্রশ্ন ২০টি এবং সময় ২০ মিনিট।
-    </p>
-    <br>
-    <button class="primary" onclick="startTest()">Start Mock Test →</button>
-  </div>
+ <button class="btn secondary back" onclick="showPage('home')">← Home</button>
+ <div class="panel">
+  <h2 id="chapterTitle">Mathematics</h2>
+  <p style="line-height:1.9;color:#c1d4ed">
+   এই অধ্যায়ের Mock Test-এ অংশগ্রহণ করো।
+   মোট প্রশ্ন ২০টি, সময় ২০ মিনিট এবং প্রতিটি প্রশ্নের মান ৫।
+  </p>
+  <button class="btn" onclick="startTest()">Start Mock Test →</button>
+ </div>
 </section>
 
 <!-- TEST PAGE -->
 <section id="testPage" class="page">
-  <button class="secondary back" onclick="confirmHome()">← Exit Test</button>
-
-  <div class="info">
-    <div>
-      <h2 id="testTitle" style="color:#60caff">Mock Test</h2>
-      <p style="color:#a9bddb;margin-top:7px">প্রশ্ন: ২০ | নম্বর: ১০০</p>
-    </div>
-    <div class="timer">⏱ <span id="timer">20:00</span></div>
+ <button class="btn secondary back" onclick="confirmHome()">← Exit Test</button>
+ <div class="info">
+  <div>
+   <h2 id="testTitle" style="color:#65ccff">Mock Test</h2>
+   <p style="color:#a9bddb;margin-top:8px">20 Questions • 100 Marks</p>
   </div>
-
-  <div id="questions"></div>
-
-  <button class="primary" style="width:100%" onclick="submitTest()">
-    Submit Test
-  </button>
+  <div class="timer">⏱ <span id="timer">20:00</span></div>
+ </div>
+ <div id="questions"></div>
+ <button class="btn" style="width:100%" onclick="submitTest()">Submit Test</button>
 </section>
 
 <!-- RESULT PAGE -->
 <section id="resultPage" class="page">
-  <div class="panel result">
-    <h2>🎉 Test Completed!</h2>
-    <p id="score"></p>
-    <p id="percentage"></p>
-    <p id="correct"></p>
-    <p id="wrong"></p>
-    <br>
-    <button class="primary" onclick="showPage('home')">Back to Home</button>
-    <button class="secondary" onclick="reviewAnswers()">Review Answers</button>
-  </div>
-  <div id="review"></div>
+ <div class="panel result">
+  <h2>🎉 Test Completed!</h2>
+  <p id="score"></p>
+  <p id="percentage"></p>
+  <p id="correct"></p>
+  <p id="wrong"></p>
+  <button class="btn" onclick="showPage('home')">Back to Home</button>
+  <button class="btn secondary" onclick="reviewAnswers()">Review Answers</button>
+ </div>
+ <div id="review"></div>
 </section>
 
 </div>
 
 <footer>
-  <strong>ক্লাস গণিত 🎓</strong><br>
-  শেখো • অনুশীলন করো • এগিয়ে চলো<br>
-  Mathematics Learning Platform
+ <h2 style="color:#63caff">ক্লাস গণিত 🎓</h2>
+ শেখো • অনুশীলন করো • এগিয়ে চলো
+ <br>Mathematics Learning Platform
+ <br>© 2026 Class Gonit
 </footer>
 
 <script>
 
-const chapters = [
+const chapters=[
  ["🔢","Number System"],
  ["➗","Simplification (BODMAS)"],
  ["📐","LCM & HCF"],
@@ -217,24 +320,18 @@ const chapters = [
  ["⏰","Time & Work"]
 ];
 
-let selectedChapter = "";
-let timeLeft = 1200;
-let timerInterval = null;
-let submitted = false;
-let answers = {};
-
-const questions = [
+const questions=[
  {q:"25 + 15 × 2 = কত?",o:["80","55","50","65"],a:1,e:"BODMAS অনুযায়ী আগে গুণ: 25 + 30 = 55।"},
  {q:"144 ÷ 12 = কত?",o:["10","11","12","14"],a:2,e:"144 ÷ 12 = 12।"},
- {q:"15 × 4 - 20 = কত?",o:["30","40","50","60"],a:0,e:"60 - 20 = 40। সঠিক উত্তর B।"},
+ {q:"15 × 4 - 20 = কত?",o:["30","40","50","60"],a:1,e:"60 - 20 = 40।"},
  {q:"200-এর 25% কত?",o:["25","40","50","75"],a:2,e:"200 × 25/100 = 50।"},
  {q:"12 ও 18-এর LCM কত?",o:["24","30","36","48"],a:2,e:"12 ও 18-এর ল.সা.গু 36।"},
  {q:"24 ও 36-এর HCF কত?",o:["6","8","12","18"],a:2,e:"24 ও 36-এর গ.সা.গু 12।"},
- {q:"3/4 + 1/4 = কত?",o:["1/2","1","2","3/4"],a:1,e:"একই হর হওয়ায় (3+1)/4 = 1।"},
+ {q:"3/4 + 1/4 = কত?",o:["1/2","1","2","3/4"],a:1,e:"(3+1)/4 = 1।"},
  {q:"একটি সংখ্যার 50% = 40 হলে সংখ্যাটি কত?",o:["60","70","80","90"],a:2,e:"40 × 100/50 = 80।"},
  {q:"5 : 10-এর সরল অনুপাত কত?",o:["1:2","2:1","1:5","5:1"],a:0,e:"উভয় পদকে 5 দিয়ে ভাগ করলে 1:2।"},
  {q:"10, 20, 30-এর গড় কত?",o:["15","20","25","30"],a:1,e:"(10+20+30)/3 = 20।"},
- {q:"একটি জিনিস 100 টাকায় কিনে 120 টাকায় বিক্রি করলে লাভ কত?",o:["10","15","20","25"],a:2,e:"120 - 100 = 20 টাকা।"},
+ {q:"100 টাকায় কিনে 120 টাকায় বিক্রি করলে লাভ কত?",o:["10","15","20","25"],a:2,e:"120 - 100 = 20 টাকা।"},
  {q:"2² + 3² = কত?",o:["10","13","15","25"],a:1,e:"4 + 9 = 13।"},
  {q:"√169-এর মান কত?",o:["11","12","13","14"],a:2,e:"13 × 13 = 169।"},
  {q:"এক ডজন সমান কতটি?",o:["10","12","15","20"],a:1,e:"এক ডজন = 12টি।"},
@@ -246,120 +343,129 @@ const questions = [
  {q:"100 - 25 ÷ 5 = কত?",o:["15","75","95","25"],a:2,e:"আগে ভাগ: 100 - 5 = 95।"}
 ];
 
+let selectedChapter="";
+let timeLeft=1200;
+let timerInterval=null;
+let submitted=false;
+let answers={};
+
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  window.scrollTo(0,0);
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
 }
 
 function makeChapters(){
-  const list=document.getElementById("chapterList");
-  chapters.forEach(ch=>{
-    const div=document.createElement("div");
-    div.className="chapter";
-    div.innerHTML=`<div class="emoji">${ch[0]}</div>
-    <h3>${ch[1]}</h3><p>20 Questions • 20 Minutes</p>`;
-    div.onclick=()=>openChapter(ch[1]);
-    list.appendChild(div);
-  });
+ const list=document.getElementById("chapterList");
+ chapters.forEach(ch=>{
+  const div=document.createElement("div");
+  div.className="chapter";
+  div.innerHTML=`<div class="emoji">${ch[0]}</div>
+   <h3>${ch[1]}</h3><p>20 Questions • 20 Minutes</p>`;
+  div.onclick=()=>openChapter(ch[1]);
+  list.appendChild(div);
+ });
 }
 
 function openChapter(name){
-  selectedChapter=name;
-  document.getElementById("chapterTitle").innerText="📚 "+name;
-  showPage("chapterPage");
+ selectedChapter=name;
+ document.getElementById("chapterTitle").innerText="📚 "+name;
+ showPage("chapterPage");
 }
 
 function startTest(){
-  answers={};
-  submitted=false;
-  timeLeft=1200;
-  document.getElementById("testTitle").innerText=selectedChapter;
-  document.getElementById("timer").innerText="20:00";
+ answers={};
+ submitted=false;
+ timeLeft=1200;
 
-  const area=document.getElementById("questions");
-  area.innerHTML="";
+ document.getElementById("testTitle").innerText=selectedChapter;
+ document.getElementById("timer").innerText="20:00";
 
-  questions.forEach((q,i)=>{
-    let html=`<div class="question">
-      <h3>${i+1}. ${q.q}</h3>`;
-    q.o.forEach((option,j)=>{
-      html+=`<label class="option">
-      <input type="radio" name="q${i}" value="${j}">
-      ${String.fromCharCode(65+j)}. ${option}
-      </label>`;
-    });
-    html+="</div>";
-    area.innerHTML+=html;
+ const area=document.getElementById("questions");
+ area.innerHTML="";
+
+ questions.forEach((q,i)=>{
+  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
+  q.o.forEach((option,j)=>{
+   html+=`<label class="option">
+    <input type="radio" name="q${i}" value="${j}">
+    ${String.fromCharCode(65+j)}. ${option}
+   </label>`;
   });
+  html+="</div>";
+  area.innerHTML+=html;
+ });
 
-  showPage("testPage");
-  clearInterval(timerInterval);
-  timerInterval=setInterval(()=>{
-    timeLeft--;
-    const min=Math.floor(timeLeft/60);
-    const sec=timeLeft%60;
-    document.getElementById("timer").innerText=
-      String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
-    if(timeLeft<=0){
-      submitTest();
-    }
-  },1000);
+ showPage("testPage");
+ clearInterval(timerInterval);
+
+ timerInterval=setInterval(()=>{
+  timeLeft--;
+  let min=Math.floor(timeLeft/60);
+  let sec=timeLeft%60;
+
+  document.getElementById("timer").innerText=
+   String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+
+  if(timeLeft<=0) submitTest(true);
+ },1000);
 }
 
-function submitTest(){
-  if(submitted)return;
-  if(!confirm("আপনি কি Test Submit করতে চান?"))return;
+function submitTest(auto=false){
+ if(submitted)return;
 
-  submitted=true;
-  clearInterval(timerInterval);
+ if(!auto && !confirm("আপনি কি Test Submit করতে চান?"))return;
 
-  answers={};
-  questions.forEach((q,i)=>{
-    const selected=document.querySelector(`input[name="q${i}"]:checked`);
-    answers[i]=selected?Number(selected.value):-1;
-  });
+ submitted=true;
+ clearInterval(timerInterval);
+ answers={};
 
-  let correct=0;
-  questions.forEach((q,i)=>{
-    if(answers[i]===q.a)correct++;
-  });
+ questions.forEach((q,i)=>{
+  const selected=document.querySelector(`input[name="q${i}"]:checked`);
+  answers[i]=selected?Number(selected.value):-1;
+ });
 
-  let wrong=20-correct;
-  let marks=correct*5;
+ let correct=0;
+ questions.forEach((q,i)=>{
+  if(answers[i]===q.a)correct++;
+ });
 
-  document.getElementById("score").innerText="আপনার নম্বর: "+marks+" / 100";
-  document.getElementById("percentage").innerText="Percentage: "+marks+"%";
-  document.getElementById("correct").innerText="সঠিক উত্তর: "+correct;
-  document.getElementById("wrong").innerText="ভুল / উত্তর না দেওয়া: "+wrong;
+ let wrong=20-correct;
+ let marks=correct*5;
 
-  showPage("resultPage");
+ document.getElementById("score").innerText="আপনার নম্বর: "+marks+" / 100";
+ document.getElementById("percentage").innerText="Percentage: "+marks+"%";
+ document.getElementById("correct").innerText="সঠিক উত্তর: "+correct;
+ document.getElementById("wrong").innerText="ভুল / উত্তর না দেওয়া: "+wrong;
+
+ showPage("resultPage");
 }
 
 function reviewAnswers(){
-  const area=document.getElementById("review");
-  area.innerHTML="";
-  questions.forEach((q,i)=>{
-    const selected=answers[i];
-    const isCorrect=selected===q.a;
-    area.innerHTML+=`
-      <div class="question">
-      <h3>${i+1}. ${q.q}</h3>
-      <p style="color:${isCorrect?'#65e6a1':'#ff9292'}">
-      ${isCorrect?'✓ Correct':'✗ Incorrect'}
-      </p>
-      <p>সঠিক উত্তর: ${q.o[q.a]}</p>
-      <div class="explanation">ব্যাখ্যা: ${q.e}</div>
-      </div>`;
-  });
-  area.scrollIntoView({behavior:"smooth"});
+ const area=document.getElementById("review");
+ area.innerHTML="";
+
+ questions.forEach((q,i)=>{
+  const isCorrect=answers[i]===q.a;
+  area.innerHTML+=`
+   <div class="question">
+    <h3>${i+1}. ${q.q}</h3>
+    <p style="color:${isCorrect?'#65e6a1':'#ff9292'}">
+     ${isCorrect?'✓ Correct':'✗ Incorrect'}
+    </p>
+    <p>সঠিক উত্তর: ${q.o[q.a]}</p>
+    <div class="explanation">ব্যাখ্যা: ${q.e}</div>
+   </div>`;
+ });
+
+ area.scrollIntoView({behavior:"smooth"});
 }
 
 function confirmHome(){
-  if(confirm("আপনি কি Test থেকে বের হতে চান?")){
-    clearInterval(timerInterval);
-    showPage("home");
-  }
+ if(confirm("আপনি কি Test থেকে বের হতে চান?")){
+  clearInterval(timerInterval);
+  showPage("home");
+ }
 }
 
 makeChapters();
