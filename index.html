@@ -1,189 +1,103 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Gonit - Mathematics Mock Test</title>
+<title>Class Gonit | Mathematics Mock Test</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172554;
-}
-header {
-  background: #123b75;
-  color: white;
-  text-align: center;
-  padding: 25px 12px;
-}
-header h1 { margin: 0; font-size: 30px; }
-header p { margin-bottom: 0; }
-.container {
-  max-width: 750px;
-  margin: 25px auto;
-  padding: 20px;
-}
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px #0001;
-}
-button {
-  border: 0;
-  padding: 12px 18px;
-  border-radius: 7px;
-  cursor: pointer;
-  font-size: 15px;
-  margin: 5px;
-}
-.primary { background: #2563eb; color: white; }
-.secondary { background: #e2e8f0; }
-.option {
-  display: block;
-  border: 1px solid #cbd5e1;
-  padding: 13px;
-  border-radius: 8px;
-  margin: 10px 0;
-  cursor: pointer;
-}
-.option:has(input:checked) {
-  background: #dbeafe;
-  border-color: #2563eb;
-}
-.info {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-  background: #eff6ff;
-  padding: 13px;
-  border-radius: 8px;
-}
-.hidden { display: none; }
-#palette button { min-width: 38px; }
-footer { text-align: center; padding: 20px; color: #64748b; }
+:root{--navy:#14245b;--blue:#2457d6;--sky:#eef4ff;--ink:#18233d;--muted:#68748d;--green:#16834a;--red:#c63737}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fc;color:var(--ink)}
+header{background:linear-gradient(135deg,#101b50,#2859c9);color:white;padding:18px 14px 28px;text-align:center}
+.logo{display:block;width:min(100%,520px);height:auto;max-height:250px;object-fit:contain;margin:0 auto 14px;background:white;border-radius:12px}
+.brand{font-size:clamp(25px,5vw,38px);font-weight:800;margin:8px 0}.tagline{margin:6px 0;color:#e5edff}
+.wrap{width:min(100% - 24px,980px);margin:22px auto}
+.hero,.panel,.card{background:white;border-radius:18px;padding:20px;box-shadow:0 8px 24px #14245b12}
+.hero{text-align:center}.hero h1{margin:0 0 8px;color:var(--navy)}.hero p{color:var(--muted);line-height:1.5}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:15px 0}.pill{background:#eaf0ff;color:#214bb0;padding:8px 12px;border-radius:30px;font-size:13px;font-weight:700}
+button{border:0;border-radius:11px;padding:12px 18px;font-size:15px;font-weight:700;cursor:pointer}
+.primary{background:var(--blue);color:white}.secondary{background:#eaf0ff;color:#1c49b4}.danger{background:#fff0f0;color:#a22}
+button:disabled{opacity:.45;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}
+.card h3{margin:0 0 7px;color:var(--navy)}.card p{color:var(--muted);font-size:14px;line-height:1.45}
+.hidden{display:none!important}.topline{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.timer{font-weight:800;color:#b02a2a;background:#fff0f0;padding:10px 14px;border-radius:10px}
+.progress{height:8px;background:#e7ecf6;border-radius:20px;overflow:hidden;margin:10px 0 18px}.bar{height:100%;width:0;background:#2e67e5}
+.qmeta{color:var(--muted);font-size:14px}.question{font-size:19px;font-weight:700;line-height:1.5;margin:12px 0 18px;white-space:pre-wrap}
+.option{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #dce3f0;border-radius:12px;margin:9px 0;cursor:pointer}
+.option input{margin-top:3px;accent-color:var(--blue)}.option:has(input:checked){border-color:var(--blue);background:#f0f5ff}
+.nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:18px}
+.palette{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}.num{width:38px;height:38px;padding:0;background:#edf1f8;color:#334}.num.done{background:#d9f5e5;color:#146c3b}.num.current{outline:3px solid #8eafff}
+.note{background:#fff8e7;color:#72520a;border-radius:10px;padding:12px;font-size:13px;line-height:1.5}
+.result{text-align:center}.score{font-size:42px;font-weight:900;color:var(--blue)}.small{font-size:13px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
+@media(max-width:560px){header{padding:12px 10px 22px}.logo{max-height:190px}.hero,.panel,.card{padding:16px}.question{font-size:17px}}
 </style>
 </head>
 <body>
-
 <header>
-  <h1>CLASS GONIT</h1>
-  <p>Mathematics Learning & Mock Test Platform</p>
+  <img class="logo" src="logo.jpg" alt="Class Gonit full logo" onerror="this.style.display='none'">
+  <div class="brand">🎓 ক্লাস গণিত | CLASS GONIT</div>
+  <div class="tagline">MATHS FOR ALL COMPETITIVE EXAMS</div>
+  <div class="tagline">SSC • Banking • Railway • Defence • WBP • KP • SSC GD • FOOD SI • WBCS</div>
 </header>
-
-<main class="container">
-  <section class="card" id="home">
-    <h2>Welcome to Class Gonit</h2>
-    <p>Practice Mathematics for Competitive Examinations.</p>
-    <h3>Mathematics Mock Test - 01</h3>
-    <p>Total Questions: 5</p>
-    <p>Time: 10 Minutes</p>
-    <p>Correct Answer: +1 | Wrong Answer: -0.25</p>
-    <button class="primary" onclick="startTest()">Start Mock Test</button>
-  </section>
-
-  <section class="card hidden" id="exam">
-    <div class="info">
-      <strong id="number">Question 1</strong>
-      <strong>Time: <span id="timer">10:00</span></strong>
-    </div>
-    <h3 id="question"></h3>
-    <div id="options"></div>
-    <p>Question Navigation</p>
-    <div id="palette"></div>
-    <button class="secondary" onclick="previous()">Previous</button>
-    <button class="secondary" onclick="mark()">Mark Review</button>
-    <button class="primary" onclick="next()">Next</button>
-    <hr>
-    <button class="primary" onclick="submitTest()">Submit Test</button>
-  </section>
-
-  <section class="card hidden" id="result">
-    <h2>Your Test Result</h2>
-    <h3 id="score"></h3>
-    <p id="details"></p>
-    <button class="primary" onclick="location.reload()">Back to Home</button>
-  </section>
+<main class="wrap">
+<section id="home" class="hero">
+  <h1>Welcome to Class Gonit</h1>
+  <p>Practice mathematics with timed mock tests. Select a topic, answer the questions and check your result instantly.</p>
+  <div class="pills"><span class="pill">24 VBODMAS questions</span><span class="pill">30 minutes</span><span class="pill">Instant result</span></div>
+  <button class="primary" onclick="startTest()">Start VBODMAS Mock Test</button>
+</section>
+<section class="grid" id="categories">
+ <article class="card"><h3>VBODMAS RULE</h3><p>Class Note – 01 · 24 questions from your supplied PDF.</p><button class="secondary" onclick="startTest()">Start practice</button></article>
+ <article class="card"><h3>Exam practice</h3><p>Build topic-wise practice sets for SSC, Railway, Banking and state exams.</p><span class="small">More topics can be added later.</span></article>
+ <article class="card"><h3>Your result</h3><p>See attempted, correct, incorrect and unscored questions after submission.</p><span class="small">Results are shown on this device only.</span></article>
+</section>
+<section id="test" class="panel hidden">
+ <div class="topline"><div><strong>VBODMAS RULE · Class Note 01</strong><div class="qmeta" id="counter"></div></div><div class="timer" id="timer">30:00</div></div>
+ <div class="progress"><div class="bar" id="progress"></div></div>
+ <div class="qmeta" id="exam"></div><div class="question" id="question"></div><div id="options"></div>
+ <div id="warning" class="note hidden"></div>
+ <div class="nav"><button class="secondary" id="prev" onclick="move(-1)">Previous</button><button class="secondary" id="next" onclick="move(1)">Next</button><button class="primary" onclick="submitTest()">Submit test</button></div>
+ <div class="palette" id="palette"></div>
+</section>
+<section id="result" class="panel result hidden"></section>
 </main>
-
-<footer>© 2026 Class Gonit | Learn • Practice • Succeed</footer>
-
+<footer>© Class Gonit · Mathematics practice</footer>
 <script>
 const questions = [
- {q:"What is 25 × 4?",o:["50","75","100","125"],a:2},
- {q:"What is 144 ÷ 12?",o:["10","11","12","14"],a:2},
- {q:"What is the square of 15?",o:["125","200","225","250"],a:2},
- {q:"What is 20% of 500?",o:["50","100","150","200"],a:1},
- {q:"What is the LCM of 6 and 8?",o:["12","18","24","48"],a:2}
+{q:"1. Simplify: 125 ÷ 5 ÷ 5 × 5",o:["1","925","25","5"],a:2,exam:"RRB NTPC CBT-I · 17 Feb 2021 Shift 2"},
+{q:"2. Evaluate: 16 + 12 ÷ 4 − 2 × 3",o:["15","16","12","13"],a:3,exam:"SSC GD Constable · 21 Feb 2025 Shift 1"},
+{q:"3. Evaluate: 16 + 8 ÷ 4 − 2 × 3",o:["15","12","11","14"],a:1,exam:"SSC GD Constable · 07 Feb 2025 Shift 1"},
+{q:"4. Evaluate: (3 × 25) ÷ 5 − 20 × 4 + 75",o:["20","30","6","10"],a:3,exam:"Agniveer Army GD · 30 June 2025 Shift 2"},
+{q:"5. Solve: 11 × 3 + (45 ÷ 9) + (72 ÷ 8) − 5 + 4",o:["46","45","48","44"],a:0,exam:"SSC MTS · 19 Jun 2023 Shift 2"},
+{q:"6. Simplify: 25 ÷ 5 × 7 of (5 + 7) − 13(6 × 4)",o:["108","138","126","112"],a:0,exam:"SSC CPO · 27 Jun 2024 Shift 1"},
+{q:"7. Find the value: 15 − 16 ÷ [4 + (5 + 7) ÷ 3]",o:["11","18","17","13"],a:3,exam:"SSC CPO · 29 Jun 2024 Shift 3"},
+{q:"8. Find the value: 11 − {(3 ÷ 4) of 8 − (4 − 8)}",o:["2","3","1","−1"],a:2,exam:"SSC CGL Tier-I · 24 Sept 2024 Shift 1"},
+{q:"9. Simplify: 16 ÷ 2 − 7 × 15 ÷ 3 + 5 × 5 + 4 × 3 − 10",o:["1","2","0","−1"],a:2,exam:"SSC CGL Tier-I · 13 Sept 2024 Shift 3"},
+{q:"10. Find the value: (27 × 50) ÷ 25 × 5 × (15 − 14) + 800 ÷ 25",o:["366","420","302","312"],a:2,exam:"SSC GD Constable · 21 Feb 2024 Shift 1"},
+{q:"11. Find the value: 7 ÷ 2 − [3 of 7 ÷ 4 ÷ {(2 ÷ 5) × (25 ÷ 8) ÷ (5 ÷ 2)}]",o:["1","−8","−7","−7/4"],a:2,exam:"SSC MTS · 2 August 2019 Shift 2"},
+{q:"12. Solve: 60 ÷ [(16 − 8 ÷ 2) ÷ 3]",o:["3","15","1","1/3"],a:1,exam:"RRB ALP · 10 Aug 2018 Shift 2"},
+{q:"13. Simplify: 12 − 3 × 2 + 8 ÷ 2",o:["14","10","8","12"],a:1,exam:"RRB Group D · 18 Aug 2026 Shift 3"},
+{q:"14. Simplify: 4 × 7 − 3{7 × 4 ÷ (6 × 2)}",o:["21","12","19","4"],a:0,exam:"SSC CHSL Tier-I · 08 Jul 2024 Shift 1"},
+{q:"15. Simplify: 7 × 4 ÷ 21 of 4 − 5 ÷ 4 × (9 − 13) + 2 − 2 ÷ 8",o:["5 1/16","7 1/12","5 1/3","12 1/2"],a:1,exam:"SSC CGL Tier-I · 23 Aug 2021 Shift 1"},
+{q:"16. Simplify: 19 ÷ 5 of (27 − 15 − 3 [fraction unclear in the PDF]) + 37",o:["6124/165","19/165","6142/165","37/165"],a:null,exam:"SSC CPO · 04 Oct 2023 Shift 2",note:"The fraction/exponent formatting in question 16 is unclear in the supplied PDF. This question is included but not scored until its expression and answer are confirmed."},
+{q:"17. What comes in place of ?: (255 − 55) ÷ 4 × 15 − 504 ÷ 3 = ?",o:["80","76","582","85","None of these"],a:2,exam:"IBPS RRB Office Assistant Prelims · 8 August 2021 Shift 1"},
+{q:"18. Evaluate: 40 − (7 × 3 + 24 ÷ 8 × 3 − 4 × 2) + 12",o:["30","10","40","20"],a:0,exam:"RRC Group D · 1 Nov 2018 Shift 1"},
+{q:"19. Find the value: 32 + 12 × 36 ÷ 4 + 4 − 22 ÷ 11 × 3",o:["142","138","150","130"],a:1,exam:"SSC CHSL Tier-I · 15 March 2023 Shift 3"},
+{q:"20. Find the value: 63 − (−3)(−2 − 8 − 4) ÷ [3{5 + (−2)(−1)}]",o:["65","60","−60","61"],a:3,exam:"RRC Group D · 23 Sep 2018 Shift 1"},
+{q:"21. Find the value: 28 × 25 ÷ 7 × 15 + 63 × 56 ÷ 72 × 5 + 24 × 7 + 8",o:["2101","1821","1921","1901"],a:2,exam:"SSC MTS · 02 May 2023 Shift 1"},
+{q:"22. Evaluate: 4 ÷ 1/2 of [3 ÷ 1/4 of {(4 − 2) × 6 ÷ 2}] − 2 × 6 ÷ 8 + 3",o:["7 1/6","2 1/3","3 1/3","4 1/6"],a:null,exam:"SSC CGL Tier 2 · 16 November 2020",note:"The stacked fractions and 'of' grouping in question 22 are ambiguous in the PDF text. This question is included but not scored until confirmed."},
+{q:"23. Simplify: 133 ÷ 19 × 3 − 48 × 2 ÷ 24 + 841 ÷ (45 − 16)",o:["46","21","12","42"],a:0,exam:"SSC CGL Tier-I · 24 Sept 2024 Shift 2"},
+{q:"24. Find the value: 16 − 4 × [4 − {98 ÷ 2 of 7 − (6 − 36 ÷ 6 × 2)}]",o:["38","40","52","42"],a:2,exam:"SSC MTS · 27 Oct 2021 Shift 2",note:"Answer follows the grouping convention suggested by the printed options; please verify the original fraction/grouping before using this as a formal exam key."}
 ];
-
-let current=0, answers=Array(questions.length).fill(null);
-let reviews=Array(questions.length).fill(false);
-let remaining=600, finished=false, clock;
-
-function startTest(){
- document.getElementById("home").classList.add("hidden");
- document.getElementById("exam").classList.remove("hidden");
- showQuestion();
- updateTimer();
- clock=setInterval(()=>{
-   if(remaining>0){remaining--;updateTimer();}
-   else submitTest(true);
- },1000);
-}
-
-function updateTimer(){
- let m=Math.floor(remaining/60),s=remaining%60;
- document.getElementById("timer").textContent=
- String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-}
-
-function showQuestion(){
- let q=questions[current];
- document.getElementById("number").textContent=
- "Question "+(current+1)+" of "+questions.length;
- document.getElementById("question").textContent=q.q;
- document.getElementById("options").innerHTML=q.o.map((x,i)=>
- `<label class="option"><input type="radio" name="answer"
- value="${i}" ${answers[current]===i?"checked":""}
- onchange="answers[current]=${i};showPalette()"> ${x}</label>`
- ).join("");
- showPalette();
-}
-
-function showPalette(){
- document.getElementById("palette").innerHTML=questions.map((q,i)=>
- `<button style="background:${i===current?"#2563eb":reviews[i]?"#eab308":answers[i]!==null?"#16a34a":"#e2e8f0"};color:${i===current||answers[i]!==null?"white":"black"}"
- onclick="current=${i};showQuestion()">${i+1}</button>`
- ).join("");
-}
-
-function next(){if(current<questions.length-1){current++;showQuestion();}}
-function previous(){if(current>0){current--;showQuestion();}}
-function mark(){reviews[current]=!reviews[current];showPalette();}
-
-function submitTest(auto=false){
- if(finished)return;
- if(!auto&&!confirm("Are you sure you want to submit?"))return;
- finished=true;clearInterval(clock);
- let correct=0,wrong=0,skip=0;
- questions.forEach((q,i)=>{
-  if(answers[i]===null)skip++;
-  else if(answers[i]===q.a)correct++;
-  else wrong++;
- });
- let score=correct-wrong*0.25;
- document.getElementById("exam").classList.add("hidden");
- document.getElementById("result").classList.remove("hidden");
- document.getElementById("score").textContent="Score: "+score.toFixed(2)+" / "+questions.length;
- document.getElementById("details").textContent=
- "Correct: "+correct+" | Wrong: "+wrong+" | Skipped: "+skip+
- " | Percentage: "+(score/questions.length*100).toFixed(2)+"%";
-}
+let index=0,answers=Array(questions.length).fill(null),seconds=1800,clock=null,submitted=false;
+const $=id=>document.getElementById(id);
+function startTest(){ $("home").classList.add("hidden");$("categories").classList.add("hidden");$("result").classList.add("hidden");$("test").classList.remove("hidden");index=0;answers=Array(questions.length).fill(null);seconds=1800;submitted=false;clearInterval(clock);clock=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)submitTest()},1000);render()}
+function updateTimer(){$("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0")}
+function render(){let q=questions[index];$("counter").textContent=`Question ${index+1} of ${questions.length}`;$("question").textContent=q.q;$("exam").textContent=q.exam||"";$("options").innerHTML=q.o.map((v,i)=>`<label class="option"><input type="radio" name="answer" ${answers[index]===i?"checked":""} onchange="answers[${index}]=${i};renderPalette()"> <span><b>${String.fromCharCode(65+i)}.</b> ${v}</span></label>`).join("");$("warning").textContent=q.note||"";$("warning").classList.toggle("hidden",!q.note);$("prev").disabled=index===0;$("next").disabled=index===questions.length-1;$("progress").style.width=((index+1)/questions.length*100)+"%";renderPalette();updateTimer()}
+function renderPalette(){$("palette").innerHTML=questions.map((q,i)=>`<button class="num ${answers[i]!==null?"done":""} ${i===index?"current":""}" onclick="index=${i};render()">${i+1}</button>`).join("")}
+function move(d){index=Math.max(0,Math.min(questions.length-1,index+d));render()}
+function submitTest(){if(submitted)return;submitted=true;clearInterval(clock);let scored=questions.filter(q=>q.a!==null),correct=scored.filter((q,i)=>answers[questions.indexOf(q)]===q.a).length,attempted=scored.filter(q=>answers[questions.indexOf(q)]!==null).length,wrong=attempted-correct,unscored=questions.length-scored.length,score=correct-wrong*.25;$("test").classList.add("hidden");$("result").classList.remove("hidden");$("result").innerHTML=`<h2>Mock Test Result</h2><div class="score">${score.toFixed(2)}</div><p>Score · +1 correct, −0.25 incorrect</p><div class="grid"><article class="card"><h3>${correct}</h3><p>Correct</p></article><article class="card"><h3>${wrong}</h3><p>Incorrect</p></article><article class="card"><h3>${attempted}</h3><p>Attempted (scored)</p></article><article class="card"><h3>${unscored}</h3><p>Awaiting answer verification</p></article></div><p class="small">Questions with unclear source formatting are excluded from scoring until verified.</p><button class="primary" onclick="location.reload()">Back to homepage</button>`}
 </script>
 </body>
 </html>
