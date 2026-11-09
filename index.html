@@ -1,535 +1,369 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ক্লাস গণিত 🎓 | Mathematics Mock Test</title>
+<title>ক্লাস গণিত | Mock Test</title>
+
 <style>
-:root{
- --bg:#07111f;--panel:#101f33;--panel2:#142943;
- --blue:#398bff;--cyan:#39d5e8;--text:#f3f7ff;
- --muted:#9bacc2;--green:#25c58a;--red:#ff6376;
-}
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
- font-family:Arial,sans-serif;background:var(--bg);
- color:var(--text);line-height:1.6;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:#080f20;color:#fff;
 }
 header{
- background:#0c1a2b;padding:16px 5%;
- display:flex;justify-content:space-between;
- align-items:center;gap:12px;flex-wrap:wrap;
- border-bottom:1px solid #203650;
- position:sticky;top:0;z-index:10;
+  background:#111d35;padding:18px 15px;
+  text-align:center;border-bottom:1px solid #263b60;
 }
-.logo{font-size:21px;font-weight:bold;color:white}
-.logo span{color:var(--cyan)}
-nav{display:flex;gap:8px;flex-wrap:wrap}
-button{
- border:0;cursor:pointer;border-radius:9px;
- padding:11px 15px;font-weight:bold;
- transition:.2s;
+.logo{
+  width:90px;height:90px;object-fit:contain;
+  border-radius:18px;margin-bottom:10px;
 }
-button:hover{opacity:.85;transform:translateY(-1px)}
-.navbtn{background:transparent;color:#dceaff}
-.primary{background:var(--blue);color:white}
-.secondary{background:#243b57;color:white}
-.success{background:var(--green);color:#06251b}
-.danger{background:var(--red);color:white}
-main{max-width:1100px;margin:auto;padding:30px 18px}
-.page{display:none;animation:fade .3s}
-.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+header h1{color:#55c8ff;font-size:28px}
+header p{color:#a9bddb;margin-top:7px}
+.container{max-width:950px;margin:auto;padding:20px}
 .hero{
- padding:55px 25px;border-radius:20px;
- background:linear-gradient(130deg,#102b50,#124d82,#11243d);
- text-align:center;margin-bottom:25px;
+  background:linear-gradient(135deg,#142d55,#102044);
+  padding:30px 20px;border-radius:18px;
+  text-align:center;margin-bottom:25px;
+  border:1px solid #284b7d;
 }
-.hero h1{font-size:clamp(28px,6vw,44px);margin-bottom:12px}
-.hero p{color:#d5e9ff}
-.hero .quote{margin:18px auto;color:#bcecff}
-h2{font-size:27px;margin-bottom:8px}
-.subtitle{color:var(--muted);margin-bottom:22px}
-.grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:16px;
+.hero h2{font-size:25px;color:#65d2ff;margin-bottom:12px}
+.hero p{color:#c4d5ec;line-height:1.8}
+.quote{margin-top:15px;color:#ffd77a;line-height:1.8}
+.section-title{
+  font-size:22px;color:#5dcaff;
+  margin:25px 0 16px;
 }
-.card{
- background:var(--panel);border:1px solid #243b57;
- border-radius:15px;padding:20px;
-}
-.card h3{margin-bottom:8px}
-.card p{color:var(--muted);font-size:14px}
-.card button{margin-top:15px}
-.icon{font-size:30px;margin-bottom:10px}
-.section-card{cursor:pointer}
-.section-card:hover{border-color:var(--blue)}
-.chapter-list{display:grid;gap:10px}
-.chapter{
- background:var(--panel);padding:16px;border-radius:11px;
- border:1px solid #243b57;display:flex;
- align-items:center;justify-content:space-between;gap:10px;
-}
-.chapter button{white-space:nowrap}
-.topline{
- display:flex;justify-content:space-between;
- align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;
-}
-.timer{
- background:#18395e;padding:12px 20px;
- border-radius:12px;color:#65d8ff;font-weight:bold;font-size:20px;
-}
-.progress{
- background:#24364c;height:8px;border-radius:20px;
- overflow:hidden;margin:15px 0 22px;
-}
-.progress div{height:100%;background:var(--cyan);width:0%}
-.test-layout{
- display:grid;grid-template-columns:1fr 240px;gap:18px;
-}
-.question-box{
- background:var(--panel);padding:23px;
- border-radius:15px;border:1px solid #263d58;
-}
-.question-number{color:var(--cyan);font-weight:bold;margin-bottom:12px}
-.question-text{font-size:19px;margin-bottom:20px}
-.options{display:grid;gap:11px}
-.option{
- background:#192c43;padding:14px;border-radius:10px;
- border:1px solid #304660;cursor:pointer;
-}
-.option.selected{border-color:var(--blue);background:#183b65}
-.option input{margin-right:10px}
-.test-sidebar{
- background:var(--panel);padding:18px;border-radius:15px;
- height:max-content;
-}
-.question-grid{
- display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px;
-}
-.qnav{
- background:#26394f;color:white;padding:10px 0;
- border-radius:7px;
-}
-.qnav.current{outline:2px solid var(--cyan)}
-.qnav.answered{background:#167c61}
-.qnav.review{background:#a56b22}
-.actions{
- display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;
-}
-.actions button{flex:1}
-.result-score{
- font-size:50px;color:var(--cyan);font-weight:bold;text-align:center;
-}
-.result-stats{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
- gap:12px;margin:25px 0;
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin:20px 0;
 }
 .stat{
- background:var(--panel2);padding:18px;border-radius:12px;text-align:center;
+  background:#14233e;padding:17px 8px;
+  border-radius:12px;text-align:center;
 }
-.stat strong{display:block;font-size:24px}
-.review-item{
- background:var(--panel);padding:17px;border-radius:12px;
- margin:12px 0;border-left:4px solid var(--blue);
+.stat strong{display:block;color:#55c8ff;font-size:22px}
+.stat span{font-size:12px;color:#b5c7e1}
+.chapters{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:13px;
 }
-.correct{color:var(--green)}
-.incorrect{color:var(--red)}
-footer{
- text-align:center;padding:30px 15px;
- color:var(--muted);border-top:1px solid #203650;margin-top:40px;
+.chapter{
+  background:#14233e;border:1px solid #263f67;
+  border-radius:13px;padding:19px 12px;
+  cursor:pointer;text-align:center;
+  transition:.2s;
 }
-footer a{color:var(--cyan);text-decoration:none}
+.chapter:hover{background:#1d3861;transform:translateY(-3px)}
+.chapter .emoji{font-size:27px}
+.chapter h3{font-size:16px;margin-top:10px}
+.chapter p{font-size:12px;color:#a9bddb;margin-top:7px}
+button{
+  border:0;border-radius:9px;padding:13px 20px;
+  font-size:15px;font-weight:bold;cursor:pointer;
+}
+.primary{background:#159ce0;color:white}
+.secondary{background:#263b60;color:white}
+button:active{transform:scale(.97)}
+.page{display:none}
+.page.active{display:block}
+.panel{
+  background:#14233e;border:1px solid #29466f;
+  padding:20px;border-radius:14px;margin-bottom:15px;
+}
 .back{margin-bottom:18px}
-input[type=search]{
- width:100%;padding:13px;border-radius:9px;
- border:1px solid #304660;background:var(--panel);
- color:white;margin-bottom:18px;
+.info{
+  display:flex;justify-content:space-between;
+  gap:10px;flex-wrap:wrap;margin-bottom:18px;
 }
-@media(max-width:720px){
- header{position:static}
- .test-layout{grid-template-columns:1fr}
- .test-sidebar{order:-1}
- .question-grid{grid-template-columns:repeat(5,1fr)}
- .hero{padding:38px 18px}
- .chapter{align-items:flex-start}
+.timer{
+  background:#263d64;padding:12px 17px;
+  border-radius:10px;color:#7de0ff;font-weight:bold;
+}
+.question{
+  background:#14233e;border:1px solid #29466f;
+  padding:19px;border-radius:13px;margin-bottom:15px;
+}
+.question h3{font-size:16px;line-height:1.8;margin-bottom:14px}
+.option{
+  display:block;padding:12px;margin:9px 0;
+  border:1px solid #354e72;border-radius:9px;
+  cursor:pointer;color:#e0ebfa;
+}
+.option input{margin-right:9px}
+.option:has(input:checked){
+  background:#173c62;border-color:#46baff;
+}
+.result{text-align:center;line-height:2}
+.result h2{color:#65d2ff;font-size:27px}
+.explanation{
+  background:#0c1a30;padding:12px;
+  margin-top:12px;border-radius:8px;
+  color:#b8d5ec;font-size:14px;
+}
+footer{
+  text-align:center;padding:25px 12px;
+  color:#8195b4;border-top:1px solid #263b60;
+  margin-top:35px;font-size:13px;line-height:2;
+}
+@media(min-width:650px){
+ .chapters{grid-template-columns:repeat(4,1fr)}
+ .hero{padding:45px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">
-  <img src="logo.png" alt="Class Gonit Logo">
-  ক্লাস গণিত 🎓
-</div>
- <nav>
-  <button class="navbtn" onclick="home()">Home</button>
-  <button class="navbtn" onclick="showSections()">Mathematics</button>
-  <button class="navbtn" onclick="showAbout()">About Us</button>
- </nav>
+  <img src="logo.png" alt="Class Gonit Logo" class="logo"
+       onerror="this.style.display='none'">
+  <h1>ক্লাস গণিত 🎓</h1>
+  <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
 </header>
 
-<main>
+<div class="container">
 
 <!-- HOME PAGE -->
-<section id="homePage" class="page active">
- <div class="hero">
-  <h1>Welcome to ক্লাস গণিত 🎓</h1>
-  <p>Learn Mathematics. Practise Regularly. Achieve Your Goals.</p>
-  <div class="quote">
-   হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে নতুন সম্ভাবনা।
-   নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে। ✨
-  </div>
-  <button class="primary" onclick="showSections()">Explore Mathematics →</button>
- </div>
- <h2>Why Choose Class Gonit?</h2>
- <p class="subtitle">Your journey towards mathematical excellence starts here.</p>
- <div class="grid">
-  <div class="card"><div class="icon">📚</div><h3>Chapter Wise Learning</h3><p>Learn mathematics topic by topic.</p></div>
-  <div class="card"><div class="icon">⏱️</div><h3>Mock Tests</h3><p>Practice with a 20-minute timer.</p></div>
-  <div class="card"><div class="icon">🏆</div><h3>Instant Results</h3><p>Check your score and explanations.</p></div>
-  <div class="card"><div class="icon">📱</div><h3>Mobile Friendly</h3><p>Practise from your mobile or computer.</p></div>
- </div>
-</section>
+<section id="home" class="page active">
 
-<!-- SECTION PAGE -->
-<section id="sectionsPage" class="page">
- <button class="secondary back" onclick="home()">← Home</button>
- <h2>Mathematics Sections</h2>
- <p class="subtitle">Choose a section to explore all chapters.</p>
- <div id="sectionGrid" class="grid"></div>
+  <div class="hero">
+    <h2>Welcome to ক্লাস গণিত</h2>
+    <p>গণিত শেখার সঠিক ঠিকানা। প্রতিদিন অনুশীলন করো এবং নিজের দক্ষতা বাড়াও।</p>
+    <div class="quote">
+      "হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে।" ✨
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><strong>20</strong><span>Questions</span></div>
+    <div class="stat"><strong>20 Min</strong><span>Time Limit</span></div>
+    <div class="stat"><strong>100</strong><span>Total Marks</span></div>
+  </div>
+
+  <h2 class="section-title">📚 Mathematics Chapters</h2>
+
+  <div class="chapters" id="chapterList"></div>
+
 </section>
 
 <!-- CHAPTER PAGE -->
-<section id="chaptersPage" class="page">
- <button class="secondary back" onclick="showSections()">← Sections</button>
- <h2 id="chapterTitle">Chapters</h2>
- <p class="subtitle">Select a chapter to start your mock test.</p>
- <input type="search" id="chapterSearch" placeholder="Search chapters..." oninput="filterChapters()">
- <div id="chapterList" class="chapter-list"></div>
+<section id="chapterPage" class="page">
+  <button class="secondary back" onclick="showPage('home')">← Home</button>
+  <div class="panel">
+    <h2 id="chapterTitle" style="color:#60caff;margin-bottom:12px"></h2>
+    <p style="color:#c0d2eb;line-height:1.8">
+      এই অধ্যায়ের Mock Test-এ অংশগ্রহণ করো। প্রতিটি প্রশ্নের মান ৫।
+      মোট প্রশ্ন ২০টি এবং সময় ২০ মিনিট।
+    </p>
+    <br>
+    <button class="primary" onclick="startTest()">Start Mock Test →</button>
+  </div>
 </section>
 
 <!-- TEST PAGE -->
 <section id="testPage" class="page">
- <div class="topline">
-  <div>
-   <h2 id="testTitle">Mock Test</h2>
-   <p class="subtitle" style="margin:0">20 Questions • 20 Minutes</p>
+  <button class="secondary back" onclick="confirmHome()">← Exit Test</button>
+
+  <div class="info">
+    <div>
+      <h2 id="testTitle" style="color:#60caff">Mock Test</h2>
+      <p style="color:#a9bddb;margin-top:7px">প্রশ্ন: ২০ | নম্বর: ১০০</p>
+    </div>
+    <div class="timer">⏱ <span id="timer">20:00</span></div>
   </div>
-  <div class="timer" id="timer">20:00</div>
- </div>
- <div class="progress"><div id="progressBar"></div></div>
- <div class="test-layout">
-  <div class="question-box">
-   <div class="question-number" id="questionNumber">Question 1 of 20</div>
-   <div class="question-text" id="questionText"></div>
-   <div class="options" id="options"></div>
-   <div class="actions">
-    <button class="secondary" onclick="previousQuestion()">← Previous</button>
-    <button class="secondary" onclick="clearAnswer()">Clear Answer</button>
-    <button class="secondary" onclick="markReview()">Mark Review</button>
-    <button class="primary" onclick="nextQuestion()">Next →</button>
-   </div>
-   <button class="danger" style="width:100%;margin-top:18px" onclick="confirmSubmit()">Submit Test</button>
-  </div>
-  <aside class="test-sidebar">
-   <h3>Question Palette</h3>
-   <p style="color:var(--muted);font-size:13px">Green: Answered · Orange: Review</p>
-   <div class="question-grid" id="questionGrid"></div>
-  </aside>
- </div>
+
+  <div id="questions"></div>
+
+  <button class="primary" style="width:100%" onclick="submitTest()">
+    Submit Test
+  </button>
 </section>
 
 <!-- RESULT PAGE -->
 <section id="resultPage" class="page">
- <div class="card">
-  <h2 style="text-align:center">Test Completed! 🎉</h2>
-  <p class="subtitle" style="text-align:center">Your performance summary</p>
-  <div class="result-score" id="finalScore">0/20</div>
-  <p style="text-align:center;color:var(--muted)" id="resultMessage"></p>
-  <div class="result-stats">
-   <div class="stat"><strong class="correct" id="correctCount">0</strong>Correct</div>
-   <div class="stat"><strong class="incorrect" id="wrongCount">0</strong>Incorrect</div>
-   <div class="stat"><strong id="skipCount">0</strong>Unanswered</div>
-   <div class="stat"><strong id="accuracy">0%</strong>Accuracy</div>
-   <div class="stat"><strong id="timeTaken">0:00</strong>Time Taken</div>
+  <div class="panel result">
+    <h2>🎉 Test Completed!</h2>
+    <p id="score"></p>
+    <p id="percentage"></p>
+    <p id="correct"></p>
+    <p id="wrong"></p>
+    <br>
+    <button class="primary" onclick="showPage('home')">Back to Home</button>
+    <button class="secondary" onclick="reviewAnswers()">Review Answers</button>
   </div>
-  <div class="actions">
-   <button class="primary" onclick="showReview()">Review Answers</button>
-   <button class="secondary" onclick="restartTest()">Try Again</button>
-   <button class="secondary" onclick="showSections()">Choose Another Chapter</button>
-  </div>
- </div>
- <div id="reviewArea" style="display:none;margin-top:25px">
-  <h2>Answer Review</h2>
-  <div id="reviewList"></div>
- </div>
+  <div id="review"></div>
 </section>
 
-<!-- ABOUT PAGE -->
-<section id="aboutPage" class="page">
- <button class="secondary back" onclick="home()">← Home</button>
- <div class="hero">
-  <h1>About ক্লাস গণিত 🎓</h1>
-  <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
- </div>
- <div class="card">
-  <h3>Our Mission</h3>
-  <p>Our mission is to make mathematics learning simple, accessible and enjoyable through chapter-wise practice and mock tests.</p>
-  <br>
-  <h3>Our Address</h3>
-  <p>Durgabari More, Maynaguri, Jalpaiguri, West Bengal, India</p>
-  <br>
-  <h3>Contact Us</h3>
-  <p>Phone: +91 8159061346</p>
-  <br>
-  <a href="tel:+918159061346"><button class="primary">Call Us</button></a>
-  <a href="https://wa.me/918159061346" target="_blank"><button class="success">WhatsApp</button></a>
- </div>
-</section>
-
-</main>
+</div>
 
 <footer>
- <h3>ক্লাস গণিত 🎓</h3>
- <p>LEARN • PRACTISE • ACHIEVE</p>
- <p>© 2026 Class Gonit | All Rights Reserved.</p>
+  <strong>ক্লাস গণিত 🎓</strong><br>
+  শেখো • অনুশীলন করো • এগিয়ে চলো<br>
+  Mathematics Learning Platform
 </footer>
 
 <script>
-const sections = [
- {name:"Number System & Simplification",icon:"🔢",chapters:[
- "Number System","Divisibility Rules","HCF & LCM","Remainder","BODMAS","VBODMAS","Square & Cube","Approximation"]},
- {name:"Arithmetic",icon:"📊",chapters:[
- "Percentage","Ratio & Proportion","Average","Profit & Loss","Discount","Simple Interest","Compound Interest","Partnership","Mixture & Alligation"]},
- {name:"Time, Work & Distance",icon:"⏰",chapters:[
- "Time & Work","Pipes & Cisterns","Work & Wages","Speed, Time & Distance","Train Problems","Boat & Stream","Races"]},
- {name:"Algebra & Geometry",icon:"📐",chapters:[
- "Algebraic Identities","Linear Equations","Quadratic Equations","Polynomials","Lines & Angles","Triangles","Quadrilaterals","Circles","Polygons"]},
- {name:"Mensuration & Trigonometry",icon:"📏",chapters:[
- "2D Mensuration","3D Mensuration","Area & Perimeter","Surface Area & Volume","Trigonometric Ratios","Trigonometric Identities","Heights & Distances"]},
- {name:"Data Interpretation & Statistics",icon:"📈",chapters:[
- "Table DI","Bar Graph","Pie Chart","Line Graph","Caselet DI","Mean, Median & Mode","Probability"]}
+
+const chapters = [
+ ["🔢","Number System"],
+ ["➗","Simplification (BODMAS)"],
+ ["📐","LCM & HCF"],
+ ["📊","Percentage"],
+ ["⚖️","Ratio & Proportion"],
+ ["💰","Profit & Loss"],
+ ["📈","Average"],
+ ["⏰","Time & Work"]
 ];
 
-// Demonstration question bank.
-// Add or replace questions here as your verified question bank grows.
-const questionBank = {
- "Percentage":[
-  {q:"What is 25% of 200?",o:["25","40","50","75"],a:2,e:"25% of 200 = 25/100 × 200 = 50."},
-  {q:"20% of a number is 40. Find the number.",o:["100","150","200","250"],a:2,e:"Number = 40 × 100/20 = 200."},
-  {q:"Convert 0.75 into percentage.",o:["7.5%","75%","750%","0.75%"],a:1,e:"0.75 × 100 = 75%."}
- ],
- "Average":[
-  {q:"Find the average of 10, 20 and 30.",o:["15","20","25","30"],a:1,e:"Average = (10+20+30)/3 = 20."},
-  {q:"The average of 5 numbers is 12. Find their sum.",o:["50","55","60","65"],a:2,e:"Sum = Average × Number = 12 × 5 = 60."}
- ],
- "Profit & Loss":[
-  {q:"An item costs ₹100 and sells for ₹120. Find the profit.",o:["₹10","₹15","₹20","₹25"],a:2,e:"Profit = Selling Price − Cost Price = ₹20."},
-  {q:"CP = ₹200 and SP = ₹180. Find the loss.",o:["₹10","₹20","₹30","₹40"],a:1,e:"Loss = 200 − 180 = ₹20."}
- ],
- "Number System":[
-  {q:"What is the smallest prime number?",o:["0","1","2","3"],a:2,e:"2 is the smallest prime number."},
-  {q:"Which of these is an even number?",o:["13","17","21","24"],a:3,e:"24 is divisible by 2."}
- ],
- "BODMAS":[
-  {q:"Find: 12 + 6 × 2",o:["36","24","30","18"],a:1,e:"Multiplication first: 12 + 12 = 24."},
-  {q:"Find: 20 ÷ 5 + 3",o:["4","5","7","8"],a:2,e:"20 ÷ 5 = 4; 4 + 3 = 7."}
- ],
- "VBODMAS":[
-  {q:"Find: 8 + 4 × 3 − 2",o:["18","30","22","14"],a:0,e:"4 × 3 = 12; 8 + 12 − 2 = 18."},
-  {q:"Find: 36 ÷ 6 × 2",o:["3","6","12","18"],a:2,e:"Division and multiplication from left to right: 6 × 2 = 12."}
- ]
-};
+let selectedChapter = "";
+let timeLeft = 1200;
+let timerInterval = null;
+let submitted = false;
+let answers = {};
 
-let currentSection=0,currentChapter="",questions=[],answers=[],reviewFlags=[];
-let currentQ=0,timerInterval=null,timeLeft=1200,startTime=0,finishedAt=0;
+const questions = [
+ {q:"25 + 15 × 2 = কত?",o:["80","55","50","65"],a:1,e:"BODMAS অনুযায়ী আগে গুণ: 25 + 30 = 55।"},
+ {q:"144 ÷ 12 = কত?",o:["10","11","12","14"],a:2,e:"144 ÷ 12 = 12।"},
+ {q:"15 × 4 - 20 = কত?",o:["30","40","50","60"],a:0,e:"60 - 20 = 40। সঠিক উত্তর B।"},
+ {q:"200-এর 25% কত?",o:["25","40","50","75"],a:2,e:"200 × 25/100 = 50।"},
+ {q:"12 ও 18-এর LCM কত?",o:["24","30","36","48"],a:2,e:"12 ও 18-এর ল.সা.গু 36।"},
+ {q:"24 ও 36-এর HCF কত?",o:["6","8","12","18"],a:2,e:"24 ও 36-এর গ.সা.গু 12।"},
+ {q:"3/4 + 1/4 = কত?",o:["1/2","1","2","3/4"],a:1,e:"একই হর হওয়ায় (3+1)/4 = 1।"},
+ {q:"একটি সংখ্যার 50% = 40 হলে সংখ্যাটি কত?",o:["60","70","80","90"],a:2,e:"40 × 100/50 = 80।"},
+ {q:"5 : 10-এর সরল অনুপাত কত?",o:["1:2","2:1","1:5","5:1"],a:0,e:"উভয় পদকে 5 দিয়ে ভাগ করলে 1:2।"},
+ {q:"10, 20, 30-এর গড় কত?",o:["15","20","25","30"],a:1,e:"(10+20+30)/3 = 20।"},
+ {q:"একটি জিনিস 100 টাকায় কিনে 120 টাকায় বিক্রি করলে লাভ কত?",o:["10","15","20","25"],a:2,e:"120 - 100 = 20 টাকা।"},
+ {q:"2² + 3² = কত?",o:["10","13","15","25"],a:1,e:"4 + 9 = 13।"},
+ {q:"√169-এর মান কত?",o:["11","12","13","14"],a:2,e:"13 × 13 = 169।"},
+ {q:"এক ডজন সমান কতটি?",o:["10","12","15","20"],a:1,e:"এক ডজন = 12টি।"},
+ {q:"7 × 8 + 4 = কত?",o:["56","60","64","68"],a:1,e:"56 + 4 = 60।"},
+ {q:"1 কিলোমিটার সমান কত মিটার?",o:["100","500","1000","1500"],a:2,e:"1 কিলোমিটার = 1000 মিটার।"},
+ {q:"একটি সংখ্যার 10% = 15 হলে সংখ্যাটি কত?",o:["100","120","150","200"],a:2,e:"15 × 100/10 = 150।"},
+ {q:"9 × 9 = কত?",o:["72","81","90","99"],a:1,e:"9 × 9 = 81।"},
+ {q:"80-এর 1/4 কত?",o:["10","15","20","25"],a:2,e:"80 ÷ 4 = 20।"},
+ {q:"100 - 25 ÷ 5 = কত?",o:["15","75","95","25"],a:2,e:"আগে ভাগ: 100 - 5 = 95।"}
+];
 
 function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- window.scrollTo(0,0);
-}
-function home(){showPage("homePage")}
-function showSections(){
- const grid=document.getElementById("sectionGrid");
- grid.innerHTML="";
- sections.forEach((s,i)=>{
-  const card=document.createElement("div");
-  card.className="card section-card";
-  card.innerHTML=`<div class="icon">${s.icon}</div><h3>${s.name}</h3><p>${s.chapters.length} Chapters</p><button class="primary">Explore Chapters →</button>`;
-  card.onclick=()=>openSection(i);
-  grid.appendChild(card);
- });
- showPage("sectionsPage");
-}
-function openSection(i){
- currentSection=i;
- document.getElementById("chapterTitle").textContent=sections[i].name;
- document.getElementById("chapterSearch").value="";
- renderChapters(sections[i].chapters);
- showPage("chaptersPage");
-}
-function renderChapters(list){
- const box=document.getElementById("chapterList");
- box.innerHTML="";
- list.forEach(name=>{
-  const row=document.createElement("div");
-  row.className="chapter";
-  const title=document.createElement("strong");
-  title.textContent=name;
-  const btn=document.createElement("button");
-  btn.className="primary";
-  btn.textContent="Start Test →";
-  btn.onclick=()=>startTest(name);
-  row.append(title,btn);
-  box.appendChild(row);
- });
-}
-function filterChapters(){
- const term=document.getElementById("chapterSearch").value.toLowerCase();
- renderChapters(sections[currentSection].chapters.filter(c=>c.toLowerCase().includes(term)));
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
 }
 
-function getQuestions(chapter){
- const bank=questionBank[chapter]||[];
- const list=bank.slice();
- // Fill the 20-question demo test with clearly identified practice templates
- // until a complete verified chapter question bank is supplied.
- while(list.length<20){
-  const n=list.length+1;
-  list.push({
-   q:`Practice Question ${n}: ${chapter} — What should you do when solving a mathematics problem?`,
-   o:["Read carefully and apply the correct concept","Choose randomly","Ignore the given information","Skip every step"],
-   a:0,
-   e:"Read the problem carefully and apply the relevant mathematical concept. Replace this demonstration question with a verified chapter question."
+function makeChapters(){
+  const list=document.getElementById("chapterList");
+  chapters.forEach(ch=>{
+    const div=document.createElement("div");
+    div.className="chapter";
+    div.innerHTML=`<div class="emoji">${ch[0]}</div>
+    <h3>${ch[1]}</h3><p>20 Questions • 20 Minutes</p>`;
+    div.onclick=()=>openChapter(ch[1]);
+    list.appendChild(div);
   });
- }
- return list.slice(0,20);
 }
 
-function startTest(chapter){
- currentChapter=chapter;
- questions=getQuestions(chapter);
- answers=Array(20).fill(null);
- reviewFlags=Array(20).fill(false);
- currentQ=0;timeLeft=1200;startTime=Date.now();finishedAt=0;
- document.getElementById("testTitle").textContent=chapter+" Mock Test";
- showPage("testPage");
- renderQuestion();
- renderPalette();
- updateTimer();
- clearInterval(timerInterval);
- timerInterval=setInterval(()=>{
-  timeLeft--;
-  updateTimer();
-  if(timeLeft<=0)submitTest(true);
- },1000);
+function openChapter(name){
+  selectedChapter=name;
+  document.getElementById("chapterTitle").innerText="📚 "+name;
+  showPage("chapterPage");
 }
-function updateTimer(){
- const m=Math.floor(timeLeft/60);
- const s=timeLeft%60;
- document.getElementById("timer").textContent=`${m}:${String(s).padStart(2,"0")}`;
- document.getElementById("timer").style.color=timeLeft<=60?"#ff6376":"#65d8ff";
+
+function startTest(){
+  answers={};
+  submitted=false;
+  timeLeft=1200;
+  document.getElementById("testTitle").innerText=selectedChapter;
+  document.getElementById("timer").innerText="20:00";
+
+  const area=document.getElementById("questions");
+  area.innerHTML="";
+
+  questions.forEach((q,i)=>{
+    let html=`<div class="question">
+      <h3>${i+1}. ${q.q}</h3>`;
+    q.o.forEach((option,j)=>{
+      html+=`<label class="option">
+      <input type="radio" name="q${i}" value="${j}">
+      ${String.fromCharCode(65+j)}. ${option}
+      </label>`;
+    });
+    html+="</div>";
+    area.innerHTML+=html;
+  });
+
+  showPage("testPage");
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    timeLeft--;
+    const min=Math.floor(timeLeft/60);
+    const sec=timeLeft%60;
+    document.getElementById("timer").innerText=
+      String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+    if(timeLeft<=0){
+      submitTest();
+    }
+  },1000);
 }
-function renderQuestion(){
- const q=questions[currentQ];
- document.getElementById("questionNumber").textContent=`Question ${currentQ+1} of 20`;
- document.getElementById("questionText").textContent=q.q;
- document.getElementById("progressBar").style.width=((currentQ+1)/20*100)+"%";
- const box=document.getElementById("options");
- box.innerHTML="";
- q.o.forEach((opt,i)=>{
-  const label=document.createElement("label");
-  label.className="option"+(answers[currentQ]===i?" selected":"");
-  const radio=document.createElement("input");
-  radio.type="radio";radio.name="answer";radio.checked=answers[currentQ]===i;
-  radio.onchange=()=>{answers[currentQ]=i;renderQuestion();renderPalette()};
-  label.append(radio,document.createTextNode(opt));
-  box.appendChild(label);
- });
- renderPalette();
+
+function submitTest(){
+  if(submitted)return;
+  if(!confirm("আপনি কি Test Submit করতে চান?"))return;
+
+  submitted=true;
+  clearInterval(timerInterval);
+
+  answers={};
+  questions.forEach((q,i)=>{
+    const selected=document.querySelector(`input[name="q${i}"]:checked`);
+    answers[i]=selected?Number(selected.value):-1;
+  });
+
+  let correct=0;
+  questions.forEach((q,i)=>{
+    if(answers[i]===q.a)correct++;
+  });
+
+  let wrong=20-correct;
+  let marks=correct*5;
+
+  document.getElementById("score").innerText="আপনার নম্বর: "+marks+" / 100";
+  document.getElementById("percentage").innerText="Percentage: "+marks+"%";
+  document.getElementById("correct").innerText="সঠিক উত্তর: "+correct;
+  document.getElementById("wrong").innerText="ভুল / উত্তর না দেওয়া: "+wrong;
+
+  showPage("resultPage");
 }
-function renderPalette(){
- const grid=document.getElementById("questionGrid");
- grid.innerHTML="";
- for(let i=0;i<20;i++){
-  const b=document.createElement("button");
-  b.textContent=i+1;b.className="qnav";
-  if(answers[i]!==null)b.classList.add("answered");
-  if(reviewFlags[i])b.classList.add("review");
-  if(i===currentQ)b.classList.add("current");
-  b.onclick=()=>{currentQ=i;renderQuestion()};
-  grid.appendChild(b);
- }
+
+function reviewAnswers(){
+  const area=document.getElementById("review");
+  area.innerHTML="";
+  questions.forEach((q,i)=>{
+    const selected=answers[i];
+    const isCorrect=selected===q.a;
+    area.innerHTML+=`
+      <div class="question">
+      <h3>${i+1}. ${q.q}</h3>
+      <p style="color:${isCorrect?'#65e6a1':'#ff9292'}">
+      ${isCorrect?'✓ Correct':'✗ Incorrect'}
+      </p>
+      <p>সঠিক উত্তর: ${q.o[q.a]}</p>
+      <div class="explanation">ব্যাখ্যা: ${q.e}</div>
+      </div>`;
+  });
+  area.scrollIntoView({behavior:"smooth"});
 }
-function nextQuestion(){if(currentQ<19){currentQ++;renderQuestion()}}
-function previousQuestion(){if(currentQ>0){currentQ--;renderQuestion()}}
-function clearAnswer(){answers[currentQ]=null;renderQuestion()}
-function markReview(){reviewFlags[currentQ]=!reviewFlags[currentQ];renderPalette()}
-function confirmSubmit(){
- const unanswered=answers.filter(a=>a===null).length;
- if(confirm(`Submit your test? ${unanswered} questions are unanswered.`))submitTest(false);
+
+function confirmHome(){
+  if(confirm("আপনি কি Test থেকে বের হতে চান?")){
+    clearInterval(timerInterval);
+    showPage("home");
+  }
 }
-function submitTest(auto){
- if(!document.getElementById("testPage").classList.contains("active"))return;
- clearInterval(timerInterval);
- finishedAt=Date.now();
- let correct=0,wrong=0,skip=0;
- questions.forEach((q,i)=>{
-  if(answers[i]===null)skip++;
-  else if(answers[i]===q.a)correct++;
-  else wrong++;
- });
- const accuracy=correct+wrong?Math.round(correct/(correct+wrong)*100):0;
- document.getElementById("finalScore").textContent=correct+"/20";
- document.getElementById("correctCount").textContent=correct;
- document.getElementById("wrongCount").textContent=wrong;
- document.getElementById("skipCount").textContent=skip;
- document.getElementById("accuracy").textContent=accuracy+"%";
- const elapsed=1200-timeLeft;
- document.getElementById("timeTaken").textContent=
-  Math.floor(elapsed/60)+":"+String(elapsed%60).padStart(2,"0");
- document.getElementById("resultMessage").textContent=
-  auto?"Time is over. Your test was submitted automatically.":"Well done! Your test has been submitted.";
- document.getElementById("reviewArea").style.display="none";
- saveResult({chapter:currentChapter,correct,wrong,skip,accuracy,date:new Date().toLocaleString()});
- showPage("resultPage");
-}
-function showReview(){
- const box=document.getElementById("reviewList");
- box.innerHTML="";
- questions.forEach((q,i)=>{
-  const item=document.createElement("div");
-  item.className="review-item";
-  const your=answers[i]===null?"Not answered":q.o[answers[i]];
-  const status=answers[i]===null?"Unanswered":answers[i]===q.a?"Correct":"Incorrect";
-  item.innerHTML=`<strong>Q${i+1}. ${escapeHTML(q.q)}</strong>
-  <p>Your Answer: ${escapeHTML(your)}</p>
-  <p>Correct Answer: <span class="correct">${escapeHTML(q.o[q.a])}</span></p>
-  <p>Status: ${status==="Correct"?'<span class="correct">Correct</span>':status==="Incorrect"?'<span class="incorrect">Incorrect</span>':"Unanswered"}</p>
-  <p>Explanation: ${escapeHTML(q.e)}</p>`;
-  box.appendChild(item);
- });
- document.getElementById("reviewArea").style.display="block";
-}
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
-}
-function restartTest(){startTest(currentChapter)}
-function saveResult(result){
- try{
-  const history=JSON.parse(localStorage.getItem("cgHistory")||"[]");
-  history.push(result);
-  localStorage.setItem("cgHistory",JSON.stringify(history));
- }catch(e){}
-}
-function showAbout(){showPage("aboutPage")}
+
+makeChapters();
+
 </script>
 </body>
 </html>
-
