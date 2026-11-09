@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Gonit - Mathematics Mock Test</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172554;
+}
+header {
+  background: #123b75;
+  color: white;
+  text-align: center;
+  padding: 25px 12px;
+}
+header h1 { margin: 0; font-size: 30px; }
+header p { margin-bottom: 0; }
+.container {
+  max-width: 750px;
+  margin: 25px auto;
+  padding: 20px;
+}
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #0001;
+}
+button {
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 5px;
+}
+.primary { background: #2563eb; color: white; }
+.secondary { background: #e2e8f0; }
+.option {
+  display: block;
+  border: 1px solid #cbd5e1;
+  padding: 13px;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.option:has(input:checked) {
+  background: #dbeafe;
+  border-color: #2563eb;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #eff6ff;
+  padding: 13px;
+  border-radius: 8px;
+}
+.hidden { display: none; }
+#palette button { min-width: 38px; }
+footer { text-align: center; padding: 20px; color: #64748b; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CLASS GONIT</h1>
+  <p>Mathematics Learning & Mock Test Platform</p>
+</header>
+
+<main class="container">
+  <section class="card" id="home">
+    <h2>Welcome to Class Gonit</h2>
+    <p>Practice Mathematics for Competitive Examinations.</p>
+    <h3>Mathematics Mock Test - 01</h3>
+    <p>Total Questions: 5</p>
+    <p>Time: 10 Minutes</p>
+    <p>Correct Answer: +1 | Wrong Answer: -0.25</p>
+    <button class="primary" onclick="startTest()">Start Mock Test</button>
+  </section>
+
+  <section class="card hidden" id="exam">
+    <div class="info">
+      <strong id="number">Question 1</strong>
+      <strong>Time: <span id="timer">10:00</span></strong>
+    </div>
+    <h3 id="question"></h3>
+    <div id="options"></div>
+    <p>Question Navigation</p>
+    <div id="palette"></div>
+    <button class="secondary" onclick="previous()">Previous</button>
+    <button class="secondary" onclick="mark()">Mark Review</button>
+    <button class="primary" onclick="next()">Next</button>
+    <hr>
+    <button class="primary" onclick="submitTest()">Submit Test</button>
+  </section>
+
+  <section class="card hidden" id="result">
+    <h2>Your Test Result</h2>
+    <h3 id="score"></h3>
+    <p id="details"></p>
+    <button class="primary" onclick="location.reload()">Back to Home</button>
+  </section>
+</main>
+
+<footer>© 2026 Class Gonit | Learn • Practice • Succeed</footer>
+
+<script>
+const questions = [
+ {q:"What is 25 × 4?",o:["50","75","100","125"],a:2},
+ {q:"What is 144 ÷ 12?",o:["10","11","12","14"],a:2},
+ {q:"What is the square of 15?",o:["125","200","225","250"],a:2},
+ {q:"What is 20% of 500?",o:["50","100","150","200"],a:1},
+ {q:"What is the LCM of 6 and 8?",o:["12","18","24","48"],a:2}
+];
+
+let current=0, answers=Array(questions.length).fill(null);
+let reviews=Array(questions.length).fill(false);
+let remaining=600, finished=false, clock;
+
+function startTest(){
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("exam").classList.remove("hidden");
+ showQuestion();
+ updateTimer();
+ clock=setInterval(()=>{
+   if(remaining>0){remaining--;updateTimer();}
+   else submitTest(true);
+ },1000);
+}
+
+function updateTimer(){
+ let m=Math.floor(remaining/60),s=remaining%60;
+ document.getElementById("timer").textContent=
+ String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+
+function showQuestion(){
+ let q=questions[current];
+ document.getElementById("number").textContent=
+ "Question "+(current+1)+" of "+questions.length;
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("options").innerHTML=q.o.map((x,i)=>
+ `<label class="option"><input type="radio" name="answer"
+ value="${i}" ${answers[current]===i?"checked":""}
+ onchange="answers[current]=${i};showPalette()"> ${x}</label>`
+ ).join("");
+ showPalette();
+}
+
+function showPalette(){
+ document.getElementById("palette").innerHTML=questions.map((q,i)=>
+ `<button style="background:${i===current?"#2563eb":reviews[i]?"#eab308":answers[i]!==null?"#16a34a":"#e2e8f0"};color:${i===current||answers[i]!==null?"white":"black"}"
+ onclick="current=${i};showQuestion()">${i+1}</button>`
+ ).join("");
+}
+
+function next(){if(current<questions.length-1){current++;showQuestion();}}
+function previous(){if(current>0){current--;showQuestion();}}
+function mark(){reviews[current]=!reviews[current];showPalette();}
+
+function submitTest(auto=false){
+ if(finished)return;
+ if(!auto&&!confirm("Are you sure you want to submit?"))return;
+ finished=true;clearInterval(clock);
+ let correct=0,wrong=0,skip=0;
+ questions.forEach((q,i)=>{
+  if(answers[i]===null)skip++;
+  else if(answers[i]===q.a)correct++;
+  else wrong++;
+ });
+ let score=correct-wrong*0.25;
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("score").textContent="Score: "+score.toFixed(2)+" / "+questions.length;
+ document.getElementById("details").textContent=
+ "Correct: "+correct+" | Wrong: "+wrong+" | Skipped: "+skip+
+ " | Percentage: "+(score/questions.length*100).toFixed(2)+"%";
+}
+</script>
+</body>
+</html>
