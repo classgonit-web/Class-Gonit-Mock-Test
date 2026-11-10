@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বর্তমান বিষয়াবলি | Class Gonit</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:"Noto Sans Bengali","Nirmala UI",Arial,sans-serif;
+ background:#f2f6ff;
+ color:#172554;
+}
+
+header{
+ background:linear-gradient(135deg,#101b55,#293b9b,#5426a6);
+ color:white;
+ padding:22px 15px 30px;
+ text-align:center;
+ border-radius:0 0 28px 28px;
+}
+
+.logo{
+ width:65px;
+ height:65px;
+ object-fit:contain;
+ background:white;
+ border-radius:50%;
+ padding:4px;
+}
+
+.brand{
+ font-size:23px;
+ font-weight:900;
+ margin-top:7px;
+}
+
+.tagline{
+ font-size:12px;
+ color:#ffdc83;
+ margin-top:3px;
+}
+
+.header-title{
+ font-size:26px;
+ font-weight:bold;
+ margin-top:22px;
+}
+
+.header-sub{
+ font-size:13px;
+ color:#e1e7ff;
+ margin-top:7px;
+}
+
+.date{
+ display:inline-block;
+ margin-top:15px;
+ padding:8px 17px;
+ background:#ffffff20;
+ border:1px solid #ffffff55;
+ border-radius:30px;
+ font-size:13px;
+}
+
+.container{
+ max-width:850px;
+ margin:auto;
+ padding:18px 13px 35px;
+}
+
+.section-title{
+ font-size:20px;
+ font-weight:bold;
+ margin:22px 0 13px;
+ color:#172554;
+}
+
+.categories{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+
+.category{
+ background:white;
+ border-radius:15px;
+ padding:15px 5px;
+ text-align:center;
+ border:1px solid #e0e7ff;
+ box-shadow:0 4px 12px #1e3a8a0c;
+ cursor:pointer;
+ font-size:12px;
+ font-weight:bold;
+ color:#24356e;
+}
+
+.category span{
+ display:block;
+ font-size:27px;
+ margin-bottom:7px;
+}
+
+.category.active{
+ background:linear-gradient(135deg,#253b9a,#6033b6);
+ color:white;
+ border-color:transparent;
+}
+
+.news-card{
+ background:white;
+ border-radius:16px;
+ padding:17px;
+ margin-bottom:13px;
+ box-shadow:0 5px 18px #1e3a8a12;
+ border-left:4px solid #4934a5;
+}
+
+.news-tag{
+ display:inline-block;
+ background:#eeeaff;
+ color:#5135a3;
+ padding:5px 10px;
+ border-radius:20px;
+ font-size:11px;
+ font-weight:bold;
+}
+
+.news-card h3{
+ font-size:16px;
+ margin:12px 0 8px;
+ color:#19275e;
+}
+
+.news-card p{
+ font-size:13px;
+ line-height:1.8;
+ color:#526078;
+ margin:0;
+}
+
+.news-date{
+ font-size:11px;
+ color:#8792a8;
+ margin-top:12px;
+}
+
+.empty{
+ text-align:center;
+ background:white;
+ padding:25px 15px;
+ border-radius:15px;
+ color:#64748b;
+ font-size:14px;
+ line-height:1.8;
+}
+
+.quiz-box{
+ background:linear-gradient(135deg,#111d58,#4930a5);
+ border-radius:20px;
+ padding:20px 16px;
+ color:white;
+ margin-top:12px;
+}
+
+.quiz-box h2{
+ margin:0 0 8px;
+ color:#ffdb7a;
+ font-size:21px;
+}
+
+.quiz-box>p{
+ font-size:13px;
+ color:#e1e6ff;
+}
+
+.question{
+ background:#ffffff15;
+ border:1px solid #ffffff35;
+ border-radius:13px;
+ padding:15px;
+ margin-top:15px;
+}
+
+.question h3{
+ font-size:15px;
+ line-height:1.7;
+}
+
+.option{
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:11px;
+ margin:8px 0;
+ border-radius:9px;
+ border:1px solid #ffffff55;
+ background:#ffffff12;
+ color:white;
+ font-size:13px;
+ cursor:pointer;
+}
+
+.option:disabled{
+ opacity:1;
+ cursor:default;
+}
+
+.option.selected{
+ background:#ffdc79;
+ color:#172554;
+ border-color:#ffdc79;
+}
+
+.option.correct-answer{
+ background:#087b4d;
+ border-color:#40e7a3;
+ color:white;
+}
+
+.option.wrong-answer{
+ background:#a52e48;
+ border-color:#ff879d;
+ color:white;
+}
+
+.explanation{
+ font-size:12px;
+ line-height:1.7;
+ margin-top:10px;
+ color:#ffe8a7;
+}
+
+.quiz-button{
+ display:block;
+ width:100%;
+ border:0;
+ border-radius:10px;
+ padding:13px;
+ margin-top:15px;
+ background:#ffdb79;
+ color:#19245b;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+.result{
+ text-align:center;
+ margin-top:15px;
+ font-size:17px;
+ font-weight:bold;
+ color:#ffdc79;
+}
+
+footer{
+ text-align:center;
+ background:#101b55;
+ color:white;
+ padding:23px 12px;
+ font-size:12px;
+ line-height:1.9;
+}
+
+footer strong{
+ color:#ffdb79;
+ font-size:16px;
+}
+
+.home-btn{
+ display:inline-block;
+ margin-top:16px;
+ text-decoration:none;
+ color:white;
+ border:1px solid #ffffff70;
+ padding:9px 20px;
+ border-radius:25px;
+}
+
+@media(max-width:400px){
+ .categories{gap:7px}
+ .category{padding:12px 3px;font-size:11px}
+ .header-title{font-size:23px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+ <img src="logo.png" class="logo" alt="Class Gonit Logo">
+
+ <div class="brand">CLASS GONIT 🎓</div>
+ <div class="tagline">LEARNING CENTRE</div>
+
+ <div class="header-title">📚 বর্তমান বিষয়াবলি</div>
+
+ <div class="header-sub">
+ প্রতিদিন জানো, প্রতিদিন শেখো, এগিয়ে চলো
+ </div>
+
+ <div class="date" id="todayDate">আজকের তারিখ</div>
+
+</header>
+
+<main class="container">
+
+ <div class="section-title">📌 বিষয় নির্বাচন করো</div>
+
+ <div class="categories">
+
+  <div class="category active" data-category="সব">
+   <span>📖</span>সব খবর
+  </div>
+
+  <div class="category" data-category="জাতীয়">
+   <span>🇮🇳</span>জাতীয়
+  </div>
+
+  <div class="category" data-category="আন্তর্জাতিক">
+   <span>🌍</span>আন্তর্জাতিক
+  </div>
+
+  <div class="category" data-category="খেলাধুলা">
+   <span>🏏</span>খেলাধুলা
+  </div>
+
+  <div class="category" data-category="বিজ্ঞান">
+   <span>🔬</span>বিজ্ঞান ও প্রযুক্তি
+  </div>
+
+  <div class="category" data-category="পুরস্কার">
+   <span>🏆</span>পুরস্কার
+  </div>
+
+  <div class="category" data-category="গুরুত্বপূর্ণ দিবস">
+   <span>📅</span>গুরুত্বপূর্ণ দিবস
+  </div>
+
+ </div>
+
+ <div class="section-title">📰 আজকের গুরুত্বপূর্ণ খবর</div>
+
+ <div id="newsContainer"></div>
+
+ <div class="section-title">📝 দৈনিক কারেন্ট অ্যাফেয়ার্স কুইজ</div>
+
+ <div class="quiz-box">
+
+  <h2>🎯 নিজের জ্ঞান যাচাই করো</h2>
+
+  <p>প্রশ্নের সঠিক উত্তর নির্বাচন করো। শেষে তোমার ফলাফল দেখতে পাবে।</p>
+
+  <div id="quizContainer"></div>
+
+ </div>
+
+</main>
+
+<footer>
+
+ <strong>CLASS GONIT 🎓</strong><br>
+ LEARNING CENTRE<br>
+
+ ULLADABRI, MAYNAGURI, JALPAIGURI<br>
+ West Bengal – 735224<br>
+
+ যোগাযোগ: 8159061346<br>
+
+ <a href="index.html" class="home-btn">← হোম পেজে ফিরে যাও</a>
+
+</footer>
+
+<script>
+
+// আজকের তারিখ
+
+const today = new Date();
+
+document.getElementById("todayDate").textContent =
+ "আজ: " + today.toLocaleDateString("bn-IN",{
+  day:"numeric",
+  month:"long",
+  year:"numeric"
+ });
+
+
+// =================================
+// প্রতিদিনের খবর এখানে যোগ করবে
+// =================================
+
+const news = [
+
+ {
+  category:"জাতীয়",
+  title:"আজকের জাতীয় খবর এখানে লিখুন",
+  description:"এখানে ভারতের গুরুত্বপূর্ণ জাতীয় খবরের বিস্তারিত তথ্য লিখবে।",
+  date:"তারিখ লিখুন"
+ },
+
+ {
+  category:"আন্তর্জাতিক",
+  title:"আজকের আন্তর্জাতিক খবর এখানে লিখুন",
+  description:"এখানে বিশ্বের গুরুত্বপূর্ণ খবরের বিস্তারিত তথ্য লিখবে।",
+  date:"তারিখ লিখুন"
+ },
+
+ {
+  category:"খেলাধুলা",
+  title:"আজকের খেলার খবর এখানে লিখুন",
+  description:"এখানে ক্রিকেট, ফুটবল ও অন্যান্য খেলার খবর লিখবে।",
+  date:"তারিখ লিখুন"
+ },
+
+ {
+  category:"বিজ্ঞান",
+  title:"বিজ্ঞান ও প্রযুক্তির খবর এখানে লিখুন",
+  description:"এখানে বিজ্ঞান ও প্রযুক্তির নতুন আবিষ্কার সম্পর্কে লিখবে।",
+  date:"তারিখ লিখুন"
+ },
+
+ {
+  category:"পুরস্কার",
+  title:"আজকের পুরস্কার ও সম্মানের খবর",
+  description:"এখানে গুরুত্বপূর্ণ পুরস্কার ও সম্মানপ্রাপ্ত ব্যক্তিদের খবর লিখবে।",
+  date:"তারিখ লিখুন"
+ },
+
+ {
+  category:"গুরুত্বপূর্ণ দিবস",
+  title:"আজকের গুরুত্বপূর্ণ দিবস",
+  description:"এখানে আজকের বিশেষ দিবস সম্পর্কে তথ্য লিখবে।",
+  date:"তারিখ লিখুন"
+ }
+
+];
+
+
+// খবর দেখানো
+
+const newsContainer=document.getElementById("newsContainer");
+
+function showNews(category){
+
+ newsContainer.innerHTML="";
+
+ const filtered=category==="সব"
+  ? news
+  : news.filter(item=>item.category===category);
+
+ if(filtered.length===0){
+  newsContainer.innerHTML=
+   '<div class="empty">এই বিভাগে এখনো কোনো খবর যোগ করা হয়নি।</div>';
+  return;
+ }
+
+ filtered.forEach(item=>{
+
+  const card=document.createElement("div");
+  card.className="news-card";
+
+  const tag=document.createElement("span");
+  tag.className="news-tag";
+  tag.textContent=item.category;
+
+  const title=document.createElement("h3");
+  title.textContent=item.title;
+
+  const description=document.createElement("p");
+  description.textContent=item.description;
+
+  const date=document.createElement("div");
+  date.className="news-date";
+  date.textContent="📅 "+item.date;
+
+  card.append(tag,title,description,date);
+  newsContainer.appendChild(card);
+
+ });
+
+}
+
+showNews("সব");
+
+
+// বিভাগ নির্বাচন
+
+document.querySelectorAll(".category").forEach(button=>{
+
+ button.addEventListener("click",()=>{
+
+  document.querySelectorAll(".category").forEach(b=>{
+   b.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  showNews(button.dataset.category);
+
+ });
+
+});
+
+
+// =================================
+// কুইজের প্রশ্ন এখানে যোগ করবে
+// =================================
+
+const questions = [
+
+ // নতুন প্রশ্ন যোগ করার নমুনা:
+ //
+ // {
+ //  question:"ভারতের বর্তমান রাষ্ট্রপতি কে?",
+ //  options:["নাম ১","নাম ২","নাম ৩","নাম ৪"],
+ //  answer:0,
+ //  explanation:"এখানে সঠিক উত্তরের ব্যাখ্যা লিখবে।"
+ // }
+
+];
+
+let currentQuestion=0;
+let quizScore=0;
+let answered=false;
+
+const quizContainer=document.getElementById("quizContainer");
+
+function showQuestion(){
+
+ if(questions.length===0){
+
+  quizContainer.innerHTML=
+   '<div class="empty">আজকের কুইজের প্রশ্ন শীঘ্রই যোগ করা হবে।</div>';
+
+  return;
+ }
+
+ if(currentQuestion>=questions.length){
+
+  quizContainer.innerHTML=
+   '<div class="result">🎉 কুইজ সম্পূর্ণ!<br><br>তোমার স্কোর: '+
+   quizScore+'/'+questions.length+
+   '<br><br><button class="quiz-button" onclick="restartQuiz()">আবার চেষ্টা করো</button></div>';
+
+  return;
+ }
+
+ answered=false;
+
+ const q=questions[currentQuestion];
+
+ quizContainer.innerHTML="";
+
+ const box=document.createElement("div");
+ box.className="question";
+
+ const heading=document.createElement("h3");
+ heading.textContent=
+  "প্রশ্ন "+(currentQuestion+1)+"/"+questions.length+
+  " : "+q.question;
+
+ box.appendChild(heading);
+
+ q.options.forEach((option,index)=>{
+
+  const btn=document.createElement("button");
+  btn.className="option";
+  btn.textContent=option;
+
+  btn.addEventListener("click",()=>checkAnswer(index,btn));
+
+  box.appendChild(btn);
+
+ });
+
+ const explanation=document.createElement("div");
+ explanation.className="explanation";
+ explanation.id="explanation";
+
+ box.appendChild(explanation);
+
+ const next=document.createElement("button");
+ next.className="quiz-button";
+ next.textContent="পরবর্তী প্রশ্ন →";
+ next.style.display="none";
+ next.id="nextButton";
+
+ next.onclick=()=>{
+  currentQuestion++;
+  showQuestion();
+ };
+
+ box.appendChild(next);
+
+ quizContainer.appendChild(box);
+
+}
+
+function checkAnswer(selected,button){
+
+ if(answered)return;
+
+ answered=true;
+
+ const q=questions[currentQuestion];
+
+ const options=quizContainer.querySelectorAll(".option");
+
+ options.forEach((btn,index)=>{
+
+  btn.disabled=true;
+
+  if(index===q.answer){
+   btn.classList.add("correct-answer");
+  }
+
+ });
+
+ if(selected===q.answer){
+
+  quizScore++;
+
+  button.classList.add("correct-answer");
+
+ }else{
+
+  button.classList.add("wrong-answer");
+
+ }
+
+ document.getElementById("explanation").textContent=
+  "সঠিক উত্তর: "+q.options[q.answer]+
+  "। "+q.explanation;
+
+ document.getElementById("nextButton").style.display="block";
+
+}
+
+function restartQuiz(){
+
+ currentQuestion=0;
+ quizScore=0;
+ showQuestion();
+
+}
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
