@@ -8,168 +8,52 @@
 
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#071426;
- color:#fff;
-}
-header{
- background:linear-gradient(135deg,#102d61,#087b91);
- padding:18px 12px;
- text-align:center;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#071426;color:#fff}
+header{background:linear-gradient(135deg,#102d61,#087b91);padding:18px 12px;text-align:center}
 header img{width:65px;height:65px;object-fit:contain}
 header h1{margin:8px 0 4px;font-size:25px}
 header p{margin:0;color:#d7f6ff}
-.container{
- max-width:850px;
- margin:20px auto;
- padding:15px;
-}
-.card{
- background:#10243e;
- border:1px solid #244768;
- border-radius:16px;
- padding:20px;
- margin-bottom:18px;
-}
+.container{max-width:850px;margin:20px auto;padding:15px}
+.card{background:#10243e;border:1px solid #244768;border-radius:16px;padding:20px;margin-bottom:18px}
 h2{color:#ffd166}
-input{
- width:100%;
- padding:13px;
- border-radius:8px;
- border:0;
- font-size:16px;
- margin:10px 0;
-}
-button{
- border:0;
- border-radius:9px;
- padding:12px 18px;
- font-size:15px;
- font-weight:bold;
- cursor:pointer;
-}
+input{width:100%;padding:13px;border-radius:8px;border:0;font-size:16px;margin:10px 0}
+button{border:0;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:bold;cursor:pointer}
 .primary{background:#ffd166;color:#17243b}
 .secondary{background:#087f9c;color:white}
 .danger{background:#e74c3c;color:white}
 button:disabled{opacity:.4}
 .hidden{display:none!important}
-.info{
- display:flex;
- justify-content:space-between;
- flex-wrap:wrap;
- gap:10px;
- color:#c7e8ff;
- margin-bottom:15px;
-}
+.info{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#c7e8ff;margin-bottom:15px}
 #timer{color:#ffd166;font-weight:bold}
 #questionText{font-size:19px;line-height:1.6}
-.option{
- display:block;
- padding:13px;
- margin:10px 0;
- background:#193653;
- border:1px solid #315575;
- border-radius:9px;
- cursor:pointer;
-}
-.option.selected{
- background:#075c64;
- border-color:#20d6c5;
-}
+.option{display:block;padding:13px;margin:10px 0;background:#193653;border:1px solid #315575;border-radius:9px;cursor:pointer}
+.option.selected{background:#075c64;border-color:#20d6c5}
 .option input{width:auto;margin-right:10px}
-.palette{
- display:grid;
- grid-template-columns:repeat(5,1fr);
- gap:8px;
- margin-top:15px;
-}
-.palette button{
- background:#667085;
- color:white;
- padding:10px 4px;
-}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px}
+.palette button{background:#667085;color:white;padding:10px 4px}
 .palette button.answered{background:#15966b}
-.palette button.current{
- outline:3px solid #ffd166;
- background:#315a91;
-}
-.palette button.skipped{background:#667085}
-.legend{
- display:flex;
- flex-wrap:wrap;
- gap:12px;
- font-size:12px;
- margin-top:14px;
- color:#d8e8f5;
-}
-.dot{
- display:inline-block;
- width:11px;height:11px;
- border-radius:3px;
- margin-right:4px;
-}
+.palette button.current{outline:3px solid #ffd166;background:#315a91}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;margin-top:14px;color:#d8e8f5}
+.dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px}
 .green{background:#15966b}
 .yellow{background:#315a91}
 .grey{background:#667085}
-.actions{
- display:flex;
- justify-content:space-between;
- gap:10px;
- margin-top:20px;
-}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
 .actions button{flex:1}
-.progress{
- height:9px;
- background:#34475d;
- border-radius:20px;
- overflow:hidden;
- margin:12px 0;
-}
-#progressBar{
- height:100%;
- width:0;
- background:#16c79a;
-}
-.stat{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
-}
-.stat div{
- background:#193653;
- padding:15px;
- border-radius:10px;
- text-align:center;
-}
-.stat strong{
- display:block;
- font-size:25px;
- color:#ffd166;
-}
-.review-item{
- padding:15px;
- background:#193653;
- border-radius:10px;
- margin:12px 0;
- line-height:1.6;
-}
+.progress{height:9px;background:#34475d;border-radius:20px;overflow:hidden;margin:12px 0}
+#progressBar{height:100%;width:0;background:#16c79a}
+.stat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat div{background:#193653;padding:15px;border-radius:10px;text-align:center}
+.stat strong{display:block;font-size:25px;color:#ffd166}
+.review-item{padding:15px;background:#193653;border-radius:10px;margin:12px 0;line-height:1.6}
 .correct{color:#4ee6a1}
 .wrong{color:#ff8b8b}
-footer{
- text-align:center;
- padding:20px;
- color:#b8c9d9;
- font-size:13px;
-}
+footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 @media(max-width:500px){
- .container{padding:10px}
- .card{padding:15px}
- #questionText{font-size:17px}
- .palette{grid-template-columns:repeat(5,1fr)}
- .actions button{padding:11px 6px;font-size:13px}
+.container{padding:10px}
+.card{padding:15px}
+#questionText{font-size:17px}
+.actions button{padding:11px 6px;font-size:13px}
 }
 </style>
 </head>
@@ -179,19 +63,28 @@ footer{
 <header>
 <img src="logo.png" alt="Class Gonit Logo">
 <h1>ক্লাস গণিত 🎓</h1>
-<p>Current Affairs Mock Test</p>
+<p>Daily Current Affairs Mock Test</p>
 </header>
 
 <div class="container">
 
 <section id="startPage" class="card">
 <h2>📚 কারেন্ট অ্যাফেয়ার্স মক টেস্ট</h2>
-<p>পরীক্ষায় অংশগ্রহণ করতে নিজের নাম লিখো।</p>
-<input id="studentName" placeholder="তোমার নাম লিখো">
+<p>পরীক্ষায় অংশগ্রহণ করতে নিজের তথ্য দাও।</p>
+
+<input id="studentName" type="text" placeholder="তোমার সম্পূর্ণ নাম লিখো">
+
+<input id="studentMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="তোমার ১০ সংখ্যার মোবাইল নম্বর">
+
+<p style="font-size:12px;color:#ffd166">
+তোমার তথ্য পরীক্ষার রেকর্ড সংরক্ষণের জন্য ব্যবহার করা হবে।
+</p>
+
 <p>মোট প্রশ্ন: ৫০টি</p>
 <p>সময়: ৩০ মিনিট</p>
 <p>প্রতিটি সঠিক উত্তরে ১ নম্বর।</p>
 <p>ভুল উত্তরে কোনো নম্বর কাটা হবে না।</p>
+
 <button class="primary" onclick="startTest()">পরীক্ষা শুরু করো</button>
 </section>
 
@@ -202,10 +95,8 @@ footer{
 <span id="questionCount">প্রশ্ন ১ / ৫০</span>
 <span>⏱️ <span id="timer">30:00</span></span>
 </div>
-<div class="progress">
-<div id="progressBar"></div>
-</div>
 
+<div class="progress"><div id="progressBar"></div></div>
 <h3 id="category" style="color:#ffd166"></h3>
 <p id="questionText"></p>
 <div id="options"></div>
@@ -218,7 +109,7 @@ footer{
 
 <div class="card">
 <h3>📌 Question Navigation</h3>
-<p>যেকোনো নম্বরে ক্লিক করে সরাসরি সেই প্রশ্নে যেতে পারবে।</p>
+<p>যেকোনো নম্বরে ক্লিক করে সেই প্রশ্নে যেতে পারবে।</p>
 <div id="palette" class="palette"></div>
 
 <div class="legend">
@@ -237,6 +128,7 @@ footer{
 <div class="card">
 <h2>🎉 পরীক্ষার ফলাফল</h2>
 <h3 id="resultName"></h3>
+
 <div class="stat">
 <div>মোট নম্বর<strong id="score">0</strong></div>
 <div>শতকরা<strong id="percentage">0%</strong></div>
@@ -245,6 +137,7 @@ footer{
 <div>উত্তর দাওনি<strong id="skipped">0</strong></div>
 <div>মোট প্রশ্ন<strong>৫০</strong></div>
 </div>
+
 <br>
 <button class="primary" onclick="showReview()">Review Answers</button>
 <button class="secondary" onclick="location.href='index.html'">Home Page</button>
@@ -263,13 +156,20 @@ footer{
 </div>
 
 <footer>
-<strong>CLASS GONIT 🎓 – LEARNING CENTRE</strong><br>
+<strong>ক্লাস গণিত 🎓</strong><br>
+✨গণিতের সহজ ঠিকানা ✨<br>
+Learn • Practise • Progress<br><br>
 ULLADABRI, MAYNAGURI, JALPAIGURI<br>
 West Bengal – 735224<br>
-Contact: 8159061346
+Contact: 8159061346<br>
+Copyright © 2026
 </footer>
 
 <script>
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
+
 const questions = [
 {c:"জাতীয়",q:"ভারতের রাজধানী কোনটি?",o:["মুম্বাই","নয়াদিল্লি","কলকাতা","চেন্নাই"],a:1,e:"নয়াদিল্লি ভারতের রাজধানী।"},
 {c:"জাতীয়",q:"ভারতের সংবিধান কবে কার্যকর হয়?",o:["১৫ আগস্ট ১৯৪৭","২৬ জানুয়ারি ১৯৫০","২৬ নভেম্বর ১৯৪৯","২ অক্টোবর ১৯৫০"],a:1,e:"২৬ জানুয়ারি ১৯৫০ সংবিধান কার্যকর হয়।"},
@@ -339,17 +239,27 @@ let answers=Array(questions.length).fill(null);
 let timeLeft=1800;
 let timerInterval=null;
 let student="";
+let studentMobile="";
 
 function startTest(){
  student=document.getElementById("studentName").value.trim();
+ studentMobile=document.getElementById("studentMobile").value.trim();
+
  if(!student){
   alert("তোমার নাম লিখো।");
   return;
  }
+
+ if(!/^[0-9]{10}$/.test(studentMobile)){
+  alert("সঠিক ১০ সংখ্যার মোবাইল নম্বর লিখো।");
+  return;
+ }
+
  document.getElementById("startPage").classList.add("hidden");
  document.getElementById("testPage").classList.remove("hidden");
  renderPalette();
  showQuestion();
+
  timerInterval=setInterval(()=>{
   timeLeft--;
   updateTimer();
@@ -402,17 +312,11 @@ function selectAnswer(index){
 }
 
 function previousQuestion(){
- if(current>0){
-  current--;
-  showQuestion();
- }
+ if(current>0){current--;showQuestion();}
 }
 
 function nextQuestion(){
- if(current<questions.length-1){
-  current++;
-  showQuestion();
- }
+ if(current<questions.length-1){current++;showQuestion();}
 }
 
 function goToQuestion(index){
@@ -423,9 +327,7 @@ function goToQuestion(index){
 function renderPalette(){
  let html="";
  questions.forEach((q,index)=>{
-  let cls="";
-  if(answers[index]!==null)cls="answered";
-  else cls="skipped";
+  let cls=answers[index]!==null?"answered":"skipped";
   if(index===current)cls+=" current";
   html+=`<button class="${cls}" onclick="goToQuestion(${index})">${index+1}</button>`;
  });
@@ -435,9 +337,24 @@ function renderPalette(){
 function confirmSubmit(){
  let unanswered=answers.filter(a=>a===null).length;
  let msg="তুমি "+unanswered+"টি প্রশ্নের উত্তর দাওনি। পরীক্ষা জমা দেবে?";
- if(confirm(msg)){
-  submitTest();
- }
+ if(confirm(msg))submitTest();
+}
+
+function saveStudentRecord(correct,wrong,skipped){
+ const data={
+  name:student,
+  mobile:studentMobile,
+  testName:"Daily Current Affairs Mock Test"
+ };
+
+ fetch(GOOGLE_SCRIPT_URL,{
+  method:"POST",
+  mode:"no-cors",
+  headers:{"Content-Type":"text/plain;charset=utf-8"},
+  body:JSON.stringify(data)
+ }).catch(error=>{
+  console.error("Record submission failed:",error);
+ });
 }
 
 function submitTest(){
@@ -461,6 +378,9 @@ function submitTest(){
  document.getElementById("correct").textContent=correct;
  document.getElementById("wrong").textContent=wrong;
  document.getElementById("skipped").textContent=skipped;
+
+ saveStudentRecord(correct,wrong,skipped);
+
  window.finalAnswers={correct,wrong,skipped};
  window.scrollTo(0,0);
 }
@@ -493,7 +413,7 @@ function backToResult(){
  document.getElementById("resultPage").classList.remove("hidden");
  window.scrollTo(0,0);
 }
-</script>
 
+</script>
 </body>
 </html>
