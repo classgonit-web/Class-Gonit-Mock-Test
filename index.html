@@ -2,168 +2,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ক্লাস গণিত 🎓 | Mathematics Learning Centre</title>
-    <meta name="description" content="Class Gonit - Learn, Practice and Prepare for Mathematics Competitive Examinations.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ক্লাস গণিত | Class Gonit</title>
+<link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="style.css">
+<style>
+body {
+    margin: 0;
+    background: #081426;
+    color: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+header {
+    background: #10243b;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #0d9488;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+header h1 {
+    color: #5eead4;
+    margin: 10px;
+}
+nav {
+    margin-top: 18px;
+}
+nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    background: #0d9488;
+    padding: 11px 17px;
+    margin: 5px;
+    border-radius: 8px;
+}
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+    background: linear-gradient(135deg,#102b46,#075e65);
+}
+.hero h2 {
+    font-size: 32px;
+    color: #5eead4;
+}
+.hero p {
+    line-height: 1.8;
+}
+.section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 35px 20px;
+}
+.section h2 {
+    color: #5eead4;
+    text-align: center;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 18px;
+}
+.card {
+    background: #12243a;
+    border: 1px solid #24506a;
+    padding: 22px;
+    border-radius: 14px;
+    text-align: center;
+}
+.card h3 {
+    color: #5eead4;
+}
+.main-button {
+    display: inline-block;
+    background: #0d9488;
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 9px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.quote {
+    background: #12243a;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    line-height: 1.9;
+    border: 1px solid #24506a;
+}
+footer {
+    background: #10243b;
+    padding: 25px;
+    text-align: center;
+    line-height: 1.9;
+    color: #cbd5e1;
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="logo-area">
-            <img src="images/logo.png" alt="Class Gonit Logo" class="logo">
-            <div>
-                <h1>ক্লাস গণিত 🎓</h1>
-                <p>Learn • Practice • Achieve</p>
-            </div>
-        </div>
+<header>
+    <img src="logo.png" alt="Class Gonit Logo" class="logo">
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#about">About</a>
-            <a href="#courses">Courses</a>
-            <a href="#contact">Contact</a>
-            <a href="mock-test.html" class="nav-button">Math Mock Test</a>
-        </nav>
-    </header>
+    <h1>ক্লাস গণিত 🎓</h1>
+    <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
 
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="mock-test.html">Math Mock Test</a>
+    </nav>
+</header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="welcome">WELCOME TO CLASS GONIT</p>
+<section class="hero">
+    <h2>Welcome to ক্লাস গণিত</h2>
+    <p>
+        Your trusted destination for Mathematics Learning
+        and Competitive Exam Preparation.
+    </p>
+    <p>Learn Mathematics • Practise Daily • Achieve Success</p>
 
-            <h2>
-                Build Your Mathematical Skills
-                <span>With Confidence!</span>
-            </h2>
+    <a href="mock-test.html" class="main-button">
+        Start Math Mock Test
+    </a>
+</section>
 
-            <p>
-                Learn Mathematics, practise regularly and prepare
-                yourself for various competitive examinations.
-            </p>
-
-            <a href="mock-test.html" class="main-button">
-                Start Math Mock Test →
-            </a>
-        </div>
-    </section>
-
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
-        <h2>About Class Gonit</h2>
-
+<section class="section">
+    <h2>About ক্লাস গণিত</h2>
+    <div class="card">
         <p>
-            Welcome to Class Gonit, a mathematics learning platform
-            dedicated to developing mathematical knowledge,
-            problem-solving skills and confidence.
-
-            Our aim is to make Mathematics easier, more interesting
-            and accessible through lessons, practice questions
-            and online mock tests.
+            ক্লাস গণিত is a mathematics learning platform
+            designed to help students build strong mathematical
+            concepts through learning, practice and mock tests.
         </p>
-    </section>
+    </div>
+</section>
 
+<section class="section">
+    <h2>Our Learning Sections</h2>
 
-    <!-- INFORMATION SECTION -->
-    <section id="courses" class="section">
-        <h2>What We Offer</h2>
-
-        <div class="info-container">
-
-            <div class="info-card">
-                <h3>📚 Mathematics Learning</h3>
-                <p>
-                    Learn mathematical concepts, formulas,
-                    shortcuts and problem-solving methods.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>📝 Chapter-wise Practice</h3>
-                <p>
-                    Practise questions from different
-                    mathematics chapters.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>💻 Online Mock Tests</h3>
-                <p>
-                    Take online mathematics tests with
-                    a timer and automatic results.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>🎯 Competitive Exam Preparation</h3>
-                <p>
-                    Practise mathematics for SSC, Railway,
-                    Banking and other competitive examinations.
-                </p>
-            </div>
-
+    <div class="cards">
+        <div class="card">
+            <h3>➗ Arithmetic</h3>
+            <p>Number System, Percentage, Profit and Loss and more.</p>
         </div>
-    </section>
 
+        <div class="card">
+            <h3>📘 Algebra</h3>
+            <p>Equations, Identities and Polynomials.</p>
+        </div>
 
-    <!-- MOCK TEST SECTION -->
-    <section class="mock-section">
-        <h2>Ready to Test Your Knowledge?</h2>
+        <div class="card">
+            <h3>📐 Geometry</h3>
+            <p>Lines, Angles, Triangles and Circles.</p>
+        </div>
 
+        <div class="card">
+            <h3>📏 Mensuration</h3>
+            <p>Area, Perimeter, Volume and Surface Area.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Mock Test Practice</h2>
+    <div class="card">
+        <h3>Improve Your Mathematics Skills</h3>
         <p>
-            Challenge yourself with mathematics mock tests.
-            Improve your speed, accuracy and confidence.
+            Practise MCQ questions, complete timed tests
+            and check your performance.
         </p>
-
         <a href="mock-test.html" class="main-button">
-            Explore Math Mock Tests →
+            Explore Mock Tests
         </a>
-    </section>
+    </div>
+</section>
 
+<section class="section">
+    <div class="quote">
+        <h2>Keep Learning, Keep Growing ✨</h2>
+        হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে
+        নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—
+        সাফল্য একদিন তোমারই হবে।
+    </div>
+</section>
 
-    <!-- MOTIVATION -->
-    <section class="motivation">
-        <h2>Our Inspiration</h2>
-
-        <p>
-            হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে
-            নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত
-            চেষ্টা করো—সাফল্য একদিন তোমারই হবে। ✨
-        </p>
-
-        <h3>ক্লাস গণিত 🎓</h3>
-        <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
-    </section>
-
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section contact">
-        <h2>Contact Information</h2>
-
+<section class="section">
+    <h2>Contact Information</h2>
+    <div class="card">
         <p>📍 Address: Durgabari More, [Your Town], West Bengal</p>
-
-        <p>📞 Phone: [Your Contact Number]</p>
-
+        <p>📞 Contact: [Your Mobile Number]</p>
         <p>✉️ Email: [Your Email Address]</p>
+    </div>
+</section>
 
-        <p>🌐 Website: Class Gonit</p>
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <h3>ক্লাস গণিত 🎓</h3>
-        <p>Learn • Practice • Achieve</p>
-        <p>© 2026 Class Gonit. All Rights Reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+<footer>
+    <h3>ক্লাস গণিত 🎓</h3>
+    <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+    <p>© 2026 Class Gonit. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
