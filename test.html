@@ -9,25 +9,16 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#071426;
- color:#fff;
- padding:15px;
+ margin:0;font-family:Arial,sans-serif;
+ background:#071426;color:#fff;padding:15px;
 }
 .container{
- max-width:750px;
- margin:20px auto;
- background:#10243c;
- padding:22px;
- border-radius:18px;
- box-shadow:0 8px 30px #0005;
+ max-width:750px;margin:20px auto;
+ background:#10243c;padding:22px;
+ border-radius:18px;box-shadow:0 8px 30px #0005;
 }
 .header{text-align:center;margin-bottom:20px}
-.logo{
- width:75px;height:75px;object-fit:contain;
- border-radius:50%;
-}
+.logo{width:75px;height:75px;object-fit:contain;border-radius:50%}
 h1{color:#35d6c0;margin:8px 0}
 .subtitle{color:#b8c8dc}
 .info{
@@ -36,67 +27,44 @@ h1{color:#35d6c0;margin:8px 0}
 }
 .info span{
  background:#1b3654;padding:10px 14px;
- border-radius:9px;color:#35d6c0;
- font-weight:bold;
+ border-radius:9px;color:#35d6c0;font-weight:bold;
 }
 .progress{
  height:9px;background:#263d57;
- border-radius:20px;overflow:hidden;
- margin:15px 0 25px;
+ border-radius:20px;overflow:hidden;margin:15px 0 25px;
 }
 .progress-bar{
- height:100%;width:0;background:#35d6c0;
- transition:.3s;
+ height:100%;width:0;background:#35d6c0;transition:.3s;
 }
-.question{
- font-size:20px;font-weight:bold;
- line-height:1.5;margin-bottom:20px;
-}
+.question{font-size:20px;font-weight:bold;line-height:1.5;margin-bottom:20px}
 .option{
- display:block;width:100%;text-align:left;
- padding:14px;margin:10px 0;
- background:#1b3654;color:white;
- border:2px solid transparent;
- border-radius:10px;font-size:16px;
- cursor:pointer;
+ display:block;width:100%;text-align:left;padding:14px;
+ margin:10px 0;background:#1b3654;color:white;
+ border:2px solid transparent;border-radius:10px;
+ font-size:16px;cursor:pointer;
 }
-.option.selected{
- border-color:#35d6c0;
- background:#174b50;
-}
+.option.selected{border-color:#35d6c0;background:#174b50}
 .option:disabled{cursor:default}
-.buttons{
- display:flex;gap:10px;flex-wrap:wrap;
- margin-top:22px;
-}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 button,.home-button{
- border:0;padding:13px 18px;
- border-radius:9px;font-size:15px;
- font-weight:bold;cursor:pointer;
+ border:0;padding:13px 18px;border-radius:9px;
+ font-size:15px;font-weight:bold;cursor:pointer;
 }
 .primary{background:#35d6c0;color:#071426}
 .secondary{background:#294766;color:white}
 .submit{background:#ffbd59;color:#172033}
+.share-button{background:#20c86b;color:white}
 button:disabled{opacity:.4;cursor:not-allowed}
 .hidden{display:none!important}
 .result{text-align:center}
-.score{
- font-size:48px;font-weight:bold;
- color:#35d6c0;margin:15px;
-}
-.result-card{
- background:#1b3654;padding:15px;
- border-radius:12px;margin:10px 0;
-}
+.score{font-size:48px;font-weight:bold;color:#35d6c0;margin:15px}
+.result-card{background:#1b3654;padding:15px;border-radius:12px;margin:10px 0}
 .home-button{
- display:inline-block;
- background:#70a1ff;color:#071426;
- text-decoration:none;
+ display:inline-block;background:#70a1ff;color:#071426;text-decoration:none;
 }
 .review-item{
- background:#1b3654;padding:15px;
- margin:15px 0;border-radius:12px;
- line-height:1.6;
+ background:#1b3654;padding:15px;margin:15px 0;
+ border-radius:12px;line-height:1.6;
 }
 .correct{color:#48e69a;font-weight:bold}
 .wrong{color:#ff7777;font-weight:bold}
@@ -157,6 +125,9 @@ Skipped Questions: <b id="skippedCount"></b>
 </div>
 
 <div class="buttons">
+<button class="share-button" onclick="openShareResult()">
+🎓 View Shareable Result
+</button>
 <button class="primary" onclick="showReview()">📖 Review Answers</button>
 <button class="submit" onclick="location.reload()">↻ Try Again</button>
 <a href="index.html" class="home-button">🏠 Back to Home</a>
@@ -175,6 +146,18 @@ Skipped Questions: <b id="skippedCount"></b>
 </div>
 
 <script>
+
+// Student name
+let studentName = (prompt("Please enter your name:") || "").trim();
+
+if(!studentName){
+ studentName = "Student";
+}
+
+// Chapter name from URL
+const pageParams = new URLSearchParams(location.search);
+const chapterName = pageParams.get("chapter") || "Mathematics Mock Test";
+
 const questions = [
 {q:"What is 25 + 35?",o:["50","60","65","70"],a:1,e:"25 + 35 = 60."},
 {q:"What is 100 - 45?",o:["45","50","55","65"],a:2,e:"100 - 45 = 55."},
@@ -203,11 +186,14 @@ let answers=Array(questions.length).fill(null);
 let timeLeft=20*60;
 let finished=false;
 let timerInterval;
+let lastResult=null;
 
 function showQuestion(){
  const q=questions[current];
+
  document.getElementById("questionCount").textContent=
  "Question "+(current+1)+" / "+questions.length;
+
  document.getElementById("question").textContent=q.q;
 
  const options=document.getElementById("options");
@@ -217,49 +203,67 @@ function showQuestion(){
   const btn=document.createElement("button");
   btn.className="option"+(answers[current]===index?" selected":"");
   btn.textContent=String.fromCharCode(65+index)+". "+option;
+
   btn.onclick=()=>{
    answers[current]=index;
    showQuestion();
   };
+
   options.appendChild(btn);
  });
 
  document.getElementById("prevBtn").disabled=current===0;
  document.getElementById("nextBtn").disabled=current===questions.length-1;
+
  document.getElementById("progressBar").style.width=
  ((current+1)/questions.length*100)+"%";
 }
 
 function nextQuestion(){
- if(current<questions.length-1){current++;showQuestion();}
+ if(current<questions.length-1){
+  current++;
+  showQuestion();
+ }
 }
+
 function previousQuestion(){
- if(current>0){current--;showQuestion();}
+ if(current>0){
+  current--;
+  showQuestion();
+ }
 }
 
 function startTimer(){
  timerInterval=setInterval(()=>{
   if(finished)return;
+
   timeLeft--;
+
   let min=Math.floor(timeLeft/60);
   let sec=timeLeft%60;
+
   document.getElementById("timer").textContent=
   String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
 
   if(timeLeft<=0){
-   submitTest();
+   submitTest(true);
   }
  },1000);
 }
 
-function submitTest(){
+function submitTest(autoSubmit=false){
+
  if(finished)return;
- if(!confirm("Are you sure you want to submit your test?"))return;
+
+ if(!autoSubmit && !confirm("Are you sure you want to submit your test?")){
+  return;
+ }
 
  finished=true;
  clearInterval(timerInterval);
 
  let correct=0,wrong=0,skipped=0;
+
  answers.forEach((answer,i)=>{
   if(answer===null)skipped++;
   else if(answer===questions[i].a)correct++;
@@ -268,19 +272,47 @@ function submitTest(){
 
  let percent=Math.round(correct/questions.length*100);
 
+ lastResult={
+  correct:correct,
+  wrong:wrong,
+  skipped:skipped,
+  percent:percent
+ };
+
  document.getElementById("testArea").classList.add("hidden");
  document.getElementById("resultArea").classList.remove("hidden");
 
  document.getElementById("score").textContent=
  correct+" / "+questions.length;
+
  document.getElementById("percentage").textContent=
  "Your Score: "+percent+"%";
+
  document.getElementById("correctCount").textContent=correct;
  document.getElementById("wrongCount").textContent=wrong;
  document.getElementById("skippedCount").textContent=skipped;
 }
 
+// Open separate shareable result page
+function openShareResult(){
+
+ if(!lastResult)return;
+
+ const params=new URLSearchParams({
+  name:studentName,
+  chapter:chapterName,
+  total:questions.length,
+  score:lastResult.correct,
+  correct:lastResult.correct,
+  wrong:lastResult.wrong,
+  skipped:lastResult.skipped
+ });
+
+ location.href="result.html?"+params.toString();
+}
+
 function showReview(){
+
  document.getElementById("resultArea").classList.add("hidden");
  document.getElementById("reviewArea").classList.remove("hidden");
 
@@ -288,20 +320,24 @@ function showReview(){
  list.innerHTML="";
 
  questions.forEach((q,i)=>{
+
   let selected=answers[i];
-  let isCorrect=selected===q.a;
 
   let html=`
   <div class="review-item">
   <b>Q${i+1}. ${q.q}</b><br>`;
 
   q.o.forEach((option,j)=>{
+
    let label=String.fromCharCode(65+j)+". "+option;
+
    if(j===q.a){
     html+=`<div class="correct">✓ ${label} (Correct Answer)</div>`;
-   }else if(j===selected){
+   }
+   else if(j===selected){
     html+=`<div class="wrong">✗ ${label} (Your Answer)</div>`;
-   }else{
+   }
+   else{
     html+=`<div>${label}</div>`;
    }
   });
@@ -311,12 +347,14 @@ function showReview(){
   }
 
   html+=`<div class="explanation">Explanation: ${q.e}</div></div>`;
+
   list.innerHTML+=html;
  });
 }
 
 showQuestion();
 startTimer();
+
 </script>
 
 </body>
