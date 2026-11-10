@@ -9,448 +9,315 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;padding:15px;
+ margin:0;
  font-family:Arial,sans-serif;
- background:#071426;color:white;
+ background:#071426;
+ color:#fff;
+ padding:15px;
 }
 .container{
- max-width:750px;margin:20px auto;
- background:#10243c;padding:22px;
- border-radius:20px;
- box-shadow:0 8px 30px #0006;
+ max-width:750px;
+ margin:20px auto;
+ background:#10243c;
+ padding:22px;
+ border-radius:18px;
+ box-shadow:0 8px 30px #0005;
 }
-h1{text-align:center;color:#36dfc0}
-.top{
+.header{text-align:center;margin-bottom:20px}
+.logo{
+ width:75px;height:75px;object-fit:contain;
+ border-radius:50%;
+}
+h1{color:#35d6c0;margin:8px 0}
+.subtitle{color:#b8c8dc}
+.info{
  display:flex;justify-content:space-between;
- gap:10px;flex-wrap:wrap;margin:15px 0;
+ gap:10px;flex-wrap:wrap;margin:20px 0;
 }
-.timer,.count{
- background:#193d59;padding:12px;
- border-radius:10px;font-weight:bold;
+.info span{
+ background:#1b3654;padding:10px 14px;
+ border-radius:9px;color:#35d6c0;
+ font-weight:bold;
 }
-.timer{color:#ffd166}
 .progress{
- height:9px;background:#29415a;
- border-radius:10px;overflow:hidden;margin:15px 0;
+ height:9px;background:#263d57;
+ border-radius:20px;overflow:hidden;
+ margin:15px 0 25px;
 }
-#bar{
- height:100%;width:0%;
- background:linear-gradient(90deg,#36dfc0,#00a6ff);
+.progress-bar{
+ height:100%;width:0;background:#35d6c0;
  transition:.3s;
 }
-#question{font-size:20px;line-height:1.5;margin:25px 0}
+.question{
+ font-size:20px;font-weight:bold;
+ line-height:1.5;margin-bottom:20px;
+}
 .option{
  display:block;width:100%;text-align:left;
  padding:14px;margin:10px 0;
- background:#193d59;color:white;
+ background:#1b3654;color:white;
  border:2px solid transparent;
- border-radius:10px;font-size:16px;cursor:pointer;
+ border-radius:10px;font-size:16px;
+ cursor:pointer;
 }
-.option.selected{border-color:#36dfc0;background:#20516a}
-button{
- padding:13px 20px;border:0;border-radius:10px;
- background:#36dfc0;color:#071426;
- font-weight:bold;font-size:15px;cursor:pointer;
+.option.selected{
+ border-color:#35d6c0;
+ background:#174b50;
 }
+.option:disabled{cursor:default}
+.buttons{
+ display:flex;gap:10px;flex-wrap:wrap;
+ margin-top:22px;
+}
+button,.home-button{
+ border:0;padding:13px 18px;
+ border-radius:9px;font-size:15px;
+ font-weight:bold;cursor:pointer;
+}
+.primary{background:#35d6c0;color:#071426}
+.secondary{background:#294766;color:white}
+.submit{background:#ffbd59;color:#172033}
 button:disabled{opacity:.4;cursor:not-allowed}
-.navigation{
- display:flex;justify-content:space-between;
- gap:10px;margin-top:25px;
+.hidden{display:none!important}
+.result{text-align:center}
+.score{
+ font-size:48px;font-weight:bold;
+ color:#35d6c0;margin:15px;
 }
-#result{display:none;text-align:center}
 .result-card{
- background:#193d59;padding:20px;
- border-radius:16px;margin:15px 0;
+ background:#1b3654;padding:15px;
+ border-radius:12px;margin:10px 0;
 }
-.score-circle{
- width:155px;height:155px;border-radius:50%;
- margin:20px auto;
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;
- background:conic-gradient(#36dfc0 0deg,#29415a 0deg);
- position:relative;
-}
-.score-circle::before{
- content:"";position:absolute;
- width:125px;height:125px;
- background:#10243c;border-radius:50%;
-}
-.score-circle *{position:relative}
-#percentage{font-size:32px;font-weight:bold;color:#36dfc0}
-.stats{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:10px;margin:20px 0;
-}
-.stat{
- padding:15px 5px;border-radius:12px;
- background:#193d59;
-}
-.stat strong{display:block;font-size:25px;margin-bottom:5px}
-.green{color:#36dfc0}
-.red{color:#ff7373}
-.yellow{color:#ffd166}
-.result-buttons{
- display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
- margin-top:20px;
+.home-button{
+ display:inline-block;
+ background:#70a1ff;color:#071426;
+ text-decoration:none;
 }
 .review-item{
- background:#193d59;padding:18px;
- margin:15px 0;border-radius:14px;text-align:left;
+ background:#1b3654;padding:15px;
+ margin:15px 0;border-radius:12px;
+ line-height:1.6;
 }
-.review-option{
- padding:11px;margin:8px 0;border-radius:8px;
- background:#10243c;
-}
-.correct{
- border:2px solid #36dfc0;
- color:#36dfc0;
-}
-.wrong{
- border:2px solid #ff7373;
- color:#ff7373;
-}
-.explanation{
- color:#b9d6e9;margin-top:12px;
- line-height:1.5;
-}
-#review{display:none}
-.review-heading{text-align:center;color:#36dfc0}
-#confetti{
- position:fixed;inset:0;pointer-events:none;
- z-index:100;overflow:hidden;
-}
-.confetti-piece{
- position:absolute;top:-20px;
- width:9px;height:15px;
- animation:fall 3s linear forwards;
-}
-@keyframes fall{
- to{transform:translateY(110vh) rotate(720deg);opacity:0}
-}
-.fade-in{animation:fadeIn .7s ease}
-@keyframes fadeIn{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
-}
-.small{color:#b8c9d9}
+.correct{color:#48e69a;font-weight:bold}
+.wrong{color:#ff7777;font-weight:bold}
+.explanation{color:#c5d4e7;margin-top:8px}
 @media(max-width:480px){
- .container{padding:15px;margin:5px auto}
- #question{font-size:18px}
- .stats{gap:6px}
- .stat{padding:12px 3px}
- .stat strong{font-size:21px}
- button{padding:12px 14px}
+ .container{padding:16px;margin:5px auto}
+ .question{font-size:18px}
+ button,.home-button{flex:1;text-align:center}
+ .info span{font-size:13px}
 }
 </style>
 </head>
 
 <body>
-<div id="confetti"></div>
 
 <div class="container">
+
+<div class="header">
+<img src="logo.png" alt="Class Gonit Logo" class="logo">
 <h1>ক্লাস গণিত 🎓</h1>
-<p style="text-align:center" class="small">Math Mock Test</p>
+<div class="subtitle">Mock Test • Learn • Practice • Succeed</div>
+</div>
 
-<!-- TEST SECTION -->
 <div id="testArea">
- <div class="top">
-  <div id="count" class="count">Question 1 / 20</div>
-  <div id="timer" class="timer">20:00</div>
- </div>
 
- <div class="progress"><div id="bar"></div></div>
- <div id="question"></div>
- <div id="options"></div>
-
- <div class="navigation">
-  <button id="previous" onclick="previousQuestion()">Previous</button>
-  <button id="next" onclick="nextQuestion()">Next</button>
- </div>
-
- <button onclick="submitTest()" style="width:100%;margin-top:18px;background:#ffc857">
- Submit Test
- </button>
+<div class="info">
+<span id="questionCount">Question 1 / 20</span>
+<span id="timer">20:00</span>
 </div>
 
-<!-- RESULT SECTION -->
-<div id="result">
- <div class="fade-in">
-  <h1>🎉 Test Completed!</h1>
-  <p id="message" class="small">Great effort!</p>
-
-  <div class="result-card">
-   <div class="score-circle" id="circle">
-    <div id="percentage">0%</div>
-    <div class="small">Your Score</div>
-   </div>
-   <h2 id="score">0 / 20</h2>
-   <p class="small">Keep learning and keep growing!</p>
-  </div>
-
-  <div class="stats">
-   <div class="stat">
-    <strong class="green" id="correctCount">0</strong>
-    <span>Correct</span>
-   </div>
-   <div class="stat">
-    <strong class="red" id="wrongCount">0</strong>
-    <span>Incorrect</span>
-   </div>
-   <div class="stat">
-    <strong class="yellow" id="skipCount">0</strong>
-    <span>Skipped</span>
-   </div>
-  </div>
-
-  <div class="result-buttons">
-   <button onclick="showReview()">📖 Review Answers</button>
-   <button onclick="location.reload()" style="background:#ffc857">↻ Try Again</button>
-  </div>
- </div>
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
-<!-- REVIEW SECTION -->
-<div id="review">
- <h2 class="review-heading">📖 Answer Review</h2>
- <p class="small" style="text-align:center">
- Green = Correct Answer | Red = Your Wrong Answer
- </p>
- <div id="reviewContent"></div>
- <button onclick="backToResult()" style="width:100%;margin-top:15px">
- Back to Result
- </button>
+<div class="question" id="question"></div>
+<div id="options"></div>
+
+<div class="buttons">
+<button class="secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+<button class="primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+<button class="submit" onclick="submitTest()">Submit Test</button>
+</div>
+</div>
+
+<div id="resultArea" class="result hidden">
+<h1>🎉 Test Completed!</h1>
+<div class="score" id="score"></div>
+<p id="percentage"></p>
+
+<div class="result-card">
+Correct Answers: <b id="correctCount"></b>
+</div>
+<div class="result-card">
+Wrong Answers: <b id="wrongCount"></b>
+</div>
+<div class="result-card">
+Skipped Questions: <b id="skippedCount"></b>
+</div>
+
+<div class="buttons">
+<button class="primary" onclick="showReview()">📖 Review Answers</button>
+<button class="submit" onclick="location.reload()">↻ Try Again</button>
+<a href="index.html" class="home-button">🏠 Back to Home</a>
+</div>
+</div>
+
+<div id="reviewArea" class="hidden">
+<h1>📖 Answer Review</h1>
+<div id="reviewList"></div>
+<div class="buttons">
+<a href="index.html" class="home-button">🏠 Back to Home</a>
+<button class="submit" onclick="location.reload()">↻ Try Again</button>
+</div>
 </div>
 
 </div>
 
 <script>
-
-// SAMPLE QUESTION BANK
-// Replace these questions with your own question bank.
-
 const questions = [
-{q:"Simplify: 10 + 5 × 2",o:["30","20","25","15"],a:1,e:"Multiplication first: 10 + 10 = 20."},
-{q:"Simplify: 20 ÷ 5 + 3",o:["7","4","8","5"],a:0,e:"20 ÷ 5 + 3 = 4 + 3 = 7."},
-{q:"What is 12 × 4?",o:["36","48","44","52"],a:1,e:"12 × 4 = 48."},
-{q:"What is 100 ÷ 10?",o:["5","20","10","15"],a:2,e:"100 ÷ 10 = 10."},
-{q:"Simplify: 8 + 4 × 3",o:["36","20","24","18"],a:1,e:"8 + 12 = 20."},
-{q:"What is 15 + 25?",o:["35","45","40","50"],a:2,e:"15 + 25 = 40."},
-{q:"What is 9 × 9?",o:["72","81","90","99"],a:1,e:"9 × 9 = 81."},
+{q:"What is 25 + 35?",o:["50","60","65","70"],a:1,e:"25 + 35 = 60."},
+{q:"What is 100 - 45?",o:["45","50","55","65"],a:2,e:"100 - 45 = 55."},
+{q:"What is 12 × 8?",o:["86","96","108","88"],a:1,e:"12 × 8 = 96."},
 {q:"What is 144 ÷ 12?",o:["10","11","12","14"],a:2,e:"144 ÷ 12 = 12."},
-{q:"Simplify: 30 - 5 × 4",o:["100","10","20","25"],a:1,e:"30 - 20 = 10."},
-{q:"What is 7²?",o:["14","21","49","42"],a:2,e:"7 × 7 = 49."},
-{q:"What is 50% of 200?",o:["50","100","150","200"],a:1,e:"50% of 200 = 100."},
-{q:"What is 3/4 of 100?",o:["25","50","75","80"],a:2,e:"100 × 3/4 = 75."},
-{q:"What is the HCF of 12 and 18?",o:["2","3","6","9"],a:2,e:"The HCF is 6."},
-{q:"What is the LCM of 4 and 6?",o:["8","10","12","24"],a:2,e:"The LCM is 12."},
-{q:"What is 25 × 4?",o:["50","75","100","125"],a:2,e:"25 × 4 = 100."},
-{q:"Simplify: 18 + 12 ÷ 3",o:["10","22","30","15"],a:1,e:"18 + 4 = 22."},
-{q:"What is the square root of 64?",o:["6","7","8","9"],a:2,e:"8 × 8 = 64."},
-{q:"What is 1/2 + 1/2?",o:["1/2","1","2","0"],a:1,e:"1/2 + 1/2 = 1."},
+{q:"What is 15 + 20 × 2?",o:["70","55","50","40"],a:1,e:"Multiplication first: 15 + 40 = 55."},
+{q:"What is 7 × 9?",o:["56","63","72","69"],a:1,e:"7 × 9 = 63."},
+{q:"What is 200 ÷ 5?",o:["20","30","40","50"],a:2,e:"200 ÷ 5 = 40."},
+{q:"What is 18 + 27?",o:["35","40","45","55"],a:2,e:"18 + 27 = 45."},
 {q:"What is 11 × 11?",o:["111","121","131","101"],a:1,e:"11 × 11 = 121."},
-{q:"What is 1000 - 250?",o:["650","700","750","800"],a:2,e:"1000 - 250 = 750."}
+{q:"What is 90 - 38?",o:["42","52","62","48"],a:1,e:"90 - 38 = 52."},
+{q:"What is 50% of 200?",o:["50","75","100","150"],a:2,e:"50% of 200 = 100."},
+{q:"What is 3²?",o:["6","8","9","12"],a:2,e:"3² = 3 × 3 = 9."},
+{q:"What is 5 × (4 + 2)?",o:["20","25","30","35"],a:2,e:"First 4 + 2 = 6, then 5 × 6 = 30."},
+{q:"What is 1/2 of 80?",o:["20","30","40","50"],a:2,e:"80 ÷ 2 = 40."},
+{q:"What is 75 + 25?",o:["90","95","100","110"],a:2,e:"75 + 25 = 100."},
+{q:"What is 8 × 7?",o:["54","56","64","48"],a:1,e:"8 × 7 = 56."},
+{q:"What is 120 ÷ 10?",o:["10","11","12","15"],a:2,e:"120 ÷ 10 = 12."},
+{q:"What is 36 + 44?",o:["70","75","80","85"],a:2,e:"36 + 44 = 80."},
+{q:"What is 9²?",o:["18","72","81","99"],a:2,e:"9² = 81."},
+{q:"What is 1000 - 375?",o:["525","625","675","725"],a:1,e:"1000 - 375 = 625."}
 ];
 
 let current=0;
 let answers=Array(questions.length).fill(null);
-let remaining=1200;
+let timeLeft=20*60;
 let finished=false;
-let clock;
+let timerInterval;
 
 function showQuestion(){
  const q=questions[current];
-
- document.getElementById("count").textContent=
+ document.getElementById("questionCount").textContent=
  "Question "+(current+1)+" / "+questions.length;
-
  document.getElementById("question").textContent=q.q;
 
- document.getElementById("bar").style.width=
- ((current+1)/questions.length*100)+"%";
+ const options=document.getElementById("options");
+ options.innerHTML="";
 
- const box=document.getElementById("options");
- box.innerHTML="";
-
- q.o.forEach((option,i)=>{
-  const b=document.createElement("button");
-  b.className="option"+(answers[current]===i?" selected":"");
-  b.textContent=String.fromCharCode(65+i)+". "+option;
-
-  b.onclick=()=>{
-   answers[current]=i;
+ q.o.forEach((option,index)=>{
+  const btn=document.createElement("button");
+  btn.className="option"+(answers[current]===index?" selected":"");
+  btn.textContent=String.fromCharCode(65+index)+". "+option;
+  btn.onclick=()=>{
+   answers[current]=index;
    showQuestion();
   };
-
-  box.appendChild(b);
+  options.appendChild(btn);
  });
 
- document.getElementById("previous").disabled=current===0;
- document.getElementById("next").disabled=current===questions.length-1;
-
- document.getElementById("next").textContent=
- current===questions.length-1?"Last Question":"Next";
+ document.getElementById("prevBtn").disabled=current===0;
+ document.getElementById("nextBtn").disabled=current===questions.length-1;
+ document.getElementById("progressBar").style.width=
+ ((current+1)/questions.length*100)+"%";
 }
 
 function nextQuestion(){
- if(current<questions.length-1){
-  current++;
-  showQuestion();
- }
+ if(current<questions.length-1){current++;showQuestion();}
+}
+function previousQuestion(){
+ if(current>0){current--;showQuestion();}
 }
 
-function previousQuestion(){
- if(current>0){
-  current--;
-  showQuestion();
- }
+function startTimer(){
+ timerInterval=setInterval(()=>{
+  if(finished)return;
+  timeLeft--;
+  let min=Math.floor(timeLeft/60);
+  let sec=timeLeft%60;
+  document.getElementById("timer").textContent=
+  String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+
+  if(timeLeft<=0){
+   submitTest();
+  }
+ },1000);
 }
 
 function submitTest(){
  if(finished)return;
- if(confirm("Are you sure you want to submit the test?")){
-  finishTest();
- }
-}
+ if(!confirm("Are you sure you want to submit your test?"))return;
 
-function finishTest(){
- if(finished)return;
  finished=true;
- clearInterval(clock);
+ clearInterval(timerInterval);
 
- let correct=0;
- let wrong=0;
- let skipped=0;
-
- questions.forEach((q,i)=>{
-  if(answers[i]===null)skipped++;
-  else if(answers[i]===q.a)correct++;
+ let correct=0,wrong=0,skipped=0;
+ answers.forEach((answer,i)=>{
+  if(answer===null)skipped++;
+  else if(answer===questions[i].a)correct++;
   else wrong++;
  });
 
- const percent=Math.round(correct/questions.length*100);
+ let percent=Math.round(correct/questions.length*100);
 
- document.getElementById("testArea").style.display="none";
- document.getElementById("result").style.display="block";
+ document.getElementById("testArea").classList.add("hidden");
+ document.getElementById("resultArea").classList.remove("hidden");
 
  document.getElementById("score").textContent=
  correct+" / "+questions.length;
-
+ document.getElementById("percentage").textContent=
+ "Your Score: "+percent+"%";
  document.getElementById("correctCount").textContent=correct;
  document.getElementById("wrongCount").textContent=wrong;
- document.getElementById("skipCount").textContent=skipped;
-
- document.getElementById("message").textContent=
- percent>=80?"Excellent! Outstanding performance! 🌟":
- percent>=60?"Very good! Keep practising! 👏":
- percent>=40?"Good effort! You can improve! 💪":
- "Keep practising. Every attempt makes you better! 📚";
-
- animateScore(percent);
- makeConfetti();
-}
-
-function animateScore(target){
- let n=0;
- const number=document.getElementById("percentage");
-
- const animation=setInterval(()=>{
-  n++;
-  number.textContent=n+"%";
-  document.getElementById("circle").style.background=
-   "conic-gradient(#36dfc0 "+(n*3.6)+"deg,#29415a 0deg)";
-
-  if(n>=target)clearInterval(animation);
- },20);
-}
-
-function makeConfetti(){
- const box=document.getElementById("confetti");
- const colors=["#36dfc0","#ffd166","#ff7373","#70a1ff","#ffffff"];
-
- for(let i=0;i<90;i++){
-  const piece=document.createElement("div");
-  piece.className="confetti-piece";
-  piece.style.left=Math.random()*100+"%";
-  piece.style.background=colors[i%colors.length];
-  piece.style.animationDelay=Math.random()*2+"s";
-  piece.style.animationDuration=(2+Math.random()*2)+"s";
-  box.appendChild(piece);
- }
+ document.getElementById("skippedCount").textContent=skipped;
 }
 
 function showReview(){
- document.getElementById("result").style.display="none";
- document.getElementById("review").style.display="block";
+ document.getElementById("resultArea").classList.add("hidden");
+ document.getElementById("reviewArea").classList.remove("hidden");
 
- const box=document.getElementById("reviewContent");
- box.innerHTML="";
+ const list=document.getElementById("reviewList");
+ list.innerHTML="";
 
  questions.forEach((q,i)=>{
-  const item=document.createElement("div");
-  item.className="review-item fade-in";
+  let selected=answers[i];
+  let isCorrect=selected===q.a;
 
-  const heading=document.createElement("h3");
-  heading.textContent="Question "+(i+1)+": "+q.q;
-  item.appendChild(heading);
+  let html=`
+  <div class="review-item">
+  <b>Q${i+1}. ${q.q}</b><br>`;
 
   q.o.forEach((option,j)=>{
-   const line=document.createElement("div");
-   line.className="review-option";
-
-   if(j===q.a)line.classList.add("correct");
-   if(answers[i]===j && j!==q.a)line.classList.add("wrong");
-
    let label=String.fromCharCode(65+j)+". "+option;
-
-   if(j===q.a)label+=" ✓ Correct Answer";
-   if(answers[i]===j && j!==q.a)label+=" ✗ Your Answer";
-
-   line.textContent=label;
-   item.appendChild(line);
+   if(j===q.a){
+    html+=`<div class="correct">✓ ${label} (Correct Answer)</div>`;
+   }else if(j===selected){
+    html+=`<div class="wrong">✗ ${label} (Your Answer)</div>`;
+   }else{
+    html+=`<div>${label}</div>`;
+   }
   });
 
-  const yourAnswer=document.createElement("p");
-  yourAnswer.className="small";
-  yourAnswer.textContent=answers[i]===null?
-   "Your answer: Not answered":
-   "Your answer: "+q.o[answers[i]];
-  item.appendChild(yourAnswer);
+  if(selected===null){
+   html+=`<div class="wrong">Not Answered</div>`;
+  }
 
-  const explanation=document.createElement("div");
-  explanation.className="explanation";
-  explanation.textContent="Explanation: "+q.e;
-  item.appendChild(explanation);
-
-  box.appendChild(item);
+  html+=`<div class="explanation">Explanation: ${q.e}</div></div>`;
+  list.innerHTML+=html;
  });
- window.scrollTo(0,0);
-}
-
-function backToResult(){
- document.getElementById("review").style.display="none";
- document.getElementById("result").style.display="block";
- window.scrollTo(0,0);
-}
-
-function updateTimer(){
- if(finished)return;
-
- remaining--;
-
- let m=Math.floor(remaining/60);
- let s=remaining%60;
-
- document.getElementById("timer").textContent=
- String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-
- if(remaining<=0){
-  finishTest();
- }
 }
 
 showQuestion();
-clock=setInterval(updateTimer,1000);
-
+startTimer();
 </script>
+
 </body>
 </html>
