@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Math Mock Test | ক্লাস গণিত</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Class Gonit Logo" class="logo">
+
+            <div>
+                <h1>ক্লাস গণিত 🎓</h1>
+                <p>Learn • Practice • Achieve</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="mock-test.html">Mock Test</a>
+        </nav>
+    </header>
+
+    <!-- MOCK TEST INTRODUCTION -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <p class="welcome">ONLINE MATHEMATICS EXAMINATION</p>
+
+            <h2>
+                Mathematics
+                <span>Mock Test</span>
+            </h2>
+
+            <p>
+                Practise mathematics chapter by chapter.
+                Improve your speed, accuracy and confidence.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- TEST INFORMATION -->
+    <section class="section">
+
+        <h2>Test Information</h2>
+
+        <div class="info-container">
+
+            <div class="info-card">
+                <h3>📝 20 Questions</h3>
+                <p>Each mock test contains 20 questions.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>⏱️ 20 Minutes</h3>
+                <p>Complete your examination within 20 minutes.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>📊 Instant Result</h3>
+                <p>Check your score after submitting your test.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- MATHEMATICS SECTIONS -->
+    <section class="section">
+
+        <h2>Select Mathematics Section</h2>
+
+        <div class="info-container">
+
+            <div class="info-card">
+                <h3>📘 Arithmetic</h3>
+                <p>Practise basic and advanced arithmetic.</p>
+                <button class="main-button" onclick="selectSection('Arithmetic')">
+                    Explore Chapters →
+                </button>
+            </div>
+
+            <div class="info-card">
+                <h3>📗 Algebra</h3>
+                <p>Improve your algebraic problem-solving skills.</p>
+                <button class="main-button" onclick="selectSection('Algebra')">
+                    Explore Chapters →
+                </button>
+            </div>
+
+            <div class="info-card">
+                <h3>📙 Geometry</h3>
+                <p>Practise geometrical concepts and problems.</p>
+                <button class="main-button" onclick="selectSection('Geometry')">
+                    Explore Chapters →
+                </button>
+            </div>
+
+            <div class="info-card">
+                <h3>📕 Mensuration</h3>
+                <p>Learn and practise measurement problems.</p>
+                <button class="main-button" onclick="selectSection('Mensuration')">
+                    Explore Chapters →
+                </button>
+            </div>
+
+        </div>
+
+        <p id="section-message" style="margin-top:25px;color:#42e6c4;"></p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>ক্লাস গণিত 🎓</h3>
+        <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+        <p>© 2026 Class Gonit. All Rights Reserved.</p>
+        <a href="index.html" style="color:#42e6c4;">← Back to Home</a>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        function selectSection(section) {
+            document.getElementById("section-message").textContent =
+                section + " selected! Chapter selection will be added next.";
+        }
+    </script>
+
+</body>
+</html>
