@@ -4,141 +4,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Gonit - Mock Test</title>
+<title>Class Gonit - Mathematics Mock Test</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;font-family:Arial,sans-serif;
- background:#071426;color:#fff;padding:15px;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#071426;
+ color:#fff;
+ padding:15px;
 }
+
 .container{
- max-width:750px;margin:20px auto;
- background:#10243c;padding:22px;
- border-radius:18px;box-shadow:0 8px 30px #0005;
+ max-width:750px;
+ margin:20px auto;
+ background:#10243c;
+ padding:22px;
+ border-radius:18px;
+ box-shadow:0 8px 30px #0005;
 }
+
 .header{text-align:center;margin-bottom:20px}
-.logo{width:75px;height:75px;object-fit:contain;border-radius:50%}
+
+.logo{
+ width:75px;
+ height:75px;
+ object-fit:contain;
+ border-radius:50%;
+}
+
 h1{color:#35d6c0;margin:8px 0}
+
 .subtitle{color:#b8c8dc}
+
+.student-box{
+ background:#0b2d49;
+ border:1px solid #168a9b;
+ border-radius:16px;
+ padding:22px;
+ margin-top:25px;
+}
+
+.student-box h2{
+ font-size:26px;
+ margin:0 0 15px;
+ color:#fff;
+}
+
+.student-box p{
+ font-size:17px;
+ line-height:1.6;
+ color:#dbeafe;
+}
+
+.student-input{
+ width:100%;
+ padding:16px;
+ margin:10px 0;
+ border:1px solid #b8c8dc;
+ border-radius:11px;
+ font-size:17px;
+ outline:none;
+}
+
+.student-input:focus{
+ border:2px solid #35d6c0;
+}
+
+.student-info{
+ font-size:17px;
+ line-height:2;
+ margin-top:18px;
+}
+
+.start-button{
+ background:#ffbd43;
+ color:#071426;
+ padding:16px 30px;
+ border:0;
+ border-radius:11px;
+ font-size:18px;
+ font-weight:bold;
+ cursor:pointer;
+ margin-top:15px;
+}
+
 .info{
- display:flex;justify-content:space-between;
- gap:10px;flex-wrap:wrap;margin:20px 0;
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ margin:20px 0;
 }
+
 .info span{
- background:#1b3654;padding:10px 14px;
- border-radius:9px;color:#35d6c0;font-weight:bold;
+ background:#1b3654;
+ padding:10px 14px;
+ border-radius:9px;
+ color:#35d6c0;
+ font-weight:bold;
 }
+
 .progress{
- height:9px;background:#263d57;
- border-radius:20px;overflow:hidden;margin:15px 0 25px;
+ height:9px;
+ background:#263d57;
+ border-radius:20px;
+ overflow:hidden;
+ margin:15px 0 25px;
 }
+
 .progress-bar{
- height:100%;width:0;background:#35d6c0;transition:.3s;
+ height:100%;
+ width:0;
+ background:#35d6c0;
+ transition:.3s;
 }
+
 .navigator{
  background:#0b1d32;
  border:1px solid #294766;
  border-radius:15px;
- padding:15px;margin-bottom:22px;
+ padding:15px;
+ margin-bottom:22px;
 }
+
 .navigator-title{
- display:flex;justify-content:space-between;
- align-items:center;gap:8px;flex-wrap:wrap;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:8px;
+ flex-wrap:wrap;
  margin-bottom:14px;
 }
+
 .navigator-title h3{
- margin:0;color:#35d6c0;font-size:17px;
+ margin:0;
+ color:#35d6c0;
+ font-size:17px;
 }
+
 .navigator-grid{
  display:grid;
  grid-template-columns:repeat(5,1fr);
  gap:10px;
 }
+
 .nav-number{
- width:100%;aspect-ratio:1;
+ width:100%;
+ aspect-ratio:1;
  border:2px solid #38516b;
  border-radius:11px;
- background:#1b3654;color:#fff;
- font-size:15px;font-weight:bold;
- cursor:pointer;padding:0;
+ background:#1b3654;
+ color:#fff;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+ padding:0;
  transition:.2s;
 }
+
 .nav-number:hover{transform:translateY(-2px)}
+
 .nav-number.answered{
- background:#087f5b;border-color:#25d69b;color:white;
+ background:#087f5b;
+ border-color:#25d69b;
+ color:white;
 }
+
 .nav-number.skipped{
- background:#a85c13;border-color:#ffbd59;color:white;
+ background:#a85c13;
+ border-color:#ffbd59;
+ color:white;
 }
+
 .nav-number.current{
  border:3px solid #35d6c0;
  box-shadow:0 0 0 3px #35d6c033;
  transform:scale(1.06);
 }
-.nav-number.current.answered,
-.nav-number.current.skipped{border-color:#fff}
+
 .nav-legend{
- display:flex;flex-wrap:wrap;gap:12px;margin-top:15px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:12px;
+ margin-top:15px;
 }
+
 .legend-item{
- display:flex;align-items:center;gap:6px;
- color:#c5d4e7;font-size:12px;
+ display:flex;
+ align-items:center;
+ gap:6px;
+ color:#c5d4e7;
+ font-size:12px;
 }
+
 .legend-dot{
- width:11px;height:11px;border-radius:3px;display:inline-block;
+ width:11px;
+ height:11px;
+ border-radius:3px;
+ display:inline-block;
 }
+
 .dot-answered{background:#087f5b}
 .dot-skipped{background:#a85c13}
 .dot-current{background:#35d6c0}
-.dot-unvisited{background:#1b3654;border:1px solid #66809a}
-.question{font-size:20px;font-weight:bold;line-height:1.5;margin-bottom:20px}
+.dot-unvisited{
+ background:#1b3654;
+ border:1px solid #66809a;
+}
+
+.question{
+ font-size:20px;
+ font-weight:bold;
+ line-height:1.5;
+ margin-bottom:20px;
+}
+
 .option{
- display:block;width:100%;text-align:left;padding:14px;
- margin:10px 0;background:#1b3654;color:white;
- border:2px solid transparent;border-radius:10px;
- font-size:16px;cursor:pointer;
+ display:block;
+ width:100%;
+ text-align:left;
+ padding:14px;
+ margin:10px 0;
+ background:#1b3654;
+ color:white;
+ border:2px solid transparent;
+ border-radius:10px;
+ font-size:16px;
+ cursor:pointer;
 }
-.option.selected{border-color:#35d6c0;background:#174b50}
-.option:disabled{cursor:default}
-.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+.option.selected{
+ border-color:#35d6c0;
+ background:#174b50;
+}
+
+.buttons{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:22px;
+}
+
 button,.home-button{
- border:0;padding:13px 18px;border-radius:9px;
- font-size:15px;font-weight:bold;cursor:pointer;
+ border:0;
+ padding:13px 18px;
+ border-radius:9px;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
 }
+
 .primary{background:#35d6c0;color:#071426}
 .secondary{background:#294766;color:white}
 .submit{background:#ffbd59;color:#172033}
 .share-button{background:#20c86b;color:white}
-button:disabled{opacity:.4;cursor:not-allowed}
+
+button:disabled{
+ opacity:.4;
+ cursor:not-allowed;
+}
+
 .hidden{display:none!important}
+
 .result{text-align:center}
-.score{font-size:48px;font-weight:bold;color:#35d6c0;margin:15px}
-.result-card{background:#1b3654;padding:15px;border-radius:12px;margin:10px 0}
+
+.score{
+ font-size:48px;
+ font-weight:bold;
+ color:#35d6c0;
+ margin:15px;
+}
+
+.result-card{
+ background:#1b3654;
+ padding:15px;
+ border-radius:12px;
+ margin:10px 0;
+}
+
 .home-button{
- display:inline-block;background:#70a1ff;color:#071426;text-decoration:none;
+ display:inline-block;
+ background:#70a1ff;
+ color:#071426;
+ text-decoration:none;
 }
+
 .review-item{
- background:#1b3654;padding:15px;margin:15px 0;
- border-radius:12px;line-height:1.6;
+ background:#1b3654;
+ padding:15px;
+ margin:15px 0;
+ border-radius:12px;
+ line-height:1.6;
 }
+
 .correct{color:#48e69a;font-weight:bold}
 .wrong{color:#ff7777;font-weight:bold}
 .skipped-label{color:#ffbd59;font-weight:bold}
 .explanation{color:#c5d4e7;margin-top:8px}
+
 @media(max-width:480px){
- .container{padding:16px;margin:5px auto}
+
+ .container{
+  padding:16px;
+  margin:5px auto;
+ }
+
  .question{font-size:18px}
- button,.home-button{flex:1;text-align:center}
+
+ button,.home-button{
+  flex:1;
+  text-align:center;
+ }
+
  .info span{font-size:13px}
+
  .navigator{padding:12px}
+
  .navigator-grid{gap:8px}
- .nav-number{border-radius:9px;font-size:14px}
+
+ .nav-number{
+  border-radius:9px;
+  font-size:14px;
+ }
+
+ .student-box{padding:18px}
+
+ .student-box h2{font-size:23px}
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
 <div class="header">
@@ -147,10 +347,55 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <div class="subtitle">Mock Test • Learn • Practice • Succeed</div>
 </div>
 
-<div id="testArea">
+<!-- STUDENT DETAILS SECTION -->
+
+<div id="studentArea" class="student-box">
+
+<h2>📝 Student Details</h2>
+
+<p>পরীক্ষা শুরু করার আগে নিজের তথ্য পূরণ করো।</p>
+
+<form id="studentForm">
+
+<input
+ type="text"
+ id="studentName"
+ class="student-input"
+ placeholder="Student Name"
+ autocomplete="name"
+ required
+>
+
+<input
+ type="tel"
+ id="studentMobile"
+ class="student-input"
+ placeholder="10 Digit Mobile Number"
+ inputmode="numeric"
+ maxlength="10"
+ pattern="[0-9]{10}"
+ required
+>
+
+<div class="student-info">
+<b>Total Questions:</b> <span id="totalQuestions"></span><br>
+<b>Full Marks:</b> <span id="fullMarks"></span><br>
+<b>Time:</b> 20 Minutes
+</div>
+
+<button type="submit" class="start-button">
+Start Test
+</button>
+
+</form>
+</div>
+
+<!-- TEST AREA -->
+
+<div id="testArea" class="hidden">
 
 <div class="info">
-<span id="questionCount">Question 1 / 20</span>
+<span id="questionCount"></span>
 <span id="timer">20:00</span>
 </div>
 
@@ -159,30 +404,40 @@ button:disabled{opacity:.4;cursor:not-allowed}
 </div>
 
 <div class="navigator">
- <div class="navigator-title">
-  <h3>📋 Question Navigator</h3>
-  <span id="navSummary" style="color:#b8c8dc;font-size:12px">
-   0 Answered / 20
-  </span>
- </div>
- <div class="navigator-grid" id="navigatorGrid"></div>
- <div class="nav-legend">
-  <div class="legend-item">
-   <span class="legend-dot dot-answered"></span> Answered
-  </div>
-  <div class="legend-item">
-   <span class="legend-dot dot-skipped"></span> Skipped
-  </div>
-  <div class="legend-item">
-   <span class="legend-dot dot-current"></span> Current
-  </div>
-  <div class="legend-item">
-   <span class="legend-dot dot-unvisited"></span> Not visited
-  </div>
- </div>
+
+<div class="navigator-title">
+<h3>📋 Question Navigator</h3>
+
+<span id="navSummary" style="color:#b8c8dc;font-size:12px">
+0 Answered
+</span>
+</div>
+
+<div class="navigator-grid" id="navigatorGrid"></div>
+
+<div class="nav-legend">
+
+<div class="legend-item">
+<span class="legend-dot dot-answered"></span> Answered
+</div>
+
+<div class="legend-item">
+<span class="legend-dot dot-skipped"></span> Skipped
+</div>
+
+<div class="legend-item">
+<span class="legend-dot dot-current"></span> Current
+</div>
+
+<div class="legend-item">
+<span class="legend-dot dot-unvisited"></span> Not visited
+</div>
+
+</div>
 </div>
 
 <div class="question" id="question"></div>
+
 <div id="options"></div>
 
 <div class="buttons">
@@ -190,86 +445,78 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <button class="primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
 <button class="submit" onclick="submitTest()">Submit Test</button>
 </div>
+
 </div>
 
+<!-- RESULT AREA -->
+
 <div id="resultArea" class="result hidden">
+
 <h1>🎉 Test Completed!</h1>
+
 <div class="score" id="score"></div>
+
 <p id="percentage"></p>
 
 <div class="result-card">
 Correct Answers: <b id="correctCount"></b>
 </div>
+
 <div class="result-card">
 Wrong Answers: <b id="wrongCount"></b>
 </div>
+
 <div class="result-card">
 Skipped Questions: <b id="skippedCount"></b>
 </div>
 
 <div class="buttons">
-<button class="share-button" onclick="openShareResult()">🎓 View Shareable Result</button>
-<button class="primary" onclick="showReview()">📖 Review Answers</button>
-<button class="submit" onclick="location.reload()">↻ Try Again</button>
-<a href="index.html" class="home-button">🏠 Back to Home</a>
+
+<button class="share-button" onclick="openShareResult()">
+🎓 View Shareable Result
+</button>
+
+<button class="primary" onclick="showReview()">
+📖 Review Answers
+</button>
+
+<button class="submit" onclick="location.reload()">
+↻ Try Again
+</button>
+
+<a href="index.html" class="home-button">
+🏠 Back to Home
+</a>
+
 </div>
 </div>
 
+<!-- REVIEW AREA -->
+
 <div id="reviewArea" class="hidden">
+
 <h1>📖 Answer Review</h1>
+
 <div id="reviewList"></div>
+
 <div class="buttons">
 <a href="index.html" class="home-button">🏠 Back to Home</a>
-<button class="submit" onclick="location.reload()">↻ Try Again</button>
+
+<button class="submit" onclick="location.reload()">
+↻ Try Again
+</button>
 </div>
+
 </div>
 
 </div>
 
 <script>
 
-// STUDENT DETAILS
-let studentName=(prompt("Please enter your name:")||"").trim();
-if(!studentName) studentName="Student";
+// QUESTIONS
 
-let studentMobile="";
-while(!/^[0-9]{10}$/.test(studentMobile)){
- studentMobile=(prompt("Please enter your 10-digit mobile number:")||"").trim();
-
- if(!/^[0-9]{10}$/.test(studentMobile)){
-  alert("Please enter a valid 10-digit mobile number.");
- }
-}
-
-// GOOGLE SHEETS CONNECTION
-const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
-
-let recordSent=false;
-
-function saveStudentRecord(){
- if(recordSent)return;
- recordSent=true;
-
- const data={
-  name:studentName,
-  mobile:studentMobile,
-  testName:"Mathematics Mock Test"
- };
-
- fetch(GOOGLE_SCRIPT_URL,{
-  method:"POST",
-  mode:"no-cors",
-  headers:{
-   "Content-Type":"text/plain;charset=utf-8"
-  },
-  body:JSON.stringify(data)
- }).catch(error=>{
-  console.error("Student record submission error:",error);
- });
-}
-
-// Chapter name from URL
 const pageParams=new URLSearchParams(location.search);
+
 const chapterName=pageParams.get("chapter")||"Mathematics Mock Test";
 
 const questions=[
@@ -295,36 +542,119 @@ const questions=[
 {q:"What is 1000 - 375?",o:["525","625","675","725"],a:1,e:"1000 - 375 = 625."}
 ];
 
+// SETTINGS
+
+const TOTAL_TIME=20*60;
+
+let studentName="";
+let studentMobile="";
+
 let current=0;
 let answers=Array(questions.length).fill(null);
 let visited=Array(questions.length).fill(false);
-let timeLeft=20*60;
+
+let timeLeft=TOTAL_TIME;
 let finished=false;
-let timerInterval;
+let timerInterval=null;
+let recordSent=false;
 let lastResult=null;
 
+// GOOGLE SHEETS CONNECTION
+
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
+
+// SHOW TEST INFORMATION
+
+document.getElementById("totalQuestions").textContent=questions.length;
+document.getElementById("fullMarks").textContent=questions.length;
+
+// START TEST AFTER VALIDATION
+
+document.getElementById("studentForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ studentName=document.getElementById("studentName").value.trim();
+ studentMobile=document.getElementById("studentMobile").value.trim();
+
+ if(studentName===""){
+  alert("Please enter student name.");
+  return;
+ }
+
+ if(!/^[0-9]{10}$/.test(studentMobile)){
+  alert("Please enter a valid 10-digit mobile number.");
+  return;
+ }
+
+ document.getElementById("studentArea").classList.add("hidden");
+ document.getElementById("testArea").classList.remove("hidden");
+
+ buildNavigator();
+ showQuestion();
+ startTimer();
+
+});
+
+// SAVE STUDENT RECORD
+
+function saveStudentRecord(){
+
+ if(recordSent)return;
+ recordSent=true;
+
+ const data={
+  name:studentName,
+  mobile:studentMobile,
+  testName:"Mathematics Mock Test - "+chapterName
+ };
+
+ fetch(GOOGLE_SCRIPT_URL,{
+  method:"POST",
+  mode:"no-cors",
+  headers:{
+   "Content-Type":"text/plain;charset=utf-8"
+  },
+  body:JSON.stringify(data)
+ }).catch(error=>{
+  console.error("Student record submission error:",error);
+ });
+
+}
+
+// QUESTION NAVIGATOR
+
 function buildNavigator(){
+
  const grid=document.getElementById("navigatorGrid");
  grid.innerHTML="";
 
  questions.forEach((q,i)=>{
+
   const btn=document.createElement("button");
+
   btn.className="nav-number";
   btn.textContent=i+1;
   btn.type="button";
+
   btn.onclick=()=>goToQuestion(i);
+
   grid.appendChild(btn);
+
  });
 
  updateNavigator();
 }
 
 function updateNavigator(){
+
  const buttons=document.querySelectorAll(".nav-number");
+
  let answered=0;
  let skipped=0;
 
  buttons.forEach((btn,i)=>{
+
   btn.className="nav-number";
 
   if(answers[i]!==null){
@@ -339,20 +669,29 @@ function updateNavigator(){
   if(i===current){
    btn.classList.add("current");
   }
+
  });
 
  document.getElementById("navSummary").textContent=
  answered+" Answered / "+skipped+" Skipped / "+questions.length+" Total";
+
 }
 
 function goToQuestion(index){
+
  if(finished)return;
+
  current=index;
  showQuestion();
+
 }
 
+// SHOW QUESTION
+
 function showQuestion(){
+
  const q=questions[current];
+
  visited[current]=true;
 
  document.getElementById("questionCount").textContent=
@@ -364,43 +703,60 @@ function showQuestion(){
  options.innerHTML="";
 
  q.o.forEach((option,index)=>{
+
   const btn=document.createElement("button");
+
   btn.className="option"+(answers[current]===index?" selected":"");
+
   btn.textContent=String.fromCharCode(65+index)+". "+option;
 
   btn.onclick=()=>{
+
    answers[current]=index;
    showQuestion();
+
   };
 
   options.appendChild(btn);
+
  });
 
  document.getElementById("prevBtn").disabled=current===0;
- document.getElementById("nextBtn").disabled=current===questions.length-1;
+
+ document.getElementById("nextBtn").disabled=
+ current===questions.length-1;
 
  document.getElementById("progressBar").style.width=
  ((current+1)/questions.length*100)+"%";
 
  updateNavigator();
+
 }
 
 function nextQuestion(){
+
  if(current<questions.length-1){
   current++;
   showQuestion();
  }
+
 }
 
 function previousQuestion(){
+
  if(current>0){
   current--;
   showQuestion();
  }
+
 }
 
+// TIMER
+
 function startTimer(){
+
  timerInterval=setInterval(()=>{
+
   if(finished)return;
 
   timeLeft--;
@@ -409,15 +765,21 @@ function startTimer(){
   let sec=timeLeft%60;
 
   document.getElementById("timer").textContent=
-  String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  String(min).padStart(2,"0")+":"+
+  String(sec).padStart(2,"0");
 
   if(timeLeft<=0){
    submitTest(true);
   }
+
  },1000);
+
 }
 
+// SUBMIT TEST
+
 function submitTest(autoSubmit=false){
+
  if(finished)return;
 
  if(!autoSubmit && !confirm("Are you sure you want to submit your test?")){
@@ -425,14 +787,25 @@ function submitTest(autoSubmit=false){
  }
 
  finished=true;
+
  clearInterval(timerInterval);
 
- let correct=0,wrong=0,skipped=0;
+ let correct=0;
+ let wrong=0;
+ let skipped=0;
 
  answers.forEach((answer,i)=>{
-  if(answer===null)skipped++;
-  else if(answer===questions[i].a)correct++;
-  else wrong++;
+
+  if(answer===null){
+   skipped++;
+  }
+  else if(answer===questions[i].a){
+   correct++;
+  }
+  else{
+   wrong++;
+  }
+
  });
 
  let percent=Math.round(correct/questions.length*100);
@@ -444,7 +817,6 @@ function submitTest(autoSubmit=false){
   percent:percent
  };
 
- // SAVE STUDENT DETAILS TO GOOGLE SHEETS
  saveStudentRecord();
 
  document.getElementById("testArea").classList.add("hidden");
@@ -459,12 +831,17 @@ function submitTest(autoSubmit=false){
  document.getElementById("correctCount").textContent=correct;
  document.getElementById("wrongCount").textContent=wrong;
  document.getElementById("skippedCount").textContent=skipped;
+
 }
 
+// SHARE RESULT
+
 function openShareResult(){
+
  if(!lastResult)return;
 
  const params=new URLSearchParams({
+
   name:studentName,
   chapter:chapterName,
   total:questions.length,
@@ -472,12 +849,17 @@ function openShareResult(){
   correct:lastResult.correct,
   wrong:lastResult.wrong,
   skipped:lastResult.skipped
+
  });
 
  location.href="result.html?"+params.toString();
+
 }
 
+// ANSWER REVIEW
+
 function showReview(){
+
  document.getElementById("resultArea").classList.add("hidden");
  document.getElementById("reviewArea").classList.remove("hidden");
 
@@ -485,6 +867,7 @@ function showReview(){
  list.innerHTML="";
 
  questions.forEach((q,i)=>{
+
   let selected=answers[i];
 
   let html=`
@@ -492,6 +875,7 @@ function showReview(){
   <b>Q${i+1}. ${q.q}</b><br>`;
 
   q.o.forEach((option,j)=>{
+
    let label=String.fromCharCode(65+j)+". "+option;
 
    if(j===q.a){
@@ -503,6 +887,7 @@ function showReview(){
    else{
     html+=`<div>${label}</div>`;
    }
+
   });
 
   if(selected===null){
@@ -512,13 +897,12 @@ function showReview(){
   html+=`<div class="explanation">Explanation: ${q.e}</div></div>`;
 
   list.innerHTML+=html;
+
  });
+
 }
 
-buildNavigator();
-showQuestion();
-startTimer();
-
 </script>
+
 </body>
 </html>
