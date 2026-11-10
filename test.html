@@ -36,6 +36,71 @@ h1{color:#35d6c0;margin:8px 0}
 .progress-bar{
  height:100%;width:0;background:#35d6c0;transition:.3s;
 }
+
+/* QUESTION NAVIGATOR */
+.navigator{
+ background:#0b1d32;
+ border:1px solid #294766;
+ border-radius:15px;
+ padding:15px;margin-bottom:22px;
+}
+.navigator-title{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:8px;flex-wrap:wrap;
+ margin-bottom:14px;
+}
+.navigator-title h3{
+ margin:0;color:#35d6c0;font-size:17px;
+}
+.navigator-grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:10px;
+}
+.nav-number{
+ width:100%;aspect-ratio:1;
+ border:2px solid #38516b;
+ border-radius:11px;
+ background:#1b3654;color:#fff;
+ font-size:15px;font-weight:bold;
+ cursor:pointer;padding:0;
+ transition:.2s;
+}
+.nav-number:hover{transform:translateY(-2px)}
+.nav-number.answered{
+ background:#087f5b;border-color:#25d69b;color:white;
+}
+.nav-number.skipped{
+ background:#a85c13;border-color:#ffbd59;color:white;
+}
+.nav-number.current{
+ border:3px solid #35d6c0;
+ box-shadow:0 0 0 3px #35d6c033;
+ transform:scale(1.06);
+}
+.nav-number.current.answered{
+ border-color:#fff;
+}
+.nav-number.current.skipped{
+ border-color:#fff;
+}
+.nav-legend{
+ display:flex;flex-wrap:wrap;gap:12px;
+ margin-top:15px;
+}
+.legend-item{
+ display:flex;align-items:center;gap:6px;
+ color:#c5d4e7;font-size:12px;
+}
+.legend-dot{
+ width:11px;height:11px;border-radius:3px;
+ display:inline-block;
+}
+.dot-answered{background:#087f5b}
+.dot-skipped{background:#a85c13}
+.dot-current{background:#35d6c0}
+.dot-unvisited{background:#1b3654;border:1px solid #66809a}
+
 .question{font-size:20px;font-weight:bold;line-height:1.5;margin-bottom:20px}
 .option{
  display:block;width:100%;text-align:left;padding:14px;
@@ -68,18 +133,21 @@ button:disabled{opacity:.4;cursor:not-allowed}
 }
 .correct{color:#48e69a;font-weight:bold}
 .wrong{color:#ff7777;font-weight:bold}
+.skipped-label{color:#ffbd59;font-weight:bold}
 .explanation{color:#c5d4e7;margin-top:8px}
 @media(max-width:480px){
  .container{padding:16px;margin:5px auto}
  .question{font-size:18px}
  button,.home-button{flex:1;text-align:center}
  .info span{font-size:13px}
+ .navigator{padding:12px}
+ .navigator-grid{gap:8px}
+ .nav-number{border-radius:9px;font-size:14px}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="header">
@@ -97,6 +165,33 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 <div class="progress">
 <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- QUESTION NAVIGATOR -->
+<div class="navigator">
+ <div class="navigator-title">
+  <h3>📋 Question Navigator</h3>
+  <span id="navSummary" style="color:#b8c8dc;font-size:12px">
+   0 Answered / 20
+  </span>
+ </div>
+
+ <div class="navigator-grid" id="navigatorGrid"></div>
+
+ <div class="nav-legend">
+  <div class="legend-item">
+   <span class="legend-dot dot-answered"></span> Answered
+  </div>
+  <div class="legend-item">
+   <span class="legend-dot dot-skipped"></span> Skipped
+  </div>
+  <div class="legend-item">
+   <span class="legend-dot dot-current"></span> Current
+  </div>
+  <div class="legend-item">
+   <span class="legend-dot dot-unvisited"></span> Not visited
+  </div>
+ </div>
 </div>
 
 <div class="question" id="question"></div>
@@ -125,9 +220,7 @@ Skipped Questions: <b id="skippedCount"></b>
 </div>
 
 <div class="buttons">
-<button class="share-button" onclick="openShareResult()">
-🎓 View Shareable Result
-</button>
+<button class="share-button" onclick="openShareResult()">🎓 View Shareable Result</button>
 <button class="primary" onclick="showReview()">📖 Review Answers</button>
 <button class="submit" onclick="location.reload()">↻ Try Again</button>
 <a href="index.html" class="home-button">🏠 Back to Home</a>
@@ -148,17 +241,14 @@ Skipped Questions: <b id="skippedCount"></b>
 <script>
 
 // Student name
-let studentName = (prompt("Please enter your name:") || "").trim();
-
-if(!studentName){
- studentName = "Student";
-}
+let studentName=(prompt("Please enter your name:")||"").trim();
+if(!studentName) studentName="Student";
 
 // Chapter name from URL
-const pageParams = new URLSearchParams(location.search);
-const chapterName = pageParams.get("chapter") || "Mathematics Mock Test";
+const pageParams=new URLSearchParams(location.search);
+const chapterName=pageParams.get("chapter")||"Mathematics Mock Test";
 
-const questions = [
+const questions=[
 {q:"What is 25 + 35?",o:["50","60","65","70"],a:1,e:"25 + 35 = 60."},
 {q:"What is 100 - 45?",o:["45","50","55","65"],a:2,e:"100 - 45 = 55."},
 {q:"What is 12 × 8?",o:["86","96","108","88"],a:1,e:"12 × 8 = 96."},
@@ -183,13 +273,68 @@ const questions = [
 
 let current=0;
 let answers=Array(questions.length).fill(null);
+let visited=Array(questions.length).fill(false);
 let timeLeft=20*60;
 let finished=false;
 let timerInterval;
 let lastResult=null;
 
+// Build question navigator
+function buildNavigator(){
+ const grid=document.getElementById("navigatorGrid");
+ grid.innerHTML="";
+
+ questions.forEach((q,i)=>{
+  const btn=document.createElement("button");
+  btn.className="nav-number";
+  btn.textContent=i+1;
+  btn.type="button";
+  btn.onclick=()=>goToQuestion(i);
+  grid.appendChild(btn);
+ });
+
+ updateNavigator();
+}
+
+// Update navigator colours
+function updateNavigator(){
+ const buttons=document.querySelectorAll(".nav-number");
+ let answered=0;
+ let skipped=0;
+
+ buttons.forEach((btn,i)=>{
+  btn.className="nav-number";
+
+  if(answers[i]!==null){
+   btn.classList.add("answered");
+   answered++;
+  }
+  else if(visited[i] && i!==current){
+   btn.classList.add("skipped");
+   skipped++;
+  }
+
+  if(i===current){
+   btn.classList.add("current");
+  }
+ });
+
+ document.getElementById("navSummary").textContent=
+ answered+" Answered / "+skipped+" Skipped / "+questions.length+" Total";
+}
+
+// Jump to any question
+function goToQuestion(index){
+ if(finished)return;
+ current=index;
+ showQuestion();
+}
+
 function showQuestion(){
  const q=questions[current];
+
+ // Mark this question as visited
+ visited[current]=true;
 
  document.getElementById("questionCount").textContent=
  "Question "+(current+1)+" / "+questions.length;
@@ -217,6 +362,8 @@ function showQuestion(){
 
  document.getElementById("progressBar").style.width=
  ((current+1)/questions.length*100)+"%";
+
+ updateNavigator();
 }
 
 function nextQuestion(){
@@ -252,7 +399,6 @@ function startTimer(){
 }
 
 function submitTest(autoSubmit=false){
-
  if(finished)return;
 
  if(!autoSubmit && !confirm("Are you sure you want to submit your test?")){
@@ -295,7 +441,6 @@ function submitTest(autoSubmit=false){
 
 // Open separate shareable result page
 function openShareResult(){
-
  if(!lastResult)return;
 
  const params=new URLSearchParams({
@@ -312,7 +457,6 @@ function openShareResult(){
 }
 
 function showReview(){
-
  document.getElementById("resultArea").classList.add("hidden");
  document.getElementById("reviewArea").classList.remove("hidden");
 
@@ -320,7 +464,6 @@ function showReview(){
  list.innerHTML="";
 
  questions.forEach((q,i)=>{
-
   let selected=answers[i];
 
   let html=`
@@ -328,7 +471,6 @@ function showReview(){
   <b>Q${i+1}. ${q.q}</b><br>`;
 
   q.o.forEach((option,j)=>{
-
    let label=String.fromCharCode(65+j)+". "+option;
 
    if(j===q.a){
@@ -343,7 +485,7 @@ function showReview(){
   });
 
   if(selected===null){
-   html+=`<div class="wrong">Not Answered</div>`;
+   html+=`<div class="skipped-label">⚠ SKIPPED — Not Answered</div>`;
   }
 
   html+=`<div class="explanation">Explanation: ${q.e}</div></div>`;
@@ -352,10 +494,10 @@ function showReview(){
  });
 }
 
+buildNavigator();
 showQuestion();
 startTimer();
 
 </script>
-
 </body>
 </html>
