@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Gonit | Current Affairs Mock Test</title>
+<title>Class Gonit | Date Wise Current Affairs</title>
 
 <style>
 *{box-sizing:border-box}
@@ -16,7 +16,7 @@ header p{margin:0;color:#d7f6ff}
 .container{max-width:850px;margin:20px auto;padding:15px}
 .card{background:#10243e;border:1px solid #244768;border-radius:16px;padding:20px;margin-bottom:18px}
 h2{color:#ffd166}
-input{width:100%;padding:13px;border-radius:8px;border:0;font-size:16px;margin:10px 0}
+input,select{width:100%;padding:13px;border-radius:8px;border:0;font-size:16px;margin:10px 0}
 button{border:0;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:bold;cursor:pointer}
 .primary{background:#ffd166;color:#17243b}
 .secondary{background:#087f9c;color:white}
@@ -48,6 +48,10 @@ button:disabled{opacity:.4}
 .review-item{padding:15px;background:#193653;border-radius:10px;margin:12px 0;line-height:1.6}
 .correct{color:#4ee6a1}
 .wrong{color:#ff8b8b}
+.mode-box{background:#193653;padding:13px;border-radius:10px;margin:10px 0}
+.mode-box label{display:block;margin:10px 0;cursor:pointer}
+.mode-box input{width:auto;margin-right:8px}
+.note{font-size:13px;color:#b9d8ed;line-height:1.6}
 footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 @media(max-width:500px){
 .container{padding:10px}
@@ -70,18 +74,38 @@ footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 
 <section id="startPage" class="card">
 <h2>📚 কারেন্ট অ্যাফেয়ার্স মক টেস্ট</h2>
+<p>পরীক্ষার তারিখ নির্বাচন করো।</p>
+
+<label>📅 পরীক্ষার তারিখ</label>
+<select id="dateSelect"></select>
+
+<div class="mode-box">
+<strong style="color:#ffd166">পরীক্ষার ধরন নির্বাচন করো</strong>
+
+<label>
+<input type="radio" name="testMode" value="daily" checked>
+Daily Test – শুধু নির্বাচিত দিনের প্রশ্ন
+</label>
+
+<label>
+<input type="radio" name="testMode" value="cumulative">
+All Previous + New – আগের সব দিনের প্রশ্নসহ
+</label>
+</div>
+
+<p id="questionInfo" class="note"></p>
+
+<hr style="border-color:#315575">
+
 <p>পরীক্ষায় অংশগ্রহণ করতে নিজের তথ্য দাও।</p>
 
 <input id="studentName" type="text" placeholder="তোমার সম্পূর্ণ নাম লিখো">
-
 <input id="studentMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="তোমার ১০ সংখ্যার মোবাইল নম্বর">
 
 <p style="font-size:12px;color:#ffd166">
 তোমার তথ্য পরীক্ষার রেকর্ড সংরক্ষণের জন্য ব্যবহার করা হবে।
 </p>
 
-<p>মোট প্রশ্ন: ৫০টি</p>
-<p>সময়: ৩০ মিনিট</p>
 <p>প্রতিটি সঠিক উত্তরে ১ নম্বর।</p>
 <p>ভুল উত্তরে কোনো নম্বর কাটা হবে না।</p>
 
@@ -92,10 +116,11 @@ footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 
 <div class="card">
 <div class="info">
-<span id="questionCount">প্রশ্ন ১ / ৫০</span>
+<span id="questionCount"></span>
 <span>⏱️ <span id="timer">30:00</span></span>
 </div>
 
+<p id="testDateLabel" class="note"></p>
 <div class="progress"><div id="progressBar"></div></div>
 <h3 id="category" style="color:#ffd166"></h3>
 <p id="questionText"></p>
@@ -121,13 +146,13 @@ footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 <br>
 <button class="danger" style="width:100%" onclick="confirmSubmit()">Submit Test</button>
 </div>
-
 </section>
 
 <section id="resultPage" class="hidden">
 <div class="card">
 <h2>🎉 পরীক্ষার ফলাফল</h2>
 <h3 id="resultName"></h3>
+<p id="resultTestInfo" class="note"></p>
 
 <div class="stat">
 <div>মোট নম্বর<strong id="score">0</strong></div>
@@ -135,7 +160,7 @@ footer{text-align:center;padding:20px;color:#b8c9d9;font-size:13px}
 <div>সঠিক উত্তর<strong id="correct">0</strong></div>
 <div>ভুল উত্তর<strong id="wrong">0</strong></div>
 <div>উত্তর দাওনি<strong id="skipped">0</strong></div>
-<div>মোট প্রশ্ন<strong>৫০</strong></div>
+<div>মোট প্রশ্ন<strong id="totalQuestions">0</strong></div>
 </div>
 
 <br>
@@ -170,7 +195,18 @@ Copyright © 2026
 const GOOGLE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
 
-const questions = [
+/*
+==================================================
+DATE WISE QUESTION DATABASE
+
+নতুন দিনের প্রশ্ন যোগ করতে নিচের questionSets-এ
+নতুন তারিখের একটি আলাদা প্রশ্নের তালিকা যোগ করবে।
+==================================================
+*/
+
+const questionSets = {
+
+"2026-11-10": [
 {c:"জাতীয়",q:"ভারতের রাজধানী কোনটি?",o:["মুম্বাই","নয়াদিল্লি","কলকাতা","চেন্নাই"],a:1,e:"নয়াদিল্লি ভারতের রাজধানী।"},
 {c:"জাতীয়",q:"ভারতের সংবিধান কবে কার্যকর হয়?",o:["১৫ আগস্ট ১৯৪৭","২৬ জানুয়ারি ১৯৫০","২৬ নভেম্বর ১৯৪৯","২ অক্টোবর ১৯৫০"],a:1,e:"২৬ জানুয়ারি ১৯৫০ সংবিধান কার্যকর হয়।"},
 {c:"জাতীয়",q:"ভারতের জাতীয় সংগীতের রচয়িতা কে?",o:["বঙ্কিমচন্দ্র","রবীন্দ্রনাথ ঠাকুর","কাজী নজরুল","সুভাষচন্দ্র বসু"],a:1,e:"জন গণ মন রবীন্দ্রনাথ ঠাকুর রচনা করেন।"},
@@ -232,16 +268,77 @@ const questions = [
 {c:"পরিবেশ ও গুরুত্বপূর্ণ দিবস",q:"বিশ্ব ওজোন দিবস কবে?",o:["১৬ সেপ্টেম্বর","২২ এপ্রিল","১ ডিসেম্বর","১৪ নভেম্বর"],a:0,e:"১৬ সেপ্টেম্বর বিশ্ব ওজোন দিবস।"},
 {c:"পরিবেশ ও গুরুত্বপূর্ণ দিবস",q:"পৃথিবী দিবস কবে পালিত হয়?",o:["২২ এপ্রিল","৫ জুন","২১ জুন","১০ ডিসেম্বর"],a:0,e:"২২ এপ্রিল পৃথিবী দিবস।"},
 {c:"পরিবেশ ও গুরুত্বপূর্ণ দিবস",q:"বিশ্ব বন দিবস কবে?",o:["২১ মার্চ","৫ জুন","২২ মার্চ","১ মে"],a:0,e:"২১ মার্চ আন্তর্জাতিক বন দিবস।"}
-];
+]
+
+};
+
+/* ==========================================
+   DATE WISE SYSTEM
+========================================== */
 
 let current=0;
-let answers=Array(questions.length).fill(null);
+let questions=[];
+let answers=[];
 let timeLeft=1800;
 let timerInterval=null;
 let student="";
 let studentMobile="";
+let selectedDate="";
+let selectedMode="daily";
+let finished=false;
+
+const dateSelect=document.getElementById("dateSelect");
+
+function formatDate(date){
+ const parts=date.split("-");
+ return parts[2]+"-"+parts[1]+"-"+parts[0];
+}
+
+function loadDateOptions(){
+ const dates=Object.keys(questionSets).sort();
+
+ dateSelect.innerHTML="";
+
+ dates.forEach(date=>{
+  const option=document.createElement("option");
+  option.value=date;
+  option.textContent=formatDate(date);
+  dateSelect.appendChild(option);
+ });
+
+ updateQuestionInfo();
+}
+
+function updateQuestionInfo(){
+ const date=dateSelect.value;
+ const mode=document.querySelector('input[name="testMode"]:checked').value;
+
+ if(!date)return;
+
+ let total=0;
+
+ if(mode==="daily"){
+  total=questionSets[date].length;
+ }else{
+  Object.keys(questionSets).forEach(d=>{
+   if(d<=date)total+=questionSets[d].length;
+  });
+ }
+
+ document.getElementById("questionInfo").textContent=
+ "নির্বাচিত তারিখ: "+formatDate(date)+
+ " | মোট প্রশ্ন: "+total+
+ " | সময়: "+Math.ceil(total*36/60)+" মিনিট";
+}
+
+dateSelect.addEventListener("change",updateQuestionInfo);
+
+document.querySelectorAll('input[name="testMode"]').forEach(radio=>{
+ radio.addEventListener("change",updateQuestionInfo);
+});
 
 function startTest(){
+
  student=document.getElementById("studentName").value.trim();
  studentMobile=document.getElementById("studentMobile").value.trim();
 
@@ -255,39 +352,86 @@ function startTest(){
   return;
  }
 
+ selectedDate=dateSelect.value;
+ selectedMode=document.querySelector('input[name="testMode"]:checked').value;
+
+ if(!selectedDate || !questionSets[selectedDate]){
+  alert("প্রথমে পরীক্ষার তারিখ নির্বাচন করো।");
+  return;
+ }
+
+ if(selectedMode==="daily"){
+  questions=questionSets[selectedDate].slice();
+ }else{
+  questions=[];
+
+  Object.keys(questionSets).sort().forEach(date=>{
+   if(date<=selectedDate){
+    questions=questions.concat(questionSets[date]);
+   }
+  });
+ }
+
+ if(questions.length===0){
+  alert("এই তারিখের কোনো প্রশ্ন পাওয়া যায়নি।");
+  return;
+ }
+
+ current=0;
+ answers=Array(questions.length).fill(null);
+ timeLeft=questions.length*36;
+ finished=false;
+
  document.getElementById("startPage").classList.add("hidden");
  document.getElementById("testPage").classList.remove("hidden");
+
+ document.getElementById("testDateLabel").textContent=
+ "তারিখ: "+formatDate(selectedDate)+
+ " | "+(selectedMode==="daily"?"Daily Test":"All Previous + New");
+
  renderPalette();
  showQuestion();
+ updateTimer();
 
  timerInterval=setInterval(()=>{
+  if(finished)return;
+
   timeLeft--;
   updateTimer();
+
   if(timeLeft<=0){
    clearInterval(timerInterval);
    submitTest();
   }
  },1000);
+
+ window.scrollTo(0,0);
 }
 
 function updateTimer(){
  let m=Math.floor(timeLeft/60);
  let s=timeLeft%60;
+
  document.getElementById("timer").textContent=
  String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
 
 function showQuestion(){
  let q=questions[current];
+
  document.getElementById("questionCount").textContent=
  "প্রশ্ন "+(current+1)+" / "+questions.length;
+
  document.getElementById("category").textContent="বিষয়: "+q.c;
+
  document.getElementById("questionText").textContent=
  (current+1)+". "+q.q;
+
  document.getElementById("progressBar").style.width=
  ((current+1)/questions.length*100)+"%";
 
  let html="";
+
  q.o.forEach((option,index)=>{
   html+=`
   <label class="option ${answers[current]===index?'selected':''}">
@@ -297,9 +441,11 @@ function showQuestion(){
    ${String.fromCharCode(65+index)}. ${option}
   </label>`;
  });
+
  document.getElementById("options").innerHTML=html;
 
  document.getElementById("prevBtn").disabled=current===0;
+
  document.getElementById("nextBtn").textContent=
  current===questions.length-1?"শেষ প্রশ্ন":"Next →";
 
@@ -312,11 +458,17 @@ function selectAnswer(index){
 }
 
 function previousQuestion(){
- if(current>0){current--;showQuestion();}
+ if(current>0){
+  current--;
+  showQuestion();
+ }
 }
 
 function nextQuestion(){
- if(current<questions.length-1){current++;showQuestion();}
+ if(current<questions.length-1){
+  current++;
+  showQuestion();
+ }
 }
 
 function goToQuestion(index){
@@ -326,25 +478,34 @@ function goToQuestion(index){
 
 function renderPalette(){
  let html="";
+
  questions.forEach((q,index)=>{
   let cls=answers[index]!==null?"answered":"skipped";
+
   if(index===current)cls+=" current";
+
   html+=`<button class="${cls}" onclick="goToQuestion(${index})">${index+1}</button>`;
  });
+
  document.getElementById("palette").innerHTML=html;
 }
 
 function confirmSubmit(){
  let unanswered=answers.filter(a=>a===null).length;
- let msg="তুমি "+unanswered+"টি প্রশ্নের উত্তর দাওনি। পরীক্ষা জমা দেবে?";
+
+ let msg="তুমি "+unanswered+
+ "টি প্রশ্নের উত্তর দাওনি। পরীক্ষা জমা দেবে?";
+
  if(confirm(msg))submitTest();
 }
 
-function saveStudentRecord(correct,wrong,skipped){
+function saveStudentRecord(){
+ const modeText=selectedMode==="daily"?"Daily":"Cumulative";
+
  const data={
   name:student,
   mobile:studentMobile,
-  testName:"Daily Current Affairs Mock Test"
+  testName:"Current Affairs - "+formatDate(selectedDate)+" ("+modeText+")"
  };
 
  fetch(GOOGLE_SCRIPT_URL,{
@@ -358,10 +519,16 @@ function saveStudentRecord(correct,wrong,skipped){
 }
 
 function submitTest(){
+
+ if(finished)return;
+
  if(document.getElementById("testPage").classList.contains("hidden"))return;
+
+ finished=true;
  clearInterval(timerInterval);
 
  let correct=0,wrong=0,skipped=0;
+
  questions.forEach((q,index)=>{
   if(answers[index]===null)skipped++;
   else if(answers[index]===q.a)correct++;
@@ -372,28 +539,41 @@ function submitTest(){
  document.getElementById("resultPage").classList.remove("hidden");
 
  let percent=Math.round(correct/questions.length*100);
+
  document.getElementById("resultName").textContent="শিক্ষার্থী: "+student;
- document.getElementById("score").textContent=correct+"/50";
+
+ document.getElementById("resultTestInfo").textContent=
+ "পরীক্ষার তারিখ: "+formatDate(selectedDate)+
+ " | "+(selectedMode==="daily"?"Daily Test":"All Previous + New");
+
+ document.getElementById("score").textContent=correct+"/"+questions.length;
  document.getElementById("percentage").textContent=percent+"%";
  document.getElementById("correct").textContent=correct;
  document.getElementById("wrong").textContent=wrong;
  document.getElementById("skipped").textContent=skipped;
+ document.getElementById("totalQuestions").textContent=questions.length;
 
- saveStudentRecord(correct,wrong,skipped);
+ saveStudentRecord();
 
  window.finalAnswers={correct,wrong,skipped};
+
  window.scrollTo(0,0);
 }
 
 function showReview(){
+
  document.getElementById("resultPage").classList.add("hidden");
  document.getElementById("reviewPage").classList.remove("hidden");
 
  let html="";
+
  questions.forEach((q,index)=>{
+
   let selected=answers[index];
   let isCorrect=selected===q.a;
+
   let yourAnswer=selected===null?"উত্তর দেওয়া হয়নি":q.o[selected];
+
   html+=`
   <div class="review-item">
    <strong>${index+1}. ${q.q}</strong><br>
@@ -404,7 +584,9 @@ function showReview(){
    <small>ব্যাখ্যা: ${q.e}</small>
   </div>`;
  });
+
  document.getElementById("reviewContent").innerHTML=html;
+
  window.scrollTo(0,0);
 }
 
@@ -413,6 +595,8 @@ function backToResult(){
  document.getElementById("resultPage").classList.remove("hidden");
  window.scrollTo(0,0);
 }
+
+loadDateOptions();
 
 </script>
 </body>
