@@ -1,475 +1,169 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ক্লাস গণিত 🎓 | Learn Mathematics</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
- font-family:Arial,"Noto Sans Bengali",sans-serif;
- background:#080f20;color:#fff;
-}
-header{
- display:flex;align-items:center;justify-content:space-between;
- padding:14px 6%;background:#101c34;
- border-bottom:1px solid #263b60;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
- width:55px;height:55px;object-fit:contain;
- border-radius:12px;
-}
-.brand h1{font-size:23px;color:#61caff}
-.brand p{font-size:11px;color:#b3c6df;margin-top:5px}
-.nav-btn{
- background:#20395f;color:white;border:1px solid #41638e;
- padding:10px 14px;border-radius:9px;cursor:pointer;
-}
-.container{max-width:1100px;margin:auto;padding:22px}
-.page{display:none}
-.page.active{display:block}
-.hero{
- display:grid;grid-template-columns:1.2fr .8fr;
- align-items:center;gap:20px;
- background:linear-gradient(130deg,#12366a,#205a9c,#403b8e);
- padding:35px;border-radius:23px;
- border:1px solid #477eb5;
- box-shadow:0 15px 40px #0005;
-}
-.hero h2{font-size:32px;line-height:1.5;margin-bottom:12px}
-.hero p{color:#e0edff;line-height:1.9}
-.hero-art{width:100%;max-width:300px;margin:auto}
-.btn{
- background:linear-gradient(90deg,#08b9e9,#536bff);
- color:white;border:0;padding:13px 20px;
- border-radius:10px;font-size:15px;font-weight:bold;
- cursor:pointer;margin-top:18px;
-}
-.btn:hover{filter:brightness(1.15)}
-.secondary{background:#263f64}
-.stats{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:13px;margin:22px 0;
-}
-.stat{
- background:#14243f;padding:18px 8px;
- border:1px solid #28466e;border-radius:14px;
- text-align:center;
-}
-.stat strong{display:block;color:#59ceff;font-size:24px}
-.stat span{font-size:12px;color:#b8cbe5}
-.heading{
- font-size:23px;color:#66ceff;
- margin:35px 0 18px;
-}
-.chapters{
- display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-}
-.chapter{
- background:linear-gradient(145deg,#192d4d,#101d34);
- border:1px solid #2b496f;border-radius:15px;
- padding:20px 10px;text-align:center;cursor:pointer;
- transition:.2s;
-}
-.chapter:hover{transform:translateY(-4px);background:#203b62}
-.chapter .emoji{font-size:35px}
-.chapter h3{font-size:15px;margin:12px 0 7px}
-.chapter p{font-size:11px;color:#a9c1e0}
-.features{
- display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-.feature{
- padding:20px 12px;text-align:center;
- background:#14243f;border:1px solid #29466c;
- border-radius:15px;
-}
-.feature span{font-size:34px}
-.feature h3{font-size:15px;margin:12px 0}
-.feature p{font-size:12px;color:#afc3df;line-height:1.8}
-.banner{
- margin-top:25px;padding:30px 15px;text-align:center;
- border-radius:18px;
- background:linear-gradient(110deg,#57369c,#174e8d);
- line-height:2;
-}
-.quote{
- margin-top:20px;padding:25px;text-align:center;
- background:linear-gradient(110deg,#49331d,#3d315e);
- border-radius:17px;color:#ffe0a0;line-height:2;
-}
-.panel{
- background:#14243f;border:1px solid #2b496f;
- padding:22px;border-radius:15px;margin-bottom:17px;
-}
-.panel h2{color:#65ccff;margin-bottom:15px}
-.back{margin-bottom:18px}
-.info{
- display:flex;justify-content:space-between;
- align-items:center;gap:10px;flex-wrap:wrap;
- margin-bottom:20px;
-}
-.timer{
- background:#203b62;color:#7be0ff;
- padding:12px 17px;border-radius:10px;font-weight:bold;
-}
-.question{
- background:#14243f;border:1px solid #2b496f;
- padding:19px;border-radius:13px;margin-bottom:14px;
-}
-.question h3{font-size:16px;line-height:1.8;margin-bottom:14px}
-.option{
- display:block;padding:12px;margin:9px 0;
- border:1px solid #3b5478;border-radius:9px;
- cursor:pointer;color:#e0eafa;
-}
-.option input{margin-right:9px}
-.option:has(input:checked){
- background:#19446d;border-color:#4dc7ff;
-}
-.result{text-align:center;line-height:2}
-.result h2{font-size:28px;color:#69d3ff}
-.explanation{
- background:#0b192d;padding:13px;
- border-radius:9px;margin-top:12px;
- color:#c3d8f0;line-height:1.8;
-}
-footer{
- text-align:center;padding:30px 12px;
- background:#101c34;color:#a6bad5;
- margin-top:35px;line-height:2;font-size:13px;
-}
-@media(max-width:700px){
- .hero{grid-template-columns:1fr;text-align:center;padding:25px 17px}
- .hero h2{font-size:26px}
- .hero-art{max-width:210px}
- .chapters{grid-template-columns:repeat(2,1fr)}
- .features{grid-template-columns:repeat(2,1fr)}
- .container{padding:15px}
-}
-@media(max-width:370px){
- .features{grid-template-columns:1fr}
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ক্লাস গণিত 🎓 | Mathematics Learning Centre</title>
+    <meta name="description" content="Class Gonit - Learn, Practice and Prepare for Mathematics Competitive Examinations.">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
- <div class="brand">
-  <img src="logo.png" class="logo" alt="Class Gonit Logo"
-  onerror="this.style.display='none'">
-  <div>
-   <h1>ক্লাস গণিত 🎓</h1>
-   <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
-  </div>
- </div>
- <button class="nav-btn" onclick="showPage('home')">⌂ Home</button>
-</header>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Class Gonit Logo" class="logo">
+            <div>
+                <h1>ক্লাস গণিত 🎓</h1>
+                <p>Learn • Practice • Achieve</p>
+            </div>
+        </div>
 
-<div class="container">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#contact">Contact</a>
+            <a href="mock-test.html" class="nav-button">Math Mock Test</a>
+        </nav>
+    </header>
 
-<!-- HOME PAGE -->
-<section id="home" class="page active">
 
- <div class="hero">
-  <div>
-   <h2>Welcome to ক্লাস গণিত 🎓</h2>
-   <p>
-    গণিত শেখার নতুন অভিজ্ঞতা শুরু হোক এখানে।
-    নিয়মিত অনুশীলন করো, নিজের দক্ষতা বাড়াও
-    এবং লক্ষ্যের দিকে এগিয়ে চলো।
-   </p>
-   <button class="btn" onclick="document.getElementById('chapterSection').scrollIntoView({behavior:'smooth'})">
-    Explore Chapters →
-   </button>
-  </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="welcome">WELCOME TO CLASS GONIT</p>
 
-  <div class="hero-art">
-   <svg viewBox="0 0 300 250" width="100%">
-    <circle cx="150" cy="125" r="110" fill="#fff" opacity=".10"/>
-    <circle cx="150" cy="125" r="85" fill="#fff" opacity=".08"/>
-    <rect x="65" y="55" width="170" height="140" rx="17" fill="#fff"/>
-    <rect x="82" y="72" width="136" height="13" rx="5" fill="#c5e5ff"/>
-    <text x="150" y="135" text-anchor="middle" font-size="43" fill="#1766bd" font-weight="bold">∑ π</text>
-    <text x="150" y="166" text-anchor="middle" font-size="20" fill="#6338b5">x² + y²</text>
-    <circle cx="55" cy="50" r="23" fill="#ffbd42"/>
-    <text x="55" y="58" text-anchor="middle" font-size="25" fill="#fff">+</text>
-    <circle cx="250" cy="190" r="23" fill="#29d9bd"/>
-    <text x="250" y="198" text-anchor="middle" font-size="25" fill="#fff">÷</text>
-    <path d="M24 195 L50 150 L76 195 Z" fill="#ff6688"/>
-    <rect x="227" y="25" width="37" height="37" rx="8" fill="#a78bfa" transform="rotate(20 245 43)"/>
-   </svg>
-  </div>
- </div>
+            <h2>
+                Build Your Mathematical Skills
+                <span>With Confidence!</span>
+            </h2>
 
- <div class="stats">
-  <div class="stat"><strong>20</strong><span>Questions</span></div>
-  <div class="stat"><strong>20 Min</strong><span>Time Limit</span></div>
-  <div class="stat"><strong>100</strong><span>Total Marks</span></div>
- </div>
+            <p>
+                Learn Mathematics, practise regularly and prepare
+                yourself for various competitive examinations.
+            </p>
 
- <h2 class="heading" id="chapterSection">📚 Mathematics Chapters</h2>
- <div class="chapters" id="chapterList"></div>
+            <a href="mock-test.html" class="main-button">
+                Start Math Mock Test →
+            </a>
+        </div>
+    </section>
 
- <h2 class="heading">✨ Why Choose ক্লাস গণিত?</h2>
- <div class="features">
-  <div class="feature">
-   <span>📖</span><h3>Easy Learning</h3>
-   <p>সহজভাবে গণিত শেখার সুযোগ।</p>
-  </div>
-  <div class="feature">
-   <span>⏱️</span><h3>Mock Tests</h3>
-   <p>সময় ধরে পরীক্ষার অনুশীলন।</p>
-  </div>
-  <div class="feature">
-   <span>🎯</span><h3>Exam Preparation</h3>
-   <p>Competitive Exam-এর প্রস্তুতি।</p>
-  </div>
-  <div class="feature">
-   <span>📊</span><h3>Instant Result</h3>
-   <p>পরীক্ষার পর ফলাফল দেখো।</p>
-  </div>
-  <div class="feature">
-   <span>💡</span><h3>Solutions</h3>
-   <p>উত্তর ও ব্যাখ্যা দেখো।</p>
-  </div>
-  <div class="feature">
-   <span>🏆</span><h3>Improve Yourself</h3>
-   <p>নিজের দক্ষতা যাচাই করো।</p>
-  </div>
- </div>
 
- <div class="banner">
-  <h2>🎓 Your Success Starts Here!</h2>
-  <p>Practice More • Learn More • Achieve More</p>
-  <p>আজই তোমার প্রস্তুতি শুরু করো।</p>
- </div>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+        <h2>About Class Gonit</h2>
 
- <div class="quote">
-  <h2>🌟 আজকের অনুশীলন, আগামীকালের সাফল্য</h2>
-  <p>
-   "হাল ছেড়ো না। নিজের উপর বিশ্বাস রাখো,
-   নিয়মিত চেষ্টা করো—সাফল্য একদিন তোমারই হবে।"
-  </p>
- </div>
+        <p>
+            Welcome to Class Gonit, a mathematics learning platform
+            dedicated to developing mathematical knowledge,
+            problem-solving skills and confidence.
 
-</section>
+            Our aim is to make Mathematics easier, more interesting
+            and accessible through lessons, practice questions
+            and online mock tests.
+        </p>
+    </section>
 
-<!-- CHAPTER PAGE -->
-<section id="chapterPage" class="page">
- <button class="btn secondary back" onclick="showPage('home')">← Home</button>
- <div class="panel">
-  <h2 id="chapterTitle">Mathematics</h2>
-  <p style="line-height:1.9;color:#c1d4ed">
-   এই অধ্যায়ের Mock Test-এ অংশগ্রহণ করো।
-   মোট প্রশ্ন ২০টি, সময় ২০ মিনিট এবং প্রতিটি প্রশ্নের মান ৫।
-  </p>
-  <button class="btn" onclick="startTest()">Start Mock Test →</button>
- </div>
-</section>
 
-<!-- TEST PAGE -->
-<section id="testPage" class="page">
- <button class="btn secondary back" onclick="confirmHome()">← Exit Test</button>
- <div class="info">
-  <div>
-   <h2 id="testTitle" style="color:#65ccff">Mock Test</h2>
-   <p style="color:#a9bddb;margin-top:8px">20 Questions • 100 Marks</p>
-  </div>
-  <div class="timer">⏱ <span id="timer">20:00</span></div>
- </div>
- <div id="questions"></div>
- <button class="btn" style="width:100%" onclick="submitTest()">Submit Test</button>
-</section>
+    <!-- INFORMATION SECTION -->
+    <section id="courses" class="section">
+        <h2>What We Offer</h2>
 
-<!-- RESULT PAGE -->
-<section id="resultPage" class="page">
- <div class="panel result">
-  <h2>🎉 Test Completed!</h2>
-  <p id="score"></p>
-  <p id="percentage"></p>
-  <p id="correct"></p>
-  <p id="wrong"></p>
-  <button class="btn" onclick="showPage('home')">Back to Home</button>
-  <button class="btn secondary" onclick="reviewAnswers()">Review Answers</button>
- </div>
- <div id="review"></div>
-</section>
+        <div class="info-container">
 
-</div>
+            <div class="info-card">
+                <h3>📚 Mathematics Learning</h3>
+                <p>
+                    Learn mathematical concepts, formulas,
+                    shortcuts and problem-solving methods.
+                </p>
+            </div>
 
-<footer>
- <h2 style="color:#63caff">ক্লাস গণিত 🎓</h2>
- শেখো • অনুশীলন করো • এগিয়ে চলো
- <br>Mathematics Learning Platform
- <br>© 2026 Class Gonit
-</footer>
+            <div class="info-card">
+                <h3>📝 Chapter-wise Practice</h3>
+                <p>
+                    Practise questions from different
+                    mathematics chapters.
+                </p>
+            </div>
 
-<script>
+            <div class="info-card">
+                <h3>💻 Online Mock Tests</h3>
+                <p>
+                    Take online mathematics tests with
+                    a timer and automatic results.
+                </p>
+            </div>
 
-const chapters=[
- ["🔢","Number System"],
- ["➗","Simplification (BODMAS)"],
- ["📐","LCM & HCF"],
- ["📊","Percentage"],
- ["⚖️","Ratio & Proportion"],
- ["💰","Profit & Loss"],
- ["📈","Average"],
- ["⏰","Time & Work"]
-];
+            <div class="info-card">
+                <h3>🎯 Competitive Exam Preparation</h3>
+                <p>
+                    Practise mathematics for SSC, Railway,
+                    Banking and other competitive examinations.
+                </p>
+            </div>
 
-const questions=[
- {q:"25 + 15 × 2 = কত?",o:["80","55","50","65"],a:1,e:"BODMAS অনুযায়ী আগে গুণ: 25 + 30 = 55।"},
- {q:"144 ÷ 12 = কত?",o:["10","11","12","14"],a:2,e:"144 ÷ 12 = 12।"},
- {q:"15 × 4 - 20 = কত?",o:["30","40","50","60"],a:1,e:"60 - 20 = 40।"},
- {q:"200-এর 25% কত?",o:["25","40","50","75"],a:2,e:"200 × 25/100 = 50।"},
- {q:"12 ও 18-এর LCM কত?",o:["24","30","36","48"],a:2,e:"12 ও 18-এর ল.সা.গু 36।"},
- {q:"24 ও 36-এর HCF কত?",o:["6","8","12","18"],a:2,e:"24 ও 36-এর গ.সা.গু 12।"},
- {q:"3/4 + 1/4 = কত?",o:["1/2","1","2","3/4"],a:1,e:"(3+1)/4 = 1।"},
- {q:"একটি সংখ্যার 50% = 40 হলে সংখ্যাটি কত?",o:["60","70","80","90"],a:2,e:"40 × 100/50 = 80।"},
- {q:"5 : 10-এর সরল অনুপাত কত?",o:["1:2","2:1","1:5","5:1"],a:0,e:"উভয় পদকে 5 দিয়ে ভাগ করলে 1:2।"},
- {q:"10, 20, 30-এর গড় কত?",o:["15","20","25","30"],a:1,e:"(10+20+30)/3 = 20।"},
- {q:"100 টাকায় কিনে 120 টাকায় বিক্রি করলে লাভ কত?",o:["10","15","20","25"],a:2,e:"120 - 100 = 20 টাকা।"},
- {q:"2² + 3² = কত?",o:["10","13","15","25"],a:1,e:"4 + 9 = 13।"},
- {q:"√169-এর মান কত?",o:["11","12","13","14"],a:2,e:"13 × 13 = 169।"},
- {q:"এক ডজন সমান কতটি?",o:["10","12","15","20"],a:1,e:"এক ডজন = 12টি।"},
- {q:"7 × 8 + 4 = কত?",o:["56","60","64","68"],a:1,e:"56 + 4 = 60।"},
- {q:"1 কিলোমিটার সমান কত মিটার?",o:["100","500","1000","1500"],a:2,e:"1 কিলোমিটার = 1000 মিটার।"},
- {q:"একটি সংখ্যার 10% = 15 হলে সংখ্যাটি কত?",o:["100","120","150","200"],a:2,e:"15 × 100/10 = 150।"},
- {q:"9 × 9 = কত?",o:["72","81","90","99"],a:1,e:"9 × 9 = 81।"},
- {q:"80-এর 1/4 কত?",o:["10","15","20","25"],a:2,e:"80 ÷ 4 = 20।"},
- {q:"100 - 25 ÷ 5 = কত?",o:["15","75","95","25"],a:2,e:"আগে ভাগ: 100 - 5 = 95।"}
-];
+        </div>
+    </section>
 
-let selectedChapter="";
-let timeLeft=1200;
-let timerInterval=null;
-let submitted=false;
-let answers={};
 
-function showPage(id){
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- window.scrollTo(0,0);
-}
+    <!-- MOCK TEST SECTION -->
+    <section class="mock-section">
+        <h2>Ready to Test Your Knowledge?</h2>
 
-function makeChapters(){
- const list=document.getElementById("chapterList");
- chapters.forEach(ch=>{
-  const div=document.createElement("div");
-  div.className="chapter";
-  div.innerHTML=`<div class="emoji">${ch[0]}</div>
-   <h3>${ch[1]}</h3><p>20 Questions • 20 Minutes</p>`;
-  div.onclick=()=>openChapter(ch[1]);
-  list.appendChild(div);
- });
-}
+        <p>
+            Challenge yourself with mathematics mock tests.
+            Improve your speed, accuracy and confidence.
+        </p>
 
-function openChapter(name){
- selectedChapter=name;
- document.getElementById("chapterTitle").innerText="📚 "+name;
- showPage("chapterPage");
-}
+        <a href="mock-test.html" class="main-button">
+            Explore Math Mock Tests →
+        </a>
+    </section>
 
-function startTest(){
- answers={};
- submitted=false;
- timeLeft=1200;
 
- document.getElementById("testTitle").innerText=selectedChapter;
- document.getElementById("timer").innerText="20:00";
+    <!-- MOTIVATION -->
+    <section class="motivation">
+        <h2>Our Inspiration</h2>
 
- const area=document.getElementById("questions");
- area.innerHTML="";
+        <p>
+            হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে
+            নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত
+            চেষ্টা করো—সাফল্য একদিন তোমারই হবে। ✨
+        </p>
 
- questions.forEach((q,i)=>{
-  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
-  q.o.forEach((option,j)=>{
-   html+=`<label class="option">
-    <input type="radio" name="q${i}" value="${j}">
-    ${String.fromCharCode(65+j)}. ${option}
-   </label>`;
-  });
-  html+="</div>";
-  area.innerHTML+=html;
- });
+        <h3>ক্লাস গণিত 🎓</h3>
+        <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+    </section>
 
- showPage("testPage");
- clearInterval(timerInterval);
 
- timerInterval=setInterval(()=>{
-  timeLeft--;
-  let min=Math.floor(timeLeft/60);
-  let sec=timeLeft%60;
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact">
+        <h2>Contact Information</h2>
 
-  document.getElementById("timer").innerText=
-   String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+        <p>📍 Address: Durgabari More, [Your Town], West Bengal</p>
 
-  if(timeLeft<=0) submitTest(true);
- },1000);
-}
+        <p>📞 Phone: [Your Contact Number]</p>
 
-function submitTest(auto=false){
- if(submitted)return;
+        <p>✉️ Email: [Your Email Address]</p>
 
- if(!auto && !confirm("আপনি কি Test Submit করতে চান?"))return;
+        <p>🌐 Website: Class Gonit</p>
+    </section>
 
- submitted=true;
- clearInterval(timerInterval);
- answers={};
 
- questions.forEach((q,i)=>{
-  const selected=document.querySelector(`input[name="q${i}"]:checked`);
-  answers[i]=selected?Number(selected.value):-1;
- });
+    <!-- FOOTER -->
+    <footer>
+        <h3>ক্লাস গণিত 🎓</h3>
+        <p>Learn • Practice • Achieve</p>
+        <p>© 2026 Class Gonit. All Rights Reserved.</p>
+    </footer>
 
- let correct=0;
- questions.forEach((q,i)=>{
-  if(answers[i]===q.a)correct++;
- });
+    <script src="script.js"></script>
 
- let wrong=20-correct;
- let marks=correct*5;
-
- document.getElementById("score").innerText="আপনার নম্বর: "+marks+" / 100";
- document.getElementById("percentage").innerText="Percentage: "+marks+"%";
- document.getElementById("correct").innerText="সঠিক উত্তর: "+correct;
- document.getElementById("wrong").innerText="ভুল / উত্তর না দেওয়া: "+wrong;
-
- showPage("resultPage");
-}
-
-function reviewAnswers(){
- const area=document.getElementById("review");
- area.innerHTML="";
-
- questions.forEach((q,i)=>{
-  const isCorrect=answers[i]===q.a;
-  area.innerHTML+=`
-   <div class="question">
-    <h3>${i+1}. ${q.q}</h3>
-    <p style="color:${isCorrect?'#65e6a1':'#ff9292'}">
-     ${isCorrect?'✓ Correct':'✗ Incorrect'}
-    </p>
-    <p>সঠিক উত্তর: ${q.o[q.a]}</p>
-    <div class="explanation">ব্যাখ্যা: ${q.e}</div>
-   </div>`;
- });
-
- area.scrollIntoView({behavior:"smooth"});
-}
-
-function confirmHome(){
- if(confirm("আপনি কি Test থেকে বের হতে চান?")){
-  clearInterval(timerInterval);
-  showPage("home");
- }
-}
-
-makeChapters();
-
-</script>
 </body>
 </html>
