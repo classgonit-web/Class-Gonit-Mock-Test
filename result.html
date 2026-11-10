@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Gonit - Result</title>
+<title>Class Gonit - Mock Test Result</title>
 
 <style>
 *{box-sizing:border-box}
@@ -23,26 +23,24 @@ body{
  text-align:center;
 }
 
-h2{color:#35d6c0;margin-bottom:8px}
-
+h2{color:#35d6c0;margin:8px}
 .subtitle{color:#b8c8dc;margin-bottom:18px}
 
 .result-card{
- position:relative;
- overflow:hidden;
  width:100%;
- aspect-ratio:9/16;
- border-radius:22px;
+ aspect-ratio:4/5;
+ overflow:hidden;
+ border-radius:20px;
+ border:2px solid #e8bb50;
  padding:4%;
- background:
- radial-gradient(ellipse at 50% 30%,#075ba9 0%,transparent 48%),
- radial-gradient(ellipse at 10% 75%,#064b83 0%,transparent 40%),
- linear-gradient(155deg,#020b24,#062c63 55%,#02091e);
- border:2px solid #e8b94e;
- box-shadow:0 0 25px #008cff55;
  display:flex;
  flex-direction:column;
  justify-content:space-between;
+ background:
+ radial-gradient(ellipse at 50% 30%,#075ba9,transparent 55%),
+ linear-gradient(145deg,#020b24,#063b78 60%,#02091e);
+ box-shadow:0 0 25px #008cff55;
+ position:relative;
 }
 
 .result-card:before{
@@ -50,101 +48,87 @@ h2{color:#35d6c0;margin-bottom:8px}
  position:absolute;
  inset:8px;
  border:1px solid #4bbdff88;
- border-radius:15px;
+ border-radius:14px;
  pointer-events:none;
 }
 
-.content{
- position:relative;
- z-index:1;
-}
-
-.top{
- padding-top:2%;
-}
+.content{position:relative;z-index:1}
 
 .logo{
- width:17%;
- height:auto;
- max-height:65px;
+ width:65px;
+ height:65px;
  object-fit:contain;
 }
 
 .brand{
- font-size:clamp(19px,5vw,28px);
+ font-size:clamp(20px,5vw,28px);
  font-weight:900;
- margin:5px 0;
- color:white;
+ margin:3px;
 }
-
 .brand span{color:#ffdb52}
 
-.tagline{
- font-size:clamp(9px,2.5vw,13px);
- color:#b9ddff;
-}
+.tagline{font-size:11px;color:#b9ddff}
 
 .ribbon{
  display:inline-block;
  background:linear-gradient(90deg,#c98b18,#ffe78a,#c98b18);
  color:#142342;
  font-weight:900;
- padding:7px 22px;
- margin:12px 0 5px;
+ padding:7px 20px;
+ margin:8px 0 3px;
  border-radius:5px;
- font-size:clamp(12px,3.3vw,17px);
+ font-size:13px;
 }
 
 .trophy{
- font-size:clamp(45px,12vw,65px);
- margin:3px 0;
- filter:drop-shadow(0 0 12px #ffcb38);
+ font-size:48px;
+ filter:drop-shadow(0 0 10px #ffcb38);
+ margin:0;
 }
 
 .details{
  background:#061a3de8;
  border:1.5px solid #4bbdff;
- border-radius:13px;
- padding:9px;
+ border-radius:11px;
+ padding:8px 10px;
  margin:5px 0;
  text-align:left;
 }
 
 .detail-label{
  color:#9ed7ff;
- font-size:clamp(9px,2.5vw,12px);
+ font-size:10px;
 }
 
 .detail-value{
  color:white;
  font-weight:bold;
- font-size:clamp(12px,3.5vw,17px);
+ font-size:15px;
  overflow-wrap:anywhere;
 }
 
 .chapter{
  color:#ffdc4e;
- font-size:clamp(11px,3vw,15px);
+ font-size:13px;
  font-weight:bold;
 }
 
 .score-box{
- margin:8px 0;
- padding:12px 5px;
+ margin:7px 0;
+ padding:10px 5px;
  border:2px solid #ffdc63;
- border-radius:17px;
+ border-radius:15px;
  background:linear-gradient(145deg,#06163b,#092e68);
  box-shadow:0 0 15px #ffca3655;
 }
 
 .score-label{
- color:#fff;
- font-size:clamp(14px,4vw,19px);
+ font-size:17px;
  font-weight:bold;
 }
 
 .score{
- font-size:clamp(43px,12vw,66px);
+ font-size:clamp(38px,11vw,55px);
  font-weight:900;
  color:#ffda32;
  line-height:1.1;
@@ -153,38 +137,38 @@ h2{color:#35d6c0;margin-bottom:8px}
 
 .percentage{
  display:inline-block;
- padding:5px 25px;
+ padding:4px 22px;
  border-radius:30px;
  background:linear-gradient(90deg,#078b43,#20d36a);
  border:2px solid #ffe45b;
  color:white;
- font-size:clamp(20px,6vw,31px);
+ font-size:25px;
  font-weight:900;
 }
 
 .stats{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:7px;
- margin:9px 0;
+ gap:6px;
+ margin:8px 0;
 }
 
 .stat{
- padding:9px 3px;
- border-radius:12px;
+ padding:8px 2px;
+ border-radius:10px;
  border:1.5px solid;
  background:#071a3ee8;
 }
 
 .stat-label{
- font-size:clamp(8px,2.4vw,11px);
+ font-size:clamp(8px,2.3vw,10px);
  font-weight:bold;
 }
 
 .stat-number{
- font-size:clamp(23px,6vw,32px);
+ font-size:26px;
  font-weight:900;
- margin-top:4px;
+ margin-top:3px;
 }
 
 .green{border-color:#39f5a1;color:#5dffb1}
@@ -193,51 +177,51 @@ h2{color:#35d6c0;margin-bottom:8px}
 
 .motivation{
  color:#ffdc4e;
- font-size:clamp(15px,4.2vw,21px);
+ font-size:clamp(14px,4vw,19px);
  font-weight:900;
- margin:8px 0 3px;
+ margin:7px 0 3px;
 }
 
 .motivation-sub{
- font-size:clamp(10px,3vw,14px);
+ font-size:12px;
  color:white;
 }
 
 .footer{
  border-top:1px solid #e9c55d;
  padding-top:7px;
- margin-top:6px;
+ margin-top:5px;
 }
 
 .footer-name{
  color:#ffdc4e;
  font-weight:bold;
- font-size:clamp(12px,3.5vw,17px);
+ font-size:15px;
 }
 
 .address{
- font-size:clamp(8px,2.3vw,11px);
+ font-size:10px;
  color:#c9e5ff;
  line-height:1.4;
  margin:4px 0;
 }
 
 .phone{
- font-size:clamp(9px,2.5vw,12px);
+ font-size:11px;
  color:#7dffb1;
  font-weight:bold;
 }
 
 .bottom-tag{
  color:#ffdc4e;
- font-size:clamp(9px,2.5vw,12px);
+ font-size:11px;
  font-style:italic;
- margin-top:6px;
+ margin-top:5px;
 }
 
 .actions{
  display:grid;
- gap:11px;
+ gap:10px;
  margin-top:18px;
 }
 
@@ -245,21 +229,13 @@ h2{color:#35d6c0;margin-bottom:8px}
  border:0;
  border-radius:12px;
  padding:15px;
- font-size:16px;
+ font-size:15px;
  font-weight:bold;
  cursor:pointer;
 }
 
-.whatsapp{
- background:#19c86a;
- color:white;
-}
-
-.download{
- background:#ffca45;
- color:#15213a;
-}
-
+.whatsapp{background:#19c86a;color:white}
+.download{background:#ffca45;color:#15213a}
 .home{
  display:block;
  text-decoration:none;
@@ -286,8 +262,8 @@ h2{color:#35d6c0;margin-bottom:8px}
 
 <div class="result-card" id="resultCard">
 
-<div class="content top">
-<img src="logo.png" class="logo" alt="Class Gonit">
+<div class="content">
+<img src="logo.png" class="logo" alt="Class Gonit Logo">
 <div class="brand">CLASS <span>GONIT</span></div>
 <div class="tagline">YOUR LEARNING PARTNER</div>
 <div class="ribbon">⭐ MOCK TEST RESULT ⭐</div>
@@ -316,7 +292,6 @@ h2{color:#35d6c0;margin-bottom:8px}
 </div>
 
 <div class="stats">
-
 <div class="stat green">
 <div class="stat-label">✓ CORRECT</div>
 <div class="stat-number" id="correct">0</div>
@@ -331,7 +306,6 @@ h2{color:#35d6c0;margin-bottom:8px}
 <div class="stat-label">− SKIPPED</div>
 <div class="stat-number" id="skipped">0</div>
 </div>
-
 </div>
 
 <div class="motivation" id="performance">দারুণ পারফরম্যান্স!</div>
@@ -377,6 +351,7 @@ Class Gonit – Your Learning Partner 🎓
 
 <script>
 
+// Read actual test result
 const params=new URLSearchParams(location.search);
 
 const name=params.get("name") || "Student";
@@ -390,6 +365,7 @@ const skipped=Number(params.get("skipped") ?? 0);
 const percentage=total>0?
 Math.round(score/total*100):0;
 
+// Display result
 document.getElementById("studentName").textContent=name;
 document.getElementById("chapterName").textContent=chapter;
 document.getElementById("score").textContent=score;
@@ -399,6 +375,7 @@ document.getElementById("correct").textContent=correct;
 document.getElementById("wrong").textContent=wrong;
 document.getElementById("skipped").textContent=skipped;
 
+// Performance message
 let message="ভালো চেষ্টা! আরও অনুশীলন করো।";
 
 if(percentage>=90){
@@ -413,110 +390,103 @@ if(percentage>=90){
 
 document.getElementById("performance").textContent=message;
 
-// Create a 1080 x 1920 result image
+// Create 4:5 result image
 function createResultImage(){
 
  return new Promise((resolve,reject)=>{
 
  const canvas=document.createElement("canvas");
  canvas.width=1080;
- canvas.height=1920;
+ canvas.height=1350;
 
  const ctx=canvas.getContext("2d");
 
- const gradient=ctx.createLinearGradient(0,0,1080,1920);
+ if(!ctx){
+  reject(new Error("Canvas not supported"));
+  return;
+ }
+
+ // Background
+ const gradient=ctx.createLinearGradient(0,0,1080,1350);
  gradient.addColorStop(0,"#020b24");
- gradient.addColorStop(.45,"#064b91");
+ gradient.addColorStop(.5,"#064b91");
  gradient.addColorStop(1,"#02091e");
 
  ctx.fillStyle=gradient;
- ctx.fillRect(0,0,1080,1920);
+ ctx.fillRect(0,0,1080,1350);
 
- // Decorative blue light
+ // Decorative blue lights
  for(let i=0;i<12;i++){
   ctx.beginPath();
-  ctx.arc(
-   (i*197)%1080,
-   (i*311)%1920,
-   100+(i%3)*35,
-   0,Math.PI*2
-  );
-  ctx.fillStyle="rgba(0,160,255,0.07)";
+  ctx.arc((i*197)%1080,(i*211)%1350,100,0,Math.PI*2);
+  ctx.fillStyle="rgba(0,160,255,0.09)";
   ctx.fill();
  }
 
- // Border
+ // Borders
  ctx.strokeStyle="#e8bb50";
- ctx.lineWidth=8;
- ctx.roundRect(25,25,1030,1870,35);
- ctx.stroke();
+ ctx.lineWidth=7;
+ ctx.strokeRect(25,25,1030,1300);
 
  ctx.strokeStyle="#39baff";
  ctx.lineWidth=2;
- ctx.roundRect(42,42,996,1836,25);
- ctx.stroke();
+ ctx.strokeRect(42,42,996,1266);
 
- // Text helper
- function centerText(text,y,size,color,weight="bold"){
+ function text(t,y,size,color,weight="bold"){
   ctx.textAlign="center";
   ctx.fillStyle=color;
   ctx.font=weight+" "+size+"px Arial";
-  ctx.fillText(text,540,y);
+  ctx.fillText(t,540,y);
  }
 
- // Header
- const logo=new Image();
- logo.onload=draw;
- logo.onerror=draw;
- logo.src="logo.png";
+ // Draw logo safely, then draw rest of image
+ function drawContent(logo){
 
- function draw(){
-
-  if(logo.complete && logo.naturalWidth){
-   ctx.drawImage(logo,465,75,150,150);
+  if(logo){
+   ctx.drawImage(logo,475,65,130,130);
   }
 
-  centerText("CLASS GONIT",290,65,"#ffffff");
-  centerText("YOUR LEARNING PARTNER",340,25,"#ffdb52");
+  // Header
+  text("CLASS GONIT",235,64,"#ffffff");
+  text("YOUR LEARNING PARTNER",278,26,"#ffdc52");
+  text("MOCK TEST RESULT",345,39,"#071426");
 
   // Ribbon
   ctx.fillStyle="#e9bb48";
-  ctx.roundRect(180,375,720,80,15);
-  ctx.fill();
-  centerText("MOCK TEST RESULT",430,39,"#102342");
+  ctx.fillRect(180,305,720,65);
+  text("★ MOCK TEST RESULT ★",350,32,"#102342");
 
-  centerText("🏆",570,110,"#ffffff");
+  // Trophy
+  text("🏆",445,90,"#ffffff");
 
   // Student details
   ctx.fillStyle="#071b42";
-  ctx.roundRect(90,625,900,115,22);
-  ctx.fill();
+  ctx.fillRect(90,470,900,105);
   ctx.strokeStyle="#42c4ff";
   ctx.lineWidth=3;
-  ctx.stroke();
+  ctx.strokeRect(90,470,900,105);
 
-  centerText("STUDENT NAME",670,24,"#a8ddff");
-  centerText(name.slice(0,28),715,38,"#ffffff");
+  text("STUDENT NAME",510,23,"#a8ddff");
+  text(name.slice(0,28),555,37,"#ffffff");
 
   ctx.fillStyle="#071b42";
-  ctx.roundRect(90,770,900,100,22);
-  ctx.fill();
-  ctx.stroke();
+  ctx.fillRect(90,590,900,90);
+  ctx.strokeStyle="#42c4ff";
+  ctx.strokeRect(90,590,900,90);
 
-  centerText("CHAPTER / SUBJECT",810,22,"#a8ddff");
-  centerText(chapter.slice(0,32),850,32,"#ffdc4e");
+  text("CHAPTER / SUBJECT",625,21,"#a8ddff");
+  text(chapter.slice(0,32),663,30,"#ffdc52");
 
-  // Score
+  // Score card
   ctx.fillStyle="#071a3e";
-  ctx.roundRect(80,925,920,330,30);
-  ctx.fill();
+  ctx.fillRect(80,700,920,235);
   ctx.strokeStyle="#ffdb52";
   ctx.lineWidth=6;
-  ctx.stroke();
+  ctx.strokeRect(80,700,920,235);
 
-  centerText("YOUR SCORE",1005,42,"#ffffff");
-  centerText(score+" / "+total,1125,105,"#ffdc35");
-  centerText(percentage+"%",1205,65,"#ffffff");
+  text("YOUR SCORE",755,35,"#ffffff");
+  text(score+" / "+total,840,83,"#ffdc35");
+  text(percentage+"%",910,55,"#ffffff");
 
   // Statistics
   const boxes=[
@@ -527,49 +497,61 @@ function createResultImage(){
 
   boxes.forEach(b=>{
    ctx.fillStyle="#071b42";
-   ctx.roundRect(b.x,1320,280,190,20);
-   ctx.fill();
+   ctx.fillRect(b.x,965,280,145);
 
    ctx.strokeStyle=b.color;
    ctx.lineWidth=6;
-   ctx.stroke();
+   ctx.strokeRect(b.x,965,280,145);
 
    ctx.fillStyle=b.color;
-   ctx.font="bold 25px Arial";
+   ctx.font="bold 23px Arial";
    ctx.textAlign="center";
-   ctx.fillText(b.label,b.x+140,1375);
+   ctx.fillText(b.label,b.x+140,1015);
 
    ctx.fillStyle="#ffffff";
-   ctx.font="bold 70px Arial";
-   ctx.fillText(b.value,b.x+140,1465);
+   ctx.font="bold 62px Arial";
+   ctx.fillText(String(b.value),b.x+140,1085);
   });
 
   // Motivation
-  centerText(message,1600,40,"#ffdc52");
-
-  ctx.fillStyle="#ffffff";
-  ctx.font="30px Arial";
-  ctx.textAlign="center";
-  ctx.fillText("এভাবেই এগিয়ে চলুন...",540,1660);
+  text(message,1165,32,"#ffdc52");
+  text("এভাবেই এগিয়ে চলুন...",1205,25,"#ffffff","normal");
 
   // Footer
   ctx.strokeStyle="#e9bb48";
   ctx.lineWidth=3;
   ctx.beginPath();
-  ctx.moveTo(90,1710);
-  ctx.lineTo(990,1710);
+  ctx.moveTo(90,1230);
+  ctx.lineTo(990,1230);
   ctx.stroke();
 
-  centerText("CLASS GONIT",1765,38,"#ffdc52");
-  centerText("ULLADABRI, MAYNAGURI, JALPAIGURI",1810,23,"#ffffff");
-  centerText("West Bengal - 735224 | 8159061346",1850,23,"#b9ddff");
-  centerText("Keep Learning... Keep Growing...",1890,24,"#ffdc52");
+  text("CLASS GONIT",1270,28,"#ffdc52");
+  text("ULLADABRI, MAYNAGURI, JALPAIGURI",1300,19,"#ffffff");
+  text("West Bengal - 735224 | 8159061346",1330,17,"#b9ddff");
 
   canvas.toBlob(blob=>{
-   if(blob)resolve(blob);
-   else reject(new Error("Could not create image"));
+   if(blob && blob.size>0){
+    resolve(blob);
+   }else{
+    reject(new Error("Image generation failed"));
+   }
   },"image/png");
+ }
 
+ // Load logo without risking a blank image
+ const logo=new Image();
+
+ logo.onload=()=>drawContent(logo);
+ logo.onerror=()=>drawContent(null);
+ logo.src="logo.png";
+
+ // Handle already cached image
+ if(logo.complete){
+  if(logo.naturalWidth){
+   drawContent(logo);
+  }else{
+   drawContent(null);
+  }
  }
 
  });
@@ -586,21 +568,25 @@ async function downloadResult(){
   const a=document.createElement("a");
   a.href=url;
   a.download="Class-Gonit-Result.png";
+  document.body.appendChild(a);
   a.click();
+  a.remove();
 
-  setTimeout(()=>URL.revokeObjectURL(url),2000);
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
 
- }catch(e){
+ }catch(error){
   alert("Image could not be created. Please try again.");
+  console.error(error);
  }
 
 }
 
-// Share result
+// WhatsApp sharing
 async function shareResult(){
 
  try{
   const blob=await createResultImage();
+
   const file=new File(
    [blob],
    "Class-Gonit-Result.png",
@@ -615,20 +601,27 @@ async function shareResult(){
    "Keep Learning... Keep Growing!";
 
   if(navigator.canShare && navigator.canShare({files:[file]})){
+
    await navigator.share({
     files:[file],
     title:"Class Gonit Mock Test Result",
     text:textMessage
    });
+
   }else{
+
    await downloadResult();
-   alert("Your result image is saved. Open WhatsApp Status and upload it.");
+   alert("Your result image is saved. Upload it to WhatsApp Status.");
+
   }
 
- }catch(e){
-  if(e.name!=="AbortError"){
-   alert("Sharing is unavailable. Please download your result image.");
+ }catch(error){
+
+  if(error.name!=="AbortError"){
+   alert("Sharing unavailable. Please download your result image.");
+   console.error(error);
   }
+
  }
 
 }
