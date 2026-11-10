@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapters | ক্লাস গণিত</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo-area">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <div>
+            <h1>ক্লাস গণিত 🎓</h1>
+            <p>Learn • Practice • Achieve</p>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="mock-test.html">Mock Test</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="welcome">CHAPTER WISE PRACTICE</p>
+        <h2 id="section-title">Select Your <span>Chapter</span></h2>
+        <p>Choose a chapter and prepare for your mathematics examination.</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Available Chapters</h2>
+    <div class="info-container" id="chapter-list"></div>
+    <p id="message" style="color:#42e6c4;margin-top:20px;"></p>
+    <br>
+    <a href="mock-test.html" class="main-button">← Back to Sections</a>
+</section>
+
+<footer>
+    <h3>ক্লাস গণিত 🎓</h3>
+    <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+    <p>© 2026 Class Gonit</p>
+</footer>
+
+<script>
+const chapters = {
+    Arithmetic: [
+        "Number System",
+        "Simplification",
+        "BODMAS Rule",
+        "HCF and LCM",
+        "Percentage",
+        "Ratio and Proportion",
+        "Average",
+        "Profit and Loss",
+        "Simple Interest",
+        "Compound Interest",
+        "Time and Work",
+        "Time, Speed and Distance",
+        "Partnership",
+        "Mixture and Alligation",
+        "Problems on Ages"
+    ],
+
+    Algebra: [
+        "Basic Algebra",
+        "Algebraic Identities",
+        "Linear Equations",
+        "Quadratic Equations",
+        "Polynomials",
+        "Surds and Indices"
+    ],
+
+    Geometry: [
+        "Basic Geometry",
+        "Lines and Angles",
+        "Triangles",
+        "Quadrilaterals",
+        "Circles",
+        "Polygons"
+    ],
+
+    Mensuration: [
+        "2D Mensuration",
+        "Area and Perimeter",
+        "3D Mensuration",
+        "Volume",
+        "Surface Area"
+    ]
+};
+
+const params = new URLSearchParams(window.location.search);
+const section = params.get("section");
+
+document.getElementById("section-title").innerHTML =
+    (chapters[section] ? section : "Mathematics") +
+    ' <span>Chapters</span>';
+
+const list = document.getElementById("chapter-list");
+
+if (chapters[section]) {
+    chapters[section].forEach((chapter, index) => {
+        const card = document.createElement("div");
+        card.className = "info-card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = "📘 " + chapter;
+
+        const description = document.createElement("p");
+        description.textContent = "Chapter " + (index + 1) + " - Practice mathematics questions.";
+
+        const button = document.createElement("a");
+        button.className = "main-button";
+        button.textContent = "Start Practice →";
+        button.href = "test.html?section=" +
+            encodeURIComponent(section) +
+            "&chapter=" + encodeURIComponent(chapter);
+
+        card.appendChild(heading);
+        card.appendChild(description);
+        card.appendChild(button);
+        list.appendChild(card);
+    });
+} else {
+    document.getElementById("message").textContent =
+        "Please select a valid mathematics section.";
+}
+</script>
+
+</body>
+</html>
