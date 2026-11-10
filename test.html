@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Class Gonit - Mock Test</title>
+
 <style>
 *{box-sizing:border-box}
 body{
@@ -13,36 +14,37 @@ body{
  background:#071426;color:white;
 }
 .container{
- max-width:700px;margin:20px auto;
+ max-width:750px;margin:20px auto;
  background:#10243c;padding:22px;
- border-radius:18px;
- box-shadow:0 8px 30px #0005;
+ border-radius:20px;
+ box-shadow:0 8px 30px #0006;
 }
 h1{text-align:center;color:#36dfc0}
 .top{
  display:flex;justify-content:space-between;
- gap:10px;flex-wrap:wrap;
- margin:15px 0;
+ gap:10px;flex-wrap:wrap;margin:15px 0;
 }
-.timer{
+.timer,.count{
  background:#193d59;padding:12px;
- border-radius:10px;color:#ffd166;
- font-weight:bold;
+ border-radius:10px;font-weight:bold;
 }
+.timer{color:#ffd166}
 .progress{
  height:9px;background:#29415a;
- border-radius:10px;overflow:hidden;
- margin:15px 0;
+ border-radius:10px;overflow:hidden;margin:15px 0;
 }
-#bar{height:100%;width:0%;background:#36dfc0}
+#bar{
+ height:100%;width:0%;
+ background:linear-gradient(90deg,#36dfc0,#00a6ff);
+ transition:.3s;
+}
 #question{font-size:20px;line-height:1.5;margin:25px 0}
 .option{
  display:block;width:100%;text-align:left;
  padding:14px;margin:10px 0;
  background:#193d59;color:white;
  border:2px solid transparent;
- border-radius:10px;font-size:16px;
- cursor:pointer;
+ border-radius:10px;font-size:16px;cursor:pointer;
 }
 .option.selected{border-color:#36dfc0;background:#20516a}
 button{
@@ -50,33 +52,113 @@ button{
  background:#36dfc0;color:#071426;
  font-weight:bold;font-size:15px;cursor:pointer;
 }
-button:disabled{opacity:.4}
+button:disabled{opacity:.4;cursor:not-allowed}
 .navigation{
  display:flex;justify-content:space-between;
  gap:10px;margin-top:25px;
 }
 #result{display:none;text-align:center}
+.result-card{
+ background:#193d59;padding:20px;
+ border-radius:16px;margin:15px 0;
+}
+.score-circle{
+ width:155px;height:155px;border-radius:50%;
+ margin:20px auto;
+ display:flex;align-items:center;justify-content:center;
+ flex-direction:column;
+ background:conic-gradient(#36dfc0 0deg,#29415a 0deg);
+ position:relative;
+}
+.score-circle::before{
+ content:"";position:absolute;
+ width:125px;height:125px;
+ background:#10243c;border-radius:50%;
+}
+.score-circle *{position:relative}
+#percentage{font-size:32px;font-weight:bold;color:#36dfc0}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:10px;margin:20px 0;
+}
+.stat{
+ padding:15px 5px;border-radius:12px;
+ background:#193d59;
+}
+.stat strong{display:block;font-size:25px;margin-bottom:5px}
+.green{color:#36dfc0}
+.red{color:#ff7373}
+.yellow{color:#ffd166}
+.result-buttons{
+ display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+ margin-top:20px;
+}
+.review-item{
+ background:#193d59;padding:18px;
+ margin:15px 0;border-radius:14px;text-align:left;
+}
+.review-option{
+ padding:11px;margin:8px 0;border-radius:8px;
+ background:#10243c;
+}
+.correct{
+ border:2px solid #36dfc0;
+ color:#36dfc0;
+}
+.wrong{
+ border:2px solid #ff7373;
+ color:#ff7373;
+}
+.explanation{
+ color:#b9d6e9;margin-top:12px;
+ line-height:1.5;
+}
+#review{display:none}
+.review-heading{text-align:center;color:#36dfc0}
+#confetti{
+ position:fixed;inset:0;pointer-events:none;
+ z-index:100;overflow:hidden;
+}
+.confetti-piece{
+ position:absolute;top:-20px;
+ width:9px;height:15px;
+ animation:fall 3s linear forwards;
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+.fade-in{animation:fadeIn .7s ease}
+@keyframes fadeIn{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
 .small{color:#b8c9d9}
 @media(max-width:480px){
- .container{padding:16px;margin:5px auto}
+ .container{padding:15px;margin:5px auto}
  #question{font-size:18px}
+ .stats{gap:6px}
+ .stat{padding:12px 3px}
+ .stat strong{font-size:21px}
  button{padding:12px 14px}
 }
 </style>
 </head>
+
 <body>
+<div id="confetti"></div>
+
 <div class="container">
 <h1>ক্লাস গণিত 🎓</h1>
 <p style="text-align:center" class="small">Math Mock Test</p>
 
+<!-- TEST SECTION -->
 <div id="testArea">
  <div class="top">
-  <div id="count" class="timer">Question 1 / 20</div>
+  <div id="count" class="count">Question 1 / 20</div>
   <div id="timer" class="timer">20:00</div>
  </div>
 
  <div class="progress"><div id="bar"></div></div>
-
  <div id="question"></div>
  <div id="options"></div>
 
@@ -84,21 +166,68 @@ button:disabled{opacity:.4}
   <button id="previous" onclick="previousQuestion()">Previous</button>
   <button id="next" onclick="nextQuestion()">Next</button>
  </div>
+
  <button onclick="submitTest()" style="width:100%;margin-top:18px;background:#ffc857">
  Submit Test
  </button>
 </div>
 
+<!-- RESULT SECTION -->
 <div id="result">
- <h2>Test Completed!</h2>
- <h1 id="score"></h1>
- <p id="details"></p>
- <button onclick="location.reload()">Try Again</button>
+ <div class="fade-in">
+  <h1>🎉 Test Completed!</h1>
+  <p id="message" class="small">Great effort!</p>
+
+  <div class="result-card">
+   <div class="score-circle" id="circle">
+    <div id="percentage">0%</div>
+    <div class="small">Your Score</div>
+   </div>
+   <h2 id="score">0 / 20</h2>
+   <p class="small">Keep learning and keep growing!</p>
+  </div>
+
+  <div class="stats">
+   <div class="stat">
+    <strong class="green" id="correctCount">0</strong>
+    <span>Correct</span>
+   </div>
+   <div class="stat">
+    <strong class="red" id="wrongCount">0</strong>
+    <span>Incorrect</span>
+   </div>
+   <div class="stat">
+    <strong class="yellow" id="skipCount">0</strong>
+    <span>Skipped</span>
+   </div>
+  </div>
+
+  <div class="result-buttons">
+   <button onclick="showReview()">📖 Review Answers</button>
+   <button onclick="location.reload()" style="background:#ffc857">↻ Try Again</button>
+  </div>
+ </div>
 </div>
+
+<!-- REVIEW SECTION -->
+<div id="review">
+ <h2 class="review-heading">📖 Answer Review</h2>
+ <p class="small" style="text-align:center">
+ Green = Correct Answer | Red = Your Wrong Answer
+ </p>
+ <div id="reviewContent"></div>
+ <button onclick="backToResult()" style="width:100%;margin-top:15px">
+ Back to Result
+ </button>
+</div>
+
 </div>
 
 <script>
-// Replace these sample questions with your own questions.
+
+// SAMPLE QUESTION BANK
+// Replace these questions with your own question bank.
+
 const questions = [
 {q:"Simplify: 10 + 5 × 2",o:["30","20","25","15"],a:1,e:"Multiplication first: 10 + 10 = 20."},
 {q:"Simplify: 20 ÷ 5 + 3",o:["7","4","8","5"],a:0,e:"20 ÷ 5 + 3 = 4 + 3 = 7."},
@@ -126,69 +255,202 @@ let current=0;
 let answers=Array(questions.length).fill(null);
 let remaining=1200;
 let finished=false;
+let clock;
 
 function showQuestion(){
  const q=questions[current];
+
  document.getElementById("count").textContent=
  "Question "+(current+1)+" / "+questions.length;
+
  document.getElementById("question").textContent=q.q;
+
  document.getElementById("bar").style.width=
  ((current+1)/questions.length*100)+"%";
 
  const box=document.getElementById("options");
  box.innerHTML="";
+
  q.o.forEach((option,i)=>{
   const b=document.createElement("button");
   b.className="option"+(answers[current]===i?" selected":"");
   b.textContent=String.fromCharCode(65+i)+". "+option;
+
   b.onclick=()=>{
    answers[current]=i;
    showQuestion();
   };
+
   box.appendChild(b);
  });
 
  document.getElementById("previous").disabled=current===0;
  document.getElementById("next").disabled=current===questions.length-1;
+
  document.getElementById("next").textContent=
  current===questions.length-1?"Last Question":"Next";
 }
 
 function nextQuestion(){
- if(current<questions.length-1){current++;showQuestion();}
+ if(current<questions.length-1){
+  current++;
+  showQuestion();
+ }
 }
+
 function previousQuestion(){
- if(current>0){current--;showQuestion();}
+ if(current>0){
+  current--;
+  showQuestion();
+ }
 }
+
 function submitTest(){
  if(finished)return;
- if(!confirm("Are you sure you want to submit the test?"))return;
- finishTest();
+ if(confirm("Are you sure you want to submit the test?")){
+  finishTest();
+ }
 }
+
 function finishTest(){
+ if(finished)return;
  finished=true;
  clearInterval(clock);
- let score=0;
- questions.forEach((q,i)=>{if(answers[i]===q.a)score++;});
+
+ let correct=0;
+ let wrong=0;
+ let skipped=0;
+
+ questions.forEach((q,i)=>{
+  if(answers[i]===null)skipped++;
+  else if(answers[i]===q.a)correct++;
+  else wrong++;
+ });
+
+ const percent=Math.round(correct/questions.length*100);
+
  document.getElementById("testArea").style.display="none";
  document.getElementById("result").style.display="block";
+
  document.getElementById("score").textContent=
- score+" / "+questions.length;
- document.getElementById("details").textContent=
- "Correct: "+score+" | Incorrect: "+
- answers.filter((a,i)=>a!==null&&a!==questions[i].a).length+
- " | Not answered: "+answers.filter(a=>a===null).length;
+ correct+" / "+questions.length;
+
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("skipCount").textContent=skipped;
+
+ document.getElementById("message").textContent=
+ percent>=80?"Excellent! Outstanding performance! 🌟":
+ percent>=60?"Very good! Keep practising! 👏":
+ percent>=40?"Good effort! You can improve! 💪":
+ "Keep practising. Every attempt makes you better! 📚";
+
+ animateScore(percent);
+ makeConfetti();
 }
+
+function animateScore(target){
+ let n=0;
+ const number=document.getElementById("percentage");
+
+ const animation=setInterval(()=>{
+  n++;
+  number.textContent=n+"%";
+  document.getElementById("circle").style.background=
+   "conic-gradient(#36dfc0 "+(n*3.6)+"deg,#29415a 0deg)";
+
+  if(n>=target)clearInterval(animation);
+ },20);
+}
+
+function makeConfetti(){
+ const box=document.getElementById("confetti");
+ const colors=["#36dfc0","#ffd166","#ff7373","#70a1ff","#ffffff"];
+
+ for(let i=0;i<90;i++){
+  const piece=document.createElement("div");
+  piece.className="confetti-piece";
+  piece.style.left=Math.random()*100+"%";
+  piece.style.background=colors[i%colors.length];
+  piece.style.animationDelay=Math.random()*2+"s";
+  piece.style.animationDuration=(2+Math.random()*2)+"s";
+  box.appendChild(piece);
+ }
+}
+
+function showReview(){
+ document.getElementById("result").style.display="none";
+ document.getElementById("review").style.display="block";
+
+ const box=document.getElementById("reviewContent");
+ box.innerHTML="";
+
+ questions.forEach((q,i)=>{
+  const item=document.createElement("div");
+  item.className="review-item fade-in";
+
+  const heading=document.createElement("h3");
+  heading.textContent="Question "+(i+1)+": "+q.q;
+  item.appendChild(heading);
+
+  q.o.forEach((option,j)=>{
+   const line=document.createElement("div");
+   line.className="review-option";
+
+   if(j===q.a)line.classList.add("correct");
+   if(answers[i]===j && j!==q.a)line.classList.add("wrong");
+
+   let label=String.fromCharCode(65+j)+". "+option;
+
+   if(j===q.a)label+=" ✓ Correct Answer";
+   if(answers[i]===j && j!==q.a)label+=" ✗ Your Answer";
+
+   line.textContent=label;
+   item.appendChild(line);
+  });
+
+  const yourAnswer=document.createElement("p");
+  yourAnswer.className="small";
+  yourAnswer.textContent=answers[i]===null?
+   "Your answer: Not answered":
+   "Your answer: "+q.o[answers[i]];
+  item.appendChild(yourAnswer);
+
+  const explanation=document.createElement("div");
+  explanation.className="explanation";
+  explanation.textContent="Explanation: "+q.e;
+  item.appendChild(explanation);
+
+  box.appendChild(item);
+ });
+ window.scrollTo(0,0);
+}
+
+function backToResult(){
+ document.getElementById("review").style.display="none";
+ document.getElementById("result").style.display="block";
+ window.scrollTo(0,0);
+}
+
 function updateTimer(){
+ if(finished)return;
+
  remaining--;
+
  let m=Math.floor(remaining/60);
  let s=remaining%60;
+
  document.getElementById("timer").textContent=
  String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
- if(remaining<=0)finishTest();
+
+ if(remaining<=0){
+  finishTest();
+ }
 }
+
 showQuestion();
-const clock=setInterval(updateTimer,1000);
+clock=setInterval(updateTimer,1000);
+
 </script>
 </body>
 </html>
