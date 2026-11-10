@@ -4,135 +4,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Math Mock Test | ক্লাস গণিত</title>
-
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #081426;
+            color: #f1f5f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .test-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 18px;
+        }
+
+        .test-heading {
+            text-align: center;
+            padding: 35px 15px;
+            background: linear-gradient(135deg, #102b46, #075e65);
+            border-radius: 18px;
+            margin-bottom: 30px;
+        }
+
+        .test-heading h1 {
+            color: #5eead4;
+            font-size: 30px;
+        }
+
+        .test-heading p {
+            color: #dbeafe;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .section-card {
+            background: #12243a;
+            border: 1px solid #24506a;
+            border-radius: 16px;
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .section-card h2 {
+            color: #5eead4;
+        }
+
+        .section-card p {
+            color: #cbd5e1;
+        }
+
+        .section-card button {
+            background: #0d9488;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 12px 22px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .section-card button:hover {
+            background: #14b8a6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #5eead4;
+            text-decoration: none;
+        }
+
+        @media(max-width: 600px) {
+            .test-heading h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="logo-area">
-            <img src="images/logo.png" alt="Class Gonit Logo" class="logo">
+    <div class="test-container">
 
-            <div>
-                <h1>ক্লাস গণিত 🎓</h1>
-                <p>Learn • Practice • Achieve</p>
-            </div>
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="test-heading">
+            <h1>ক্লাস গণিত 🎓</h1>
+            <h2>Math Mock Test</h2>
+            <p>Choose your mathematics section and start practising.</p>
+            <p>20 Questions | 20 Minutes | Instant Result</p>
         </div>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="mock-test.html">Mock Test</a>
-        </nav>
-    </header>
+        <h2 style="text-align:center; color:#5eead4;">
+            Select Your Section
+        </h2>
 
-    <!-- MOCK TEST INTRODUCTION -->
-    <section class="hero">
-        <div class="hero-content">
+        <div class="section-grid">
 
-            <p class="welcome">ONLINE MATHEMATICS EXAMINATION</p>
-
-            <h2>
-                Mathematics
-                <span>Mock Test</span>
-            </h2>
-
-            <p>
-                Practise mathematics chapter by chapter.
-                Improve your speed, accuracy and confidence.
-            </p>
-
-        </div>
-    </section>
-
-    <!-- TEST INFORMATION -->
-    <section class="section">
-
-        <h2>Test Information</h2>
-
-        <div class="info-container">
-
-            <div class="info-card">
-                <h3>📝 20 Questions</h3>
-                <p>Each mock test contains 20 questions.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>⏱️ 20 Minutes</h3>
-                <p>Complete your examination within 20 minutes.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>📊 Instant Result</h3>
-                <p>Check your score after submitting your test.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- MATHEMATICS SECTIONS -->
-    <section class="section">
-
-        <h2>Select Mathematics Section</h2>
-
-        <div class="info-container">
-
-            <div class="info-card">
-                <h3>📘 Arithmetic</h3>
-                <p>Practise basic and advanced arithmetic.</p>
-                <button class="main-button" onclick="selectSection('Arithmetic')">
-                    Explore Chapters →
+            <div class="section-card">
+                <h2>➗ Arithmetic</h2>
+                <p>Number System, Percentage, Profit & Loss and more.</p>
+                <button onclick="selectSection('Arithmetic')">
+                    Explore Chapters
                 </button>
             </div>
 
-            <div class="info-card">
-                <h3>📗 Algebra</h3>
-                <p>Improve your algebraic problem-solving skills.</p>
-                <button class="main-button" onclick="selectSection('Algebra')">
-                    Explore Chapters →
+            <div class="section-card">
+                <h2>📘 Algebra</h2>
+                <p>Identities, Equations, Polynomials and more.</p>
+                <button onclick="selectSection('Algebra')">
+                    Explore Chapters
                 </button>
             </div>
 
-            <div class="info-card">
-                <h3>📙 Geometry</h3>
-                <p>Practise geometrical concepts and problems.</p>
-                <button class="main-button" onclick="selectSection('Geometry')">
-                    Explore Chapters →
+            <div class="section-card">
+                <h2>📐 Geometry</h2>
+                <p>Lines, Angles, Triangles, Circles and more.</p>
+                <button onclick="selectSection('Geometry')">
+                    Explore Chapters
                 </button>
             </div>
 
-            <div class="info-card">
-                <h3>📕 Mensuration</h3>
-                <p>Learn and practise measurement problems.</p>
-                <button class="main-button" onclick="selectSection('Mensuration')">
-                    Explore Chapters →
+            <div class="section-card">
+                <h2>📏 Mensuration</h2>
+                <p>Area, Perimeter, Volume and Surface Area.</p>
+                <button onclick="selectSection('Mensuration')">
+                    Explore Chapters
                 </button>
             </div>
 
         </div>
 
-        <p id="section-message" style="margin-top:25px;color:#42e6c4;"></p>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <h3>ক্লাস গণিত 🎓</h3>
-        <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
-        <p>© 2026 Class Gonit. All Rights Reserved.</p>
-        <a href="index.html" style="color:#42e6c4;">← Back to Home</a>
-    </footer>
-
-    <script src="script.js"></script>
+    </div>
 
     <script>
         function selectSection(section) {
-            document.getElementById("section-message").textContent =
-                section + " selected! Chapter selection will be added next.";
+            window.location.href =
+                "chapters.html?section=" + encodeURIComponent(section);
         }
     </script>
 
