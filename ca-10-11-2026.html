@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -7,196 +8,38 @@
 
 <style>
 *{box-sizing:border-box}
-
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#071426;
- color:#fff;
-}
-
-header{
- text-align:center;
- padding:22px 12px 25px;
- background:linear-gradient(135deg,#071b49,#123f80,#087f8c);
- border-bottom:3px solid #d4af37;
-}
-
-header img{
- width:75px;
- height:75px;
- object-fit:contain;
-}
-
-header h1{
- margin:9px 0;
- font-size:27px;
- color:#ffd166;
- letter-spacing:1px;
-}
-
-header h2{
- font-family:Georgia,serif;
- font-size:clamp(13px,4.2vw,32px);
- font-weight:900;
- letter-spacing:.5px;
- line-height:1.3;
- color:#fff;
- text-transform:uppercase;
- white-space:nowrap;
- width:100%;
- margin:25px auto;
- text-align:center;
- text-shadow:2px 3px 5px rgba(0,0,0,.35);
-}
-
-header p{
- color:#ffe8a3;
- font-weight:bold;
- margin:8px 0;
-}
-
-.container{
- max-width:800px;
- margin:20px auto;
- padding:15px;
-}
-
-.card{
- background:#102a48;
- border:1px solid #247b91;
- border-radius:14px;
- padding:18px;
- margin-bottom:18px;
- box-shadow:0 5px 18px rgba(0,0,0,.2);
-}
-
-input{
- width:100%;
- padding:13px;
- margin:8px 0;
- border:1px solid #52718c;
- border-radius:8px;
- font-size:16px;
-}
-
-button{
- border:0;
- border-radius:8px;
- padding:12px 18px;
- margin:5px;
- font-size:15px;
- font-weight:bold;
- cursor:pointer;
- background:#ffd166;
- color:#071426;
-}
-
-button:disabled{
- opacity:.4;
- cursor:not-allowed;
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#071426;color:#fff}
+header{text-align:center;padding:22px 12px 25px;background:linear-gradient(135deg,#071b49,#123f80,#087f8c);border-bottom:3px solid #d4af37}
+header img{width:75px;height:75px;object-fit:contain}
+header h1{margin:9px 0;font-size:27px;color:#ffd166;letter-spacing:1px}
+header h2{font-family:Georgia,serif;font-size:clamp(13px,4.2vw,32px);font-weight:900;letter-spacing:.5px;line-height:1.3;color:#fff;text-transform:uppercase;white-space:nowrap;width:100%;margin:25px auto;text-align:center;text-shadow:2px 3px 5px #0006}
+header p{color:#ffe8a3;font-weight:bold;margin:8px 0}
+.container{max-width:800px;margin:20px auto;padding:15px}
+.card{background:#102a48;border:1px solid #247b91;border-radius:14px;padding:18px;margin-bottom:18px;box-shadow:0 5px 18px #0003}
+input{width:100%;padding:13px;margin:8px 0;border:1px solid #52718c;border-radius:8px;font-size:16px}
+button{border:0;border-radius:8px;padding:12px 18px;margin:5px;font-size:15px;font-weight:bold;cursor:pointer;background:#ffd166;color:#071426}
 .primary{background:#ffd166}
 .secondary{background:#0ea5a4;color:white}
 .danger{background:#ef4444;color:white}
-
-.info{
- display:flex;
- justify-content:space-between;
- gap:10px;
- flex-wrap:wrap;
- color:#ffd166;
- font-weight:bold;
-}
-
-.question{
- font-size:18px;
- line-height:1.7;
- margin:15px 0;
-}
-
-.option{
- display:block;
- background:#183957;
- border:1px solid #315978;
- padding:12px;
- border-radius:9px;
- margin:10px 0;
- cursor:pointer;
-}
-
-.option input{
- width:auto;
- margin-right:8px;
-}
-
-.option.selected{
- border:2px solid #ffd166;
-}
-
-.palette{
- display:grid;
- grid-template-columns:repeat(6,1fr);
- gap:8px;
- margin-top:15px;
-}
-
-.palette button{
- margin:0;
- padding:10px 4px;
- background:#475569;
- color:white;
-}
-
-.palette button.answered{
- background:#087f5b;
-}
-
-.palette button.current{
- outline:3px solid #ffd166;
-}
-
-#quizArea,#resultArea{
- display:none;
-}
-
+.info{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#ffd166;font-weight:bold}
+.question{font-size:18px;line-height:1.7;margin:15px 0}
+.option{display:block;background:#183957;border:1px solid #315978;padding:12px;border-radius:9px;margin:10px 0;cursor:pointer}
+.option input{width:auto;margin-right:8px}
+.option.selected{border:2px solid #ffd166}
+.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:15px}
+.palette button{margin:0;padding:10px 4px;background:#475569;color:white}
+.palette button.answered{background:#087f5b}
+.palette button.current{outline:3px solid #ffd166}
+#quizArea{display:none}
 #timer{color:#ffcf5c}
-
-.review-item{
- padding:13px;
- margin:12px 0;
- border-radius:9px;
- background:#183957;
- line-height:1.7;
-}
-
-.correct{color:#4ade80}
-.wrong{color:#f87171}
-
-footer{
- text-align:center;
- padding:25px 12px;
- background:#04101e;
- line-height:1.8;
- color:#dbeafe;
-}
-
-footer strong{
- color:#ffd166;
- font-size:22px;
-}
-
-.small{
- font-size:13px;
- color:#cbd5e1;
-}
-
+footer{text-align:center;padding:25px 12px;background:#04101e;line-height:1.8;color:#dbeafe}
+footer strong{color:#ffd166;font-size:22px}
+.small{font-size:13px;color:#cbd5e1}
 @media(max-width:380px){
- header h1{font-size:22px}
- header h2{font-size:12px;letter-spacing:0}
- .container{padding:10px}
- .palette{grid-template-columns:repeat(5,1fr)}
+header h1{font-size:22px}
+header h2{font-size:12px;letter-spacing:0}
+.container{padding:10px}
+.palette{grid-template-columns:repeat(5,1fr)}
 }
 </style>
 </head>
@@ -205,43 +48,31 @@ footer strong{
 
 <header>
 <img src="logo.png" alt="Class Gonit Logo">
-
 <h1>CLASS GONIT 🎓</h1>
-
 <h2>DAILY CURRENT AFFAIRS MOCK TEST</h2>
-
 <p>10 November 2026</p>
 </header>
 
 <div class="container">
 
 <div class="card" id="startArea">
-
 <h2>📝 Student Details</h2>
-
 <p>পরীক্ষা শুরু করার আগে নিজের তথ্য পূরণ করো।</p>
 
-<input type="text" id="studentName"
-placeholder="Student Name">
-
-<input type="tel" id="studentMobile"
-placeholder="10 Digit Mobile Number"
-maxlength="10">
+<input type="text" id="studentName" placeholder="Student Name">
+<input type="tel" id="studentMobile" placeholder="10 Digit Mobile Number" maxlength="10">
 
 <p><b>Total Questions:</b> 50</p>
 <p><b>Full Marks:</b> 50</p>
 <p><b>Time:</b> 30 Minutes</p>
+<p><b>Passing Percentage:</b> 70%</p>
 
-<button class="primary" onclick="startTest()">
-Start Test
-</button>
-
+<button class="primary" onclick="startTest()">Start Test</button>
 </div>
 
 <div id="quizArea">
 
 <div class="card">
-
 <div class="info">
 <span id="questionCount">Question 1/50</span>
 <span>Marks: 50</span>
@@ -249,57 +80,26 @@ Start Test
 </div>
 
 <div class="question" id="questionText"></div>
-
 <div id="options"></div>
 
 <div style="text-align:center;margin-top:15px">
 <button onclick="previousQuestion()">← Previous</button>
 <button class="secondary" onclick="nextQuestion()">Next →</button>
 </div>
-
 </div>
 
 <div class="card">
-
 <h3>Question Navigation</h3>
-
-<p class="small">
-সবুজ = উত্তর দেওয়া হয়েছে |
-ধূসর = উত্তর দেওয়া হয়নি
-</p>
+<p class="small">সবুজ = উত্তর দেওয়া হয়েছে | ধূসর = উত্তর দেওয়া হয়নি</p>
 
 <div class="palette" id="palette"></div>
 
 <div style="text-align:center;margin-top:20px">
-<button class="danger" onclick="submitTest()">
-Submit Test
-</button>
-</div>
-
+<button class="danger" onclick="submitTest()">Submit Test</button>
 </div>
 </div>
 
-<div id="resultArea" class="card">
-
-<h2>🎉 Your Result</h2>
-
-<h3 id="resultName"></h3>
-<p id="score"></p>
-<p id="percentage"></p>
-<p id="correctCount"></p>
-<p id="wrongCount"></p>
-<p id="skippedCount"></p>
-
-<h3>Answer Review</h3>
-
-<div id="review"></div>
-
-<button onclick="location.href='current-affairs.html'">
-Back to Date List
-</button>
-
 </div>
-
 </div>
 
 <footer>
@@ -318,110 +118,61 @@ const GOOGLE_SCRIPT_URL =
 const questions = [
 
 {q:"NITI Aayog-এর CEO হিসেবে কে নিযুক্ত হয়েছেন?",o:["রাজীব গৌবা","অনুরাগ জৈন","অমিতাভ কান্ত","অশোক কুমার লাহিড়ী"],a:1},
-
 {q:"২০২৬ সালে ভারতের ১০০তম দাবা গ্র্যান্ডমাস্টার কে হয়েছেন?",o:["আর প্রজ্ঞানন্দ","গুকেশ","অনুজ শ্রীবাত্রি","বিদিত গুজরাঠি"],a:2},
-
 {q:"ভারতের কোন রাজ্য ২০২৬ সালের Khelo India Youth Games আয়োজন করবে?",o:["পশ্চিমবঙ্গ","তেলেঙ্গানা","রাজস্থান","মহারাষ্ট্র"],a:0},
-
 {q:"INS Surat কোন দেশে ভারত-ওমান নৌ-মহড়ায় অংশ নিতে পৌঁছেছে?",o:["ইরান","কাতার","ওমান","সৌদি আরব"],a:2},
-
 {q:"ভারতের জাতীয় আইন পরিষেবা দিবস কবে পালিত হয়?",o:["৫ নভেম্বর","৭ নভেম্বর","৯ নভেম্বর","১০ নভেম্বর"],a:2},
-
 {q:"Geological Survey of India-এর ৫৫তম Director General কে হয়েছেন?",o:["দীনেশ ভি. গণভীর","অনুরাগ জৈন","রাজীব গৌবা","অমিতাভ কান্ত"],a:0},
-
 {q:"ভারতের প্রথম ব্যক্তিগত হেলিকপ্টার Final Assembly Line কোথায় স্থাপনের কথা বলা হয়েছে?",o:["কলকাতা","বেঙ্গালুরু","ভেমাগাল","মুম্বাই"],a:2},
-
 {q:"ভারতের ২০২৬ সালের কোন আন্তর্জাতিক গবেষণা কর্মসূচিতে যুক্ত হওয়ার আলোচনা সম্পন্ন হয়েছে?",o:["NASA","Horizon Europe","JAXA","UNESCO"],a:1},
-
 {q:"ভারতের কোন সংস্থা UPI পরিষেবা পরিচালনার সঙ্গে যুক্ত?",o:["SEBI","NPCI","ISRO","DRDO"],a:1},
-
 {q:"২০২৬ সালের Men's Asian Champions Trophy Hockey-তে কোন দেশকে হারিয়ে ভারত চ্যাম্পিয়ন হয়?",o:["পাকিস্তান","দক্ষিণ কোরিয়া","জাপান","মালয়েশিয়া"],a:1},
-
 {q:"পশ্চিমবঙ্গের রাজধানী কোনটি?",o:["শিলিগুড়ি","কলকাতা","দুর্গাপুর","আসানসোল"],a:1},
-
 {q:"পশ্চিমবঙ্গের মুখ্যমন্ত্রী কে?",o:["মমতা বন্দ্যোপাধ্যায়","শুভেন্দু অধিকারী","দিলীপ ঘোষ","অধীর রঞ্জন চৌধুরী"],a:0},
-
 {q:"পশ্চিমবঙ্গের কোন জেলায় Pursurah অবস্থিত?",o:["হুগলি","নদিয়া","মালদা","মুর্শিদাবাদ"],a:0},
-
 {q:"পশ্চিমবঙ্গের বিখ্যাত সুন্দরবন কোন ধরনের বন?",o:["চিরহরিৎ বন","ম্যানগ্রোভ বন","পর্ণমোচী বন","শঙ্কুযুক্ত বন"],a:1},
-
 {q:"দার্জিলিং কোন ফসলের জন্য বিখ্যাত?",o:["তুলা","চা","গম","কফি"],a:1},
-
 {q:"পশ্চিমবঙ্গের Investment Promotion Policy 2026 কোথায় প্রকাশ করা হয়েছে?",o:["শিলিগুড়ি","নিউ টাউন","দুর্গাপুর","আসানসোল"],a:1},
-
 {q:"COP31 জলবায়ু সম্মেলন ২০২৬ কোথায় অনুষ্ঠিত হচ্ছে?",o:["ভারত","তুরস্ক","জাপান","ব্রাজিল"],a:1},
-
 {q:"COP31-এর আয়োজক শহর কোনটি?",o:["ইস্তাম্বুল","আঙ্কারা","আন্টালিয়া","ইজমির"],a:2},
-
 {q:"২০২৬ সালের CHOGM সম্মেলন কোথায় অনুষ্ঠিত হয়েছে?",o:["ভারত","অ্যান্টিগুয়া ও বারবুডা","কানাডা","অস্ট্রেলিয়া"],a:1},
-
 {q:"WHO-এর পূর্ণরূপ কী?",o:["World Health Organization","World Human Organization","World Heritage Organization","World Help Organization"],a:0},
-
 {q:"জাতিসংঘের সদর দপ্তর কোথায় অবস্থিত?",o:["লন্ডন","প্যারিস","নিউ ইয়র্ক","জেনেভা"],a:2},
-
 {q:"২০২৬ সালের COP31 সম্মেলনের প্রেসিডেন্ট কে?",o:["ক্রিস বোয়েন","মুরাত কুরুম","আন্তোনিও গুতেরেস","জো বাইডেন"],a:1},
-
 {q:"ভারতের মহাকাশ গবেষণা সংস্থার নাম কী?",o:["NASA","ISRO","DRDO","ESA"],a:1},
-
 {q:"Vyommitra কী?",o:["একটি উপগ্রহ","একটি রোবট","একটি রকেট","একটি মহাকাশ স্টেশন"],a:1},
-
 {q:"Chandrayaan-3 কোন মহাকাশ সংস্থার অভিযান?",o:["NASA","ISRO","ESA","JAXA"],a:1},
-
 {q:"কৃত্রিম বুদ্ধিমত্তার ইংরেজি নাম কী?",o:["Artificial Intelligence","Automatic Internet","Advanced Information","Artificial Internet"],a:0},
-
 {q:"পৃথিবীর প্রাকৃতিক উপগ্রহ কোনটি?",o:["মঙ্গল","চাঁদ","শুক্র","সূর্য"],a:1},
-
 {q:"CMS-03 উপগ্রহ উৎক্ষেপণে কোন রকেট ব্যবহার করা হয়েছে?",o:["PSLV","SSLV","LVM3-M5","GSLV-F10"],a:2},
-
 {q:"২০২৬ সালের ISSF World Championships কোথায় অনুষ্ঠিত হচ্ছে?",o:["দিল্লি","দোহা","টোকিও","প্যারিস"],a:1},
-
 {q:"২০২৬ সালের Youth Olympic Games কোথায় অনুষ্ঠিত হয়েছে?",o:["ডাকার","লন্ডন","মস্কো","বেইজিং"],a:0},
-
 {q:"২০২৬ সালে ভারতের ১০০তম দাবা গ্র্যান্ডমাস্টার হওয়া অনুজ শ্রীবাত্রি কোন রাজ্যের প্রথম গ্র্যান্ডমাস্টার?",o:["রাজস্থান","মধ্যপ্রদেশ","গুজরাট","বিহার"],a:1},
-
 {q:"ব্যাডমিন্টনে শাটলকককে আর কী বলা হয়?",o:["বল","বার্ডি","ডিস্ক","প্যাক"],a:1},
-
 {q:"ফুটবল খেলায় একটি দলে মাঠে কতজন খেলোয়াড় থাকে?",o:["৯ জন","১০ জন","১১ জন","১২ জন"],a:2},
-
 {q:"অলিম্পিকের প্রতীকে কয়টি রিং রয়েছে?",o:["৪টি","৫টি","৬টি","৭টি"],a:1},
-
 {q:"ভারতের কেন্দ্রীয় ব্যাংকের নাম কী?",o:["SBI","RBI","PNB","NABARD"],a:1},
-
 {q:"GST-এর পূর্ণরূপ কী?",o:["General Sales Tax","Goods and Services Tax","Government Service Tax","General Service Trade"],a:1},
-
 {q:"ভারতের মুদ্রার নাম কী?",o:["ডলার","টাকা","রুপি","ইউরো"],a:2},
-
 {q:"ভারতের শেয়ার বাজারের নিয়ন্ত্রক সংস্থা কোনটি?",o:["RBI","SEBI","SBI","NPCI"],a:1},
-
 {q:"ভারতের GST সংগ্রহ ২০২৬ সালের অক্টোবর মাসে কত হয়েছে?",o:["₹১.২৫ লক্ষ কোটি","₹১.৫০ লক্ষ কোটি","₹২.৩১ লক্ষ কোটি","₹৩.৫০ লক্ষ কোটি"],a:2},
-
 {q:"পৃথিবীর বৃহত্তম মহাসাগর কোনটি?",o:["আটলান্টিক","ভারত মহাসাগর","প্রশান্ত মহাসাগর","উত্তর মহাসাগর"],a:2},
-
 {q:"বিশ্ব উষ্ণায়নের অন্যতম প্রধান কারণ কী?",o:["গ্রিনহাউস গ্যাসের বৃদ্ধি","বৃষ্টিপাত","ভূমিকম্প","চন্দ্রগ্রহণ"],a:0},
-
 {q:"ওজোন স্তর আমাদের কোন রশ্মি থেকে রক্ষা করে?",o:["অবলোহিত রশ্মি","অতিবেগুনি রশ্মি","এক্স-রে","গামা রশ্মি"],a:1},
-
 {q:"ভারতের কোন রাজ্যে কাজিরাঙা জাতীয় উদ্যান অবস্থিত?",o:["অসম","পশ্চিমবঙ্গ","বিহার","ওড়িশা"],a:0},
-
 {q:"সুন্দরবনের বিখ্যাত প্রাণী কোনটি?",o:["সিংহ","রয়্যাল বেঙ্গল টাইগার","চিতা","গন্ডার"],a:1},
-
 {q:"ভারতে জাতীয় শিক্ষা দিবস কবে পালিত হয়?",o:["৫ সেপ্টেম্বর","১১ নভেম্বর","১৪ নভেম্বর","২৬ জানুয়ারি"],a:1},
-
 {q:"জাতীয় শিক্ষা দিবস কার জন্মবার্ষিকীতে পালিত হয়?",o:["রবীন্দ্রনাথ ঠাকুর","মহাত্মা গান্ধী","মৌলানা আবুল কালাম আজাদ","জওহরলাল নেহরু"],a:2},
-
 {q:"ভারতে শিশু দিবস কবে পালিত হয়?",o:["১৪ নভেম্বর","৫ জুন","২ অক্টোবর","১৫ আগস্ট"],a:0},
-
 {q:"World Science Day for Peace and Development কবে পালিত হয়?",o:["৫ জুন","১০ নভেম্বর","১১ ডিসেম্বর","২১ ফেব্রুয়ারি"],a:1},
-
 {q:"২০২৬ সালে Kochon Prize কোন ভারতীয় সংস্থা পেয়েছে?",o:["ISRO","REACH","DRDO","UNICEF India"],a:1},
-
 {q:"২০২৬ সালের নভেম্বর মাসে প্রয়াত বিখ্যাত ভারতীয় চিত্রশিল্পী অর্পিতা সিং কোন পুরস্কার পেয়েছিলেন?",o:["ভারতরত্ন","পদ্মভূষণ","পদ্মবিভূষণ","দাদাসাহেব ফালকে পুরস্কার"],a:1}
 
 ];
 
 let current=0;
 let answers=Array(questions.length).fill(null);
-let timeLeft=questions.length*36;
+let timeLeft=1800;
 let timerInterval=null;
 let studentName="";
 let studentMobile="";
@@ -457,12 +208,10 @@ function startTest(){
    clearInterval(timerInterval);
    finishTest();
   }
-
  },1000);
 }
 
 function updateTimer(){
-
  let min=Math.floor(timeLeft/60);
  let sec=timeLeft%60;
 
@@ -488,7 +237,6 @@ function showQuestion(){
  let html="";
 
  q.o.forEach((option,index)=>{
-
   html+=`
   <label class="option ${answers[current]===index?'selected':''}">
    <input type="radio" name="answer" value="${index}"
@@ -496,11 +244,9 @@ function showQuestion(){
    onchange="selectAnswer(${index})">
    ${String.fromCharCode(65+index)}) ${option}
   </label>`;
-
  });
 
  document.getElementById("options").innerHTML=html;
-
  updatePalette();
 }
 
@@ -535,16 +281,13 @@ function buildPalette(){
  });
 
  document.getElementById("palette").innerHTML=html;
-
  updatePalette();
 }
 
 function updatePalette(){
 
  questions.forEach((q,index)=>{
-
   const btn=document.getElementById("p"+index);
-
   if(!btn)return;
 
   btn.className="";
@@ -556,7 +299,6 @@ function updatePalette(){
   if(index===current){
    btn.classList.add("current");
   }
-
  });
 }
 
@@ -579,7 +321,6 @@ function submitTest(){
 function finishTest(){
 
  if(submitted)return;
-
  submitted=true;
 
  clearInterval(timerInterval);
@@ -589,7 +330,6 @@ function finishTest(){
  let skipped=0;
 
  questions.forEach((q,index)=>{
-
   if(answers[index]===null){
    skipped++;
   }
@@ -599,71 +339,37 @@ function finishTest(){
   else{
    wrong++;
   }
-
  });
 
- let percent=(correct/questions.length*100).toFixed(2);
+ const resultData={
+  name:studentName,
+  mobile:studentMobile,
+  testName:"Current Affairs - 10-11-2026",
+  date:"10 November 2026",
+  correct:correct,
+  wrong:wrong,
+  skipped:skipped,
+  questions:questions,
+  answers:answers
+ };
 
- document.getElementById("quizArea").style.display="none";
- document.getElementById("resultArea").style.display="block";
+ sessionStorage.setItem("caResult",JSON.stringify(resultData));
 
- document.getElementById("resultName").textContent=
- "Student: "+studentName;
+ saveStudentRecord(correct,wrong,skipped);
 
- document.getElementById("score").textContent=
- "Your Score: "+correct+" / "+questions.length;
-
- document.getElementById("percentage").textContent=
- "Percentage: "+percent+"%";
-
- document.getElementById("correctCount").textContent=
- "Correct Answers: "+correct;
-
- document.getElementById("wrongCount").textContent=
- "Wrong Answers: "+wrong;
-
- document.getElementById("skippedCount").textContent=
- "Skipped Questions: "+skipped;
-
- let reviewHTML="";
-
- questions.forEach((q,index)=>{
-
-  let selected=answers[index];
-  let isCorrect=selected===q.a;
-
-  reviewHTML+=`
-  <div class="review-item">
-
-   <b>${index+1}. ${q.q}</b><br>
-
-   Your Answer:
-   <span class="${isCorrect?'correct':'wrong'}">
-   ${selected===null?'Not Answered':q.o[selected]}
-   </span><br>
-
-   Correct Answer:
-   <span class="correct">${q.o[q.a]}</span><br>
-
-   ${isCorrect?'✔ Correct':'✘ Incorrect'}
-
-  </div>`;
-
- });
-
- document.getElementById("review").innerHTML=reviewHTML;
-
- saveStudentRecord();
-
- window.scrollTo(0,0);
+ window.location.href="ca-result.html";
 }
 
-function saveStudentRecord(){
+function saveStudentRecord(correct,wrong,skipped){
 
  const data={
   name:studentName,
   mobile:studentMobile,
-  testName:"Current Affairs - 10-11-2026"
+  testName:"Current Affairs - 10-11-2026",
+  correct:correct,
+  wrong:wrong,
+  skipped:skipped,
+  percentage:(correct/questions.length*100).toFixed(2)
  };
 
  fetch(GOOGLE_SCRIPT_URL,{
@@ -680,6 +386,5 @@ function saveStudentRecord(){
 }
 
 </script>
-
 </body>
 </html>
