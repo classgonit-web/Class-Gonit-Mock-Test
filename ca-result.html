@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Gonit | Current Affairs Result</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ padding:15px;
+ font-family:Arial,sans-serif;
+ background:#071426;
+ color:#fff;
+}
+
+.container{
+ max-width:750px;
+ margin:20px auto;
+ background:#10243f;
+ border:2px solid #d4af37;
+ border-radius:15px;
+ overflow:hidden;
+}
+
+header{
+ text-align:center;
+ padding:22px 12px;
+ background:linear-gradient(135deg,#102d61,#174b91);
+ border-bottom:3px solid #d4af37;
+}
+
+.logo{
+ width:75px;
+ height:75px;
+ object-fit:contain;
+}
+
+header h2{
+ margin:8px 0;
+ color:#ffd700;
+ font-size:25px;
+}
+
+header h3{
+ margin:8px 0;
+ font-size:19px;
+}
+
+header p{
+ margin:5px;
+ color:#ffe9a6;
+}
+
+.content{padding:20px}
+
+.section{
+ background:#0b1c32;
+ border:1px solid #31547d;
+ border-radius:10px;
+ padding:15px;
+ margin-bottom:15px;
+}
+
+.section h3{
+ color:#ffd700;
+ margin-top:0;
+ border-bottom:1px solid #536a85;
+ padding-bottom:8px;
+}
+
+.info{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ padding:9px 0;
+ border-bottom:1px solid #263d58;
+ flex-wrap:wrap;
+}
+
+.info span:last-child{
+ font-weight:bold;
+ color:#ffd700;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.stat{
+ background:#183657;
+ padding:15px 8px;
+ border-radius:9px;
+ text-align:center;
+}
+
+.stat h2{
+ margin:5px 0;
+ color:#ffd700;
+}
+
+.stat p{margin:4px 0}
+
+.status{
+ text-align:center;
+ padding:18px;
+ border-radius:10px;
+ background:#183657;
+ margin-bottom:15px;
+}
+
+.status h1{
+ font-size:30px;
+ margin:5px;
+}
+
+.pass{color:#32e88b}
+.fail{color:#ff6464}
+
+.review-item{
+ background:#0b1c32;
+ border:1px solid #31547d;
+ border-radius:9px;
+ padding:13px;
+ margin-bottom:12px;
+}
+
+.review-item p{line-height:1.5}
+
+.correct{color:#32e88b}
+.wrong{color:#ff6464}
+.skipped{color:#ffd700}
+
+button{
+ width:100%;
+ padding:13px;
+ border:none;
+ border-radius:8px;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer;
+ margin:6px 0;
+}
+
+.print-btn{
+ background:#d4af37;
+ color:#071426;
+}
+
+.back-btn{
+ background:#2563eb;
+ color:white;
+}
+
+footer{
+ text-align:center;
+ padding:20px 10px;
+ background:#09182b;
+ border-top:2px solid #d4af37;
+ line-height:1.7;
+}
+
+footer h3{
+ color:#ffd700;
+ margin:5px;
+}
+
+.empty{
+ text-align:center;
+ padding:30px 10px;
+ color:#ffd700;
+}
+
+@media(max-width:450px){
+ .stats{grid-template-columns:repeat(2,1fr)}
+ header h2{font-size:22px}
+}
+@media print{
+ body{background:white;color:black;padding:0}
+ .container{border:1px solid #999}
+ .section,.review-item,.stat,.status{background:white;color:black}
+ button{display:none}
+ footer{background:white;color:black}
+ header{background:white;color:black}
+ header h2,header h3,header p{color:black}
+ .stat h2,.info span:last-child{color:black}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<img src="logo.png" class="logo" alt="Class Gonit Logo">
+<h2>CLASS GONIT</h2>
+<h3>DAILY CURRENT AFFAIRS MOCK TEST</h3>
+<p>STUDENT RESULT</p>
+</header>
+
+<div class="content" id="resultContent">
+
+<div class="empty">
+Loading Result...
+</div>
+
+</div>
+
+<footer>
+<h3>ক্লাস গণিত 🎓</h3>
+✨ গণিতের সহজ ঠিকানা ✨
+<p>
+ULLADABRI, MAYNAGURI,<br>
+JALPAIGURI, WEST BENGAL – 735224
+</p>
+<p>Contact: 8159061346</p>
+</footer>
+
+</div>
+
+<script>
+const resultContent = document.getElementById("resultContent");
+
+const data = sessionStorage.getItem("caResult");
+
+if(!data){
+
+ resultContent.innerHTML = `
+ <div class="empty">
+ <h2>Result Not Found!</h2>
+ <p>Please submit the Current Affairs Mock Test first.</p>
+ <button class="back-btn" onclick="goBack()">Back to Current Affairs</button>
+ </div>`;
+
+}else{
+
+ const result = JSON.parse(data);
+
+ const total = result.questions.length;
+ const correct = Number(result.correct);
+ const wrong = Number(result.wrong);
+ const skipped = Number(result.skipped);
+ const percentage = total ? (correct/total)*100 : 0;
+
+ const passed = percentage >= 70;
+
+ let html = `
+
+ <div class="section">
+ <h3>Student Details</h3>
+
+ <div class="info">
+ <span>Student Name</span>
+ <span>${escapeHTML(result.name)}</span>
+ </div>
+
+ <div class="info">
+ <span>Mobile Number</span>
+ <span>${escapeHTML(result.mobile)}</span>
+ </div>
+
+ <div class="info">
+ <span>Test Name</span>
+ <span>${escapeHTML(result.testName || "Current Affairs")}</span>
+ </div>
+
+ <div class="info">
+ <span>Test Date</span>
+ <span>${escapeHTML(result.date || "")}</span>
+ </div>
+ </div>
+
+ <div class="status">
+ <p>YOUR RESULT</p>
+ <h1 class="${passed?'pass':'fail'}">
+ ${passed?'PASS':'FAIL'}
+ </h1>
+ <h2>${percentage.toFixed(2)}%</h2>
+ </div>
+
+ <div class="section">
+ <h3>Performance Summary</h3>
+
+ <div class="stats">
+
+ <div class="stat">
+ <h2>${total}</h2>
+ <p>Total Questions</p>
+ </div>
+
+ <div class="stat">
+ <h2>${correct}</h2>
+ <p>Correct Answers</p>
+ </div>
+
+ <div class="stat">
+ <h2>${wrong}</h2>
+ <p>Wrong Answers</p>
+ </div>
+
+ <div class="stat">
+ <h2>${skipped}</h2>
+ <p>Skipped Questions</p>
+ </div>
+
+ </div>
+
+ <div class="info">
+ <span>Total Marks</span>
+ <span>${correct} / ${total}</span>
+ </div>
+
+ <div class="info">
+ <span>Percentage</span>
+ <span>${percentage.toFixed(2)}%</span>
+ </div>
+
+ <div class="info">
+ <span>Passing Criteria</span>
+ <span>70%</span>
+ </div>
+
+ </div>
+
+ <div class="section">
+ <h3>Answer Review</h3>
+ <div id="answerReview"></div>
+ </div>
+
+ <button class="print-btn" onclick="window.print()">
+ PRINT RESULT
+ </button>
+
+ <button class="back-btn" onclick="goBack()">
+ BACK TO CURRENT AFFAIRS
+ </button>
+ `;
+
+ resultContent.innerHTML = html;
+
+ const review = document.getElementById("answerReview");
+
+ result.questions.forEach((q,index)=>{
+
+ const selected = result.answers[index];
+ const correctAnswer = q.answer;
+
+ let status = "";
+ let statusClass = "";
+
+ if(selected === correctAnswer){
+  status = "CORRECT";
+  statusClass = "correct";
+ }else if(selected === "" || selected === null || selected === undefined){
+  status = "SKIPPED";
+  statusClass = "skipped";
+ }else{
+  status = "WRONG";
+  statusClass = "wrong";
+ }
+
+ const item = document.createElement("div");
+ item.className = "review-item";
+
+ const question = document.createElement("p");
+ question.innerHTML = `<b>Q${index+1}.</b> ${escapeHTML(q.question)}`;
+
+ const yourAnswer = document.createElement("p");
+ yourAnswer.innerHTML = `Your Answer: ${escapeHTML(selected || "Not Answered")}`;
+
+ const answer = document.createElement("p");
+ answer.innerHTML = `Correct Answer: ${escapeHTML(correctAnswer)}`;
+
+ const statusText = document.createElement("p");
+ statusText.className = statusClass;
+ statusText.textContent = status;
+
+ item.append(question,yourAnswer,answer,statusText);
+ review.appendChild(item);
+
+ });
+
+}
+
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g,char=>({
+ "&":"&amp;",
+ "<":"&lt;",
+ ">":"&gt;",
+ '"':"&quot;",
+ "'":"&#39;"
+ })[char]);
+}
+
+function goBack(){
+ window.location.href = "current-affairs.html";
+}
+</script>
+
+</body>
+</html>
