@@ -36,8 +36,6 @@ h1{color:#35d6c0;margin:8px 0}
 .progress-bar{
  height:100%;width:0;background:#35d6c0;transition:.3s;
 }
-
-/* QUESTION NAVIGATOR */
 .navigator{
  background:#0b1d32;
  border:1px solid #294766;
@@ -78,29 +76,22 @@ h1{color:#35d6c0;margin:8px 0}
  box-shadow:0 0 0 3px #35d6c033;
  transform:scale(1.06);
 }
-.nav-number.current.answered{
- border-color:#fff;
-}
-.nav-number.current.skipped{
- border-color:#fff;
-}
+.nav-number.current.answered,
+.nav-number.current.skipped{border-color:#fff}
 .nav-legend{
- display:flex;flex-wrap:wrap;gap:12px;
- margin-top:15px;
+ display:flex;flex-wrap:wrap;gap:12px;margin-top:15px;
 }
 .legend-item{
  display:flex;align-items:center;gap:6px;
  color:#c5d4e7;font-size:12px;
 }
 .legend-dot{
- width:11px;height:11px;border-radius:3px;
- display:inline-block;
+ width:11px;height:11px;border-radius:3px;display:inline-block;
 }
 .dot-answered{background:#087f5b}
 .dot-skipped{background:#a85c13}
 .dot-current{background:#35d6c0}
 .dot-unvisited{background:#1b3654;border:1px solid #66809a}
-
 .question{font-size:20px;font-weight:bold;line-height:1.5;margin-bottom:20px}
 .option{
  display:block;width:100%;text-align:left;padding:14px;
@@ -167,7 +158,6 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <div class="progress-bar" id="progressBar"></div>
 </div>
 
-<!-- QUESTION NAVIGATOR -->
 <div class="navigator">
  <div class="navigator-title">
   <h3>📋 Question Navigator</h3>
@@ -175,9 +165,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
    0 Answered / 20
   </span>
  </div>
-
  <div class="navigator-grid" id="navigatorGrid"></div>
-
  <div class="nav-legend">
   <div class="legend-item">
    <span class="legend-dot dot-answered"></span> Answered
@@ -240,9 +228,45 @@ Skipped Questions: <b id="skippedCount"></b>
 
 <script>
 
-// Student name
+// STUDENT DETAILS
 let studentName=(prompt("Please enter your name:")||"").trim();
 if(!studentName) studentName="Student";
+
+let studentMobile="";
+while(!/^[0-9]{10}$/.test(studentMobile)){
+ studentMobile=(prompt("Please enter your 10-digit mobile number:")||"").trim();
+
+ if(!/^[0-9]{10}$/.test(studentMobile)){
+  alert("Please enter a valid 10-digit mobile number.");
+ }
+}
+
+// GOOGLE SHEETS CONNECTION
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
+
+let recordSent=false;
+
+function saveStudentRecord(){
+ if(recordSent)return;
+ recordSent=true;
+
+ const data={
+  name:studentName,
+  mobile:studentMobile,
+  testName:"Mathematics Mock Test"
+ };
+
+ fetch(GOOGLE_SCRIPT_URL,{
+  method:"POST",
+  mode:"no-cors",
+  headers:{
+   "Content-Type":"text/plain;charset=utf-8"
+  },
+  body:JSON.stringify(data)
+ }).catch(error=>{
+  console.error("Student record submission error:",error);
+ });
+}
 
 // Chapter name from URL
 const pageParams=new URLSearchParams(location.search);
@@ -279,7 +303,6 @@ let finished=false;
 let timerInterval;
 let lastResult=null;
 
-// Build question navigator
 function buildNavigator(){
  const grid=document.getElementById("navigatorGrid");
  grid.innerHTML="";
@@ -296,7 +319,6 @@ function buildNavigator(){
  updateNavigator();
 }
 
-// Update navigator colours
 function updateNavigator(){
  const buttons=document.querySelectorAll(".nav-number");
  let answered=0;
@@ -323,7 +345,6 @@ function updateNavigator(){
  answered+" Answered / "+skipped+" Skipped / "+questions.length+" Total";
 }
 
-// Jump to any question
 function goToQuestion(index){
  if(finished)return;
  current=index;
@@ -332,8 +353,6 @@ function goToQuestion(index){
 
 function showQuestion(){
  const q=questions[current];
-
- // Mark this question as visited
  visited[current]=true;
 
  document.getElementById("questionCount").textContent=
@@ -425,6 +444,9 @@ function submitTest(autoSubmit=false){
   percent:percent
  };
 
+ // SAVE STUDENT DETAILS TO GOOGLE SHEETS
+ saveStudentRecord();
+
  document.getElementById("testArea").classList.add("hidden");
  document.getElementById("resultArea").classList.remove("hidden");
 
@@ -439,7 +461,6 @@ function submitTest(autoSubmit=false){
  document.getElementById("skippedCount").textContent=skipped;
 }
 
-// Open separate shareable result page
 function openShareResult(){
  if(!lastResult)return;
 
