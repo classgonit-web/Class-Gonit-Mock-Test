@@ -4,592 +4,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Class Gonit 🎓 | Mathematics Learning Centre</title>
-
-<meta name="description" content="Class Gonit - Learn Mathematics, practise and take mock tests.">
+<meta name="description" content="Class Gonit - Learn Mathematics, practise, take mock tests and read Bengali current affairs.">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#071426;
-  color:#fff;
-  line-height:1.7;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#071426;color:#fff;line-height:1.7}
 a{text-decoration:none}
-
-header{
-  background:#10243c;
-  padding:12px 5%;
-  position:sticky;
-  top:0;
-  z-index:100;
-  border-bottom:1px solid #24566b;
-}
-
-.navbar{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#36dfc0;
-  font-size:21px;
-  font-weight:bold;
-}
-
-.brand img{
-  width:48px;
-  height:48px;
-  object-fit:contain;
-  border-radius:50%;
-}
-
-.menu{
-  display:flex;
-  gap:22px;
-  align-items:center;
-}
-
-.menu a{
-  color:white;
-  font-size:15px;
-  font-weight:bold;
-}
-
+header{background:#10243c;padding:12px 5%;position:sticky;top:0;z-index:100;border-bottom:1px solid #24566b}
+.navbar{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:#36dfc0;font-size:21px;font-weight:bold}
+.brand img{width:48px;height:48px;object-fit:contain;border-radius:50%}
+.menu{display:flex;gap:22px;align-items:center}
+.menu a{color:white;font-size:15px;font-weight:bold}
 .menu a:hover{color:#36dfc0}
+.menu-btn{display:none;background:#36dfc0;color:#071426;border:0;padding:9px 13px;border-radius:8px;font-size:20px}
+.hero{padding:75px 20px;text-align:center;background:radial-gradient(circle at top,#17445c,#071426 70%)}
+.hero-logo{width:115px;height:115px;object-fit:contain;border-radius:50%;border:3px solid #36dfc0;padding:5px;background:#fff;margin-bottom:18px}
+.hero h1{font-size:clamp(30px,6vw,48px);color:#36dfc0;margin-bottom:12px}
+.hero h2{font-size:21px;margin-bottom:15px}
+.hero p{max-width:700px;margin:10px auto;color:#c4d5e5}
+.hero-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:bold;transition:.3s}
+.btn-primary{background:#36dfc0;color:#071426}
+.btn-secondary{background:transparent;color:#36dfc0;border:2px solid #36dfc0}
+.btn:hover{transform:translateY(-3px)}
+.btn-current{background:linear-gradient(135deg,#f6c453,#ff8c42);color:#17213b}
+section{padding:65px 20px}
+.section-title{text-align:center;color:#36dfc0;font-size:30px;margin-bottom:12px}
+.section-subtitle{text-align:center;color:#b8c9d9;margin-bottom:35px}
+.content{max-width:1100px;margin:auto}
+.about-box{background:#10243c;padding:30px;border-radius:18px;border:1px solid #24566b;text-align:center}
+.about-box p{color:#d1dfeb;margin-top:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#10243c;padding:25px 20px;border-radius:16px;border:1px solid #24566b;text-align:center;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:#36dfc0}
+.card-icon{font-size:38px;margin-bottom:12px}
+.card h3{color:#36dfc0;margin-bottom:10px}
+.card p{color:#b8c9d9;font-size:14px}
+.mock-section{text-align:center;background:linear-gradient(145deg,#10243c,#17445c)}
+.mock-section p{max-width:650px;margin:15px auto 25px;color:#d1dfeb}
 
-.menu-btn{
-  display:none;
-  background:#36dfc0;
-  color:#071426;
-  border:0;
-  padding:9px 13px;
-  border-radius:8px;
-  font-size:20px;
-}
-
-.hero{
-  padding:75px 20px;
-  text-align:center;
-  background:
-  radial-gradient(circle at top,#17445c,#071426 70%);
-}
-
-.hero-logo{
-  width:115px;
-  height:115px;
-  object-fit:contain;
-  border-radius:50%;
-  border:3px solid #36dfc0;
-  padding:5px;
-  background:#fff;
-  margin-bottom:18px;
-}
-
-.hero h1{
-  font-size:clamp(30px,6vw,48px);
-  color:#36dfc0;
-  margin-bottom:12px;
-}
-
-.hero h2{
-  font-size:21px;
-  margin-bottom:15px;
-}
-
-.hero p{
-  max-width:700px;
-  margin:10px auto;
-  color:#c4d5e5;
-}
-
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
-}
-
-.btn{
-  display:inline-block;
-  padding:13px 24px;
-  border-radius:10px;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.btn-primary{
-  background:#36dfc0;
-  color:#071426;
-}
-
-.btn-secondary{
-  background:transparent;
-  color:#36dfc0;
-  border:2px solid #36dfc0;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-}
-
-section{
-  padding:65px 20px;
-}
-
-.section-title{
-  text-align:center;
-  color:#36dfc0;
-  font-size:30px;
-  margin-bottom:12px;
-}
-
-.section-subtitle{
-  text-align:center;
-  color:#b8c9d9;
-  margin-bottom:35px;
-}
-
-.content{
-  max-width:1100px;
-  margin:auto;
-}
-
-.about-box{
-  background:#10243c;
-  padding:30px;
-  border-radius:18px;
-  border:1px solid #24566b;
-  text-align:center;
-}
-
-.about-box p{
-  color:#d1dfeb;
-  margin-top:12px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.card{
-  background:#10243c;
-  padding:25px 20px;
-  border-radius:16px;
-  border:1px solid #24566b;
-  text-align:center;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:#36dfc0;
-}
-
-.card-icon{
-  font-size:38px;
-  margin-bottom:12px;
-}
-
-.card h3{
-  color:#36dfc0;
-  margin-bottom:10px;
-}
-
-.card p{
-  color:#b8c9d9;
-  font-size:14px;
-}
-
-.mock-section{
-  text-align:center;
-  background:linear-gradient(145deg,#10243c,#17445c);
-}
-
-.mock-section p{
-  max-width:650px;
-  margin:15px auto 25px;
-  color:#d1dfeb;
-}
-
-.quote{
-  text-align:center;
-  background:#10243c;
-  border-left:4px solid #36dfc0;
-  border-radius:12px;
-  padding:28px;
-  max-width:850px;
-  margin:auto;
-  color:#e2edf5;
-  font-size:18px;
-}
-
-.contact-card{
-  max-width:650px;
-  margin:auto;
-  background:#10243c;
-  border:1px solid #24566b;
-  border-radius:20px;
-  padding:30px 22px;
-  box-shadow:0 10px 30px #0005;
-}
-
-.contact-card h3{
-  text-align:center;
-  color:#36dfc0;
-  font-size:24px;
-  margin-bottom:22px;
-}
-
-.contact-item{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  padding:16px;
-  margin:12px 0;
-  background:#193d59;
-  border-radius:12px;
-}
-
-.contact-icon{
-  font-size:25px;
-}
-
-.contact-item h4{
-  color:#36dfc0;
-  margin-bottom:5px;
-}
-
-.contact-item p{
-  color:#e2edf5;
-  overflow-wrap:anywhere;
-}
-
-.whatsapp-button{
-  display:block;
-  text-align:center;
-  background:#25D366;
-  color:#071426;
-  padding:15px;
-  border-radius:12px;
-  margin-top:22px;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.whatsapp-button:hover{
-  background:#1ebe5d;
-  transform:translateY(-3px);
-}
-
-footer{
-  background:#030c18;
-  padding:25px 15px;
-  text-align:center;
-  color:#aab9c8;
-}
-
-footer strong{
-  color:#36dfc0;
-}
+/* CURRENT AFFAIRS */
+.current-section{background:linear-gradient(135deg,#101c45,#31205e,#10243c);text-align:center}
+.current-card{max-width:850px;margin:auto;padding:32px 22px;border-radius:20px;background:linear-gradient(135deg,#172c69,#56358c);border:2px solid #e9bd54;box-shadow:0 12px 35px #0005}
+.current-card .card-icon{font-size:52px}
+.current-card h2{color:#ffd76b;font-size:27px;margin-bottom:10px}
+.current-card p{color:#fff;margin:10px auto 22px;max-width:600px}
+.quote{text-align:center;background:#10243c;border-left:4px solid #36dfc0;border-radius:12px;padding:28px;max-width:850px;margin:auto;color:#e2edf5;font-size:18px}
+.contact-card{max-width:650px;margin:auto;background:#10243c;border:1px solid #24566b;border-radius:20px;padding:30px 22px;box-shadow:0 10px 30px #0005}
+.contact-card h3{text-align:center;color:#36dfc0;font-size:24px;margin-bottom:22px}
+.contact-item{display:flex;align-items:flex-start;gap:14px;padding:16px;margin:12px 0;background:#193d59;border-radius:12px}
+.contact-icon{font-size:25px}
+.contact-item h4{color:#36dfc0;margin-bottom:5px}
+.contact-item p{color:#e2edf5;overflow-wrap:anywhere}
+.whatsapp-button{display:block;text-align:center;background:#25D366;color:#071426;padding:15px;border-radius:12px;margin-top:22px;font-weight:bold;transition:.3s}
+.whatsapp-button:hover{background:#1ebe5d;transform:translateY(-3px)}
+footer{background:#030c18;padding:25px 15px;text-align:center;color:#aab9c8}
+footer strong{color:#36dfc0}
 
 @media(max-width:768px){
-
-  header{padding:10px 4%}
-
-  .brand{font-size:18px}
-
-  .brand img{
-    width:42px;
-    height:42px;
-  }
-
-  .menu-btn{display:block}
-
-  .menu{
-    display:none;
-    position:absolute;
-    top:68px;
-    left:0;
-    width:100%;
-    background:#10243c;
-    flex-direction:column;
-    padding:20px;
-    gap:18px;
-    border-top:1px solid #24566b;
-  }
-
-  .menu.active{display:flex}
-
-  .hero{padding:55px 16px}
-
-  .hero h2{font-size:18px}
-
-  section{padding:48px 16px}
-
-  .cards{grid-template-columns:1fr}
-
-  .section-title{font-size:26px}
-
-  .about-box{padding:22px 16px}
-
-  .contact-card{padding:23px 15px}
-
-  .quote{font-size:16px;padding:22px}
+header{padding:10px 4%}
+.brand{font-size:18px}
+.brand img{width:42px;height:42px}
+.menu-btn{display:block}
+.menu{display:none;position:absolute;top:68px;left:0;width:100%;background:#10243c;flex-direction:column;padding:20px;gap:18px;border-top:1px solid #24566b}
+.menu.active{display:flex}
+.hero{padding:55px 16px}
+.hero h2{font-size:18px}
+section{padding:48px 16px}
+.cards{grid-template-columns:1fr}
+.section-title{font-size:26px}
+.about-box{padding:22px 16px}
+.contact-card{padding:23px 15px}
+.quote{font-size:16px;padding:22px}
+.current-card{padding:25px 16px}
+.current-card h2{font-size:23px}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-
 <header>
 <nav class="navbar">
-
 <a href="index.html" class="brand">
 <img src="logo.png" alt="Class Gonit Logo">
 <span>ক্লাস গণিত 🎓</span>
 </a>
-
 <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-
 <div class="menu" id="menu">
 <a href="#home" onclick="closeMenu()">Home</a>
 <a href="#about" onclick="closeMenu()">About</a>
 <a href="#learning" onclick="closeMenu()">Learning</a>
 <a href="mock-test.html">Mock Test</a>
+<a href="current-affairs.html">Current Affairs</a>
 <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
-
 </nav>
 </header>
 
-<!-- HERO SECTION -->
-
 <section class="hero" id="home">
-
 <img src="logo.png" alt="Class Gonit Logo" class="hero-logo">
-
 <h1>ক্লাস গণিত 🎓</h1>
-
 <h2>Mathematics Learning Centre</h2>
-
-<p>
-শেখো • অনুশীলন করো • এগিয়ে চলো
-</p>
-
-<p>
-Welcome to Class Gonit! Learn Mathematics with confidence,
-practise regularly and prepare yourself for success.
-</p>
-
+<p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+<p>Welcome to Class Gonit! Learn Mathematics with confidence, practise regularly and prepare yourself for success.</p>
 <div class="hero-buttons">
-<a href="mock-test.html" class="btn btn-primary">
-📝 Start Mock Test
-</a>
-
-<a href="#contact" class="btn btn-secondary">
-Contact Us
-</a>
+<a href="mock-test.html" class="btn btn-primary">📝 Start Mock Test</a>
+<a href="current-affairs.html" class="btn btn-current">📚 বর্তমান বিষয়াবলি</a>
+<a href="#contact" class="btn btn-secondary">Contact Us</a>
 </div>
-
 </section>
-
-<!-- ABOUT SECTION -->
 
 <section id="about">
 <div class="content">
-
 <h2 class="section-title">About Class Gonit</h2>
-
-<p class="section-subtitle">
-A place to learn, practise and improve your mathematical skills.
-</p>
-
+<p class="section-subtitle">A place to learn, practise and improve your mathematical skills.</p>
 <div class="about-box">
-
 <h2 style="color:#36dfc0">Welcome to Class Gonit 🎓</h2>
-
-<p>
-Class Gonit is a mathematics learning platform designed
-to help students understand mathematical concepts,
-practise questions and improve problem-solving skills.
-</p>
-
-<p>
-Our goal is to make Mathematics easier, more interesting
-and enjoyable through regular practice and mock tests.
-</p>
-
+<p>Class Gonit is a mathematics learning platform designed to help students understand mathematical concepts, practise questions and improve problem-solving skills.</p>
+<p>Our goal is to make Mathematics easier, more interesting and enjoyable through regular practice and mock tests.</p>
 </div>
 </div>
 </section>
-
-<!-- LEARNING SECTION -->
 
 <section id="learning">
 <div class="content">
-
 <h2 class="section-title">Our Learning Sections</h2>
-
-<p class="section-subtitle">
-Explore different areas of Mathematics.
-</p>
-
+<p class="section-subtitle">Explore different areas of Mathematics.</p>
 <div class="cards">
-
-<div class="card">
-<div class="card-icon">➕</div>
-<h3>Arithmetic</h3>
-<p>Learn numbers, simplification, percentage, ratio and more.</p>
-</div>
-
-<div class="card">
-<div class="card-icon">🔢</div>
-<h3>Algebra</h3>
-<p>Understand algebraic expressions, equations and identities.</p>
-</div>
-
-<div class="card">
-<div class="card-icon">📐</div>
-<h3>Geometry</h3>
-<p>Explore lines, angles, triangles, circles and shapes.</p>
-</div>
-
-<div class="card">
-<div class="card-icon">📏</div>
-<h3>Mensuration</h3>
-<p>Learn area, perimeter, volume and surface area.</p>
-</div>
-
-<div class="card">
-<div class="card-icon">📚</div>
-<h3>Practice Questions</h3>
-<p>Improve your knowledge with regular mathematical practice.</p>
-</div>
-
-<div class="card">
-<div class="card-icon">🏆</div>
-<h3>Mock Tests</h3>
-<p>Check your preparation and improve your performance.</p>
-</div>
-
+<div class="card"><div class="card-icon">➕</div><h3>Arithmetic</h3><p>Learn numbers, simplification, percentage, ratio and more.</p></div>
+<div class="card"><div class="card-icon">🔢</div><h3>Algebra</h3><p>Understand algebraic expressions, equations and identities.</p></div>
+<div class="card"><div class="card-icon">📐</div><h3>Geometry</h3><p>Explore lines, angles, triangles, circles and shapes.</p></div>
+<div class="card"><div class="card-icon">📏</div><h3>Mensuration</h3><p>Learn area, perimeter, volume and surface area.</p></div>
+<div class="card"><div class="card-icon">📚</div><h3>Practice Questions</h3><p>Improve your knowledge with regular mathematical practice.</p></div>
+<div class="card"><div class="card-icon">🏆</div><h3>Mock Tests</h3><p>Check your preparation and improve your performance.</p></div>
 </div>
 </div>
 </section>
-
-<!-- MOCK TEST SECTION -->
 
 <section class="mock-section">
 <div class="content">
-
 <h2 class="section-title">Mathematics Mock Test</h2>
-
-<p>
-Test your knowledge with practice questions.
-Improve your speed, accuracy and confidence.
-</p>
-
-<a href="mock-test.html" class="btn btn-primary">
-Start Your Mock Test →
-</a>
-
+<p>Test your knowledge with practice questions. Improve your speed, accuracy and confidence.</p>
+<a href="mock-test.html" class="btn btn-primary">Start Your Mock Test →</a>
 </div>
 </section>
 
-<!-- MOTIVATION -->
+<!-- NEW CURRENT AFFAIRS SECTION -->
+<section class="current-section">
+<div class="content">
+<div class="current-card">
+<div class="card-icon">📰</div>
+<h2>বাংলা বর্তমান বিষয়াবলি</h2>
+<p>প্রতিদিনের গুরুত্বপূর্ণ জাতীয় ও আন্তর্জাতিক খবর, খেলাধুলা, বিজ্ঞান, পুরস্কার এবং আকর্ষণীয় MCQ কুইজ পড়ো ও নিজের জ্ঞান যাচাই করো।</p>
+<a href="current-affairs.html" class="btn btn-current">📚 কারেন্ট অ্যাফেয়ার্স পড়ুন →</a>
+</div>
+</div>
+</section>
 
 <section>
 <div class="content">
-
 <h2 class="section-title">Stay Motivated</h2>
-
 <div class="quote">
 হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে নতুন সম্ভাবনা।
 নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—
 সাফল্য একদিন তোমারই হবে। ✨
 </div>
-
 </div>
 </section>
-
-<!-- CONTACT SECTION -->
 
 <section id="contact">
 <div class="content">
-
 <h2 class="section-title">Contact Us</h2>
-
-<p class="section-subtitle">
-We are happy to help you!
-</p>
-
+<p class="section-subtitle">We are happy to help you!</p>
 <div class="contact-card">
-
 <h3>🏫 Class Gonit – Learning Centre</h3>
-
 <div class="contact-item">
 <div class="contact-icon">📍</div>
-<div>
-<h4>Our Address</h4>
-<p>
-ULLADABRI, MAYNAGURI,<br>
-JALPAIGURI, West Bengal – 735224
-</p>
+<div><h4>Our Address</h4><p>ULLADABRI, MAYNAGURI,<br>JALPAIGURI, West Bengal – 735224</p></div>
 </div>
-</div>
-
 <div class="contact-item">
 <div class="contact-icon">📞</div>
-<div>
-<h4>Contact Number</h4>
-<p>+91 8159061346</p>
+<div><h4>Contact Number</h4><p>+91 8159061346</p></div>
 </div>
-</div>
-
 <div class="contact-item">
 <div class="contact-icon">💬</div>
-<div>
-<h4>WhatsApp Enquiry</h4>
-<p>Have any questions? Send us an enquiry on WhatsApp.</p>
+<div><h4>WhatsApp Enquiry</h4><p>Have any questions? Send us an enquiry on WhatsApp.</p></div>
 </div>
-</div>
-
-<a
-class="whatsapp-button"
-href="https://wa.me/918159061346?text=Hello%20Class%20Gonit!%20I%20want%20to%20make%20an%20enquiry%20about%20your%20classes."
-target="_blank"
-rel="noopener noreferrer">
-
-💬 Chat with Us on WhatsApp
-
-</a>
-
+<a class="whatsapp-button" href="https://wa.me/918159061346?text=Hello%20Class%20Gonit!%20I%20want%20to%20make%20an%20enquiry%20about%20your%20classes." target="_blank" rel="noopener noreferrer">💬 Chat with Us on WhatsApp</a>
 </div>
 </div>
 </section>
-
-<!-- FOOTER -->
 
 <footer>
 <p><strong>ক্লাস গণিত 🎓</strong></p>
@@ -599,11 +206,10 @@ rel="noopener noreferrer">
 
 <script>
 function toggleMenu(){
- document.getElementById("menu").classList.toggle("active");
+document.getElementById("menu").classList.toggle("active");
 }
-
 function closeMenu(){
- document.getElementById("menu").classList.remove("active");
+document.getElementById("menu").classList.remove("active");
 }
 </script>
 
