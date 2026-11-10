@@ -4,215 +4,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Gonit - Result</title>
+<title>Class Gonit - Student Result</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
  margin:0;
- padding:20px 12px 35px;
+ padding:18px 12px 35px;
  font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#090d35,#24105c,#071b45);
  color:white;
- min-height:100vh;
+ background:linear-gradient(135deg,#080e36,#17165c,#310c65);
  text-align:center;
+ min-height:100vh;
 }
 
-.top{
- margin:5px auto 18px;
- font-size:23px;
- font-weight:bold;
+.heading{
+ font-size:25px;
+ font-weight:900;
+ margin:8px 0 18px;
  letter-spacing:1px;
 }
 
-.top span{color:#ffd66b}
+.heading span{color:#ffd66b}
 
 .card{
  width:100%;
  max-width:430px;
  aspect-ratio:4/5;
  margin:auto;
- padding:25px 20px;
+ padding:20px 18px;
  position:relative;
  overflow:hidden;
- border-radius:25px;
+ border:3px solid #f8d77b;
+ border-radius:24px;
  background:
- radial-gradient(circle at 10% 10%,#713cf5 0,transparent 35%),
- radial-gradient(circle at 90% 85%,#087fc5 0,transparent 35%),
- linear-gradient(145deg,#111b58,#21105c 55%,#071d48);
- border:2px solid #f7cb65;
- box-shadow:0 15px 45px #0009;
+ radial-gradient(circle at 5% 5%,#6335d8 0,transparent 32%),
+ radial-gradient(circle at 95% 90%,#087fbd 0,transparent 35%),
+ linear-gradient(145deg,#101b55,#21105d 55%,#071b48);
+ box-shadow:0 15px 40px #0008;
  display:flex;
  flex-direction:column;
- align-items:center;
  justify-content:space-between;
 }
 
 .card:before{
  content:"";
  position:absolute;
- width:250px;
- height:250px;
- border:1px solid #ffffff22;
+ width:220px;
+ height:220px;
+ border:2px solid #ffd66b35;
  border-radius:50%;
  top:-130px;
- right:-100px;
+ right:-90px;
 }
 
 .card:after{
  content:"";
  position:absolute;
- width:220px;
- height:220px;
- border:1px solid #ffffff22;
+ width:200px;
+ height:200px;
+ border:2px solid #ffffff20;
  border-radius:50%;
- bottom:-120px;
- left:-90px;
+ bottom:-110px;
+ left:-100px;
 }
 
-.content{
+.inside{
  position:relative;
- z-index:1;
- width:100%;
+ z-index:2;
 }
 
 .logo{
- width:75px;
- height:75px;
+ width:65px;
+ height:65px;
  object-fit:contain;
  background:white;
- border-radius:50%;
- padding:5px;
+ padding:4px;
  border:3px solid #ffd66b;
- margin-bottom:8px;
+ border-radius:50%;
 }
 
 .brand{
  font-size:23px;
  font-weight:900;
- color:#fff;
-}
-
-.subtitle{
- color:#fbd77c;
- font-size:11px;
- letter-spacing:3px;
  margin-top:5px;
 }
 
+.tagline{
+ font-size:10px;
+ letter-spacing:4px;
+ color:#ffd66b;
+ margin-top:4px;
+}
+
+.line{
+ width:75%;
+ height:2px;
+ background:linear-gradient(90deg,transparent,#ffd66b,transparent);
+ margin:12px auto;
+}
+
 .trophy{
- font-size:45px;
- margin:12px 0 3px;
+ font-size:38px;
+ margin-top:8px;
 }
 
-.congrats{
- font-size:25px;
+.completed{
+ color:#ffd66b;
+ font-size:21px;
  font-weight:900;
- color:#ffdb75;
+ letter-spacing:1px;
 }
 
-.name{
- font-size:22px;
- font-weight:bold;
- margin:12px 0 5px;
+.student{
+ font-size:23px;
+ font-weight:900;
+ margin-top:10px;
  overflow-wrap:anywhere;
 }
 
 .chapter{
- font-size:13px;
- color:#d8dcff;
+ font-size:12px;
+ color:#d6ddff;
+ margin-top:5px;
 }
 
-.score-box{
- margin:18px auto 12px;
- width:175px;
- height:175px;
+.score-circle{
+ width:145px;
+ height:145px;
  border-radius:50%;
+ margin:14px auto 10px;
  border:5px solid #ffd66b;
- background:linear-gradient(145deg,#30218b,#101b59);
- box-shadow:0 0 25px #ffd66b66,inset 0 0 20px #ffffff22;
+ background:linear-gradient(145deg,#5332c6,#111b58);
+ box-shadow:0 0 25px #ffd66b77,inset 0 0 20px #ffffff30;
  display:flex;
  flex-direction:column;
- justify-content:center;
  align-items:center;
+ justify-content:center;
 }
 
 .score{
- font-size:48px;
+ font-size:42px;
  font-weight:900;
- color:#ffdf80;
+ color:#ffe18a;
 }
 
 .score-label{
- font-size:12px;
+ font-size:10px;
  letter-spacing:2px;
- color:#fff;
 }
 
 .percent{
- font-size:18px;
+ font-size:17px;
+ font-weight:bold;
  color:#ffffff;
  margin-top:5px;
- font-weight:bold;
 }
 
 .stats{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:8px;
+ gap:7px;
  margin-top:12px;
 }
 
 .stat{
- background:#ffffff16;
- border:1px solid #ffffff35;
- border-radius:13px;
- padding:12px 3px;
+ border-radius:12px;
+ padding:10px 2px;
+ background:#ffffff18;
+ border:1px solid #ffffff50;
 }
 
 .stat strong{
  display:block;
- font-size:25px;
- margin-bottom:5px;
+ font-size:23px;
 }
 
 .stat small{
- font-size:10px;
- color:#e2e5ff;
+ font-size:9px;
+ font-weight:bold;
 }
 
-.correct{color:#65ffb0}
-.wrong{color:#ff8888}
-.skipped{color:#ffd66b}
+.green{color:#69ffb1}
+.red{color:#ff9292}
+.gold{color:#ffdb70}
 
 .message{
- margin:17px 0 8px;
- font-size:14px;
- line-height:1.5;
- color:#ffe8aa;
+ color:#ffe6a6;
+ font-size:12px;
+ line-height:1.4;
  font-weight:bold;
+ margin:12px 0 5px;
 }
 
 .footer{
  border-top:1px solid #ffffff55;
- padding-top:10px;
- margin-top:10px;
- font-size:12px;
- line-height:1.6;
- color:#ffffff;
+ padding-top:9px;
+ font-size:10px;
+ line-height:1.55;
+ color:#fff;
 }
 
-.footer strong{
- color:#ffdc79;
- font-size:15px;
+.footer b{
+ color:#ffd66b;
+ font-size:14px;
 }
 
 .buttons{
  max-width:430px;
  margin:20px auto 0;
  display:grid;
- gap:12px;
+ gap:11px;
 }
 
 button{
@@ -220,63 +223,71 @@ button{
  padding:15px;
  border:0;
  border-radius:12px;
- font-size:16px;
+ font-size:15px;
  font-weight:bold;
  cursor:pointer;
 }
 
 .download{
- background:linear-gradient(90deg,#ffd66b,#ffad38);
- color:#241047;
+ background:linear-gradient(90deg,#ffe28b,#ffad32);
+ color:#231347;
 }
 
 .share{
- background:linear-gradient(90deg,#16c978,#00a85a);
+ background:linear-gradient(90deg,#22d878,#079e55);
  color:white;
 }
 
 .home{
  background:#ffffff18;
- border:1px solid #ffffff55;
+ border:1px solid #ffffff50;
  color:white;
 }
 
 .note{
+ color:#c9d0f5;
  font-size:12px;
- color:#c7c9e8;
- margin-top:12px;
+ margin-top:13px;
 }
 
 @media(max-width:360px){
- .card{padding:18px 13px}
- .score-box{width:145px;height:145px}
- .score{font-size:40px}
- .name{font-size:19px}
- .congrats{font-size:22px}
- .stat{padding:9px 2px}
+ .card{padding:13px 10px}
+ .logo{width:55px;height:55px}
+ .brand{font-size:20px}
+ .score-circle{width:125px;height:125px}
+ .score{font-size:36px}
+ .student{font-size:19px}
+ .stats{gap:4px}
+ .stat{padding:8px 1px}
+ .stat strong{font-size:20px}
+ .message{font-size:11px}
+ .footer{font-size:9px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">CLASS <span>GONIT</span> 🎓</div>
+<div class="heading">CLASS <span>GONIT</span> 🎓</div>
 
 <div class="card" id="resultCard">
 
- <div class="content">
-  <img src="logo.png" class="logo" id="logo" alt="Class Gonit Logo">
+ <div class="inside">
+
+  <img src="logo.png" class="logo" alt="Class Gonit Logo">
 
   <div class="brand">CLASS GONIT</div>
-  <div class="subtitle">LEARNING CENTRE</div>
+  <div class="tagline">LEARNING CENTRE</div>
+
+  <div class="line"></div>
 
   <div class="trophy">🏆</div>
-  <div class="congrats">TEST COMPLETED!</div>
+  <div class="completed">TEST COMPLETED!</div>
 
-  <div class="name" id="studentName">Student Name</div>
+  <div class="student" id="studentName">Student Name</div>
   <div class="chapter" id="chapterName">Mathematics Mock Test</div>
 
-  <div class="score-box">
+  <div class="score-circle">
    <div class="score" id="score">0/20</div>
    <div class="score-label">YOUR SCORE</div>
    <div class="percent" id="percentage">0%</div>
@@ -284,28 +295,29 @@ button{
 
   <div class="stats">
    <div class="stat">
-    <strong class="correct" id="correct">0</strong>
+    <strong class="green" id="correct">0</strong>
     <small>✓ CORRECT</small>
    </div>
 
    <div class="stat">
-    <strong class="wrong" id="wrong">0</strong>
+    <strong class="red" id="wrong">0</strong>
     <small>✕ WRONG</small>
    </div>
 
    <div class="stat">
-    <strong class="skipped" id="skipped">0</strong>
+    <strong class="gold" id="skipped">0</strong>
     <small>○ SKIPPED</small>
    </div>
   </div>
 
   <div class="message" id="message">
-   Keep learning, keep growing! Every effort brings you closer to success. ✨
+   Keep learning and keep growing! ✨
   </div>
+
  </div>
 
- <div class="content footer">
-  <strong>CLASS GONIT 🎓</strong><br>
+ <div class="inside footer">
+  <b>CLASS GONIT 🎓 – LEARNING CENTRE</b><br>
   ULLADABRI, MAYNAGURI, JALPAIGURI<br>
   West Bengal – 735224<br>
   Contact: 8159061346
@@ -314,267 +326,351 @@ button{
 </div>
 
 <div class="buttons">
+
  <button class="download" onclick="downloadResult()">
-  ⬇ Download Result Image
+  ⬇ DOWNLOAD RESULT IMAGE
  </button>
 
  <button class="share" onclick="shareResult()">
-  WhatsApp Share
+  ✨ SHARE ON WHATSAPP
  </button>
 
  <button class="home" onclick="location.href='index.html'">
-  ← Back to Home
+  ← BACK TO HOME
  </button>
+
 </div>
 
 <div class="note">
- Share your achievement with friends and family!
+ Proud of your progress! Keep practising! 🌟
 </div>
 
-<canvas id="canvas" width="1080" height="1350" style="display:none"></canvas>
+<canvas id="canvas" width="1080" height="1350" hidden></canvas>
 
 <script>
-const params = new URLSearchParams(location.search);
 
-const name = params.get("name") || "Student";
-const chapter = params.get("chapter") || "Mathematics Mock Test";
-const total = Math.max(0,Number(params.get("total")) || 20);
-const score = Math.max(0,Number(params.get("score")) || 0);
-const correct = Math.max(0,Number(params.get("correct")) || 0);
-const wrong = Math.max(0,Number(params.get("wrong")) || 0);
-const skipped = Math.max(0,Number(params.get("skipped")) || 0);
+// GET RESULT DETAILS
+
+const p = new URLSearchParams(location.search);
+
+const name = p.get("name") || "Student";
+const chapter = p.get("chapter") || "Mathematics Mock Test";
+const total = Math.max(0,Number(p.get("total")) || 20);
+const score = Math.max(0,Number(p.get("score")) || 0);
+const correct = Math.max(0,Number(p.get("correct")) || 0);
+const wrong = Math.max(0,Number(p.get("wrong")) || 0);
+const skipped = Math.max(0,Number(p.get("skipped")) || 0);
 
 const percentage = total > 0
- ? Math.round((score/total)*100)
+ ? Math.round(score/total*100)
  : 0;
 
-document.getElementById("studentName").textContent = name;
-document.getElementById("chapterName").textContent = chapter;
-document.getElementById("score").textContent = score+"/"+total;
-document.getElementById("percentage").textContent = percentage+"%";
-document.getElementById("correct").textContent = correct;
-document.getElementById("wrong").textContent = wrong;
-document.getElementById("skipped").textContent = skipped;
+// SHOW DETAILS
 
-let message = "Keep learning, keep growing! Every effort brings you closer to success. ✨";
+document.getElementById("studentName").textContent=name;
+document.getElementById("chapterName").textContent=chapter;
+document.getElementById("score").textContent=score+"/"+total;
+document.getElementById("percentage").textContent=percentage+"%";
+document.getElementById("correct").textContent=correct;
+document.getElementById("wrong").textContent=wrong;
+document.getElementById("skipped").textContent=skipped;
 
-if(percentage >= 90){
- message = "Outstanding Performance! You are a star! 🌟";
-}else if(percentage >= 75){
- message = "Excellent Work! Keep shining and moving forward! 🏆";
-}else if(percentage >= 50){
- message = "Good Effort! Practice more and achieve even more! 💪";
+let message="Keep learning and keep growing! Every practice makes you better. ✨";
+
+if(percentage>=90){
+ message="EXCELLENT! You are a Mathematics Star! 🌟";
+}else if(percentage>=75){
+ message="GREAT PERFORMANCE! Keep shining! 🏆";
+}else if(percentage>=50){
+ message="GOOD EFFORT! Keep practising! 💪";
 }else{
- message = "Never give up! Learn from every test and try again! 🌱";
+ message="NEVER GIVE UP! Your next success is waiting! 🌱";
 }
 
-document.getElementById("message").textContent = message;
+document.getElementById("message").textContent=message;
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
-const logo = new Image();
-let drawn = false;
 
-function drawResult(){
- if(drawn) return;
- drawn = true;
+// CREATE 1080 x 1350 RESULT IMAGE
 
- const w=1080, h=1350;
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+const logo=new Image();
+logo.src="logo.png";
+
+let logoLoaded=false;
+
+const logoReady=new Promise(resolve=>{
+ logo.onload=()=>{
+  logoLoaded=true;
+  resolve();
+ };
+ logo.onerror=resolve;
+});
+
+function roundedRect(x,y,w,h,r){
+ ctx.beginPath();
+ ctx.roundRect(x,y,w,h,r);
+}
+
+function drawText(text,x,y,size,color,weight="normal"){
+ ctx.textAlign="center";
+ ctx.font=weight+" "+size+"px Arial";
+ ctx.fillStyle=color;
+ ctx.fillText(text,x,y);
+}
+
+function fitText(text,maxWidth,fontSize,weight="bold"){
+ ctx.font=weight+" "+fontSize+"px Arial";
+ while(ctx.measureText(text).width>maxWidth && fontSize>18){
+  fontSize--;
+  ctx.font=weight+" "+fontSize+"px Arial";
+ }
+ return fontSize;
+}
+
+async function createImage(){
+
+ await logoReady;
+
+ const w=1080;
+ const h=1350;
+
+ // BACKGROUND
 
  const bg=ctx.createLinearGradient(0,0,w,h);
  bg.addColorStop(0,"#10194f");
- bg.addColorStop(.5,"#35117a");
- bg.addColorStop(1,"#071d48");
+ bg.addColorStop(.45,"#271078");
+ bg.addColorStop(1,"#071b49");
+
  ctx.fillStyle=bg;
  ctx.fillRect(0,0,w,h);
 
- const glow=ctx.createRadialGradient(130,150,10,130,150,600);
- glow.addColorStop(0,"#8c42ff88");
- glow.addColorStop(1,"#8c42ff00");
- ctx.fillStyle=glow;
+ // GLOW EFFECTS
+
+ const glow1=ctx.createRadialGradient(100,100,10,100,100,600);
+ glow1.addColorStop(0,"#853dff88");
+ glow1.addColorStop(1,"#853dff00");
+ ctx.fillStyle=glow1;
  ctx.fillRect(0,0,w,h);
 
- ctx.strokeStyle="#ffd66b";
- ctx.lineWidth=8;
- ctx.strokeRect(24,24,w-48,h-48);
+ const glow2=ctx.createRadialGradient(1000,1200,10,1000,1200,500);
+ glow2.addColorStop(0,"#00bfff66");
+ glow2.addColorStop(1,"#00bfff00");
+ ctx.fillStyle=glow2;
+ ctx.fillRect(0,0,w,h);
 
- ctx.strokeStyle="#ffffff35";
- ctx.lineWidth=2;
- ctx.beginPath();
- ctx.arc(1000,80,180,0,Math.PI*2);
- ctx.stroke();
+ // GOLD BORDER
 
- ctx.textAlign="center";
-
- if(logo.complete && logo.naturalWidth>0){
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(540,130,65,0,Math.PI*2);
-  ctx.fillStyle="#ffffff";
-  ctx.fill();
-  ctx.clip();
-  ctx.drawImage(logo,480,70,120,120);
-  ctx.restore();
-
-  ctx.strokeStyle="#ffd66b";
-  ctx.lineWidth=5;
-  ctx.beginPath();
-  ctx.arc(540,130,65,0,Math.PI*2);
-  ctx.stroke();
- }
-
- ctx.fillStyle="#ffffff";
- ctx.font="bold 55px Arial";
- ctx.fillText("CLASS GONIT",540,245);
-
- ctx.fillStyle="#ffda7d";
- ctx.font="bold 25px Arial";
- ctx.fillText("LEARNING CENTRE",540,285);
-
- ctx.font="90px Arial";
- ctx.fillText("🏆",540,405);
-
- ctx.fillStyle="#ffda7d";
- ctx.font="bold 55px Arial";
- ctx.fillText("TEST COMPLETED!",540,475);
-
- ctx.fillStyle="#ffffff";
- ctx.font="bold 42px Arial";
- ctx.fillText(name.slice(0,35),540,550);
-
- ctx.fillStyle="#d9ddff";
- ctx.font="28px Arial";
- ctx.fillText(chapter.slice(0,45),540,600);
-
- const circle=ctx.createLinearGradient(350,650,730,1030);
- circle.addColorStop(0,"#4b30a5");
- circle.addColorStop(1,"#101b59");
-
- ctx.fillStyle=circle;
- ctx.beginPath();
- ctx.arc(540,820,170,0,Math.PI*2);
- ctx.fill();
-
- ctx.strokeStyle="#ffda7d";
- ctx.lineWidth=12;
- ctx.stroke();
-
- ctx.fillStyle="#ffdf80";
- ctx.font="bold 88px Arial";
- ctx.fillText(score+"/"+total,540,835);
-
- ctx.fillStyle="#ffffff";
- ctx.font="bold 35px Arial";
- ctx.fillText("YOUR SCORE",540,890);
-
- ctx.fillStyle="#ffdf80";
- ctx.font="bold 42px Arial";
- ctx.fillText(percentage+"%",540,960);
-
- const boxes=[
-  {x:100,color:"#65ffb0",num:correct,label:"CORRECT"},
-  {x:390,color:"#ff8888",num:wrong,label:"WRONG"},
-  {x:680,color:"#ffd66b",num:skipped,label:"SKIPPED"}
- ];
-
- boxes.forEach(b=>{
-  ctx.fillStyle="#ffffff18";
-  ctx.beginPath();
-  ctx.roundRect(b.x,1030,260,125,20);
-  ctx.fill();
-
-  ctx.fillStyle=b.color;
-  ctx.font="bold 48px Arial";
-  ctx.fillText(String(b.num),b.x+130,1085);
-
-  ctx.fillStyle="#ffffff";
-  ctx.font="bold 23px Arial";
-  ctx.fillText(b.label,b.x+130,1125);
- });
-
- ctx.fillStyle="#ffe8aa";
- ctx.font="bold 27px Arial";
- ctx.fillText(
-  percentage>=90 ? "OUTSTANDING PERFORMANCE! 🌟" :
-  percentage>=75 ? "EXCELLENT WORK! 🏆" :
-  percentage>=50 ? "GOOD EFFORT! 💪" :
-  "KEEP LEARNING, NEVER GIVE UP! 🌱",
-  540,1215
- );
+ ctx.strokeStyle="#ffda78";
+ ctx.lineWidth=9;
+ ctx.strokeRect(22,22,1036,1306);
 
  ctx.strokeStyle="#ffffff55";
  ctx.lineWidth=2;
+ ctx.strokeRect(38,38,1004,1274);
+
+ // DECORATIVE STARS
+
+ for(let i=0;i<35;i++){
+  const x=50+(i*173)%980;
+  const y=70+(i*239)%1200;
+  ctx.fillStyle=i%2===0?"#ffdc78":"#ffffff55";
+  ctx.beginPath();
+  ctx.arc(x,y, i%3===0?4:2,0,Math.PI*2);
+  ctx.fill();
+ }
+
+ // LOGO
+
+ if(logoLoaded){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(540,125,68,0,Math.PI*2);
+  ctx.fillStyle="#ffffff";
+  ctx.fill();
+  ctx.clip();
+  ctx.drawImage(logo,480,65,120,120);
+  ctx.restore();
+
+  ctx.strokeStyle="#ffda78";
+  ctx.lineWidth=6;
+  ctx.beginPath();
+  ctx.arc(540,125,68,0,Math.PI*2);
+  ctx.stroke();
+ }
+
+ // BRANDING
+
+ drawText("CLASS GONIT",540,250,57,"#ffffff","bold");
+ drawText("LEARNING CENTRE",540,290,25,"#ffda78","bold");
+
+ ctx.strokeStyle="#ffda78";
+ ctx.lineWidth=3;
  ctx.beginPath();
- ctx.moveTo(100,1250);
- ctx.lineTo(980,1250);
+ ctx.moveTo(210,320);
+ ctx.lineTo(870,320);
  ctx.stroke();
 
- ctx.fillStyle="#ffda7d";
- ctx.font="bold 30px Arial";
- ctx.fillText("CLASS GONIT 🎓",540,1290);
+ // TROPHY
 
- ctx.fillStyle="#ffffff";
- ctx.font="20px Arial";
- ctx.fillText("ULLADABRI, MAYNAGURI, JALPAIGURI",540,1320);
-}
+ drawText("🏆",540,415,90,"#ffffff");
+ drawText("TEST COMPLETED!",540,485,51,"#ffdc78","bold");
 
-logo.onload=drawResult;
-logo.onerror=drawResult;
-logo.src="logo.png";
+ // STUDENT NAME
 
-if(logo.complete){
- drawResult();
-}
+ const safeName=name.slice(0,45);
+ const nameSize=fitText(safeName,850,45);
+ drawText(safeName,540,555,nameSize,"#ffffff","bold");
 
-function getImage(){
+ const safeChapter=chapter.slice(0,55);
+ const chapterSize=fitText(safeChapter,850,27,"normal");
+ drawText(safeChapter,540,605,chapterSize,"#dce1ff");
+
+ // SCORE CIRCLE
+
+ const circleGradient=ctx.createLinearGradient(350,650,730,1000);
+ circleGradient.addColorStop(0,"#5635c9");
+ circleGradient.addColorStop(1,"#111b58");
+
+ ctx.beginPath();
+ ctx.arc(540,820,165,0,Math.PI*2);
+ ctx.fillStyle=circleGradient;
+ ctx.fill();
+
+ ctx.strokeStyle="#ffda78";
+ ctx.lineWidth=13;
+ ctx.stroke();
+
+ ctx.beginPath();
+ ctx.arc(540,820,145,0,Math.PI*2);
+ ctx.strokeStyle="#ffffff45";
+ ctx.lineWidth=3;
+ ctx.stroke();
+
+ drawText(score+"/"+total,540,825,88,"#ffe28a","bold");
+ drawText("YOUR SCORE",540,875,25,"#ffffff","bold");
+ drawText(percentage+"%",540,935,40,"#ffdc78","bold");
+
+ // STAT BOXES
+
+ const boxes=[
+  {x:85,color:"#62ffb0",number:correct,label:"CORRECT"},
+  {x:395,color:"#ff9292",number:wrong,label:"WRONG"},
+  {x:705,color:"#ffdc78",number:skipped,label:"SKIPPED"}
+ ];
+
+ boxes.forEach(b=>{
+  roundedRect(b.x,1020,290,135,22);
+  ctx.fillStyle="#ffffff20";
+  ctx.fill();
+
+  ctx.strokeStyle="#ffffff65";
+  ctx.lineWidth=2;
+  ctx.stroke();
+
+  drawText(String(b.number),b.x+145,1080,48,b.color,"bold");
+  drawText(b.label,b.x+145,1125,23,"#ffffff","bold");
+ });
+
+ // PERFORMANCE MESSAGE
+
+ const performance =
+ percentage>=90 ? "EXCELLENT PERFORMANCE! 🌟" :
+ percentage>=75 ? "GREAT PERFORMANCE! 🏆" :
+ percentage>=50 ? "GOOD EFFORT! 💪" :
+ "NEVER GIVE UP! 🌱";
+
+ const performanceSize=fitText(performance,900,30);
+ drawText(performance,540,1205,performanceSize,"#ffdf86","bold");
+
+ // INSTITUTE DETAILS
+
+ ctx.strokeStyle="#ffda78";
+ ctx.lineWidth=3;
+ ctx.beginPath();
+ ctx.moveTo(100,1240);
+ ctx.lineTo(980,1240);
+ ctx.stroke();
+
+ drawText("CLASS GONIT 🎓 - LEARNING CENTRE",540,1280,27,"#ffda78","bold");
+ drawText("ULLADABRI, MAYNAGURI, JALPAIGURI",540,1310,20,"#ffffff");
+ drawText("West Bengal - 735224  |  Contact: 8159061346",540,1338,19,"#ffffff");
+
  return new Promise((resolve,reject)=>{
-  if(!drawn) drawResult();
-
   canvas.toBlob(blob=>{
    if(blob) resolve(blob);
    else reject(new Error("Image creation failed"));
   },"image/png");
  });
+
 }
 
+
+// DOWNLOAD IMAGE
+
 async function downloadResult(){
+
  try{
-  const blob=await getImage();
+  const blob=await createImage();
   const url=URL.createObjectURL(blob);
+
   const a=document.createElement("a");
   a.href=url;
   a.download="Class-Gonit-Result.png";
+  document.body.appendChild(a);
   a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),2000);
- }catch(e){
-  alert("Could not create image. Please try again.");
+  a.remove();
+
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+
+ }catch(error){
+  alert("Unable to create result image. Please try again.");
  }
+
 }
 
+
+// WHATSAPP SHARE
+
 async function shareResult(){
+
  try{
-  const blob=await getImage();
-  const file=new File([blob],"Class-Gonit-Result.png",{
-   type:"image/png"
-  });
+  const blob=await createImage();
+
+  const file=new File(
+   [blob],
+   "Class-Gonit-Result.png",
+   {type:"image/png"}
+  );
 
   if(navigator.share && navigator.canShare &&
      navigator.canShare({files:[file]})){
+
    await navigator.share({
     title:"My Class Gonit Result",
     text:"I completed my Mathematics Mock Test at Class Gonit! 🎓",
     files:[file]
    });
+
   }else{
+
    await downloadResult();
-   alert("Result image downloaded. Open WhatsApp and upload it to your Status.");
+
+   alert("Image downloaded! Open WhatsApp and upload it to your Status.");
+
   }
- }catch(e){
-  if(e.name!=="AbortError"){
-   alert("Please download the result image and share it manually.");
+
+ }catch(error){
+
+  if(error.name!=="AbortError"){
+   alert("Please download your result image and share it manually.");
   }
+
  }
+
 }
+
 </script>
 
 </body>
