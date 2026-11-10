@@ -4,104 +4,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#081426">
+
 <title>ক্লাস গণিত | Class Gonit</title>
-<link rel="stylesheet" href="style.css">
 
 <style>
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
     background: #081426;
     color: #f1f5f9;
     font-family: Arial, sans-serif;
+    line-height: 1.7;
 }
+
+/* HEADER */
 header {
     background: #10243b;
-    padding: 20px;
-    text-align: center;
+    padding: 15px 5%;
     border-bottom: 2px solid #0d9488;
 }
+
+.header-content {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 65px;
+    height: 65px;
     object-fit: contain;
-    border-radius: 15px;
 }
-header h1 {
+
+.brand h1 {
     color: #5eead4;
-    margin: 10px;
+    font-size: 23px;
 }
+
+.brand p {
+    font-size: 12px;
+    color: #cbd5e1;
+}
+
+/* NAVIGATION */
 nav {
-    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
 nav a {
-    display: inline-block;
-    color: white;
     text-decoration: none;
-    background: #0d9488;
-    padding: 11px 17px;
-    margin: 5px;
+    color: white;
+    padding: 10px 15px;
     border-radius: 8px;
+    transition: 0.3s;
 }
+
+nav a:hover {
+    background: #0d9488;
+}
+
+.menu-btn {
+    display: none;
+    background: #0d9488;
+    color: white;
+    border: none;
+    padding: 9px 13px;
+    font-size: 25px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* HERO */
 .hero {
     text-align: center;
-    padding: 65px 20px;
+    padding: 75px 20px;
     background: linear-gradient(135deg,#102b46,#075e65);
 }
+
 .hero h2 {
-    font-size: 32px;
     color: #5eead4;
+    font-size: clamp(26px, 5vw, 42px);
+    margin-bottom: 15px;
 }
+
 .hero p {
-    line-height: 1.8;
+    color: #e2e8f0;
+    max-width: 650px;
+    margin: 10px auto;
 }
-.section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 35px 20px;
-}
-.section h2 {
-    color: #5eead4;
-    text-align: center;
-}
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 18px;
-}
-.card {
-    background: #12243a;
-    border: 1px solid #24506a;
-    padding: 22px;
-    border-radius: 14px;
-    text-align: center;
-}
-.card h3 {
-    color: #5eead4;
-}
+
 .main-button {
     display: inline-block;
     background: #0d9488;
     color: white;
     text-decoration: none;
-    padding: 14px 24px;
+    padding: 13px 24px;
     border-radius: 9px;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 20px;
 }
+
+.main-button:hover {
+    background: #14b8a6;
+}
+
+/* SECTIONS */
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.section h2 {
+    text-align: center;
+    color: #5eead4;
+    font-size: 27px;
+    margin-bottom: 25px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #12243a;
+    border: 1px solid #24506a;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 0;
+}
+
+.card h3 {
+    color: #5eead4;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #cbd5e1;
+}
+
+/* QUOTE */
 .quote {
     background: #12243a;
-    padding: 25px;
-    border-radius: 14px;
-    text-align: center;
-    line-height: 1.9;
     border: 1px solid #24506a;
+    border-radius: 15px;
+    padding: 28px;
+    text-align: center;
+    line-height: 2;
 }
+
+.quote p {
+    font-size: 16px;
+}
+
+/* CONTACT */
+.contact-box {
+    background: #12243a;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.contact-box p {
+    margin: 10px 0;
+}
+
+/* FOOTER */
 footer {
     background: #10243b;
-    padding: 25px;
+    border-top: 2px solid #0d9488;
     text-align: center;
-    line-height: 1.9;
+    padding: 25px 15px;
     color: #cbd5e1;
+}
+
+/* ANDROID / MOBILE RESPONSIVE */
+@media screen and (max-width: 768px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    .header-content {
+        flex-wrap: wrap;
+    }
+
+    .brand h1 {
+        font-size: 19px;
+    }
+
+    .logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .menu-btn {
+        display: block;
+        margin-left: auto;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        padding-top: 12px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        background: #172f49;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .hero {
+        padding: 50px 18px;
+    }
+
+    .section {
+        padding: 32px 15px;
+    }
+
+    .section h2 {
+        font-size: 23px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 22px 16px;
+    }
+
+    .quote {
+        padding: 20px 15px;
+    }
+
+    .main-button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .brand h1 {
+        font-size: 17px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
 }
 </style>
 </head>
@@ -109,23 +301,38 @@ footer {
 <body>
 
 <header>
-    <img src="logo.png" alt="Class Gonit Logo" class="logo">
+    <div class="header-content">
 
-    <h1>ক্লাস গণিত 🎓</h1>
-    <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+        <div class="brand">
+            <img src="logo.png" alt="Class Gonit Logo" class="logo">
+            <div>
+                <h1>ক্লাস গণিত 🎓</h1>
+                <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
+            </div>
+        </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="mock-test.html">Math Mock Test</a>
-    </nav>
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="navigation">
+            <a href="index.html">Home</a>
+            <a href="mock-test.html">Math Mock Test</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </div>
 </header>
 
 <section class="hero">
     <h2>Welcome to ক্লাস গণিত</h2>
+
     <p>
         Your trusted destination for Mathematics Learning
         and Competitive Exam Preparation.
     </p>
+
     <p>Learn Mathematics • Practise Daily • Achieve Success</p>
 
     <a href="mock-test.html" class="main-button">
@@ -133,8 +340,9 @@ footer {
     </a>
 </section>
 
-<section class="section">
+<section class="section" id="about">
     <h2>About ক্লাস গণিত</h2>
+
     <div class="card">
         <p>
             ক্লাস গণিত is a mathematics learning platform
@@ -148,6 +356,7 @@ footer {
     <h2>Our Learning Sections</h2>
 
     <div class="cards">
+
         <div class="card">
             <h3>➗ Arithmetic</h3>
             <p>Number System, Percentage, Profit and Loss and more.</p>
@@ -167,17 +376,21 @@ footer {
             <h3>📏 Mensuration</h3>
             <p>Area, Perimeter, Volume and Surface Area.</p>
         </div>
+
     </div>
 </section>
 
 <section class="section">
-    <h2>Mock Test Practice</h2>
+    <h2>Math Mock Test</h2>
+
     <div class="card">
         <h3>Improve Your Mathematics Skills</h3>
+
         <p>
             Practise MCQ questions, complete timed tests
             and check your performance.
         </p>
+
         <a href="mock-test.html" class="main-button">
             Explore Mock Tests
         </a>
@@ -187,15 +400,19 @@ footer {
 <section class="section">
     <div class="quote">
         <h2>Keep Learning, Keep Growing ✨</h2>
-        হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে
-        নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—
-        সাফল্য একদিন তোমারই হবে।
+
+        <p>
+            হাল ছেড়ো না, কারণ প্রতিটি কঠিন অধ্যায়ের পরেই আসে
+            নতুন সম্ভাবনা। নিজের উপর বিশ্বাস রাখো, নিয়মিত চেষ্টা করো—
+            সাফল্য একদিন তোমারই হবে।
+        </p>
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="contact">
     <h2>Contact Information</h2>
-    <div class="card">
+
+    <div class="contact-box">
         <p>📍 Address: Durgabari More, [Your Town], West Bengal</p>
         <p>📞 Contact: [Your Mobile Number]</p>
         <p>✉️ Email: [Your Email Address]</p>
@@ -207,6 +424,31 @@ footer {
     <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
     <p>© 2026 Class Gonit. All Rights Reserved.</p>
 </footer>
+
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("navigation");
+    const button = document.querySelector(".menu-btn");
+
+    nav.classList.toggle("active");
+
+    button.setAttribute(
+        "aria-expanded",
+        nav.classList.contains("active")
+    );
+
+    button.textContent =
+        nav.classList.contains("active") ? "✕" : "☰";
+}
+
+document.querySelectorAll("#navigation a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navigation").classList.remove("active");
+        document.querySelector(".menu-btn").textContent = "☰";
+        document.querySelector(".menu-btn").setAttribute("aria-expanded", "false");
+    });
+});
+</script>
 
 </body>
 </html>
