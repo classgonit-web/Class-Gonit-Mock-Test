@@ -47,15 +47,12 @@ header h2{
 
 header h3{
  margin:8px 0;
- font-size:19px;
+ font-size:18px;
 }
 
-header p{
- margin:5px;
- color:#ffe9a6;
-}
+header p{color:#ffe9a6}
 
-.content{padding:20px}
+.content{padding:18px}
 
 .section{
  background:#0b1c32;
@@ -76,7 +73,7 @@ header p{
  display:flex;
  justify-content:space-between;
  gap:10px;
- padding:9px 0;
+ padding:10px 0;
  border-bottom:1px solid #263d58;
  flex-wrap:wrap;
 }
@@ -115,8 +112,8 @@ header p{
 }
 
 .status h1{
- font-size:30px;
- margin:5px;
+ font-size:32px;
+ margin:8px;
 }
 
 .pass{color:#32e88b}
@@ -125,16 +122,53 @@ header p{
 .review-item{
  background:#0b1c32;
  border:1px solid #31547d;
- border-radius:9px;
- padding:13px;
- margin-bottom:12px;
+ border-radius:10px;
+ padding:14px;
+ margin-bottom:14px;
 }
 
-.review-item p{line-height:1.5}
+.review-question{
+ font-size:16px;
+ line-height:1.6;
+ font-weight:bold;
+ color:#fff;
+ margin-top:0;
+}
+
+.review-option{
+ padding:10px;
+ margin:7px 0;
+ border-radius:7px;
+ background:#183957;
+ border:1px solid #315978;
+ line-height:1.5;
+}
+
+.review-option.correct-option{
+ background:#075b40;
+ border:2px solid #32e88b;
+}
+
+.review-option.wrong-option{
+ background:#702d35;
+ border:2px solid #ff6464;
+}
+
+.review-status{
+ font-weight:bold;
+ margin-top:12px;
+}
 
 .correct{color:#32e88b}
 .wrong{color:#ff6464}
 .skipped{color:#ffd700}
+
+.answer-details{
+ border-top:1px solid #31547d;
+ margin-top:12px;
+ padding-top:8px;
+ line-height:1.8;
+}
 
 button{
  width:100%;
@@ -157,6 +191,12 @@ button{
  color:white;
 }
 
+.empty{
+ text-align:center;
+ padding:30px 10px;
+ color:#ffd700;
+}
+
 footer{
  text-align:center;
  padding:20px 10px;
@@ -170,24 +210,24 @@ footer h3{
  margin:5px;
 }
 
-.empty{
- text-align:center;
- padding:30px 10px;
- color:#ffd700;
-}
-
 @media(max-width:450px){
  .stats{grid-template-columns:repeat(2,1fr)}
  header h2{font-size:22px}
+ .content{padding:12px}
 }
+
 @media print{
  body{background:white;color:black;padding:0}
  .container{border:1px solid #999}
- .section,.review-item,.stat,.status{background:white;color:black}
+ .section,.review-item,.stat,.status{
+  background:white;color:black;
+ }
  button{display:none}
  footer{background:white;color:black}
  header{background:white;color:black}
  header h2,header h3,header p{color:black}
+ .review-question{color:black}
+ .review-option{color:black;background:white}
  .stat h2,.info span:last-child{color:black}
 }
 </style>
@@ -225,32 +265,52 @@ JALPAIGURI, WEST BENGAL – 735224
 </div>
 
 <script>
-const resultContent = document.getElementById("resultContent");
 
-const data = sessionStorage.getItem("caResult");
+const resultContent=document.getElementById("resultContent");
 
-if(!data){
+const savedData=sessionStorage.getItem("caResult");
 
- resultContent.innerHTML = `
+function escapeHTML(value){
+ return String(value ?? "").replace(/[&<>"']/g,char=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ })[char]);
+}
+
+function goBack(){
+ window.location.href="current-affairs.html";
+}
+
+if(!savedData){
+
+ resultContent.innerHTML=`
  <div class="empty">
  <h2>Result Not Found!</h2>
  <p>Please submit the Current Affairs Mock Test first.</p>
- <button class="back-btn" onclick="goBack()">Back to Current Affairs</button>
+ <button class="back-btn" onclick="goBack()">
+ Back to Current Affairs
+ </button>
  </div>`;
 
 }else{
 
- const result = JSON.parse(data);
+ const result=JSON.parse(savedData);
 
- const total = result.questions.length;
- const correct = Number(result.correct);
- const wrong = Number(result.wrong);
- const skipped = Number(result.skipped);
- const percentage = total ? (correct/total)*100 : 0;
+ const questions=result.questions || [];
+ const answers=result.answers || [];
 
- const passed = percentage >= 70;
+ const total=questions.length;
+ const correct=Number(result.correct)||0;
+ const wrong=Number(result.wrong)||0;
+ const skipped=Number(result.skipped)||0;
 
- let html = `
+ const percentage=total?(correct/total)*100:0;
+ const passed=percentage>=70;
+
+ resultContent.innerHTML=`
 
  <div class="section">
  <h3>Student Details</h3>
@@ -267,20 +327,22 @@ if(!data){
 
  <div class="info">
  <span>Test Name</span>
- <span>${escapeHTML(result.testName || "Current Affairs")}</span>
+ <span>${escapeHTML(result.testName)}</span>
  </div>
 
  <div class="info">
  <span>Test Date</span>
- <span>${escapeHTML(result.date || "")}</span>
+ <span>${escapeHTML(result.date)}</span>
  </div>
  </div>
 
  <div class="status">
  <p>YOUR RESULT</p>
+
  <h1 class="${passed?'pass':'fail'}">
  ${passed?'PASS':'FAIL'}
  </h1>
+
  <h2>${percentage.toFixed(2)}%</h2>
  </div>
 
@@ -329,7 +391,7 @@ if(!data){
  </div>
 
  <div class="section">
- <h3>Answer Review</h3>
+ <h3>Answer Review (${total} Questions)</h3>
  <div id="answerReview"></div>
  </div>
 
@@ -342,65 +404,116 @@ if(!data){
  </button>
  `;
 
- resultContent.innerHTML = html;
+ const review=document.getElementById("answerReview");
 
- const review = document.getElementById("answerReview");
+ questions.forEach((q,index)=>{
 
- result.questions.forEach((q,index)=>{
+ const selected=answers[index];
+ const correctIndex=Number(q.a);
 
- const selected = result.answers[index];
- const correctAnswer = q.answer;
+ const isSkipped=selected===null ||
+                 selected===undefined;
 
- let status = "";
- let statusClass = "";
+ const isCorrect=!isSkipped &&
+                 Number(selected)===correctIndex;
 
- if(selected === correctAnswer){
-  status = "CORRECT";
-  statusClass = "correct";
- }else if(selected === "" || selected === null || selected === undefined){
-  status = "SKIPPED";
-  statusClass = "skipped";
- }else{
-  status = "WRONG";
-  statusClass = "wrong";
+ let status="";
+ let statusClass="";
+
+ if(isSkipped){
+  status="SKIPPED";
+  statusClass="skipped";
+ }
+ else if(isCorrect){
+  status="CORRECT";
+  statusClass="correct";
+ }
+ else{
+  status="WRONG";
+  statusClass="wrong";
  }
 
- const item = document.createElement("div");
- item.className = "review-item";
+ const item=document.createElement("div");
+ item.className="review-item";
 
- const question = document.createElement("p");
- question.innerHTML = `<b>Q${index+1}.</b> ${escapeHTML(q.question)}`;
+ let optionsHTML="";
 
- const yourAnswer = document.createElement("p");
- yourAnswer.innerHTML = `Your Answer: ${escapeHTML(selected || "Not Answered")}`;
+ q.o.forEach((option,optIndex)=>{
 
- const answer = document.createElement("p");
- answer.innerHTML = `Correct Answer: ${escapeHTML(correctAnswer)}`;
+  let optionClass="review-option";
 
- const statusText = document.createElement("p");
- statusText.className = statusClass;
- statusText.textContent = status;
+  if(optIndex===correctIndex){
+   optionClass+=" correct-option";
+  }
+  else if(!isSkipped &&
+          Number(selected)===optIndex){
+   optionClass+=" wrong-option";
+  }
 
- item.append(question,yourAnswer,answer,statusText);
+  let marker="";
+
+  if(optIndex===correctIndex){
+   marker=" ✓ Correct Answer";
+  }
+  else if(!isSkipped &&
+          Number(selected)===optIndex){
+   marker=" ✗ Your Answer";
+  }
+
+  optionsHTML+=`
+  <div class="${optionClass}">
+   <b>${String.fromCharCode(65+optIndex)}.</b>
+   ${escapeHTML(option)}
+   <b>${marker}</b>
+  </div>
+  `;
+
+ });
+
+ const selectedText=isSkipped
+ ? "Not Answered"
+ : String.fromCharCode(65+Number(selected))+
+   ". "+q.o[Number(selected)];
+
+ const correctText=
+ String.fromCharCode(65+correctIndex)+
+ ". "+q.o[correctIndex];
+
+ item.innerHTML=`
+
+ <p class="review-question">
+ Q${index+1}. ${escapeHTML(q.q)}
+ </p>
+
+ ${optionsHTML}
+
+ <div class="answer-details">
+
+ <p>
+ <b>Your Answer:</b>
+ ${escapeHTML(selectedText)}
+ </p>
+
+ <p>
+ <b>Correct Answer:</b>
+ <span class="correct">
+ ${escapeHTML(correctText)}
+ </span>
+ </p>
+
+ <p class="review-status ${statusClass}">
+ ${status}
+ </p>
+
+ </div>
+ `;
+
  review.appendChild(item);
 
  });
 
 }
 
-function escapeHTML(value){
- return String(value ?? "").replace(/[&<>"']/g,char=>({
- "&":"&amp;",
- "<":"&lt;",
- ">":"&gt;",
- '"':"&quot;",
- "'":"&#39;"
- })[char]);
-}
-
-function goBack(){
- window.location.href = "current-affairs.html";
-}
 </script>
 
 </body>
