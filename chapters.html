@@ -2,131 +2,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapters | ক্লাস গণিত</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Gonit - Chapters</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#071426;
+ color:white;
+}
+header{
+ background:#10243c;
+ padding:15px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:13px;
+ border-bottom:2px solid #35d6c0;
+}
+.logo{
+ width:65px;
+ height:65px;
+ object-fit:contain;
+ border-radius:50%;
+}
+header h1{color:#35d6c0;margin:0 0 5px;font-size:23px}
+header p{margin:0;color:#bdcce0;font-size:13px}
+.container{max-width:850px;margin:auto;padding:22px 16px}
+.home-link{
+ color:#35d6c0;
+ text-decoration:none;
+ font-weight:bold;
+ display:inline-block;
+ margin-bottom:20px;
+}
+.heading{text-align:center;margin-bottom:25px}
+.heading h2{color:#35d6c0;font-size:26px}
+.heading p{color:#bdcce0}
+.chapter-list{display:grid;gap:12px}
+.chapter{
+ background:#10243c;
+ border:1px solid #294766;
+ padding:17px;
+ border-radius:12px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+}
+.chapter span{font-size:16px}
+.chapter a{
+ background:#35d6c0;
+ color:#071426;
+ text-decoration:none;
+ font-weight:bold;
+ padding:10px 14px;
+ border-radius:8px;
+ white-space:nowrap;
+}
+footer{text-align:center;padding:25px;color:#9fb2c9;font-size:13px}
+@media(max-width:480px){
+ header h1{font-size:19px}
+ .chapter{padding:13px;align-items:flex-start}
+ .chapter span{font-size:14px;line-height:1.5}
+ .chapter a{font-size:12px;padding:9px}
+ .heading h2{font-size:22px}
+}
+</style>
 </head>
+
 <body>
 
-<header class="header">
-    <div class="logo-area">
-        <img src="images/logo.png" alt="Logo" class="logo">
-        <div>
-            <h1>ক্লাস গণিত 🎓</h1>
-            <p>Learn • Practice • Achieve</p>
-        </div>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="mock-test.html">Mock Test</a>
-    </nav>
+<header>
+ <img src="logo.png" alt="Class Gonit Logo" class="logo">
+ <div>
+  <h1>ক্লাস গণিত 🎓</h1>
+  <p>Learn • Practice • Succeed</p>
+ </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <p class="welcome">CHAPTER WISE PRACTICE</p>
-        <h2 id="section-title">Select Your <span>Chapter</span></h2>
-        <p>Choose a chapter and prepare for your mathematics examination.</p>
-    </div>
-</section>
+<div class="container">
 
-<section class="section">
-    <h2>Available Chapters</h2>
-    <div class="info-container" id="chapter-list"></div>
-    <p id="message" style="color:#42e6c4;margin-top:20px;"></p>
-    <br>
-    <a href="mock-test.html" class="main-button">← Back to Sections</a>
-</section>
+<a href="index.html" class="home-link">← Back to Home</a>
+
+<div class="heading">
+ <h2 id="sectionTitle">📚 Chapters</h2>
+ <p>Select a chapter to start your mock test.</p>
+</div>
+
+<div class="chapter-list" id="chapterList"></div>
+
+</div>
 
 <footer>
-    <h3>ক্লাস গণিত 🎓</h3>
-    <p>শেখো • অনুশীলন করো • এগিয়ে চলো</p>
-    <p>© 2026 Class Gonit</p>
+© 2026 ক্লাস গণিত 🎓 | All Rights Reserved
 </footer>
 
 <script>
-const chapters = {
-    Arithmetic: [
-        "Number System",
-        "Simplification",
-        "BODMAS Rule",
-        "HCF and LCM",
-        "Percentage",
-        "Ratio and Proportion",
-        "Average",
-        "Profit and Loss",
-        "Simple Interest",
-        "Compound Interest",
-        "Time and Work",
-        "Time, Speed and Distance",
-        "Partnership",
-        "Mixture and Alligation",
-        "Problems on Ages"
-    ],
-
-    Algebra: [
-        "Basic Algebra",
-        "Algebraic Identities",
-        "Linear Equations",
-        "Quadratic Equations",
-        "Polynomials",
-        "Surds and Indices"
-    ],
-
-    Geometry: [
-        "Basic Geometry",
-        "Lines and Angles",
-        "Triangles",
-        "Quadrilaterals",
-        "Circles",
-        "Polygons"
-    ],
-
-    Mensuration: [
-        "2D Mensuration",
-        "Area and Perimeter",
-        "3D Mensuration",
-        "Volume",
-        "Surface Area"
-    ]
+const chapters={
+ Arithmetic:[
+ "Number System","Simplification","BODMAS Rule",
+ "HCF and LCM","Percentage","Ratio and Proportion",
+ "Average","Profit and Loss","Simple Interest",
+ "Compound Interest","Time and Work",
+ "Time Speed and Distance","Partnership",
+ "Mixture and Alligation","Problems on Ages"
+ ],
+ Algebra:[
+ "Basic Algebra","Algebraic Identities",
+ "Linear Equations","Quadratic Equations",
+ "Polynomials","Surds and Indices"
+ ],
+ Geometry:[
+ "Basic Geometry","Lines and Angles",
+ "Triangles","Quadrilaterals","Circles","Polygons"
+ ],
+ Mensuration:[
+ "2D Mensuration","Area and Perimeter",
+ "3D Mensuration","Volume","Surface Area"
+ ]
 };
 
-const params = new URLSearchParams(window.location.search);
-const section = params.get("section");
+const params=new URLSearchParams(window.location.search);
+const section=params.get("section")||"Arithmetic";
 
-document.getElementById("section-title").innerHTML =
-    (chapters[section] ? section : "Mathematics") +
-    ' <span>Chapters</span>';
+document.getElementById("sectionTitle").textContent=
+"📚 "+section+" Chapters";
 
-const list = document.getElementById("chapter-list");
+const list=document.getElementById("chapterList");
 
-if (chapters[section]) {
-    chapters[section].forEach((chapter, index) => {
-        const card = document.createElement("div");
-        card.className = "info-card";
+if(chapters[section]){
+ chapters[section].forEach((chapter,index)=>{
+  const item=document.createElement("div");
+  item.className="chapter";
 
-        const heading = document.createElement("h3");
-        heading.textContent = "📘 " + chapter;
+  const name=document.createElement("span");
+  name.textContent=(index+1)+". "+chapter;
 
-        const description = document.createElement("p");
-        description.textContent = "Chapter " + (index + 1) + " - Practice mathematics questions.";
+  const link=document.createElement("a");
+  link.textContent="Start Test →";
+  link.href="test.html?section="+encodeURIComponent(section)+
+  "&chapter="+encodeURIComponent(chapter);
 
-        const button = document.createElement("a");
-        button.className = "main-button";
-        button.textContent = "Start Practice →";
-        button.href = "test.html?section=" +
-            encodeURIComponent(section) +
-            "&chapter=" + encodeURIComponent(chapter);
-
-        card.appendChild(heading);
-        card.appendChild(description);
-        card.appendChild(button);
-        list.appendChild(card);
-    });
-} else {
-    document.getElementById("message").textContent =
-        "Please select a valid mathematics section.";
+  item.appendChild(name);
+  item.appendChild(link);
+  list.appendChild(item);
+ });
+}else{
+ list.textContent="Section not found. Please go back and choose a section.";
 }
 </script>
 
