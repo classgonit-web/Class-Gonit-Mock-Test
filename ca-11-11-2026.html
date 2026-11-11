@@ -1,19 +1,368 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>11 November 2026 | Class Gonit</title>
+<title>Class Gonit | Daily Current Affairs</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:15px;font-family:Arial,sans-serif;
+ background:#071426;color:#fff
+}
+header{
+ text-align:center;padding:22px 12px;
+ background:linear-gradient(135deg,#102d61,#087e8b);
+ border-radius:14px;margin-bottom:18px
+}
+header img{width:65px;height:65px;object-fit:contain}
+header h2{margin:8px 0;font-size:23px}
+header h1{font-size:21px;margin:12px 0;color:#ffd166}
+header p{margin:5px;font-size:16px}
+.container{
+ max-width:750px;margin:auto;background:#10243e;
+ padding:20px;border-radius:14px;
+ border:1px solid #24466a
+}
+input{
+ width:100%;padding:13px;margin:8px 0 15px;
+ border:1px solid #56718f;border-radius:8px;
+ background:#071426;color:white;font-size:16px
+}
+label{font-weight:bold}
+button{
+ border:0;border-radius:8px;padding:12px 18px;
+ font-size:15px;font-weight:bold;cursor:pointer;
+ margin:5px
+}
+.primary{background:#00b4a0;color:#001b24}
+.secondary{background:#31577d;color:white}
+.submit{background:#ffd166;color:#17202a}
+#quizArea{display:none}
+.topbar{
+ display:flex;justify-content:space-between;
+ flex-wrap:wrap;gap:10px;margin-bottom:15px
+}
+.timer{
+ background:#7b1e35;color:white;padding:10px 15px;
+ border-radius:8px;font-weight:bold
+}
+.question{
+ background:#173653;padding:18px;border-radius:10px;
+ margin:12px 0;line-height:1.6
+}
+.option{
+ display:block;background:#0b2038;
+ border:1px solid #355878;padding:12px;
+ border-radius:8px;margin:9px 0;cursor:pointer
+}
+.option input{width:auto;margin:0 8px 0 0}
+.option.selected{border:2px solid #00d3b5}
+.palette{
+ display:grid;grid-template-columns:repeat(10,1fr);
+ gap:7px;margin:18px 0
+}
+.palette button{
+ padding:9px 0;margin:0;background:#31506d;color:white
+}
+.palette button.answered{background:#078b67}
+.palette button.current{outline:2px solid #ffd166}
+.nav{
+ display:flex;justify-content:space-between;
+ flex-wrap:wrap;margin-top:15px
+}
+footer{
+ text-align:center;margin:25px auto 10px;
+ padding:18px 10px;line-height:1.8;
+ color:#dce8f5;font-size:14px
+}
+footer strong{font-size:20px;color:#ffd166}
+.small{font-size:13px;color:#c6d6e7}
+@media(max-width:450px){
+ body{padding:9px}
+ .container{padding:13px}
+ header h1{font-size:18px}
+ .palette{grid-template-columns:repeat(5,1fr)}
+}
+</style>
 </head>
-<body style="background:#071426;color:white;text-align:center;font-family:Arial;padding:40px 15px;">
 
-<h1>CLASS GONIT 🎓</h1>
-<h2>DAILY CURRENT AFFAIRS MOCK TEST</h2>
-<h3>11 November 2026</h3>
+<body>
 
-<h2 style="color:#ffd166;">COMING SOON</h2>
+<header>
+ <img src="logo.png" alt="Class Gonit Logo">
+ <h2>CLASS GONIT 🎓</h2>
+ <h1>DAILY CURRENT AFFAIRS MOCK TEST</h1>
+ <p>11 November 2026</p>
+</header>
 
-<p>Mock Test will be available soon.</p>
+<div class="container">
+
+<div id="studentArea">
+ <h3>Student Details</h3>
+ <label>Student Name</label>
+ <input type="text" id="studentName" placeholder="Enter your name">
+
+ <label>Mobile Number</label>
+ <input type="tel" id="studentMobile" maxlength="10"
+ placeholder="Enter 10 digit mobile number">
+
+ <p class="small">Total Questions: 50 | Full Marks: 50 | Time: 30 Minutes</p>
+ <button class="primary" onclick="startTest()">START TEST</button>
+</div>
+
+<div id="quizArea">
+ <div class="topbar">
+  <strong id="questionCount">Question 1 of 50</strong>
+  <div class="timer">Time Left: <span id="timer">30:00</span></div>
+ </div>
+
+ <div class="question">
+  <h3 id="questionText"></h3>
+  <div id="options"></div>
+ </div>
+
+ <div class="nav">
+  <button class="secondary" onclick="previousQuestion()">Previous</button>
+  <button class="primary" onclick="nextQuestion()">Next</button>
+ </div>
+
+ <h3>Question Palette</h3>
+ <div class="palette" id="palette"></div>
+
+ <p class="small">Green = Answered | Blue = Not Answered</p>
+ <center>
+  <button class="submit" onclick="submitTest()">SUBMIT TEST</button>
+ </center>
+</div>
+
+</div>
+
+<footer>
+ <strong>ক্লাস গণিত 🎓</strong><br>
+ ✨ গণিতের সহজ ঠিকানা ✨<br>
+ ULLADABRI, MAYNAGURI, JALPAIGURI<br>
+ West Bengal – 735224<br>
+ Contact: 8159061346
+</footer>
+
+<script>
+const questions = [
+{q:"National Education Day in India is observed on which date?",o:["5 September","11 November","14 November","26 January"],a:1},
+{q:"National Education Day commemorates the birth anniversary of whom?",o:["Mahatma Gandhi","Sardar Patel","Maulana Abul Kalam Azad","Jawaharlal Nehru"],a:2},
+{q:"Who became India's 100th Chess Grandmaster, according to the Prime Minister's Office announcement on 10 November 2026?",o:["D. Gukesh","Anuj Shrivatri","R. Praggnanandhaa","Arjun Erigaisi"],a:1},
+{q:"COP31 is being held in which city in 2026?",o:["Paris","Antalya","New Delhi","Tokyo"],a:1},
+{q:"Antalya is located in which country?",o:["Greece","Türkiye","Spain","Egypt"],a:1},
+{q:"Which country is the headquarters of the International Solar Alliance (ISA) located in?",o:["India","France","Germany","Brazil"],a:0},
+{q:"Which ministry is primarily responsible for renewable energy in India?",o:["Ministry of Education","Ministry of New and Renewable Energy","Ministry of Home Affairs","Ministry of Culture"],a:1},
+{q:"Which organisation operates the Aadhaar programme in India?",o:["RBI","UIDAI","SEBI","NITI Aayog"],a:1},
+{q:"What is the full form of UPI?",o:["Unified Payments Interface","Universal Payment India","United Payment Instrument","Unified Public Internet"],a:0},
+{q:"Which institution is India's central bank?",o:["SBI","NABARD","Reserve Bank of India","SEBI"],a:2},
+{q:"Where is the headquarters of the Reserve Bank of India?",o:["New Delhi","Mumbai","Kolkata","Chennai"],a:1},
+{q:"Which organisation regulates the securities market in India?",o:["SEBI","IRDAI","UIDAI","ISRO"],a:0},
+{q:"What does GDP stand for?",o:["Gross Domestic Product","General Development Plan","Global Domestic Price","Gross Development Programme"],a:0},
+{q:"Which tax replaced many indirect taxes in India in 2017?",o:["Income Tax","GST","Wealth Tax","Corporate Tax"],a:1},
+{q:"Which body replaced the Planning Commission of India?",o:["Finance Commission","NITI Aayog","Election Commission","UPSC"],a:1},
+{q:"Where is the headquarters of ISRO located?",o:["Hyderabad","Bengaluru","New Delhi","Pune"],a:1},
+{q:"What is the name of India's first solar mission?",o:["Chandrayaan-1","Mangalyaan","Aditya-L1","Gaganyaan"],a:2},
+{q:"Chandrayaan-3 successfully landed on which celestial body?",o:["Mars","Moon","Venus","Jupiter"],a:1},
+{q:"What was the name of the Chandrayaan-3 lunar lander?",o:["Pragyan","Vikram","Rohini","Aryabhata"],a:1},
+{q:"Which Indian mission is designed for human spaceflight?",o:["Gaganyaan","Aditya-L1","Mangalyaan","NavIC"],a:0},
+{q:"Which organisation developed India's regional navigation satellite system NavIC?",o:["DRDO","ISRO","HAL","BARC"],a:1},
+{q:"Where is the headquarters of the United Nations?",o:["Geneva","New York","Paris","London"],a:1},
+{q:"How many permanent members are there in the UN Security Council?",o:["4","5","6","10"],a:1},
+{q:"Which organisation publishes the World Economic Outlook?",o:["World Bank","IMF","WHO","WTO"],a:1},
+{q:"Where is the headquarters of the World Health Organization?",o:["Geneva","Rome","New York","Vienna"],a:0},
+{q:"Which organisation is associated with international trade rules?",o:["WTO","WHO","UNESCO","UNICEF"],a:0},
+{q:"Where is the headquarters of UNESCO?",o:["London","Paris","Rome","Washington, D.C."],a:1},
+{q:"Which day is observed as World Environment Day?",o:["5 June","22 April","16 September","1 December"],a:0},
+{q:"World Earth Day is observed on which date?",o:["21 March","22 April","5 June","11 July"],a:1},
+{q:"International Yoga Day is celebrated on which date?",o:["5 June","21 June","11 July","2 October"],a:1},
+{q:"World Water Day is observed on which date?",o:["22 March","7 April","8 May","10 December"],a:0},
+{q:"International Women's Day is celebrated on which date?",o:["8 March","1 May","5 June","24 October"],a:0},
+{q:"World Health Day is observed on which date?",o:["7 April","1 December","14 November","10 October"],a:0},
+{q:"Which Indian freedom fighter is popularly known as Netaji?",o:["Bhagat Singh","Subhas Chandra Bose","Bal Gangadhar Tilak","Lala Lajpat Rai"],a:1},
+{q:"Who was the first President of India?",o:["Dr. Rajendra Prasad","Dr. S. Radhakrishnan","Zakir Husain","V. V. Giri"],a:0},
+{q:"Who was the first woman Prime Minister of India?",o:["Sarojini Naidu","Indira Gandhi","Pratibha Patil","Sushma Swaraj"],a:1},
+{q:"Which is the largest state in India by area?",o:["Madhya Pradesh","Maharashtra","Rajasthan","Uttar Pradesh"],a:2},
+{q:"Which is the smallest state in India by area?",o:["Sikkim","Goa","Tripura","Manipur"],a:1},
+{q:"Which is the longest river in India?",o:["Godavari","Ganga","Yamuna","Narmada"],a:1},
+{q:"Which is the highest mountain peak located entirely within India?",o:["Nanda Devi","Kanchenjunga","Anamudi","K2"],a:0},
+{q:"What is the capital of Assam?",o:["Guwahati","Dispur","Shillong","Imphal"],a:1},
+{q:"What is the capital of Sikkim?",o:["Gangtok","Kohima","Aizawl","Itanagar"],a:0},
+{q:"Which is the national animal of India?",o:["Lion","Bengal Tiger","Elephant","Leopard"],a:1},
+{q:"Which is the national bird of India?",o:["Swan","Peacock","Eagle","Parrot"],a:1},
+{q:"Which is the national aquatic animal of India?",o:["Blue Whale","Ganges River Dolphin","Crocodile","Sea Turtle"],a:1},
+{q:"The Constitution of India came into effect on which date?",o:["15 August 1947","26 January 1950","2 October 1950","26 November 1949"],a:1},
+{q:"Who is known as the chief architect of the Indian Constitution?",o:["Mahatma Gandhi","Dr. B. R. Ambedkar","Jawaharlal Nehru","Rajendra Prasad"],a:1},
+{q:"Which house of the Indian Parliament is known as the Upper House?",o:["Lok Sabha","Rajya Sabha","Vidhan Sabha","Gram Sabha"],a:1},
+{q:"Who appoints the Governor of an Indian state?",o:["Chief Minister","Prime Minister","President of India","Chief Justice of India"],a:2},
+{q:"Which institution conducts elections to the Parliament and state legislatures in India?",o:["UPSC","Election Commission of India","NITI Aayog","Finance Commission"],a:1}
+];
+
+let currentQuestion=0;
+let answers=new Array(questions.length).fill(null);
+let timeLeft=30*60;
+let timerInterval;
+let student={name:"",mobile:""};
+let submitted=false;
+
+function startTest(){
+ const name=document.getElementById("studentName").value.trim();
+ const mobile=document.getElementById("studentMobile").value.trim();
+
+ if(!name){alert("Please enter student name.");return;}
+ if(!/^[0-9]{10}$/.test(mobile)){
+  alert("Please enter a valid 10 digit mobile number.");return;
+ }
+
+ student={name,mobile};
+ document.getElementById("studentArea").style.display="none";
+ document.getElementById("quizArea").style.display="block";
+ createPalette();
+ showQuestion();
+ startTimer();
+}
+
+function showQuestion(){
+ const q=questions[currentQuestion];
+ document.getElementById("questionCount").textContent=
+ "Question "+(currentQuestion+1)+" of "+questions.length;
+ document.getElementById("questionText").textContent=
+ (currentQuestion+1)+". "+q.q;
+
+ const options=document.getElementById("options");
+ options.innerHTML="";
+
+ q.o.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[currentQuestion]===index?" selected":"");
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.checked=answers[currentQuestion]===index;
+  radio.addEventListener("change",()=>{
+   answers[currentQuestion]=index;
+   showQuestion();
+  });
+  label.appendChild(radio);
+  label.appendChild(document.createTextNode(option));
+  options.appendChild(label);
+ });
+
+ updatePalette();
+}
+
+function createPalette(){
+ const palette=document.getElementById("palette");
+ palette.innerHTML="";
+ questions.forEach((q,index)=>{
+  const button=document.createElement("button");
+  button.textContent=index+1;
+  button.onclick=()=>{
+   currentQuestion=index;
+   showQuestion();
+  };
+  palette.appendChild(button);
+ });
+}
+
+function updatePalette(){
+ const buttons=document.querySelectorAll("#palette button");
+ buttons.forEach((button,index)=>{
+  button.className="";
+  if(answers[index]!==null)button.classList.add("answered");
+  if(index===currentQuestion)button.classList.add("current");
+ });
+}
+
+function nextQuestion(){
+ if(currentQuestion<questions.length-1){
+  currentQuestion++;
+  showQuestion();
+ }
+}
+
+function previousQuestion(){
+ if(currentQuestion>0){
+  currentQuestion--;
+  showQuestion();
+ }
+}
+
+function startTimer(){
+ timerInterval=setInterval(()=>{
+  timeLeft--;
+  const min=Math.floor(timeLeft/60);
+  const sec=timeLeft%60;
+  document.getElementById("timer").textContent=
+  String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+
+  if(timeLeft<=0){
+   clearInterval(timerInterval);
+   alert("Time is over. Your test will be submitted.");
+   submitTest();
+  }
+ },1000);
+}
+
+function submitTest(){
+ if(submitted)return;
+
+ const confirmSubmit=confirm("Are you sure you want to submit the test?");
+ if(!confirmSubmit)return;
+
+ submitted=true;
+ clearInterval(timerInterval);
+
+ let correct=0,wrong=0,skipped=0;
+
+ questions.forEach((q,index)=>{
+  if(answers[index]===null)skipped++;
+  else if(answers[index]===q.a)correct++;
+  else wrong++;
+ });
+
+ const resultData={
+  name:student.name,
+  mobile:student.mobile,
+  testName:"Current Affairs - 11-11-2026",
+  date:"11 November 2026",
+  total:questions.length,
+  correct:correct,
+  wrong:wrong,
+  skipped:skipped,
+  score:correct,
+  answers:answers,
+  questions:questions
+ };
+
+ sessionStorage.setItem("caResult",JSON.stringify(resultData));
+
+ const scriptURL="https://script.google.com/macros/s/AKfycbyNevvXWNr6kkpXG5Q04xL8aSQBGUInRaM-u-2xK-V_oaLFTqm34RKQ7AFKNGRgct_7/exec";
+
+ const formData=new URLSearchParams();
+ formData.append("name",student.name);
+ formData.append("mobile",student.mobile);
+ formData.append("testName","Current Affairs - 11-11-2026");
+ formData.append("date","11 November 2026");
+ formData.append("total",questions.length);
+ formData.append("correct",correct);
+ formData.append("wrong",wrong);
+ formData.append("skipped",skipped);
+ formData.append("score",correct);
+
+ fetch(scriptURL,{
+  method:"POST",
+  mode:"no-cors",
+  body:formData
+ }).catch(error=>console.log("Result save error:",error));
+
+ window.location.href="ca-result.html";
+}
+</script>
 
 </body>
 </html>
